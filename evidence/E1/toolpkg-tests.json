@@ -1,0 +1,74 @@
+{
+  "sourceCommit": "65dfb0de9e3310ac6d9258c23935529af60169de",
+  "status": "PASS",
+  "counts": {
+    "tests": 76,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "classes": [
+    {
+      "name": "com.ai.assistance.operit.ChatBubblesTest",
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.ChatCoordinatorTest",
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.McpSessionTest",
+      "tests": 11,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.ProviderTest",
+      "tests": 13,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.QuickJsScriptTest",
+      "tests": 8,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.RequestContextTest",
+      "tests": 1,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.RoleTemplateTest",
+      "tests": 5,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolChatServiceTest",
+      "tests": 11,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolDispatcherTest",
+      "tests": 8,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolPkgCodecTest",
+      "tests": 9,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "androidRuntime": "NOT_RUN; instrumentation compiled only",
+  "hostQuickJs": "Official 2026-06-04 CLI; real ToolPkg adapter/model round trip; does not execute Android JNI"
+}

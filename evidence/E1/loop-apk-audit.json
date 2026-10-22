@@ -1,0 +1,41 @@
+{
+  "apk": "app-release.apk",
+  "bytes": 7619748,
+  "sha256": "e2dbf75a03a3a955d24dfd60a979f8e456200f22429e9df2b6e23b356eeed4d9",
+  "versionCode": 5,
+  "versionName": "0.5.0",
+  "entryCount": 112,
+  "permissions": [
+    "android.permission.INTERNET",
+    "cn.localfirst.companion.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "exportedActivityCount": 1,
+  "services": 0,
+  "receivers": 0,
+  "providers": 0,
+  "forbiddenAssets": [],
+  "nativeLibraries": [
+    {
+      "name": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "sha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libsqlcipher.so",
+      "sha256": "bc85746647ce4ea5f390eccd61e5236fbd11786a91802877b9fdbbb66a55192d",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    }
+  ],
+  "status": "PASS",
+  "limitations": "Static package validation only. Installation, Keystore behavior and plaintext storage scans require a real Android device."
+}

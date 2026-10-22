@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "sourceSha256": "0b4a4ebd76ef73eed4764f653569cec94e263c63f971d3a281e6bf34d46275b1",
+  "schemaMatchesRoomV27": true,
+  "legacyRowsPreserved": true,
+  "interruptedDdlRollback": true,
+  "alternatingScopedReads": 50,
+  "crossOwnerRows": 0,
+  "interruptedPlaybackTokenCleared": true,
+  "chatAndRoleCascade": true,
+  "limitation": "Host SQLite actual DDL and DAO SQL. Android SQLCipher, WebView and installation remain NOT_RUN."
+}

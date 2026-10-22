@@ -1,0 +1,62 @@
+# M0 签名材料扫描
+
+日期：2026-09-18；2026-09-19 两次扩展（嵌套归档 → 全部模块 assets 根 + APK 产物侧）
+
+## 扫描范围
+
+- 扩展名集合：`.jks`、`.keystore`、`.p12`、`.pkcs12`、`.pem`、`.key`
+- 源根（2026-09-19 起由 `rootProject.subprojects` 枚举，不再手写清单）：
+  - `:app/src/main/assets`
+  - `:app/build/generated/main-assets`（`syncMainAssets` 的合并输出，与上一项内容重叠）
+  - 各库模块 `src/main/assets`，实际存在的是 `:terminal/src/main/assets`
+- 容器成员名：`.apk`、`.zip`、`.jar`、`.aar` 展开一层后按同一扩展名集合匹配
+- 人工补充核查：PKCS#8 `BEGIN PRIVATE KEY` 文本标记、APK v1 签名文件（`META-INF/*.RSA|DSA|EC|SF|MF`）
+
+改动动因：`:terminal/src/main/assets` 里的 64 MB Ubuntu rootfs 会经 `merge<Variant>Assets` 进入 APK，但旧扫描根只有 `:app`，属实体盲区。
+
+## 结果
+
+### 容器成员（逐个流式核查，成员数 / sha256 前缀）
+
+| 容器 | 成员 | 结论 |
+|---|---|---|
+| `accessibility.apk` | 912 / `b6bac271` | 无匹配扩展名、无私钥标记、无 v1 签名文件 |
+| `desktop.apk` | 161 / `76f6eb10` | 同上 |
+| `shizuku.apk` | 934 / `6e273ab0` | 同上 |
+| `subpack/android.apk` | 431 | 同上；Flutter 产物，含 arm64-v8a/armeabi-v7a/x86_64 的 `libapp.so`/`libflutter.so` |
+| `subpack/windows.zip` | 30 | 同上；含 `assistance_subpack.exe`、`flutter_windows.dll`、WebView2 DLL |
+| `:terminal/…/ubuntu-noble-aarch64-pd-v4.18.0.tar.xz` | 12,684 | **146 个 `.pem`，全部位于 `etc/ssl/certs/`（公共根证书及其软链）**；`etc/ssl/private/` 为空目录；`.key`/`.p12`/`.pkcs12`/`.jks`/`.keystore`/`ssh_host*`/`id_rsa` 命中 0。判定：不含私钥材料 |
+
+rootfs 用 `tar tvfJ` 流式核查，因此**没有**把它纳入门禁的自动展开集合：`.tar.xz` 需要 XZ 解码，且按当前"只匹配扩展名"的规则一旦纳入就会把 146 个公共 CA 证书判成误报。要让门禁覆盖 tar/xz，前置条件是区分公钥证书与私钥（解析 PKCS#8，或结合路径与 `PRIVATE KEY` 标记），不是再加一个扩展名。
+
+`operit_shell_exec`、`templates/**/aapt2-arm64-v8a` 为非归档 ELF，按扩展名规则不适用，来源与许可另记在 `license-inventory.md`。
+
+### APK 产物侧（构建出包后执行）
+
+对 `app/build/outputs/apk/clone/app-clone.apk`（413,136,822 B，5,550 条目）：ZIP 成员中无上述扩展名，无 v1 签名文件（v1 未启用，见 `build-manifest.json` 的 `signing.schemeObserved`），`lib/` 下只有 `arm64-v8a`。产物内的 assets 与上表源侧一致。
+
+## 构建门禁自检（实际执行，非推断）
+
+| 日期 | 探针 | 结果 |
+|---|---|---|
+| 2026-09-19 | `app/src/main/assets/test/probe-nested.zip` 内含成员 `dummy-signing.key` | `:app:verifyNoEmbeddedSigningMaterial` FAILED，报 `test\probe-nested.zip!/dummy-signing.key`（源 assets 根与生成 assets 根各报一次，因 `syncMainAssets` 把前者复制进后者；探针已删除） |
+| 2026-09-19 | `terminal/src/main/assets/probe-scan-check.keystore` | FAILED，报 `:terminal/src/main/assets/probe-scan-check.keystore` —— 证明模块 assets 根盲区已闭合 |
+| 2026-09-19 | 删除该探针后重跑 | BUILD SUCCESSFUL（10s），`terminal/src/main/assets/` 回到只含 rootfs 与 `setup_fake_sysdata.sh` 的状态 |
+
+`verifyNoEmbeddedSigningMaterial` 挂在 `preBuild` 上（`app/build.gradle.kts:628-632`），命中即构建失败，不产出"警告后继续"的路径。
+
+## 已从工作树删除的历史资产
+
+- `app/src/main/assets/jks.jks`（内容 SHA-256：`b152b228ca8eddf1f78fe7fbc2fa6fa53204007def49dee1ca8ee000a4458711`）
+- `app/src/main/assets/pkcs12.keystore`（内容 SHA-256：`e7d3c18768681da94b878f427bb429aec6d8d147e998270f5388702880536cea`）
+
+历史密钥材料不得恢复或复用。运行期 `KeyStoreHelper.removeLegacyAssetDerivedKeyMaterial()` 会删除 `filesDir/jks.jks` 与 `filesDir/pkcs12.keystore` 的旧落盘残留。
+
+M0 测试签名键不在仓库内：`C:/Users/15942/Desktop/Work/keystores/operit-m0-test.keystore`，口令只在 git 忽略的 `local.properties`。它是测试键而非发布键，详见 `build-manifest.json` 的 `signing`。
+
+## 已知限制
+
+- 匹配依据仍是**文件名后缀**，不解析内容结构：改名成 `.bin` 的密钥库、或 v2/v3 签名块内容都不会命中。这是降低遗漏，不是证明不存在。
+- 只展开一层归档；归档内的归档（如 APK 内的 zip）不递归。
+- `.tar`/`.tar.xz` 不自动展开（理由见上），依赖一次性人工核查。
+- flavor / 非标准 `assets.srcDirs` 不覆盖：枚举的是各模块的 `src/main/assets` 约定路径。当前仓库无此用法，新增时需要一并扩展。

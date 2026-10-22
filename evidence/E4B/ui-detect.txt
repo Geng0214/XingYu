@@ -1,0 +1,5 @@
+NOT_RUN: Impeccable CLI is unavailable in the current Windows toolchain (`impeccable` is not recognized as a command).
+PASS: Compose debug and release sources compiled through the final Gradle validation.
+PASS: Android lint completed with 0 errors, 56 warnings and 1 hint; no warning points to the new memory extraction screens.
+PASS: Manual source review covered the selected-turn preflight, generating/cancel state, editable candidate confirmation, and detach-or-delete chat deletion dialog.
+NOT_RUN: Device visual QA for phone, tablet, large font, dark theme, rotation, TalkBack and process recreation; no authorized ADB device is connected.

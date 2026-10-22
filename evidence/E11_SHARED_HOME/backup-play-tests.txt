@@ -1,0 +1,168 @@
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.BackupAndroidTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+com.ai.assistance.operit.BackupAndroidTest:
+INSTRUMENTATION_STATUS: test=sqlFailureAndTwentyCancellationsLeaveOriginalRowsAndCredentialFilesIntact
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.BackupAndroidTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=sqlFailureAndTwentyCancellationsLeaveOriginalRowsAndCredentialFilesIntact
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.BackupAndroidTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=missingCredentialsDoNotReuseLocalKeyAndDamagedImagesDoNotImport
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.BackupAndroidTest
+INSTRUMENTATION_STATUS: current=2
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=missingCredentialsDoNotReuseLocalKeyAndDamagedImagesDoNotImport
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.BackupAndroidTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=encryptedRoundTripAppendsPreservesExistingKeysLockAndImages
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.BackupAndroidTest
+INSTRUMENTATION_STATUS: current=3
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=encryptedRoundTripAppendsPreservesExistingKeysLockAndImages
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+com.ai.assistance.operit.PlayStorageAndroidTest:
+INSTRUMENTATION_STATUS: test=encryptedTableGamesSurviveRestartAndBackupWithoutPlaintextSecrets
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=4
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=encryptedTableGamesSurviveRestartAndBackupWithoutPlaintextSecrets
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=actualEncryptedPlayStorageIsolationCancellationRecoveryAndBackup
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=5
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=actualEncryptedPlayStorageIsolationCancellationRecoveryAndBackup
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=encryptedAdventureSurvivesRestartAndBackupWithConfirmedInventory
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=6
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=.
+INSTRUMENTATION_STATUS: test=encryptedAdventureSurvivesRestartAndBackupWithConfirmedInventory
+INSTRUMENTATION_STATUS_CODE: 0
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stream=
+INSTRUMENTATION_STATUS: test=schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=7
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=7
+INSTRUMENTATION_STATUS: stack=org.json.JSONException: No value for indices
+	at org.json.JSONObject.get(JSONObject.java:398)
+	at org.json.JSONObject.getJSONArray(JSONObject.java:593)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1$helper$1.onCreate(PlayStorageAndroidTest.kt:113)
+	at net.zetetic.database.sqlcipher.SupportHelper$1.onCreate(SupportHelper.java:22)
+	at net.zetetic.database.sqlcipher.SQLiteOpenHelper.getDatabaseLocked(SQLiteOpenHelper.java:398)
+	at net.zetetic.database.sqlcipher.SQLiteOpenHelper.getWritableDatabase(SQLiteOpenHelper.java:278)
+	at net.zetetic.database.sqlcipher.SupportHelper.getWritableDatabase(SupportHelper.java:60)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1.invokeSuspend(PlayStorageAndroidTest.kt:124)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.ai.assistance.operit.PlayStorageAndroidTest.schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(PlayStorageAndroidTest.kt:99)
+
+INSTRUMENTATION_STATUS: stream=
+Error in schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(com.ai.assistance.operit.PlayStorageAndroidTest):
+org.json.JSONException: No value for indices
+	at org.json.JSONObject.get(JSONObject.java:398)
+	at org.json.JSONObject.getJSONArray(JSONObject.java:593)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1$helper$1.onCreate(PlayStorageAndroidTest.kt:113)
+	at net.zetetic.database.sqlcipher.SupportHelper$1.onCreate(SupportHelper.java:22)
+	at net.zetetic.database.sqlcipher.SQLiteOpenHelper.getDatabaseLocked(SQLiteOpenHelper.java:398)
+	at net.zetetic.database.sqlcipher.SQLiteOpenHelper.getWritableDatabase(SQLiteOpenHelper.java:278)
+	at net.zetetic.database.sqlcipher.SupportHelper.getWritableDatabase(SupportHelper.java:60)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1.invokeSuspend(PlayStorageAndroidTest.kt:124)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.ai.assistance.operit.PlayStorageAndroidTest.schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(PlayStorageAndroidTest.kt:99)
+
+INSTRUMENTATION_STATUS: test=schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 19.012
+There was 1 failure:
+1) schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(com.ai.assistance.operit.PlayStorageAndroidTest)
+org.json.JSONException: No value for indices
+	at org.json.JSONObject.get(JSONObject.java:398)
+	at org.json.JSONObject.getJSONArray(JSONObject.java:593)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1$helper$1.onCreate(PlayStorageAndroidTest.kt:113)
+	at net.zetetic.database.sqlcipher.SupportHelper$1.onCreate(SupportHelper.java:22)
+	at net.zetetic.database.sqlcipher.SQLiteOpenHelper.getDatabaseLocked(SQLiteOpenHelper.java:398)
+	at net.zetetic.database.sqlcipher.SQLiteOpenHelper.getWritableDatabase(SQLiteOpenHelper.java:278)
+	at net.zetetic.database.sqlcipher.SupportHelper.getWritableDatabase(SupportHelper.java:60)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1.invokeSuspend(PlayStorageAndroidTest.kt:124)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.ai.assistance.operit.PlayStorageAndroidTest.schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(PlayStorageAndroidTest.kt:99)
+
+FAILURES!!!
+Tests run: 7,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

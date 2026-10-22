@@ -1,0 +1,82 @@
+[
+  {
+    "elapsedSeconds": 0.0,
+    "image": "autonomy-00.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 3.17,
+    "image": "autonomy-01.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 6.34,
+    "image": "autonomy-02.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 9.52,
+    "image": "autonomy-03.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 12.69,
+    "image": "autonomy-04.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 15.89,
+    "image": "autonomy-05.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 19.06,
+    "image": "autonomy-06.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 22.25,
+    "image": "autonomy-07.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 25.42,
+    "image": "autonomy-08.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 28.59,
+    "image": "autonomy-09.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 31.77,
+    "image": "autonomy-10.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 34.94,
+    "image": "autonomy-11.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 38.11,
+    "image": "autonomy-12.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 41.28,
+    "image": "autonomy-13.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 44.47,
+    "image": "autonomy-14.png",
+    "touchEvents": 0
+  },
+  {
+    "elapsedSeconds": 47.66,
+    "image": "autonomy-15.png",
+    "touchEvents": 0
+  }
+]

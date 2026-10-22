@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.RoleTemplateTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-19T13:35:54.103Z" hostname="DESKTOP-8LJVBMI" time="0.017">
+  <properties/>
+  <testcase name="unknownNestedFieldsAreValidatedButNeverExported" classname="com.ai.assistance.operit.RoleTemplateTest" time="0.003"/>
+  <testcase name="ignoresScriptsUrlsCredentialsAndIdsAsData" classname="com.ai.assistance.operit.RoleTemplateTest" time="0.0"/>
+  <testcase name="boundedStreamStopsAtLimitInsteadOfReadingWholeFile" classname="com.ai.assistance.operit.RoleTemplateTest" time="0.003"/>
+  <testcase name="unicodeRoundTripAndExactFieldAllowlist" classname="com.ai.assistance.operit.RoleTemplateTest" time="0.0"/>
+  <testcase name="rejectsMalformedEncodingDepthSizeAndVersions" classname="com.ai.assistance.operit.RoleTemplateTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

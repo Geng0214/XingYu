@@ -1,0 +1,68 @@
+{
+  "status": "LEGACY_VIDEO_SYNC_INTEGRATED_NATIVE_PENDING",
+  "sourceCommit": "3936784c0ff62a47b8940e22dc7973cc56bfbc16",
+  "baselineCommit": "250d8a2b",
+  "tests": {
+    "tests": 363,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "testSuites": 52,
+  "newTests": 18,
+  "frameWaitCancellationRounds": 20,
+  "prerollCancellationRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "newAndroidBorrowedSourceTests": 1,
+  "androidExecution": "NOT_RUN",
+  "connectedDevices": [],
+  "legacyMediaPath": "SHARED_AUDIO_TRACK_AND_SURFACE_VIDEO_DECODER_API_26_27",
+  "videoMasterClock": "ACTUAL_AUDIO_MEDIA_POSITION_THEN_MONOTONIC_TAIL",
+  "silentVideoClock": "MONOTONIC_FROM_FIRST_READY_FRAME",
+  "prerollOwnership": "LATEST_PRIOR_FRAME_RETAINED_AND_RELEASED_ONCE",
+  "progressPersistence": "SERIALIZED_MONOTONIC",
+  "selfReviewFixes": [
+    "Retain last preroll for frame interval and EOF seeks",
+    "Serialize suspended audio/video progress writes",
+    "Anchor video tail before persistence; resample clock after slow progress save"
+  ],
+  "nativeVideoAndAvOffset": "NOT_RUN",
+  "webViewActualRouting": "OBSERVABILITY_GAP_REMAINS",
+  "databaseSchema": 28,
+  "backupSchema": 23,
+  "newPermissions": [],
+  "newDependencies": [],
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": "./gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 55s; 75 tasks, 20 executed, 55 up-to-date",
+  "sourceSha256": {
+    "app/src/androidTest/java/com/ai/assistance/operit/MediaDecoderAndroidTest.kt": "bfcba389d24c0cf0ac5b84a26d87bfebb56ea8bf63a18d0e1f1deee7860ad1f8",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidMediaPcmDecoder.kt": "48fffbabae95e5d5b05819671ff6ec3960810ccebc13173f2dccf9364d9776fe",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidMediaSource.kt": "37eeca860f025ebe3d9a8d36d41a71e9243d8fb9aa3ee9bf506a966b195554e7",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidMediaVideoDecoder.kt": "b62f90a4c27baf0b9bfa004a5e31d7427594c107948d3ad4a8cd762a1130c519",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/DecodedMediaPcm.kt": "3c4a330e95ab56d80ab3faefecc53e919688a1e318a65f3a8eb823bc36333d8a",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LegacyLocalMediaPlayer.kt": "546296d44a009e342a6ca0cff80fba187cd0e0c80efc5ecd2c7328db08045b0f",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LocalMusicPlayer.kt": "be90178307f74687109b913191e23ba0d903141527dec8e55a2c6afbc20e092b",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/VideoFramePacing.kt": "91fe35811efac2bba18796882ebf62a5f0cd639a95af31af2d5891de3bd4b2a7",
+    "app/src/test/java/com/ai/assistance/operit/VideoFramePacingTest.kt": "c77ad9a526cfb975fa6c67e7202e26e76a227fa0a28b79527bacf1187183f8ec",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "fc8154effeb7c6476d78565a218c540689fa19ae2e74db18374c7ac34b9e9d72",
+    "docs/TODO/voice-and-shared-activities/index.md": "02995a649212001bfea83b5f6ad327d29e16b3caf1e9df7e433b8ce3fc9ef62e",
+    "docs/project/STATUS.md": "2d266f31d0ebead4d0ab2bf78b1b8fe856fb3844fd0c7039efed96fed2129158",
+    "docs/project/companion-full-plan.md": "3dfbe27af9fbb1d8298aa845fa9435381cdf3f93818a858e1cded995d19fe67e",
+    "docs/project/local-music.md": "50bca392aa567e24bb6c7d9a62317771a9df6003365fc26faaf152edbf98df9a",
+    "docs/project/local-video.md": "30eda2dccad4ac61c8cd16b82ae7d3a20afcdc6c3813f4efc256ee391f8d1874"
+  },
+  "removedSourcePaths": [
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LegacyLocalAudioPlayer.kt"
+  ],
+  "evidenceSha256": {
+    "evidence/E5_LEGACY_VIDEO/build-validation.log": "1ba4a18ffee40b0b21d7322bccdd7efb3a6c2daf2cb0623d2ca355a05a6de414",
+    "evidence/E5_LEGACY_VIDEO/validation.md": "16d3c5a7f37994604cc4902e5a02281611ee8017cc5f914a28e9fb0669c83ff9"
+  }
+}

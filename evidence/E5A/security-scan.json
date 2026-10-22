@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "apkSha256": "411782500387807628d01de93b1d82b5bced71f14ffa7c78947d1c81344c6d7c",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-SECRET-key": [],
+    "synthetic-speech-key": [],
+    "synthetic-migration-key": [],
+    "PRIVATE-MEMORY": [],
+    "DIARY-PRIVATE": [],
+    "PLANNER-PRIVATE-A": [],
+    "PROACTIVE-PRIVATE-A": [],
+    "SPEECH-PRIVATE-A": [],
+    "VOICE-PRIVATE-A": [],
+    "C:/Users/15942": [],
+    "C:\\\\Users\\\\15942": []
+  },
+  "speechPolicy": "Microphone starts only after a user tap and runtime permission. Recorded PCM, upload WAV and synthesized PCM stay in memory; network requests require an explicit destination preview and share the process-wide model generation gate.",
+  "limitations": "Static APK entry scan in UTF-8 and UTF-16LE. Device database, WAL, cache, Keystore, microphone routing and live provider traffic require a connected device."
+}

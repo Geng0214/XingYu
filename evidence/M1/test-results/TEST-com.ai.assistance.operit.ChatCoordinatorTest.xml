@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.ChatCoordinatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-19T12:39:23.162Z" hostname="DESKTOP-8LJVBMI" time="0.471">
+  <properties/>
+  <testcase name="networkFailureKeepsPartialAndCannotBecomeCompleteLater" classname="com.ai.assistance.operit.ChatCoordinatorTest" time="0.437"/>
+  <testcase name="cancelRetainsPartialAndRetryHasNewIdentity" classname="com.ai.assistance.operit.ChatCoordinatorTest" time="0.021"/>
+  <testcase name="immediateCancellationLeavesTerminalState" classname="com.ai.assistance.operit.ChatCoordinatorTest" time="0.006"/>
+  <testcase name="requestSnapshotDoesNotChangeWhileGenerating" classname="com.ai.assistance.operit.ChatCoordinatorTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

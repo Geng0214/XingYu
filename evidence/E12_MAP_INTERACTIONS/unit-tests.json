@@ -1,0 +1,15 @@
+{
+  "tests": 564,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "personalityTests": [
+    {
+      "name": "com.ai.assistance.operit.HomePersonalityTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ]
+}

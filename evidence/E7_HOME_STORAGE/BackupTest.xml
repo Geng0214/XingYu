@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.BackupTest" tests="47" skipped="0" failures="0" errors="0" timestamp="2026-09-21T03:46:00.374Z" hostname="DESKTOP-8LJVBMI" time="6.268">
+  <properties/>
+  <testcase name="versionEighteenPreservesSpeechConfigsAndVersionSeventeenAddsAnEmptyTable" classname="com.ai.assistance.operit.BackupTest" time="0.427"/>
+  <testcase name="duplicatePrimaryKeyAndRequestAcrossChatsAreRejected" classname="com.ai.assistance.operit.BackupTest" time="0.002"/>
+  <testcase name="nonemptyVersionTwentyBackupPreservesMusicAndAddsOnlyAudioDefaults" classname="com.ai.assistance.operit.BackupTest" time="0.005"/>
+  <testcase name="v27XiangqiKeepsSidesMovesAndInterruptedRequestsAcrossTwentyAppendedRestores" classname="com.ai.assistance.operit.BackupTest" time="0.413"/>
+  <testcase name="homeV29EncryptionAndTwentyIndependentRestoresPreserveItemsClaimsAndCredentialBindings" classname="com.ai.assistance.operit.BackupTest" time="0.334"/>
+  <testcase name="encryptedGroupsRemapEveryOwnershipDomainAndInterruptPendingRequests" classname="com.ai.assistance.operit.BackupTest" time="0.249"/>
+  <testcase name="versionSeventeenPreservesProactiveAuditAndRestoreForcesRoleSwitchOff" classname="com.ai.assistance.operit.BackupTest" time="0.213"/>
+  <testcase name="badSchemaCountsUtf8NullsAndTrailingPlaintextNeverReachSql" classname="com.ai.assistance.operit.BackupTest" time="0.002"/>
+  <testcase name="versionThirteenPreservesRecallExpiryAndForgettingWhileOlderVersionsUpgradeSafely" classname="com.ai.assistance.operit.BackupTest" time="0.209"/>
+  <testcase name="v23NonemptyGroupsAndPrivateHistoryUpgradeToEmptyPlayTables" classname="com.ai.assistance.operit.BackupTest" time="0.001"/>
+  <testcase name="versionTwentyTwoKeepsNonemptyBilibiliRecordsAndCreatesNoGroups" classname="com.ai.assistance.operit.BackupTest" time="0.002"/>
+  <testcase name="encryptedPlayBackupPreservesStoriesDeckUsageAndRemapsEveryIdentityWithoutResuming" classname="com.ai.assistance.operit.BackupTest" time="0.247"/>
+  <testcase name="groupBackupRejectsForeignOwnersMalformedRequestsAndCounterOverflow" classname="com.ai.assistance.operit.BackupTest" time="0.004"/>
+  <testcase name="versionNinePreservesScopedGeneratedImagesAndVersionEightAddsNone" classname="com.ai.assistance.operit.BackupTest" time="0.01"/>
+  <testcase name="v5PreservesFrozenUsagePricesAndV4AddsNoInventedBillingData" classname="com.ai.assistance.operit.BackupTest" time="0.005"/>
+  <testcase name="musicBackupRestoresIdentityAndProgressButNeverExternalUriGrantsOrPlayback" classname="com.ai.assistance.operit.BackupTest" time="0.206"/>
+  <testcase name="versionFourArchiveGainsUnknownPricesAndNoInventedUsage" classname="com.ai.assistance.operit.BackupTest" time="0.0"/>
+  <testcase name="v25JourneysRoundTripAndRemapWithNoPlaintextOrImplicitContinuation" classname="com.ai.assistance.operit.BackupTest" time="0.222"/>
+  <testcase name="versionTwoPersonasRemainRoleBoundThroughEncryptionAndAppend" classname="com.ai.assistance.operit.BackupTest" time="0.203"/>
+  <testcase name="versionFifteenPreservesEnvironmentAndVersionFourteenAddsNoInventedLocation" classname="com.ai.assistance.operit.BackupTest" time="0.21"/>
+  <testcase name="wrongPasswordTamperingTruncationAndTrailingCiphertextAreRejected" classname="com.ai.assistance.operit.BackupTest" time="0.816"/>
+  <testcase name="passwordEnvelopeRoundTripKeepsChineseEmojiHistoryAndSecretOnlyInAuthenticatedPayload" classname="com.ai.assistance.operit.BackupTest" time="0.305"/>
+  <testcase name="v19PreservesActivitiesAndRemapsEveryOwnerWhileV18AddsNoActivity" classname="com.ai.assistance.operit.BackupTest" time="0.21"/>
+  <testcase name="v28AdventurePreservesInventoryAndDialogueAcrossTwentyIndependentRestores" classname="com.ai.assistance.operit.BackupTest" time="0.247"/>
+  <testcase name="toolPkgArchiveAndCatalogAreCheckedWithoutRunningCode" classname="com.ai.assistance.operit.BackupTest" time="0.024"/>
+  <testcase name="versionFourteenPreservesDiarySourceAndVersionThirteenAddsNoInventedDiary" classname="com.ai.assistance.operit.BackupTest" time="0.209"/>
+  <testcase name="actualV24PlayPayloadStillReadsWithoutChangingIdsOrData" classname="com.ai.assistance.operit.BackupTest" time="0.004"/>
+  <testcase name="repeatedAppendCreatesFreshIdentitiesAndNeverMixesFiftyAlternatingRoleContexts" classname="com.ai.assistance.operit.BackupTest" time="0.009"/>
+  <testcase name="versionTenPreservesReadingProgressAndRemapsTraceablePassageWhileVersionNineAddsNoBooks" classname="com.ai.assistance.operit.BackupTest" time="0.009"/>
+  <testcase name="v2GoldenRetainsPersonaAndV3WorldbookRemapsAllOwnership" classname="com.ai.assistance.operit.BackupTest" time="0.211"/>
+  <testcase name="playBackupRejectsForeignScopesMissingRequestHistoryHiddenDeckLeaksAndInventedUsage" classname="com.ai.assistance.operit.BackupTest" time="0.009"/>
+  <testcase name="versionSixteenPreservesPlannerAndCyclesWhileVersionFifteenAddsNone" classname="com.ai.assistance.operit.BackupTest" time="0.206"/>
+  <testcase name="sizeLimitIsEnforcedEvenForStreamsWithNoLength" classname="com.ai.assistance.operit.BackupTest" time="0.02"/>
+  <testcase name="crossSpaceReferencesOrCredentialRebindingAreRejectedBeforeRestore" classname="com.ai.assistance.operit.BackupTest" time="0.004"/>
+  <testcase name="versionEightPreservesRoleAssetsAndMessageSnapshotsWhileVersionSevenAddsNone" classname="com.ai.assistance.operit.BackupTest" time="0.004"/>
+  <testcase name="actualV28NonemptyAdventureUpgradesWithoutInventingHomes" classname="com.ai.assistance.operit.BackupTest" time="0.003"/>
+  <testcase name="tablesExactlyMatchExportedLegacyAndCurrentRoomSchemas" classname="com.ai.assistance.operit.BackupTest" time="0.033"/>
+  <testcase name="versionSixPreservesImagesAndVersionFiveAddsNoInventedVisionData" classname="com.ai.assistance.operit.BackupTest" time="0.002"/>
+  <testcase name="hostileHeaderCannotSelectWeakKdfOrUnboundedWork" classname="com.ai.assistance.operit.BackupTest" time="0.106"/>
+  <testcase name="videoBackupRemapsScopeAndRejectsMalformedDimensionsWithoutRestoringFileAccess" classname="com.ai.assistance.operit.BackupTest" time="0.212"/>
+  <testcase name="v3GoldenPreservesLoreAndCurrentFormatRestoresRawModeAndRelationshipGraph" classname="com.ai.assistance.operit.BackupTest" time="0.204"/>
+  <testcase name="homeBackupRejectsForgedStockMissingHistoryDuplicateOwnersAndCrossRoleCommands" classname="com.ai.assistance.operit.BackupTest" time="0.005"/>
+  <testcase name="onlineWatchingBackupPreservesVideoIdentityAndRemapsPrivateOwnersWithoutPlayback" classname="com.ai.assistance.operit.BackupTest" time="0.204"/>
+  <testcase name="versionSevenPreservesMaterialsAndVersionSixAddsNoInventedContent" classname="com.ai.assistance.operit.BackupTest" time="0.002"/>
+  <testcase name="deletedGroupMemberHistoryRetainsIndependentRemappedIdentity" classname="com.ai.assistance.operit.BackupTest" time="0.002"/>
+  <testcase name="versionOneGoldenPreservesOldRecordsAndIntroducesOnlyEmptyDisabledPersonas" classname="com.ai.assistance.operit.BackupTest" time="0.001"/>
+  <testcase name="v26TableGamesPreserveSecretsAndRemapInterruptedRequestsWhileOlderHeadersRejectThem" classname="com.ai.assistance.operit.BackupTest" time="0.238"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

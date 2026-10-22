@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "schemaMatchesRoomV5": true,
+  "allV4RowsPreserved": true,
+  "orphanDetectedBeforeDdl": true,
+  "scopeAlternations": 50,
+  "syntheticLegacyMarkers": 20,
+  "revokedOrInterruptedRounds": 20,
+  "lateWritesRejected": true,
+  "terminalWritesRejected": true,
+  "disableAndDeleteDenyAccess": true,
+  "chatDeletionCascades": true,
+  "extensionDeletionRetainsAudit": true,
+  "foreignKeyCheck": true,
+  "limitation": "Host SQLite executes actual DAO SQL; Kotlin repository, SQLCipher and installed Android runtime are NOT_RUN here."
+}

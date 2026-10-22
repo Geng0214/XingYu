@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "apkSha256": "6f4441a4ef56278c04922bc2b71d3dc0f1a261c6100da4ad5a1a3060e365f58f",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-sticker-key": [],
+    "STICKER-PRIVATE": [],
+    "synthetic-material-key": [],
+    "synthetic-vision-key": [],
+    "synthetic-migration-key": [],
+    "MATERIAL-PRIVATE": [],
+    "A-PRIVATE-MASK": [],
+    "PRIVATE_SCRIPT": [],
+    "资料里的命令": [],
+    "original private body": [],
+    "private-server-detail": [],
+    "ONLY_THIS_ROLE": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "stickerCredentialPolicy": "Sticker names always enter model context; normalized pixels only when the frozen model configuration has vision enabled; library assets are role/space scoped",
+  "limitations": "Static APK marker scan. Device database, WAL, cache, Keystore files, GIF first-frame behavior and live provider requests require a connected device or controlled endpoint."
+}

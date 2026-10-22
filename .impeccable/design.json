@@ -1,0 +1,1000 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-03T06:33:46Z",
+  "title": "Design System: 星语",
+  "extensions": {
+    "colorMeta": {
+      "home-ground-clear": {
+        "displayName": "家园运行时清屏绿",
+        "source": "game/home/home.gd#_ready",
+        "scope": "home-godot",
+        "note": "清屏色；Tiny Town草地图格保留原像素，不据此指定图集草色。"
+      },
+      "home-water": {
+        "displayName": "家园连续水面",
+        "source": "game/home/home.gd#_pond",
+        "scope": "home-godot"
+      },
+      "home-water-ripple": {
+        "displayName": "家园水面波纹",
+        "source": "game/home/home.gd#_pond",
+        "scope": "home-godot"
+      },
+      "home-shore": {
+        "displayName": "家园外缘岸线",
+        "source": "game/home/home.gd#_pond",
+        "scope": "home-godot"
+      },
+      "home-soil": {
+        "displayName": "家园耕地",
+        "source": "game/home/home.gd#_plot",
+        "scope": "home-godot"
+      },
+      "home-pixel-shadow": {
+        "displayName": "原创物件深木色与地垄",
+        "sources": [
+          "game/home/home.gd#_plot",
+          "game/home/home.gd#_resource",
+          "game/home/home.gd#_prop"
+        ],
+        "scope": "home-godot"
+      },
+      "home-pixel-wood": {
+        "displayName": "原创树干与家具木色",
+        "sources": [
+          "game/home/home.gd#_resource",
+          "game/home/home.gd#_prop"
+        ],
+        "scope": "home-godot"
+      },
+      "home-pixel-plank": {
+        "displayName": "原创木板色",
+        "sources": [
+          "game/home/home.gd#_pond",
+          "game/home/home.gd#_prop"
+        ],
+        "scope": "home-godot"
+      },
+      "home-ink": {
+        "displayName": "物品描边、场景细节与名牌底色",
+        "sources": [
+          "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.ink",
+          "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeGameScene",
+          "game/home/home.gd#_prop"
+        ],
+        "scope": "home-pictures-name-label-godot"
+      },
+      "home-cream": {
+        "displayName": "物品与原创物件米色细节",
+        "sources": [
+          "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.cream",
+          "game/home/home.gd#_prop"
+        ],
+        "scope": "home-pictures-godot"
+      },
+      "home-picture-green": {
+        "displayName": "物品叶片与动作绿色",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.green",
+        "scope": "home-pictures"
+      },
+      "home-picture-gold": {
+        "displayName": "物品与经营动作金色",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.gold",
+        "scope": "home-pictures"
+      },
+      "home-picture-wood": {
+        "displayName": "物品木色",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.wood",
+        "scope": "home-pictures"
+      },
+      "home-picture-red": {
+        "displayName": "物品与赠礼红色",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.red",
+        "scope": "home-pictures"
+      },
+      "home-picture-blue": {
+        "displayName": "布料、鱼与工具蓝色",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures.blue",
+        "scope": "home-pictures"
+      },
+      "home-name-text": {
+        "displayName": "人物名牌文字",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeGameScene",
+        "scope": "home-name-label"
+      }
+    },
+    "shadows": [
+      {
+        "name": "home-map-button",
+        "value": "2dp",
+        "purpose": "Surface.shadowElevation",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeMapButton"
+      },
+      {
+        "name": "home-map-panel",
+        "value": "3dp",
+        "purpose": "地图内操作浮层的Surface.shadowElevation",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+      }
+    ],
+    "motion": [
+      {
+        "name": "home-player-and-companion-step",
+        "value": "170ms; LinearEasing",
+        "purpose": "玩家、同行及共同活动参与者的每格移动",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeSceneController.advance"
+      },
+      {
+        "name": "home-autonomous-resident-step",
+        "value": "230ms | 300ms | 390ms; LinearEasing",
+        "purpose": "人设关键词影响居民每格步速",
+        "sources": [
+          "app/src/main/java/com/ai/assistance/operit/data/model/HomePersonality.kt#HomePersonality.from",
+          "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeGameScene"
+        ]
+      },
+      {
+        "name": "home-render-cap",
+        "value": "Engine.max_fps = 30",
+        "purpose": "Godot渲染上限；不是实测刷新率或性能指标",
+        "source": "game/home/home.gd#_ready"
+      },
+      {
+        "name": "home-decoration-clock",
+        "value": "clock += delta only while !reduceMotion; reduceMotion resets clock to 0 and clears effects",
+        "purpose": "水波、起伏、闪光、营火、蝴蝶及活动标记共享装饰时钟",
+        "source": "game/home/home.gd#_process"
+      },
+      {
+        "name": "home-operation-particle-life",
+        "value": "1.2s",
+        "purpose": "种植、浇水与资源操作粒子生命周期",
+        "source": "game/home/home.gd#_process"
+      },
+      {
+        "name": "home-feedback",
+        "value": "3500ms",
+        "purpose": "物品增量与聊天短回应；不用于邀约",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+      },
+      {
+        "name": "planner-calendar-expand",
+        "value": "animateContentSize(); Compose default specification",
+        "purpose": "日程周历／月历内容尺寸变化；未另定义时长或缓动",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt#PlannerCalendarPane",
+        "scope": "planner",
+        "deviceReducedMotionVerified": false
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "home-wide-overlay",
+        "value": "mapWidth >= 600dp && mapWidth > mapHeight",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+      },
+      {
+        "name": "home-compact-viewport",
+        "value": "mapHeight < 420dp",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+      },
+      {
+        "name": "home-large-text-grid",
+        "value": "!compact && effectiveFontScale >= 1.5",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomePictureButton"
+      },
+      {
+        "name": "planner-wide-calendar",
+        "value": "contentWidth >= 840dp && effectiveFontScale < 1.5 && tab != cycle && !listView",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt#PlannerBoard",
+        "scope": "planner"
+      },
+      {
+        "name": "planner-large-text-time",
+        "value": "effectiveFontScale >= 1.5",
+        "purpose": "时间移入记录内容；时间输入小时／分钟竖排",
+        "sources": [
+          "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt#PlannerTimelineRow",
+          "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt#PlannerTimePicker"
+        ],
+        "scope": "planner"
+      },
+      {
+        "name": "planner-editor-field-stack",
+        "value": "availableFieldWidth < 360dp || effectiveFontScale >= 1.2",
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerPages.kt#PlannerDateTimeFields",
+        "scope": "planner"
+      }
+    ],
+    "nativePlanner": {
+      "platform": "android",
+      "iteration": "E16",
+      "scope": "existing Material 3 planner extension",
+      "authority": {
+        "product": "PRODUCT.md",
+        "direction": ".impeccable/surfaces/assistance-operit-ui-main-plannerpages-kt-ebc64f29.md",
+        "mode": "code-led local extension",
+        "approvedComp": null,
+        "decisionComp": null,
+        "qualityBarComp": null,
+        "htmlDetectorRun": false,
+        "incumbentWorld": "E14品牌与E15家园身份保留"
+      },
+      "sources": [
+        "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerPages.kt",
+        "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt",
+        "app/src/main/java/com/ai/assistance/operit/data/model/PlannerCalendar.kt"
+      ],
+      "themeBinding": {
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/CompanionTheme.kt",
+        "surfaceSource": "app/src/main/java/com/ai/assistance/operit/ui/main/CompanionThemeFormat.kt#withCompanionSurfaceTokens",
+        "colors": "当前ColorScheme；日间/夜间与内置/自定义继续生效",
+        "roles": {
+          "primary/onPrimary": "选中日期",
+          "surface": "日期与分类栏",
+          "surfaceContainerLow": "记录行",
+          "surfaceContainerHigh": "空态图标容器",
+          "onSurfaceVariant": "说明/邻月/分享/时区",
+          "outlineVariant": "分隔线",
+          "error": "逾期/错误/删除"
+        },
+        "typography": "Material类型角色与withFontFamily；有效LocalDensity.fontScale；没有日程独立sp尺度",
+        "typeRoles": {
+          "titleLarge": "页面/当天/日期headline",
+          "titleMedium": "月份/日期数字/记录/选择器",
+          "titleSmall": "分组",
+          "bodyLarge": "日期/时间字段值",
+          "bodyMedium": "备注/说明",
+          "bodySmall": "角色/时区/状态",
+          "labelLarge": "时间",
+          "labelMedium": "星期/结束时间/字段标签",
+          "labelSmall": "年度/记录时区"
+        },
+        "shapes": "日期medium；记录large；字段small；圆点/空态CircleShape；withCornerStyle保留用户设置",
+        "icons": "ThemedIcon；ui/main/ThemedIcons.kt普通及AutoMirrored家族分别登记，严格getValue；实心/线框/柔彩",
+        "previewPolicy": "原生Compose绑定；无HTML/CSS替代组件或合成色阶"
+      },
+      "layout": {
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt#PlannerBoard",
+        "breakpoints": [
+          "planner-wide-calendar",
+          "planner-large-text-time",
+          "planner-editor-field-stack"
+        ],
+        "wide": "最大1100dp；月历与安排独立滚动",
+        "tokenRefs": [
+          "components.planner-month-pane-wide",
+          "spacing.planner-wide-inset",
+          "spacing.planner-column-gap",
+          "spacing.planner-phone-inset",
+          "spacing.planner-bottom-clearance"
+        ],
+        "compact": "单列滚动，周历可展开；全部与经期不显示日历；ScrollableTabRow保留四类",
+        "dialog": "adaptiveDialogContentMaxHeight；预留96dp+96dp*max(fontScale,1)，正文滚动，操作区独立",
+        "heightTokenMeaning": "planner-calendar-day及date/time-field的height是heightIn最小值；timeline-row.padding按top/right/bottom/left"
+      },
+      "components": [
+        {
+          "name": "PlannerCalendarPane",
+          "refersTo": "planner-calendar-day",
+          "api": "clickable Surface / TextButton / IconButton",
+          "rule": "周一开始七列等宽；完整日期、今天、真实数量及selected语义；最多3个3dp圆点；今天未选中为1dp primary描边"
+        },
+        {
+          "name": "PlannerTimelineRow",
+          "refersTo": "planner-timeline-row",
+          "timeRefersTo": "planner-time-gutter",
+          "rule": "零阴影Surface；备注两行省略；完成Checkbox+删除线；分享/提醒图标与菜单；fontScale>=1.5时间内联"
+        },
+        {
+          "name": "PlannerAgenda",
+          "rule": "当天/全部切换；全部待办按逾期、今天、之后、已完成；空态给真实添加，不写样例"
+        },
+        {
+          "name": "Date/time fields",
+          "refersTo": "planner-date-field",
+          "timeRefersTo": "planner-time-field",
+          "rule": "OutlinedButton；字段宽<360dp或fontScale>=1.2竖排；横排时间宽132dp"
+        },
+        {
+          "name": "PlannerDatePicker",
+          "api": "DatePickerDialog / DatePicker",
+          "rule": "1900..9999；UTC日历日期；showModeToggle=false；正文滚动"
+        },
+        {
+          "name": "PlannerTimePicker",
+          "api": "AlertDialog / OutlinedTextField",
+          "rule": "24h；小时0..23/分钟0..59，最多两位；非法isError且禁用确定；fontScale>=1.5竖排"
+        },
+        {
+          "name": "PlannerEditor / CycleEditor / PlannerInformation",
+          "rule": "滚动表单、提醒FilterChip、分享Switch、独立保存/取消；分享默认关闭，预览可展开；经期只记录事实"
+        },
+        {
+          "name": "Single add action",
+          "refersTo": "planner-add-action",
+          "api": "FloatingActionButton",
+          "rule": "BottomEnd；working时不重复新建；深度/尺寸/形状沿用Material"
+        }
+      ],
+      "recordProjection": {
+        "source": "app/src/main/java/com/ai/assistance/operit/data/model/PlannerCalendar.kt",
+        "rule": "角色空间与既有保存事实保留；设备时区真实午夜/跨天/夏令时；年度记录保留原时区与首次日期，非闰年2月29按2月28；非法记录显示读取错误"
+      },
+      "provenance": {
+        "references": "evidence/E16_PLANNER_UI/references.md",
+        "research": "Structured/TickTick官方交互参考；网页读取成功、第三方图像捕获失败；未复制素材",
+        "newShippingRasters": 0,
+        "preExistingDrift": "E15记录的5份未改品牌/其他功能资产元数据缺失保留；不修复或重扫"
+      },
+      "verification": {
+        "review": "evidence/E16_PLANNER_UI/finish-review.md",
+        "disposition": "ship",
+        "reviewType": "fresh_full_review",
+        "materialFindings": [],
+        "scope": "13张必需最终MuMu截图、2张基线、日程源码与方向；不是全应用/真机认证",
+        "validation": "evidence/E16_PLANNER_UI/validation.md",
+        "documenterExecuted": "只读源码、证据与3张代表截图；未构建、测试、扫描或操作设备",
+        "documenterViewed": [
+          ".impeccable/review/e16/phone-agenda.png",
+          ".impeccable/review/e16/editor-font200.png",
+          ".impeccable/review/e16/tablet-dark.png"
+        ],
+        "capture": "最终安装Release原生截图，像素未编辑；.impeccable/review/e16/",
+        "deviceClasses": [
+          {
+            "name": "phone",
+            "pixels": "900x1600",
+            "density": 384,
+            "widthDp": 375,
+            "fontScales": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "landscape",
+            "pixels": "1600x900",
+            "density": 240,
+            "widthDp": 1067,
+            "fontScales": [
+              1
+            ]
+          },
+          {
+            "name": "tablet",
+            "pixels": "1920x1200",
+            "density": 160,
+            "widthDp": 1920,
+            "fontScales": [
+              1
+            ],
+            "themes": [
+              "DAY",
+              "NIGHT"
+            ]
+          },
+          {
+            "name": "user-mumu",
+            "pixels": "900x1600",
+            "density": 240,
+            "widthDp": 600,
+            "fontScales": [
+              1
+            ]
+          }
+        ],
+        "checks": {
+          "jvm": "evidence/E16_PLANNER_UI/jvm-summary.json；576项含6项日历，图标登记修正前",
+          "icon": "evidence/E16_PLANNER_UI/icon-test.xml；修正后1项覆盖6个新增家族样式/镜像",
+          "finalPhase": "最后选择器与字号修改后只重建Release和原生QA，未重跑全量JVM",
+          "apk": {
+            "source": "evidence/E16_PLANNER_UI/apk-audit.json",
+            "bytes": 90164985,
+            "sha256": "33d74af300927f390cbbd02f1a4b2f6ad9401d74b52abb648c99de7563cfc8fa",
+            "versionName": "0.39.0",
+            "versionCode": 40,
+            "package": "cn.localfirst.companion",
+            "signatureV2": "PASS",
+            "zipalign16KB": "PASS",
+            "staticAudit": "PASS"
+          },
+          "install": "evidence/E16_PLANNER_UI/release-device.json；安装/交付哈希一致，正式身份仅一份；3条UI临时QA记录私密/提醒关闭且逐条删除，无经期保存；不是完整数据库比对",
+          "restoredDisplay": "物理900x1600/density240，无覆盖；fontScale1，animator0.5，自动旋转1，日间主题",
+          "runtime": "evidence/E16_PLANNER_UI/runtime-final.json；14:03起筛选AndroidRuntime缓冲无新条目，不是全部错误/ANR/性能审计",
+          "storage": "schema34/backup32/home format3不变；E15未重测"
+        },
+        "notVerified": [
+          "Android仪器测试",
+          "真机",
+          "TalkBack",
+          "预测返回",
+          "通知发送",
+          "隐私锁认证",
+          "在线模型",
+          "性能/电量",
+          "日程移除动画"
+        ],
+        "note": "年度纪念日/经期编辑操作来自构建线程记录，未逐态截图；E15历史结论保持原范围"
+      }
+    },
+    "nativeCompose": {
+      "platform": "android",
+      "iteration": "E15",
+      "renderEngine": "Godot 4.7.2 / GL Compatibility",
+      "authority": {
+        "product": "PRODUCT.md",
+        "direction": ".impeccable/direction.md",
+        "mode": "code-led",
+        "approvedComp": null,
+        "htmlDetectorRun": false
+      },
+      "themeBinding": {
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/MainActivity.kt#MaterialTheme",
+        "colors": "当前选择的内置或自定义ColorScheme；日间/夜间分别定义",
+        "surfaceTokensSource": "app/src/main/java/com/ai/assistance/operit/ui/main/CompanionThemeFormat.kt#withCompanionSurfaceTokens",
+        "typography": "Material类型角色；withFontFamily应用字体；LocalDensity保留系统字号并应用所选倍率。当前家园源码未另定义角色的固定sp值。",
+        "fontFamilies": [
+          "FontFamily.Default",
+          "FontFamily.Serif",
+          "FontFamily.Monospace"
+        ],
+        "fontSource": "app/src/main/java/com/ai/assistance/operit/ui/main/CompanionTheme.kt#CompanionFontFamily",
+        "typeRoles": {
+          "titleMedium": "浮层标题、物品增量",
+          "bodySmall": "气泡、错误、确认",
+          "labelLarge": "状态、进度、材料数字",
+          "labelMedium": "图格数量",
+          "labelSmall": "图片短标签、人物名牌"
+        },
+        "shapes": "MaterialTheme.shapes.withCornerStyle；家园局部明确圆角见DESIGN.md frontmatter",
+        "scope": "保留应用主题与聊天规则；像素色、图格及地图内操作规则限定家园"
+      },
+      "brand": {
+        "iteration": "E14 retained",
+        "appName": "星语",
+        "launcherAndSettings": "猫咪抱星星画作，自适应图标由系统裁切",
+        "notification": "单色星形",
+        "source": "docs/品牌/README.md",
+        "scope": "已有品牌记录继续保留，与本轮CC0来源图集分别记录"
+      },
+      "components": [
+        {
+          "name": "HomeMapButton",
+          "refersTo": "home-map-button",
+          "api": "Surface + IconButton",
+          "color": "MaterialTheme.colorScheme.surfaceContainer",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeMapButton"
+        },
+        {
+          "name": "HomeDirectionButton",
+          "refersTo": "home-direction-button",
+          "api": "Surface + IconButton(enabled)",
+          "color": "MaterialTheme.colorScheme.surfaceContainer",
+          "layout": "48dp触控尺寸；方向键横纵间隔8dp",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeDirectionButton"
+        },
+        {
+          "name": "HomePictureButton",
+          "refersTo": "home-picture-button",
+          "largeTextRefersTo": "home-picture-button-large-text",
+          "api": "Surface(onClick, enabled) + native picture + Text",
+          "color": "selected: primaryContainer; default: surfaceContainerHigh",
+          "state": "enabled or selected: alpha1; otherwise alpha.5",
+          "layout": "heightIn(min=72dp); picture area40x44dp; grid horizontal/vertical gaps8dp",
+          "typography": "count: labelMedium; caption: labelSmall; compact maxLines1, otherwise2",
+          "semantics": "物品/操作名称与数量",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomePictureButton"
+        },
+        {
+          "name": "Map operation overlay",
+          "refersTo": "home-map-panel",
+          "api": "Surface + scrollable Column",
+          "color": "MaterialTheme.colorScheme.surfaceContainer",
+          "layout": "地图Box内BottomEnd；horizontal padding12dp, vertical4dp; scroll content bottom padding8dp",
+          "content": "物品、配方、种植、布置、换装、心愿、回忆、数量、确认、更名与操作错误",
+          "semantics": "title heading; close48dp",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+        },
+        {
+          "name": "HomeMaterialCost",
+          "api": "Row + HomeItemPicture + Text",
+          "state": "图片完整颜色；owned/needed数字为onSurface或缺料error",
+          "layout": "minHeight48dp; picture36dp; gap8dp",
+          "semantics": "物品名称、持有数量与需要数量",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeMaterialCost"
+        },
+        {
+          "name": "HomeInvitation",
+          "refersTo": "home-invitation",
+          "api": "Surface + HomePortrait + Text + HomeImageButton + IconButton",
+          "layout": "map TopCenter; maxWidth320dp; portrait40x48dp; close48dp",
+          "behavior": "无自动超时；普通BAG/MENU期间隐藏，关闭后恢复同一邀约；回应、明确关闭、居民删除、活动开始或场景结束清除；回应使用邀请者id与所邀活动，MEAL打开该居民食物选择",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+        },
+        {
+          "name": "HomeActivityProgress",
+          "refersTo": "home-activity-progress",
+          "api": "Surface + activity picture + countdown + LinearProgressIndicator + IconButton",
+          "layout": "maxWidth240dp; picture36dp; reward target48dp",
+          "behavior": "完成后手动领取；选中目标时在目标内容中显示",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeActivityProgress"
+        },
+        {
+          "name": "HomeQuantityPicker and name editing",
+          "api": "IconButton +/- + Text; OutlinedTextField + HomeImageButton",
+          "layout": "数量目标48dp，间隔8dp；名称与保存留在地图内操作浮层",
+          "sources": [
+            "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeQuantityPicker",
+            "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi"
+          ]
+        },
+        {
+          "name": "Home name label",
+          "refersTo": "home-name-label",
+          "api": "Layout + Text(labelSmall)",
+          "layout": "NPC32..120dp; player32..64dp; padding horizontal4dp vertical2dp; clearance6dp",
+          "behavior": "显示当前角色、当前选中居民与玩家名牌；测量后避让轮廓和已放置名牌，越界不放置",
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeGameScene"
+        },
+        {
+          "name": "HomeGodotLayer",
+          "api": "permanent Layout + AndroidView portal; HomeGodotSurface publishes packet and window bounds",
+          "layout": "Activity Scaffold content；实际map bounds定位；Compose控件和名牌位于渲染层上方",
+          "behavior": "唯一视图一直附着；离开页面GONE/pause，重入复用；Activity销毁才destroy",
+          "sources": [
+            "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGodotHost.kt#HomeGodotLayer",
+            "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGodotHost.kt#HomeGodotSurface",
+            "app/src/main/java/com/ai/assistance/operit/ui/main/MainActivity.kt"
+          ]
+        }
+      ],
+      "nativePictures": {
+        "itemAndActionSource": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePictures",
+        "itemAndSymbolCoordinates": "32x32 drawing units",
+        "portraitSource": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt#HomePortrait",
+        "portraitCoordinates": "48x56 drawing units",
+        "portraitRegion": "16x16 atlas region displayed40x40 within portrait",
+        "avatarSelection": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeRenderFrame.kt#homeAvatarTile",
+        "avatarRule": "user: FARM index108; residents: PEOPLE indices85,86,87,88,96,97,98,99,100 selected by identity hash",
+        "drawingRule": "物品和经营动作保留原创Canvas图片；人物使用Kenney切片与原创服装矩形；家具使用HomeFurniturePreview与实际HomeFurniture.color",
+        "furniturePreviewSource": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeFurniturePreview",
+        "filtering": "FilterQuality.None",
+        "uiRule": "图片承担内容，点击状态与语义由原生Compose组件承担"
+      },
+      "mapOverlay": {
+        "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt#HomeGameUi",
+        "mapBounds": "full Box bounds; clipToBounds",
+        "placement": "all game operations inside map; BottomEnd overlay",
+        "width": {
+          "minimalTarget": "min(184dp, mapWidth-24dp) for house/resources",
+          "wide": "min(336dp, mapWidth*0.46)",
+          "other": "min(360dp, mapWidth-24dp)"
+        },
+        "maximumHeight": "wide: mapHeight-88dp; other: min(mapHeight*0.58,mapHeight-148dp); minimum112dp",
+        "cameraReservation": "onSizeChanged measured panel; other: reservedBottom=panelHeight+20dp; wide: reservedRight=panelWidth+20dp",
+        "cameraMinimumArea": "每边至少三个默认格宽",
+        "controlsVisibility": "浮层期间隐藏方向键和下方背包/布置；状态与全图/菜单保留",
+        "nameAndHouseEntry": "更名与进屋/出门通过地图内菜单或目标；页面外不放经营入口",
+        "largeTextEvidence": "phone-large-bag为200%字号、两列可滚动图片；未把静态画面当作全部物品滚动验收"
+      },
+      "sceneGeometry": {
+        "worldSource": "app/src/main/java/com/ai/assistance/operit/data/model/HomeWorld.kt#HomeWorld",
+        "renderSource": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeRenderFrame.kt#HomeRenderFrame.TILE",
+        "cameraSource": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeCamera",
+        "worldSize": "30x27 tiles",
+        "worldTile": "32 world units",
+        "atlasRegion": "16x16 source pixels",
+        "defaultVisibleTile": "30dp",
+        "zoomRange": "0.6..1.6",
+        "filtering": "CanvasItem.TEXTURE_FILTER_NEAREST; project default_texture_filter=0",
+        "coordinateRule": "Kotlin同一镜头用于packet、点击与名牌；Godot绘制读取该camera；寻路使用同一世界格坐标",
+        "depth": "Godot world objects sort by y; actor foot shared by image/outfit/activity/shadow",
+        "actorMotion": "实际位移、水平朝向镜像与起伏；无四方向序列帧",
+        "pond": "JSON坐标先转Vector2i整数集合，仅缺水邻格的外边绘制岸线",
+        "nameLabels": {
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeGameScene",
+          "silhouetteBounds": "脚点横向±18、向上48、向下6世界单位；居民停留活动符号向上70；随camera.scale缩放",
+          "placementRule": "测量文字后避让轮廓与已放置名牌；居民向上、玩家向下；越界不放置"
+        },
+        "traffic": {
+          "sources": [
+            "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeTraffic",
+            "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt#HomeSceneController",
+            "app/src/main/java/com/ai/assistance/operit/data/model/HomeWorld.kt#HomeWorld.route",
+            "app/src/main/java/com/ai/assistance/operit/data/model/HomeWorld.kt#HomeWorld.residentTile"
+          ],
+          "rule": "全部人物共享占位；移动中保留起终格；寻路避开占位；新占位阻挡下一步时中止路径",
+          "savedOverlap": "同格存档居民分配到最近可达空格"
+        }
+      },
+      "renderingAuthority": {
+        "owner": "Kotlin / shared Room",
+        "sources": [
+          "app/src/main/java/com/ai/assistance/operit/ui/main/HomeRenderFrame.kt",
+          "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGodotHost.kt",
+          "game/home/home.gd",
+          "game/home/crop_stage.gd"
+        ],
+        "protocol": 1,
+        "packet": "几何、版本、镜头、人物、朝向、穿搭、活动、作物progress/watered、资源可用性、家具色、hour、reduceMotion、路径与选中格",
+        "exclusion": "不发送人设正文、聊天消息、模型地址或凭据；不建立独立库存或第二份游戏存档",
+        "cropPhases": "GERMINATING, BUDDING, FLOWERING, MATURING, MATURE; Kotlin保存成长时钟，Godot sync_growth仅选择visual phase",
+        "lifecycle": "HomeGodotLayer唯一永久原生门户；HomeGodotSurface只发布实际窗口bounds与packet；visible&&resumed控制start/resume和pause/stop；Activity销毁才destroy",
+        "reducedMotion": {
+          "source": "app/src/main/java/com/ai/assistance/operit/ui/main/HomeGodotHost.kt#readReduceMotion",
+          "observer": "ContentObserver observes Settings.Global.ANIMATOR_DURATION_SCALE; directly reads current string as float and tests ==0f",
+          "projection": "packet.reduceMotion",
+          "decoration": "Godot停止clock、清除effects；水波、人物起伏、成熟/活动/场所闪光、营火与蝴蝶停止装饰变化",
+          "retained": "必要位移操作、状态改变重绘、作物成长和经营计时",
+          "deviceScope": "同一池塘ROI动态对比与移除动画后的实际移动；其他装饰路径由源码核对"
+        }
+      },
+      "autonomy": {
+        "sources": [
+          "app/src/main/java/com/ai/assistance/operit/data/model/HomePersonality.kt#HomePersonality.from",
+          "app/src/main/java/com/ai/assistance/operit/data/model/HomePersonality.kt#HomeResidentBrain"
+        ],
+        "meaning": "已保存性格/兴趣关键词的本机权重规则，不是模型语义理解，不请求在线服务",
+        "weighting": "社交倾向、主动间隔、步速与CHAT/GARDEN/READ/COOK/EXPLORE/REST/CLEAN意图",
+        "initiativeInterval": "12..60s",
+        "decisionCadence": "RESUMED状态每1000ms检查；普通决定6+turn%7秒；主动接近按initiativeSeconds",
+        "exclusions": "enabled&&!paused；浮层暂停自主决定；同行/共同活动/选择或待接近居民/已行走居民不进入自主决定分支",
+        "backgroundScope": "自主决定循环由repeatOnLifecycle(RESUMED)限定；移动由对应协程推进；Godot渲染由宿主visible&&resumed限定",
+        "persistence": "brain/intent为场景临时状态，实际坐标进入共享世界操作记录",
+        "economy": "不自动消耗经营材料或领取奖励"
+      },
+      "provenance": {
+        "originType": "sourced CC0 atlases plus project-authored pixel props and native action pictures",
+        "sources": "game/home/art/sources.json",
+        "sourceLock": "game/home/source-lock.json",
+        "licenses": [
+          {
+            "name": "Kenney Tiny Town",
+            "source": "https://kenney.nl/assets/tiny-town",
+            "license": "CC0-1.0",
+            "path": "game/home/art/tiny-town.png"
+          },
+          {
+            "name": "Kenney Tiny Farm",
+            "source": "https://kenney.nl/assets/tiny-farm",
+            "license": "CC0-1.0",
+            "path": "game/home/art/tiny-farm.png"
+          },
+          {
+            "name": "Kenney Tiny Dungeon",
+            "source": "https://kenney.nl/assets/tiny-dungeon",
+            "license": "CC0-1.0",
+            "path": "game/home/art/tiny-dungeon.png"
+          },
+          {
+            "name": "2D Farming Game",
+            "source": "https://github.com/gadget-hq/2d-farming-game",
+            "commit": "13d602e259fde7fdebaefae132121ecf7e5eae2d",
+            "license": "MIT",
+            "adapted": [
+              "Scripts/crop_resource.gd",
+              "Scripts/mapped_texture_resource.gd"
+            ],
+            "implementation": "game/home/crop_stage.gd"
+          }
+        ],
+        "originalPixels": "sources.json记录原文件与嵌入origin后的哈希；仅增加来源元数据，图集像素未改",
+        "nativeAtlasCopies": [
+          "app/src/main/res/drawable-nodpi/home_farm_atlas.png",
+          "app/src/main/res/drawable-nodpi/home_people_atlas.png"
+        ],
+        "excluded": "Sprout Lands非商业素材、上游独立库存、键盘操作与示例地图",
+        "homeRasterScan": {
+          "basis": "evidence/E15_GODOT_HOME/validation.md",
+          "files": 5,
+          "missing": 0,
+          "scope": "本轮3份Godot及2份原生home图集，来自已提供扫描记录；documenter未重扫"
+        },
+        "preExistingDrift": {
+          "files": 5,
+          "scope": "未改变的品牌/其他功能drawable-nodpi资产缺嵌入元数据",
+          "action": "保留原样并记录边界；不宣称全APK溯源完整"
+        }
+      },
+      "verification": {
+        "basis": "source extraction and supplied MuMu native artifacts",
+        "documenterExecuted": "没有运行构建、测试、provenance扫描、HTML detector或设备动作",
+        "reviewDisposition": "ship",
+        "reviewSource": "evidence/E15_GODOT_HOME/verdict.md",
+        "initialReview": "evidence/E15_GODOT_HOME/finish-review.md",
+        "reviewScope": "只评分F1–F5修复，全部resolved；不是整面重新审计或全设备认证",
+        "resolvedFindings": [
+          {
+            "id": "F1",
+            "name": "Godot宿主导航生命周期",
+            "status": "resolved",
+            "evidence": "lifecycle.json；同PID9590往返3次与后台恢复"
+          },
+          {
+            "id": "F2",
+            "name": "朝左人物锚点",
+            "status": "resolved",
+            "evidence": "phone-crop、phone-harvest、tablet-bag和reduced-motion-gameplay重拍；共同foot源码"
+          },
+          {
+            "id": "F3",
+            "name": "池塘内部岸线",
+            "status": "resolved",
+            "evidence": "phone-overview、landscape、tablet、tablet-bag连续水面；Vector2i邻格集合"
+          },
+          {
+            "id": "F4",
+            "name": "背包/菜单保留邀约",
+            "status": "resolved",
+            "evidence": "invitation-retained.json；真实CLEAN邀约隐藏/关闭恢复"
+          },
+          {
+            "id": "F5",
+            "name": "系统移除动画",
+            "status": "resolved",
+            "evidence": "motion-normal/motion-reduced水面ROI与0设置下实际移动"
+          }
+        ],
+        "validation": "evidence/E15_GODOT_HOME/validation.md",
+        "device": "MuMu Android15 / API35",
+        "captureBuild": "最终Release包原生adb screencap，像素未编辑",
+        "captureMatrix": {
+          "source": "evidence/E15_GODOT_HOME/capture-matrix.json",
+          "recapturedPrimaryImages": 12,
+          "controlGroups": 19,
+          "status": "PASS",
+          "finalHomeAdditional": {
+            "source": "evidence/E15_GODOT_HOME/final-home-controls.json",
+            "status": "PASS",
+            "includedInMatrix": false
+          }
+        },
+        "deviceClasses": [
+          {
+            "name": "phone",
+            "pixels": "900x1600",
+            "density": 384,
+            "widthDp": 375,
+            "fontScales": [
+              1,
+              2
+            ]
+          },
+          {
+            "name": "landscape",
+            "pixels": "1600x900",
+            "density": 240,
+            "fontScales": [
+              1
+            ]
+          },
+          {
+            "name": "tablet",
+            "pixels": "1920x1200",
+            "density": 240,
+            "fontScales": [
+              1
+            ]
+          }
+        ],
+        "runtimeEvidence": [
+          {
+            "path": "evidence/E15_GODOT_HOME/phone.png",
+            "scope": "375dp手机主地图"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-activity.png",
+            "scope": "共同活动"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-bag.png",
+            "scope": "原生物品图格"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-crop.png",
+            "scope": "棉花与浇水"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-harvest.png",
+            "scope": "收获"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-overview.png",
+            "scope": "全图与连续水面"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-interior.png",
+            "scope": "室内与家具"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-large-text.png",
+            "scope": "200%系统字号主图"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/phone-large-bag.png",
+            "scope": "200%字号两列图格"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/landscape.png",
+            "scope": "横屏"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/tablet.png",
+            "scope": "平板主图"
+          },
+          {
+            "path": "evidence/E15_GODOT_HOME/tablet-bag.png",
+            "scope": "平板背包"
+          }
+        ],
+        "lifecycle": {
+          "source": "evidence/E15_GODOT_HOME/lifecycle.json",
+          "pid": 9590,
+          "navigationCycles": 3,
+          "backgroundResumeSameProcess": true,
+          "forceStopDuringActions": false
+        },
+        "invitation": {
+          "source": "evidence/E15_GODOT_HOME/invitation-retained.json",
+          "role": "你好",
+          "intent": "CLEAN",
+          "hiddenDuring": [
+            "BAG",
+            "MENU"
+          ],
+          "restoredAfterEachClose": true,
+          "scope": "真实原生转换，无注入数据库；回应完成手动领取见validation.md"
+        },
+        "motion": {
+          "normal": "evidence/E15_GODOT_HOME/motion-normal.json",
+          "reduced": "evidence/E15_GODOT_HOME/motion-reduced.json",
+          "intervalSeconds": 1.1,
+          "roi": [
+            1150,
+            735,
+            1290,
+            830
+          ],
+          "normalAnimatorScale": 0.5,
+          "normalChangedPixels": 188,
+          "reducedAnimatorScale": 0,
+          "reducedChangedPixels": 0,
+          "gameplay": "evidence/E15_GODOT_HOME/reduced-motion-gameplay.png",
+          "scope": "只测相同池塘ROI；0下实际移动可操作，其余装饰运动为源码核对，不是全画面或性能指标"
+        },
+        "checks": {
+          "unitTests": {
+            "source": "evidence/E15_GODOT_HOME/unit-tests.json",
+            "passed": 570,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0,
+            "homeRenderFrameTests": 6,
+            "phase": "最后Android动画设置读取小修前",
+            "rerunAfterPreferenceReadFix": false
+          },
+          "finalRelease": "最后偏好读取小修后独立Release重建，并用真实设置实时切换核对",
+          "godot": {
+            "status": "PASS",
+            "basis": "validation.md记录",
+            "scope": "作物阶段、132图格区域、场景加载、JSON浮数池塘格归一化；JVM生成明确合成夹具"
+          },
+          "apk": {
+            "source": "evidence/E15_GODOT_HOME/apk-audit.json",
+            "bytes": 89987965,
+            "sha256": "d553fee0b827c93f2a27f7660fe2275134bbd1cccfdc7cf148ef5dbe5cb03011",
+            "versionName": "0.39.0",
+            "versionCode": 40,
+            "package": "cn.localfirst.companion",
+            "signatureV2": "PASS",
+            "zipalign16KB": "PASS",
+            "native16KBAlignedLibraries": 5,
+            "scope": "已提供精确最终包静态核验与SDK工具记录"
+          },
+          "releaseInstall": {
+            "source": "evidence/E15_GODOT_HOME/release-device.json",
+            "installedHashMatchesDelivery": true,
+            "oneInstalledApp": "cn.localfirst.companion",
+            "status": "PASS",
+            "visibleHome": {
+              "coins": 160,
+              "energy": 8,
+              "name": "我们的家园",
+              "resident": "你好"
+            },
+            "scope": "正常游戏QA后聊天角色/最近消息与家园可见状态保留；不是完整数据库或备份比对",
+            "restoredSettings": "wm尺寸/density无override；fontScale1、animator0.5、autoRotation1、userRotation0、free rotation"
+          },
+          "storageVersions": {
+            "database": 34,
+            "backup": 32,
+            "homeFormat": 3,
+            "changedInE15": false
+          },
+          "sqlCipherDeviceTests": {
+            "passed": 11,
+            "iteration": "E11 historical",
+            "rerunInE15": false
+          }
+        },
+        "notVerified": [
+          "Android仪器测试",
+          "Android真机",
+          "TalkBack",
+          "暗色主题",
+          "预测返回",
+          "性能/电量",
+          "隐私锁认证",
+          "在线模型"
+        ],
+        "note": "控件边界PASS不单独证明完整触控或无障碍体验；review ship仅覆盖F1–F5，来源扫描仅覆盖本轮5份home图集"
+      },
+      "previewPolicy": "只记录原生Compose与Godot；不生成HTML/CSS替代控件，不合成色阶"
+    }
+  },
+  "components": [],
+  "narrative": {
+    "northStar": "共享像素农场",
+    "overview": "本记录固定 E15 的原生 Android 共享家园：Godot 绘制一张可以走动、耕作和与居民相处的像素农场，Kotlin / Room 持有同一共享世界的经营、碰撞、人物行为与保存状态。Kenney CC0 原像素图集与项目原创物件承担场景内容，原生图片菜单、输入和文字继续继承应用 Material 3 主题、字体与字号。家园的像素色和图格规则限定在家园。\n\n应用继续保留 E14 星语品牌：桌面自适应图标与设置页使用猫咪抱星星画作，通知使用单色星形。原图、最终资产与生成提示词见 [品牌记录](docs/品牌/README.md)。该品牌画作与本轮来源图集分别记录，不把来源素材标为 AI 生成。\n\n依据为 [PRODUCT.md](PRODUCT.md)、[方向契约](.impeccable/direction.md)、[家园入口](app/src/main/java/com/ai/assistance/operit/ui/main/HomePages.kt)、[游戏控件](app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt)、[场景与命中](app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameScene.kt)、[图片与肖像](app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameImages.kt)、[原生宿主](app/src/main/java/com/ai/assistance/operit/ui/main/HomeGodotHost.kt)、[渲染投影](app/src/main/java/com/ai/assistance/operit/ui/main/HomeRenderFrame.kt)及 [Godot 场景](game/home/home.gd)。这是 code-led 迭代，没有 approved comp；原生 Android 本轮未运行 HTML / CSS detector。\n\n独立 [首轮复核](evidence/E15_GODOT_HOME/finish-review.md)提出五项修复，后续 [verdict](evidence/E15_GODOT_HOME/verdict.md)将 F1–F5 全部评分为 resolved，专项 disposition 为 `ship`。此结论只覆盖这五项修复，不代表整面重新审计或全设备认证。实现与实际操作范围见 [运行验收](evidence/E15_GODOT_HOME/validation.md)。\n\nE16 日程是现有原生系统的局部扩展，继承应用主题、字体与形状。提取依据为 [PlannerPages](app/src/main/java/com/ai/assistance/operit/ui/main/PlannerPages.kt)、[PlannerCalendarUi](app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt)和 [PlannerCalendar](app/src/main/java/com/ai/assistance/operit/data/model/PlannerCalendar.kt)；页面策略留在 [日程方向契约](.impeccable/surfaces/assistance-operit-ui-main-plannerpages-kt-ebc64f29.md)。[官方参考](evidence/E16_PLANNER_UI/references.md)只提供交互结构，没有复制素材或 approved comp。本轮原生截图完整复核的 disposition 为 `ship`，范围见 [E16 收尾评审](evidence/E16_PLANNER_UI/finish-review.md)；E15 历史结论没有重跑或扩大。",
+    "keyCharacteristics": [
+      "同一共享世界决定经营、人物占位与成长，Godot 接收只读画面投影。",
+      "家园操作以地图内物件、物品图像、动作图格、短气泡与数字发起。",
+      "原生容器、输入和文字继承应用 Material 3 主题、字体与系统字号。",
+      "人物图像、脚底、名牌与命中共享镜头；居民使用本机人设关键词规则。",
+      "未回应邀约在普通背包和菜单期间隐藏，收起后恢复；系统移除动画停止场景装饰运动。",
+      "日程以真实记录投影日期标记和时间线，使用主题角色、原生选择器及随字号变化的布局。"
+    ],
+    "rules": [
+      {
+        "name": "The Native Color Rule",
+        "body": "像素素材与绘图色用于家园内容，原生容器和文字继续绑定当前应用主题。",
+        "section": "colors"
+      },
+      {
+        "name": "The Map Bounds Rule",
+        "body": "所有游戏操作保留在地图边界内，绘制、点击和名牌共享同一镜头，浮层只为镜头保留空间。",
+        "section": "layout"
+      },
+      {
+        "name": "The Single World Rule",
+        "body": "Kotlin / Room 是世界与行为的事实来源，Godot 只读渲染投影；投影不包含人设正文、消息或凭据，也不另建库存或保存格式。",
+        "section": "components"
+      },
+      {
+        "name": "The Planner Type Rule",
+        "body": "日程文字继续使用当前 Material 类型角色；大字号将时间移入记录内容，并让表单与选择器正文滚动，操作按钮保留独立区域。",
+        "section": "typography"
+      },
+      {
+        "name": "The Planner Calendar Rule",
+        "body": "日历是既有记录按设备时区生成的投影；日期标记与当天时间线读取同一真实记录，全部入口保留其他日期的可发现性。",
+        "section": "layout"
+      },
+      {
+        "name": "The Planner Flat Row Rule",
+        "body": "日程记录依靠时间、标题与轻容器色分层；分享／提醒图标表达真实状态，完成状态同时给出复选框与文字样式。",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** 让家园操作留在地图边界内，并以实测浮层尺寸调整同一镜头。",
+      "**Do** 让原生容器、输入和文字继承当前 Material 主题、字体与系统字号。",
+      "**Do** 用物品图像与持有／需要数字表达材料，保留缺料错误色。",
+      "**Do** 让全部人物共享占位、脚底锚点与镜头，让回应使用邀请者和具体活动。",
+      "**Do** 保留普通背包／菜单关闭后的同一邀约，并响应实时系统运动偏好。",
+      "**Do** 分别记录源码事实、模拟器观察、专项复核、来源与未验证范围。",
+      "**Do** 让日程日期标记、时间线与全部记录入口使用同一真实记录投影。",
+      "**Do** 让日程大字号布局、编辑正文与选择器正文滚动，保留独立确认操作。",
+      "**Do** 让日程颜色、类型角色、形状与图标继续跟随当前应用主题。"
+    ],
+    "donts": [
+      "**Don't** 将家园像素色或图格体系推广为整个应用的主题。",
+      "**Don't** 让 Godot 写第二份共享存档，或向渲染投影发送人设、聊天与凭据。",
+      "**Don't** 将关键词自主规则称为模型语义理解，或将当前人物图集称为四方向序列帧。",
+      "**Don't** 将 F1–F5 resolved、控件边界 PASS 或水面 ROI 对比写成全界面／全设备验收。",
+      "**Don't** 将来源图集标为 AI 生成，或将 5 份 home 图集扫描扩大为全 APK 溯源完成。",
+      "**Don't** 将日程局部尺寸推广到家园，或把可选主题截图固化为全应用色板。",
+      "**Don't** 将 E16 的 MuMu 矩阵、空崩溃缓冲或修改前的 JVM 结果扩大为全应用／真机认证。"
+    ]
+  }
+}

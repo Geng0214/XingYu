@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.HomeStorageTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-21T03:46:06.644Z" hostname="DESKTOP-8LJVBMI" time="0.008">
+  <properties/>
+  <testcase name="exactCommandIdentityIncludesEveryScopeFieldVersionAndAction" classname="com.ai.assistance.operit.HomeStorageTest" time="0.0"/>
+  <testcase name="incompleteDuplicatedOrRewrittenLedgerCannotValidateStock" classname="com.ai.assistance.operit.HomeStorageTest" time="0.001"/>
+  <testcase name="replayRestoresFarmCookingGiftsBothOutfitsAndGrowingPlot" classname="com.ai.assistance.operit.HomeStorageTest" time="0.001"/>
+  <testcase name="rebindPreservesLedgerOutfitsAndClaimsWithoutAwardingAgain" classname="com.ai.assistance.operit.HomeStorageTest" time="0.001"/>
+  <testcase name="storedAndNestedOwnershipAndVersionsMustAgree" classname="com.ai.assistance.operit.HomeStorageTest" time="0.001"/>
+  <testcase name="validShapeButInventedProduceFailsHistoryCheck" classname="com.ai.assistance.operit.HomeStorageTest" time="0.001"/>
+  <testcase name="allActionKindsAndUnicodeRoundTrip" classname="com.ai.assistance.operit.HomeStorageTest" time="0.0"/>
+  <testcase name="commandInputRejectsScriptsForeignFieldsTypesDepthAndBounds" classname="com.ai.assistance.operit.HomeStorageTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

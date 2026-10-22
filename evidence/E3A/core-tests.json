@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 144,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "androidCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "deviceList": "empty",
+  "schema": 11,
+  "scope": "JVM vision payload/history/ownership, provider HTTPS body, backup v6 compatibility and complete prior suite; Android migration and attachment integration sources compiled; device execution not run",
+  "visionTests": [
+    "contextKeepsCurrentAndOnlyThreeRecentCompletedImages",
+    "tamperingAndCrossRequestAttachmentAreRejected",
+    "openAiPayloadContainsBoundedImagePartInsteadOfLocalPath"
+  ],
+  "providerVisionTest": "visionRequestUsesOpenAiImagePartWithoutFileMetadata"
+}

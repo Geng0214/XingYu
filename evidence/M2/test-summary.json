@@ -1,0 +1,8 @@
+{
+  "tests": 24,
+  "failures": 0,
+  "errors": 0,
+  "contextAlternations": 50,
+  "coordinatorScenarioRounds": 20,
+  "androidInstrumentation": "COMPILED_NOT_RUN"
+}

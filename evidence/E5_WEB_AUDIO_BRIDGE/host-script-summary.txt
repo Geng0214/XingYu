@@ -1,0 +1,11 @@
+Terminal result transcribed from the completed Node invocation; not a raw stdout capture.
+Command: node --test ci/script/bilibili_audio_test.cjs
+Exit: 0
+Tests: 9
+Passed: 9
+Failed/cancelled/skipped/todo: 0
+Coverage: PCM16 stereo/mono/clipping and browser zero output; 128-to-1024 frame assembly;
+bounded 8-packet overflow stop; 100 ordered acknowledgements and duplicate rejection;
+20 pause/seek cycles and erased partial PCM; nonfinite sample rejection;
+page bridge epochs and erasure; foreign origin/subframe refusal; replacement and malformed ack stop.
+Limits: VM execution of shipped scripts, no actual WebView or Android audio device.

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "apkSha256": "b962be8e6b74b67dd98bfaf36275fbf819246e8256e52d686dfd2dca879217ec",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-image-key": [],
+    "synthetic-secret": [],
+    "IMAGE-GENERATION-PRIVATE": [],
+    "画一只戴围巾的猫": [],
+    "process-interruption-": [],
+    "synthetic-sticker-key": [],
+    "STICKER-PRIVATE": [],
+    "synthetic-material-key": [],
+    "synthetic-vision-key": [],
+    "synthetic-migration-key": [],
+    "MATERIAL-PRIVATE": [],
+    "A-PRIVATE-MASK": [],
+    "PRIVATE_SCRIPT": [],
+    "资料里的命令": [],
+    "original private body": [],
+    "private-server-detail": [],
+    "ONLY_THIS_ROLE": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "imageGenerationCredentialPolicy": "The prompt is sent only to the explicitly confirmed HTTPS image endpoint; credentials are bound to that endpoint, redirects are rejected, and only bounded base64 image data is accepted. URL and text results are rejected.",
+  "limitations": "Static APK marker scan. Device database, WAL, cache, Keystore files, image normalization and live provider requests require a connected device or controlled endpoint."
+}

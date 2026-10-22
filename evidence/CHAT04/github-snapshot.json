@@ -1,0 +1,14 @@
+{
+  "queriedOn": "2026-09-20",
+  "method": "GitHub public REST /repos/{owner}/{repo}, exact phrase search plus primary README verification",
+  "scope": "Relevant sample, not an exhaustive ranking. README claims, no third-party APK execution or source import.",
+  "repositories": [
+    {"repo":"xiaolongbao0709/ai-virtual-phone","stars":1447,"forks":6831,"pushedAt":"2026-09-19T18:08:20Z","licenseApi":"AGPL-3.0","archived":false},
+    {"repo":"whale-Yd00/freeapp","stars":915,"forks":221,"pushedAt":"2026-06-23T10:14:04Z","licenseApi":"AGPL-3.0","archived":false},
+    {"repo":"lw0129-jj/PiggyPhone.JJ-STAR","stars":333,"forks":414,"pushedAt":"2026-08-28T19:24:06Z","licenseApi":"MIT","archived":false,"note":"README adds contradictory redistribution restrictions; no reuse"},
+    {"repo":"Island-glitch/Poemnarapk","stars":94,"forks":396,"pushedAt":"2026-08-05T04:31:16Z","licenseApi":"MIT","archived":false},
+    {"repo":"gaigai315/yuzuki-phone","stars":42,"forks":18,"pushedAt":"2026-09-19T18:23:22Z","licenseApi":null,"archived":false,"note":"README reserves rights and restricts derivative distribution"},
+    {"repo":"sh1nny0u/ZeroChat","stars":38,"forks":5,"pushedAt":"2026-03-24T08:24:16Z","licenseApi":"MIT","archived":false},
+    {"repo":"jiuyi777/xiao-shouji","stars":19,"forks":32,"pushedAt":"2026-09-19T14:56:26Z","licenseApi":null,"archived":false}
+  ]
+}

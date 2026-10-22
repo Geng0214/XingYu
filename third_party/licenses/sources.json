@@ -1,0 +1,17 @@
+[
+  {
+    "file": "sqlcipher.txt",
+    "url": "https://raw.githubusercontent.com/sqlcipher/sqlcipher/v4.10.0/LICENSE.md",
+    "sha256": "2a2826f6acf46fa650730cf42cbb22a642be33a7ef119c9c4f4bf6daf3bef48e"
+  },
+  {
+    "file": "sqlcipher-android.txt",
+    "url": "https://raw.githubusercontent.com/sqlcipher/sqlcipher-android/v4.10.0/LICENSE",
+    "sha256": "09e4af560ce2e3c9c2aa6b564e35947b03db7d1ae345f22a32793ed46542cc14"
+  },
+  {
+    "file": "openssl.txt",
+    "url": "https://raw.githubusercontent.com/openssl/openssl/openssl-3.0.17/LICENSE.txt",
+    "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a"
+  }
+]

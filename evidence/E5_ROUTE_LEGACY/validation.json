@@ -1,0 +1,48 @@
+{
+  "status": "LEGACY_ADAPTER_COMPILED_PRODUCT_INTEGRATION_INCOMPLETE",
+  "sourceCommit": "0f1fed5a78d7681461c569924e7487d122f7e256",
+  "tests": {
+    "tests": 312,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newTests": 12,
+  "scoDisconnectRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "androidLegacyAudioExecution": "NOT_RUN",
+  "connectedDevices": [],
+  "api26To30Routing": "IMPLEMENTED_NOT_RUN",
+  "voiceUiAndRuntimeWiring": "NOT_IMPLEMENTED",
+  "manifestRoutingPermission": "PENDING_PRODUCT_WIRING",
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": ".\\gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 1m 8s; 75 tasks, 18 executed, 57 up-to-date",
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidCommunicationDevices.kt": "b9674123a4940ab134467fede3cd20e7b5f3c423cef00ea3c23856e963831d50",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidCommunicationRoutes.kt": "65c36c2170d3c5b13e67365ed75c9774d0bbd46386422d3529772ce0f282245a",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidLegacyCommunicationRoutes.kt": "327b9dba3d0aba2c61e1264a0585d83ed83bb879ed18f3c16ff1562fc3e30498",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidPcmPlayer.kt": "2956268c85c4c4632e368a2cc9d64c9cb325c8fdb6e510300310bd91165e1a56",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidVoiceRecorder.kt": "31e1c26c1ccd8a2c34d82910e102fc2f7010a9ccd8235a8e34716e6b21ffec52",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/CommunicationRoutes.kt": "b11f6752799ada46948e30b396492ecbb293b71a8eebf251fc03a9447bcfaaea",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LegacyScoHandshake.kt": "54a0f8fd6ee210cd6352b088a41b7bd6be2f126b2fdf8429d92a4fe83e45f873",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/PcmTransfer.kt": "e5e5b3da528c531234909473755367c7f64019497dd18ebfd4ad7936007420b3",
+    "app/src/test/java/com/ai/assistance/operit/CommunicationRoutesTest.kt": "2581037c870bbde30c1ed92c01a9ea69508d6a1b35d676a63990022743413199",
+    "app/src/test/java/com/ai/assistance/operit/LegacyScoHandshakeTest.kt": "411a9d2c1d43e0b96e688f16acc675efc1374198b88c3a25940961f4c9e22533",
+    "app/src/test/java/com/ai/assistance/operit/PcmTransferTest.kt": "291a29a7a0c83ab5ccc844a1954ed92a84bcfb3ba05fa351482819a77567d923",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "0cb362ae035f6df187dc034241ca8ce216beab162a6323c79a2b52609df232f0",
+    "docs/TODO/voice-and-shared-activities/index.md": "e3215afedfe46f22b7820fe1717f7119601ca0066dd51b2a84f98e33a3059d5a",
+    "docs/project/STATUS.md": "6aa53818366fe4765f3576b2dfdd967233f7e60d6a5e07ddd83d61cf618ef9a3",
+    "docs/project/companion-full-plan.md": "80c58e416a953b862d30eb6f76bd4153b33814d462f972404659e2a0fec6b1e0"
+  },
+  "evidenceSha256": {
+    "evidence/E5_ROUTE_LEGACY/build-validation-final.log": "c40ed853dbe9232c6de43ed851de062fb1d6a3fe3c7dc67b0119a67be8e31b28",
+    "evidence/E5_ROUTE_LEGACY/build-validation.log": "50eb2130cbc392655a1f512e24fec070e1fc189f1a65e564491203e77d72ccbf"
+  }
+}

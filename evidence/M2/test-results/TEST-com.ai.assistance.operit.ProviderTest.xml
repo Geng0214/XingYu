@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.ProviderTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-09-19T13:35:52.102Z" hostname="DESKTOP-8LJVBMI" time="1.981">
+  <properties/>
+  <testcase name="httpsRequestUsesFrozenPayloadAndNoTools" classname="com.ai.assistance.operit.ProviderTest" time="0.809"/>
+  <testcase name="abruptDisconnectDoesNotPretendToComplete" classname="com.ai.assistance.operit.ProviderTest" time="0.046"/>
+  <testcase name="endpointsCannotCarryCredentialsOrCleartext" classname="com.ai.assistance.operit.ProviderTest" time="0.001"/>
+  <testcase name="toolsAreRejectedWithoutExecution" classname="com.ai.assistance.operit.ProviderTest" time="0.002"/>
+  <testcase name="limitsUntrustedEvents" classname="com.ai.assistance.operit.ProviderTest" time="0.007"/>
+  <testcase name="arbitraryByteBoundariesAndEmoji" classname="com.ai.assistance.operit.ProviderTest" time="0.007"/>
+  <testcase name="multiLineDataAndFinalEventWithoutNewline" classname="com.ai.assistance.operit.ProviderTest" time="0.001"/>
+  <testcase name="authenticationAndRateErrorsAreClassified" classname="com.ai.assistance.operit.ProviderTest" time="0.038"/>
+  <testcase name="emptyAndMalformedResponsesFail" classname="com.ai.assistance.operit.ProviderTest" time="0.001"/>
+  <testcase name="timeoutIsExplicitAndNeverRetries" classname="com.ai.assistance.operit.ProviderTest" time="1.017"/>
+  <testcase name="cancellationClosesHangingCall" classname="com.ai.assistance.operit.ProviderTest" time="0.029"/>
+  <testcase name="partialAnswerSurvivesMissingEnd" classname="com.ai.assistance.operit.ProviderTest" time="0.001"/>
+  <testcase name="redirectsNeverForwardCredentials" classname="com.ai.assistance.operit.ProviderTest" time="0.021"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[TLS fixture: StreamResetException: stream was reset: CANCEL
+9月 19, 2026 9:35:52 下午 okhttp3.internal.platform.Platform log
+信息: Http2Connection.Listener failure for MockWebServer 127.0.0.1
+java.net.SocketException: Connection or outbound has closed
+	at java.base/sun.security.ssl.SSLSocketImpl$AppOutputStream.write(SSLSocketImpl.java:1297)
+	at okio.OutputStreamSink.write(JvmOkio.kt:56)
+	at okio.AsyncTimeout$sink$1.write(AsyncTimeout.kt:102)
+	at okio.RealBufferedSink.flush(RealBufferedSink.kt:268)
+	at okhttp3.internal.http2.Http2Writer.flush(Http2Writer.kt:120)
+	at okhttp3.internal.http2.Http2Connection.flush(Http2Connection.kt:408)
+	at okhttp3.internal.http2.Http2Stream$FramingSink.close(Http2Stream.kt:624)
+	at okio.RealBufferedSink.close(RealBufferedSink.kt:287)
+	at kotlin.io.CloseableKt.closeFinally(Closeable.kt:46)
+	at okhttp3.mockwebserver.MockWebServer$Http2SocketHandler.writeResponse(MockWebServer.kt:1096)
+	at okhttp3.mockwebserver.MockWebServer$Http2SocketHandler.onStream(MockWebServer.kt:977)
+	at okhttp3.internal.http2.Http2Connection$ReaderRunnable$headers$lambda$2$$inlined$execute$default$1.runOnce(TaskQueue.kt:220)
+	at okhttp3.internal.concurrent.TaskRunner.runTask(TaskRunner.kt:116)
+	at okhttp3.internal.concurrent.TaskRunner.access$runTask(TaskRunner.kt:42)
+	at okhttp3.internal.concurrent.TaskRunner$runnable$1.run(TaskRunner.kt:65)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+TLS fixture: InterruptedIOException: timeout
+TLS fixture: StreamResetException: stream was reset: CANCEL
+]]></system-err>
+</testsuite>

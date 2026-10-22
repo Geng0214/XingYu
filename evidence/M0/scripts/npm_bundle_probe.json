@@ -1,0 +1,22 @@
+{
+ "index.js": {
+  "bytes": 57268,
+  "webpack_module_banners": 0,
+  "use_strict_count": 1,
+  "copyright_banners": 0,
+  "license_word": 0,
+  "pinned_version_string_literals": {},
+  "source_map_ref": 1,
+  "node_modules_path_tokens": 0
+ },
+ "spawn-helper.js": {
+  "bytes": 1320909,
+  "webpack_module_banners": 0,
+  "use_strict_count": 221,
+  "copyright_banners": 0,
+  "license_word": 0,
+  "pinned_version_string_literals": {},
+  "source_map_ref": 76,
+  "node_modules_path_tokens": 1
+ }
+}

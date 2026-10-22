@@ -1,0 +1,33 @@
+{
+  "device": "MuMu emulator-5554",
+  "package": "cn.localfirst.companion",
+  "installedApkSha256": "33d74af300927f390cbbd02f1a4b2f6ad9401d74b52abb648c99de7563cfc8fa",
+  "deliveryApkSha256": "33d74af300927f390cbbd02f1a4b2f6ad9401d74b52abb648c99de7563cfc8fa",
+  "installedHashMatchesDelivery": true,
+  "installedBytes": 90164985,
+  "hashMethod": "pull installed base.apk and compute SHA256 on both files",
+  "oneInstalledApp": "cn.localfirst.companion",
+  "temporaryRecords": {
+    "createdThroughUi": ["E16_QA_Walk", "E16_QA_Task", "E16_QA_Annual"],
+    "deletedIndividuallyThroughUi": true,
+    "cycleRecordsCreated": 0,
+    "extraUnsavedEditor": "time changed to10:20 then cancelled"
+  },
+  "restoredDisplay": {
+    "physicalSize": "900x1600",
+    "physicalDensity": 240,
+    "sizeOverride": false,
+    "densityOverride": false,
+    "fontScale": 1,
+    "animatorDurationScale": 0.5,
+    "accelerometerRotation": 1,
+    "userRotation": 0,
+    "userRotationMode": "free",
+    "fixedToUserRotation": "default",
+    "appTheme": "DAY"
+  },
+  "coldStartObserved": "existing role and recent conversation visible, planner empty after cleanup",
+  "runtimeCrashScope": "AndroidRuntime crash buffer after10-03 14:03:00, no new entries",
+  "screenshots": ".impeccable/review/e16/",
+  "limitations": "No full database comparison, real-device, TalkBack, notification-send, privacy-authentication or online-model validation."
+}

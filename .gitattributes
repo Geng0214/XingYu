@@ -1,0 +1,22 @@
+* text=auto
+*.sh text eol=lf
+*.kt text eol=lf
+*.kts text eol=lf
+*.mjs text eol=lf
+*.pdf binary
+# Pinned upstream bytes are verified against source-lock.json on every build.
+third_party/quickjs/* -text
+app/src/main/assets/toolpkg/time/packages/time.js text eol=lf
+# Historical diagnostics can contain local machine paths and obsolete upstream patch payloads.
+evidence/M0 export-ignore
+evidence/M1/*.log export-ignore
+evidence/M2/*.log export-ignore
+evidence/UI03/*.log export-ignore
+evidence/CHAT04/*.log export-ignore
+evidence/E1/*.log export-ignore
+evidence/E2/*.log export-ignore
+evidence/E2B/*.log export-ignore
+evidence/E2C/*.log export-ignore
+evidence/E2D/*.log export-ignore
+evidence/E2E/*.log export-ignore
+app/src/test/resources/*.bin binary

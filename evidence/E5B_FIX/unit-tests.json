@@ -1,0 +1,13 @@
+{
+  "counts": {
+    "tests": 237,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newRuntimeTestSuites": [
+    "OwnedChatRequestTest",
+    "PcmPlaybackTest"
+  ],
+  "limitation": "JVM tests only; Android hardware and ViewModel UI lifecycle not executed on a device."
+}

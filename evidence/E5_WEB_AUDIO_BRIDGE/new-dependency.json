@@ -1,0 +1,9 @@
+{
+  "coordinate": "androidx.webkit:webkit:1.11.0",
+  "pomSha256": "a17ebfcd2def171012bdab6903a76419926f98791dd61c2b38f0a8f72d61b84d",
+  "source": "https://dl.google.com/dl/android/maven2/androidx/webkit/webkit/1.11.0/webkit-1.11.0.pom",
+  "license": {
+    "name": "The Apache Software License, Version 2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+  }
+}

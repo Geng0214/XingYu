@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "migrationSha256": "3c87a082cf0a5cc39d14be59e9c37038964b87af00d040aa5592edf9b3cb2673",
+  "daoSha256": "5fab70dcbff64be1252f815d5957e9a6ff90b40374987c5400dd1aa80cefd604",
+  "schemaMatchesRoom29": true,
+  "oldRowsPreserved": true,
+  "ddlRollback": true,
+  "alternatingScopedReads": 50,
+  "markersPerRole": 10,
+  "lateUpdateRounds": 20,
+  "compositeForeignKeyRejection": true,
+  "chatCascade": true,
+  "environment": "host SQLite; not Android or SQLCipher"
+}

@@ -1,0 +1,56 @@
+{
+ "accessibility.apk": {
+  "bytes_on_disk": 2763980,
+  "version_control_info_textproto": "repositories {\n  system: GIT\n  local_root_path: \"$PROJECT_DIR\"\n  revision: \"1221cf08c40f48ee5dfa68d3fc2c5aacbbf01b6a\"\n}",
+  "revision_in_textproto": "1221cf08c40f48ee5dfa68d3fc2c5aacbbf01b6a",
+  "no_vcs_found": false,
+  "badging": {
+   "parse_ok": true,
+   "package": "com.ai.assistance.operit.provider",
+   "versionCode": 4,
+   "versionName": "1.5",
+   "targetSdk": "34"
+  },
+  "signature": {
+   "dn": "O=dec, OU=sw, CN=aa",
+   "cert_sha256": "d7ccd870912d42fa761890df41cdf6c78cdcf13a619fb316bae9d24df5e15191",
+   "has_jar_signature_meta_inf_rsa": false
+  }
+ },
+ "desktop.apk": {
+  "bytes_on_disk": 6489542,
+  "version_control_info_textproto": "generate_error_reason: NO_SUPPORTED_VCS_FOUND",
+  "revision_in_textproto": null,
+  "no_vcs_found": true,
+  "badging": {
+   "parse_ok": true,
+   "package": "com.ai.assistance.operit.desktop",
+   "versionCode": 1,
+   "versionName": "1.0",
+   "targetSdk": "36"
+  },
+  "signature": {
+   "dn": "O=dec, OU=sw, CN=aa",
+   "cert_sha256": "d7ccd870912d42fa761890df41cdf6c78cdcf13a619fb316bae9d24df5e15191",
+   "has_jar_signature_meta_inf_rsa": false
+  }
+ },
+ "shizuku.apk": {
+  "bytes_on_disk": 2571773,
+  "version_control_info_textproto": "(文件不存在)",
+  "revision_in_textproto": null,
+  "no_vcs_found": false,
+  "badging": {
+   "parse_ok": true,
+   "package": "moe.shizuku.privileged.api",
+   "versionCode": 1086,
+   "versionName": "13.6.0.r1086.2650830c",
+   "targetSdk": "36"
+  },
+  "signature": {
+   "dn": "CN=Rikka",
+   "cert_sha256": "268b5590e868fb08bae7e0ac413564cd1ff88f5ccff74af9dbd0dc918e30db30",
+   "has_jar_signature_meta_inf_rsa": false
+  }
+ }
+}

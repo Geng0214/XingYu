@@ -1,0 +1,167 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "workspaceRoot": "C:/Users/15942/Desktop/Work/operit",
+  "policy": "After 0.33.0 validates, remove redundant 0.19.0-0.31.0 APKs; retain 0.32.0 as the upgrade baseline inside output/upgrade-baseline. Source commits, signature and delivery records are preserved. No recursive deletion.",
+  "files": [
+    {
+      "path": "output/local-companion-0.19.0.apk",
+      "bytes": 9296690,
+      "sha256": "6e785e44b3c59e3f794ea671249fb61d5f2a8688ce849f449b05ce6e0c99bffe",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4A/delivery.json",
+          "sourceCommit": "484c4d8e9bcf73fe1bd865f7951e46fba85d3f33"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.20.0.apk",
+      "bytes": 9313074,
+      "sha256": "e2305387f3ebef9173a19a3c49c524d171bba9c7c66c3b0f63925e354031c01a",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4B/delivery.json",
+          "sourceCommit": "ce85c24304f073bbb0dc6f653ef973da8655b479"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.21.0.apk",
+      "bytes": 9329458,
+      "sha256": "cc62ea7e78c67c03bf6783902a2cb171e007015e976a35c1fe723452599adf75",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4C/delivery.json",
+          "sourceCommit": "97cd9cc838ff2ee8787f64a19198a06d0f872d6f"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.22.0.apk",
+      "bytes": 9345842,
+      "sha256": "2a77e5d0ec4666bf0a9a3e8e0489d6113c0bf3a0f0417561511fa3683c6300bc",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4D/delivery.json",
+          "sourceCommit": "9d38e1dbb0bbe79df469e982886de534a433d758"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.23.0.apk",
+      "bytes": 9378894,
+      "sha256": "e9770a45dfc4a4c70ce6b8847a34703ed4003dd7a6e6efde3570e80237f09537",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4E/delivery.json",
+          "sourceCommit": "e001c508d7148e98360f9b3937195c2a589ebfef"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.24.0.apk",
+      "bytes": 9411818,
+      "sha256": "03b0a888615f07e01e34286dfac86aebf3c8b5b256261e478d4af3a3794ce496",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4F/delivery.json",
+          "sourceCommit": "25140628191b91a9cf071fbee122594d4ae3d81d"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.25.0.apk",
+      "bytes": 9444714,
+      "sha256": "decdb9abddd991cb3fc661083d69bfb495f68aee8f0e965dd53dc5d95b01c3fb",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E4G/delivery.json",
+          "sourceCommit": "de995cf28053c289ac6f3e949c1235bfa962740d"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.26.0.apk",
+      "bytes": 9477514,
+      "sha256": "411782500387807628d01de93b1d82b5bced71f14ffa7c78947d1c81344c6d7c",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5A/delivery.json",
+          "sourceCommit": "5b280459230067a04dcd137a8a93bc71a7b67814"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.27.0.apk",
+      "bytes": 9493902,
+      "sha256": "dc91674c74f4545801fabbd7df2d5ad90fa401767ff8d5ace5516518649f8020",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5B/delivery.json",
+          "sourceCommit": "3a4c19d1a78db30db06eccf8a10e099ce2bb6b4f"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.27.1.apk",
+      "bytes": 9493898,
+      "sha256": "445e87f2544f6e46683ee89e15feb3065b64e311331a26f8cc995d6b28e664cb",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5B_FIX/delivery.json",
+          "sourceCommit": "2aa50b9d9a3d54a2c809bdde5fd13b14bf6e9ca5"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.28.0.apk",
+      "bytes": 9510286,
+      "sha256": "b2d1607e8be564c07e2fbf64750520ad1f159dbb2fc3871c3367528a4bb8cd9b",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5C1/delivery.json",
+          "sourceCommit": "a47ba6158fb0adf79fb9dda00161cd18291e2fda"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.29.0.apk",
+      "bytes": 9559438,
+      "sha256": "6b6ca86ba2fabbd166c6b5b7a974cce7e68b58da915167c50896516a49dd2fc7",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5C2/delivery.json",
+          "sourceCommit": "3edb3f162fc8e976b818ff611188fbc252d4905d"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.30.0.apk",
+      "bytes": 9575822,
+      "sha256": "0cc92ba8429099c8f7aa4c235c8dd668ae416f9886af308c0f3ca84199419238",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5C3A/delivery.json",
+          "sourceCommit": "6a0610fdd061c2788c341bbc75089f58e8b7ea1d"
+        }
+      ]
+    },
+    {
+      "path": "output/local-companion-0.31.0.apk",
+      "bytes": 9681790,
+      "sha256": "9a6f14f0c31d9b71260cff89ab3945a0d01e3936c729b9ef84dbfceb55842f17",
+      "preservedEvidence": [
+        {
+          "record": "evidence/E5C3B/delivery.json",
+          "sourceCommit": "962a85e7b8839f0110c86167b479343bd9c696b2"
+        }
+      ]
+    }
+  ],
+  "plannedReclaimedBytes": 132313140,
+  "upgradeBaseline": {
+    "path": "output/local-companion-0.32.0.apk",
+    "destination": "output/upgrade-baseline/local-companion-0.32.0.apk",
+    "sha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499"
+  }
+}

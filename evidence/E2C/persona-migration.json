@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "sourceSha256": "d9a1052336f156ff3c8894255d5c94584f898617be0a35ee8e475974931c3048",
+  "schemaMatchesRoomV7": true,
+  "allTwelveTablesPreserved": true,
+  "invalidAssociationsRejected": 8,
+  "interruptedDdlRollback": true,
+  "newPersonasEmptyDisabled": true,
+  "limitation": "Actual Kotlin SQL on host SQLite only. Room/SQLCipher/Keystore device migration remains NOT_RUN."
+}

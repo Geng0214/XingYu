@@ -1,0 +1,80 @@
+liboperit_ripgrep.so 源码级重建与逐字节比对（M0-A05 / 计划书"内嵌原生库可追溯"补强）
+
+执行日期：2026-09-19
+输入：仓库内 crate `tools/native_ripgrep`（`operit_ripgrep 0.1.0`，`--locked` 生效）
+对照：随包分发产物 `app/src/main/jniLibs/arm64-v8a/liboperit_ripgrep.so`
+- 3,599,272 字节，SHA-256 `71b6e8af8b2c833c85b5119ba0bd0bad05495ce0b9bed68d6e3530cb42a4dad5`
+
+## 1. 重建方式与结果
+
+未使用仓库自带的 `build_native_ripgrep.ps1`（该脚本最后一步会把产物覆写进 `app/src/main/jniLibs/arm64-v8a/`，本轮不允许改动分发物）。按脚本等效参数手工执行：
+
+```bash
+export CARGO_HOME="C:/Users/15942/dev/rust/cargo" RUSTUP_HOME="C:/Users/15942/dev/rust/rustup"
+export CARGO_TARGET_DIR="C:/tmp/rgbuild"
+export CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER="C:/Users/15942/dev/sdk/android-sdk/ndk/27.3.13750724/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android23-clang.cmd"
+cargo build --locked --offline --release --target aarch64-linux-android
+```
+
+`--offline` 成功（`$CARGO_HOME/registry` 已有 81 MB 缓存），15.04 s 完成整个依赖图编译。产物：
+
+- 3,741,008 字节（比对归档大 141,736 字节）
+- SHA-256 `9caea89e3d61b9a9bc9ea7ce497a032c7057e2749bd0c7c14f6346d702b922a7`
+
+**逐字节一致：不成立。** 差异原因不是推测，写在第 2 节。
+
+## 2. 差异归因（`.comment` 直接写明两边工具链）
+
+两份 ELF 都是 64 位 shared object、27 个节、节名集合完全相同、都**没有** `.note.gnu.build-id`（所以 build-id 不是本次差异来源）。`.comment` 段：
+
+| | 本次重建 | 随包分发 |
+|---|---|---|
+| rustc | `1.88.0 (6b00bc388 2025-06-23)` | `1.95.0 (59807616e 2026-04-14)` |
+| clang | `Android (13691557, based on r522817d) 18.0.4` | `Android (13989888, based on r563880c) 21.0.0` |
+| linker | `LLD 18.0.4` | `LLD 21.0.0` |
+| NDK | 本机 27.3.13750724 | clang r563880c 对应的 NDK 版本，本机没有 |
+
+本机已安装 NDK 的实测 clang 身份（用于排除"换个本机 NDK 就能对上"）：`27.3.13750724` → `Android (13691557, based on r522817d) clang 18.0.4`；`28.2.13676358` → `Android (13624864, based on r530567e) clang 19.0.1`；`27.0.12077973` → 该目录下没有 `bin/clang.exe`（安装不完整，不参与比对）。分发产物的 `r563880c / clang 21.0.0` 晚于本机最新 NDK r28 的 `r530567e / clang 19.0.1`。
+
+节尺寸差异与"换了编译器版本"一致，而非"换了源码"：`.text` −41,472、`.symtab` −42,048、`.strtab` −8,724、`.rela.dyn` −27,528、`.data.rel.ro` −22,640、`.eh_frame` +18,856、`.rodata` −16,808（均以分发产物相对本次重建计）。
+
+## 3. 功能面等价性（能证到的最强结论）
+
+| 检查 | 本次重建 | 分发产物 |
+|---|---|---|
+| `.dynsym` 条目数 | 54 | 54 |
+| JNI 导出 | `Java_com_ai_assistance_operit_util_ripgrep_NativeRipgrep_searchJson`（唯一） | 同 |
+| `DT_NEEDED` | `libdl.so`, `libc.so` | 同 |
+| 符号名集合差 | 仅 `getpid`（本次重建导入）对 `gettid`（分发产物导入） | — |
+| crate 源码字符串字面量覆盖 | 25 条中命中集与分发产物**完全相同**：仅双方同时缺失 14 条（格式串/跨字面量片段），"只在一方出现"的数量为 **0** | 同 |
+| 标志性运行期常量 | `.operit/**` ×2、`failed to read path: `、`pattern is required`、`searchJson` ×2 | 同 |
+
+`gettid` 一项已单独验证不构成兼容风险：NDK 27.3 的 aarch64 Bionic 桩库在 API 21/23/26/28/29/30/34 上**都**导出 `gettid` 与 `getpid`（逐档 `readelf` 等价解析：1034/1127/1225/1324/1338/1394/1418 个符号，两符号在各档均存在）。本 Fork 只发 arm64-v8a、minSdk 26，因此不存在 Android 8/9 加载失败问题。注意：该符号在 32 位 ARM 上的可用性时间线不同，若将来扩 ABI 需重测。
+
+结论：**同一份源码、同一份 `Cargo.lock`（`--locked`）在两个不同工具链版本下产出不同字节**；功能导入面等价。原登记的说法"`--locked` 依赖已钉死所以可复现"不成立——钉住了依赖，没钉 rustc 与 NDK。
+
+## 4. 顺带查出：分发产物里带着一个陌生人的 Windows 用户名
+
+对两份产物做绝对路径串统计：
+
+| 根路径 | 本次重建 | 分发产物 |
+|---|---|---|
+| `C:\Users\12809\.cargo\registry\src\index.crates.io-…` | 0 | **91 处** |
+| `C:\Users\12809\.rustup\toolchains\stable-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\…` | 0 | **15 处** |
+| `C:/Users/15942/dev/rust/cargo\registry\src\index.crates.io-…` | 144 处 | 0 |
+| `/rustc/<hash>/library/…`（rustc 发行版自带 std 的重映射形式） | 133 处 | 36 处 |
+| `src\lib.rs`（本 crate 的 `file!()`，相对形式） | 有 | 有 |
+| CI 常见根（`/home/runner`、`D:\a\`） | 0 | **0** |
+
+由此可确定的三件事：
+
+1. 随包 `.so` 是**某台个人 Windows 机器上手建**的，用户名 `12809`，既不是本仓库这台机器（`15942`），也不是 GitHub Actions / 任何 CI 的标准检出根。
+2. 那次构建的 `CARGO_HOME`/`RUSTUP_HOME` 用的是 rustup 默认布局，且装有 `rust-src` 组件（std 以源码路径出现），本次重建没有这个特征 —— 说明原始构建的调用方式与仓库脚本的默认路径也不完全相同，我们无法从产物反推出完整命令。
+3. **当前分发给用户的 APK 里已经带着第三方的用户名和目录结构**，这一点比 M0-B07 里"我们自己出包会带自己的路径"更严重：那是别人的身份，且此人无从核查（产物只来自无校验的 Google Drive 归档）。
+
+## 5. M1 处置建议（本轮未改）
+
+1. 用本仓库源码自建 `liboperit_ripgrep.so` 替换分发产物：这是本次重建的直接目的，功能面已证等价，替换的技术前提已具备。
+2. 替换前先在构建里加 `--remap-path-prefix`（或对 `$CARGO_HOME`、`$RUSTUP_HOME`、检出根做映射），否则第 4 节只是把 `12809` 换成 `15942`。
+3. 把 rustc 版本与 NDK 版本写进 `ci/script/build_m0_local.sh` 的断言（当前只断言 JDK 与 android-36），否则"源码可追溯"仍停在口头。
+4. 登记事实：分发物中该项的构建者身份不可核查。计划书与 `license-inventory.md` 不得把该项写成"来源已闭合"，只能写"源码在本仓库、随包产物为外部个人构建、已替换/待替换"。

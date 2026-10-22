@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-09-20T23:59:11.170776+00:00",
+  "sourceCommit": "82a34f3e24ad978d1e5b4e177c85a70eb399dbe0",
+  "cleanBuildCodeCommit": "82a34f3e24ad978d1e5b4e177c85a70eb399dbe0",
+  "sourceArchiveMatchesGitArchive": true,
+  "sourceArchiveFiles": 978,
+  "apkGitRevisionMatches": true,
+  "unitTests": {
+    "tests": 424,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": 58,
+  "lint": {
+    "Error": 0,
+    "Warning": 62,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "hostMigration": "PASS",
+  "webScriptTests": {
+    "tests": 9,
+    "failures": 0
+  },
+  "sourceReview": {
+    "disposition": "ship",
+    "scope": "three listed source fixes resolved; no whole-surface or rendered visual approval"
+  },
+  "device": {
+    "adbDevices": [],
+    "ui": "NOT_RUN",
+    "sqlcipherUpgrade": "NOT_RUN",
+    "encryptionAtRest": "NOT_RUN",
+    "liveProviders": "NOT_RUN"
+  },
+  "cleanup": {
+    "removed": "output/upgrade-baseline/local-companion-0.33.0.apk",
+    "reclaimedBytes": 9799511,
+    "retainedBaseline": "output/upgrade-baseline/local-companion-0.34.0.apk",
+    "latest": "output/local-companion-0.35.0.apk",
+    "outputTotalBytes": 22895351,
+    "previousOutputBytes": 22760363
+  },
+  "status": "Development complete for city and private-date journeys; acceptance incomplete; remaining E6/E7/E8 active"
+}

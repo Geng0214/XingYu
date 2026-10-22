@@ -1,0 +1,10 @@
+This is a concise transcription of the completed terminal result, not a full raw build log.
+Command: ./gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain
+Terminal session: 31441
+Exit code: 0
+BUILD SUCCESSFUL in 56s
+75 actionable tasks: 22 executed, 53 up-to-date
+Unit XML reports: 53 suites, 371 tests, 0 failures, 0 errors, 0 skipped
+Lint XML report: 0 Error, 60 Warning, 1 Hint
+AndroidTest: compilation only; NOT_RUN
+Earlier compile failure: Android JSONObject keySet is unavailable; fixed using keys iterator before this successful build.

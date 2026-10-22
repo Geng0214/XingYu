@@ -1,0 +1,68 @@
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stream=
+com.ai.assistance.operit.PlayStorageAndroidTest:
+INSTRUMENTATION_STATUS: test=schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner
+INSTRUMENTATION_STATUS_CODE: 1
+INSTRUMENTATION_STATUS: class=com.ai.assistance.operit.PlayStorageAndroidTest
+INSTRUMENTATION_STATUS: current=1
+INSTRUMENTATION_STATUS: id=AndroidJUnitRunner
+INSTRUMENTATION_STATUS: numtests=1
+INSTRUMENTATION_STATUS: stack=java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.fail(Assert.java:96)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1.invokeSuspend(PlayStorageAndroidTest.kt:130)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.ai.assistance.operit.PlayStorageAndroidTest.schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(PlayStorageAndroidTest.kt:99)
+
+INSTRUMENTATION_STATUS: stream=
+Error in schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(com.ai.assistance.operit.PlayStorageAndroidTest):
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.fail(Assert.java:96)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1.invokeSuspend(PlayStorageAndroidTest.kt:130)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.ai.assistance.operit.PlayStorageAndroidTest.schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(PlayStorageAndroidTest.kt:99)
+
+INSTRUMENTATION_STATUS: test=schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner
+INSTRUMENTATION_STATUS_CODE: -2
+INSTRUMENTATION_RESULT: stream=
+
+Time: 3.712
+There was 1 failure:
+1) schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(com.ai.assistance.operit.PlayStorageAndroidTest)
+java.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.fail(Assert.java:96)
+	at com.ai.assistance.operit.PlayStorageAndroidTest$schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner$1.invokeSuspend(PlayStorageAndroidTest.kt:130)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:94)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:70)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:48)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at com.ai.assistance.operit.PlayStorageAndroidTest.schema28And29CipherUpgradePreservesCredentialAndHistoryOrRollsBackBrokenOwner(PlayStorageAndroidTest.kt:99)
+
+FAILURES!!!
+Tests run: 1,  Failures: 1
+
+
+INSTRUMENTATION_CODE: -1

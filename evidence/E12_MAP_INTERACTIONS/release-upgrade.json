@@ -1,0 +1,8 @@
+{
+  "chatVisibleContentsUnchanged": true,
+  "homeTitleAndResidentPreserved": true,
+  "coins": 120,
+  "energy": 7,
+  "status": "PASS",
+  "scope": "Visible native Release UI before/after replacement. No database plaintext extraction or full backup import performed this round."
+}

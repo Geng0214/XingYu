@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "schemaMatchesRoomV6": true,
+  "allV5RowsPreserved": true,
+  "invalidGrantPermissionAndInvocationRejectedBeforeDdl": true,
+  "duplicatePublisherIdentityDoesNotOverwrite": true,
+  "uninstallCascadesOnlyOwnPackage": true,
+  "limitation": "Host SQLite runs actual migration SQL. Android SQLCipher, repository, JNI and upgrade execution remain NOT_RUN."
+}

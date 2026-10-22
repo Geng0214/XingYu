@@ -1,0 +1,820 @@
+{
+ "measuredAt": "2026-09-19",
+ "case": "M0-A05 第三轮：把 gradle-dependency-licenses.md 第 3 节标记的 5 个\"本机无出处\"构件联网取证，并与仓库自维护的许可界面逐条对账",
+ "network": {
+  "proxy": "http://127.0.0.1:7897",
+  "egress_ip_seen": "23.172.200.83（jitpack 与 GitHub 日志中记录的来源 IP）",
+  "channels_used": [
+   "raw.githubusercontent.com",
+   "github.com HTML（/tree/<ref>、/tags、/releases/tag/<t>、/commits/<branch>/<path>.atom）",
+   "api.github.com（中途耗尽配额，见 failed_probes）",
+   "jitpack.io build.log"
+  ],
+  "failed_probes": {
+   "api.github.com": [
+    "tech-pw/RenderX"
+   ],
+   "note": "api.github.com 对 23.172.200.83 返回 403 \"API rate limit exceeded\"，因此仓库元数据（default_branch、spdx、tag 列表、LICENSE 提交历史）改从 raw 与 HTML 通道取得；这些通道的证据强度不低于 API，且下面每一项都给了具体 URL 形态。"
+  }
+ },
+ "libsu": {
+  "coordinate": "com.github.topjohnwu.libsu:core/nio/service:6.0.0",
+  "verdict": "Apache-2.0，且**在钉住的 tag 上可证**",
+  "evidence": {
+   "licence_at_pinned_ref": [
+    {
+     "file": "LICENSE",
+     "bytes": 11357,
+     "sha256_16": "c71d239df91726fc",
+     "text_head": " Apache License Version 2.0, January 2004 http://www.apache.org/licenses/ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AN",
+     "is_gpl3": false,
+     "is_apache2": true
+    }
+   ],
+   "only_commit_touching_LICENSE": "2018-01-25T09:53:04Z (546b0eb2e2)，此后未改动（atom 计数 1）",
+   "github_spdx_on_current_tree": "Apache-2.0",
+   "pom_licenses_block": "不存在（jitpack 生成的 POM）"
+  },
+  "dex": {
+   "needle": "Lcom/topjohnwu/superuser/",
+   "hits": 246,
+   "dex_files": [
+    "classes15.dex",
+    "classes21.dex",
+    "classes23.dex",
+    "classes40.dex"
+   ]
+  },
+  "in_app_screen_claim": "Apache-2.0 —— 一致",
+  "residual": "nio/service 两个构件未单独复核（缓存里只有 core-6.0.0.aar 被解析到），同仓库同 tag，同一份 LICENSE 覆盖；core 的 AAR 内无许可文本（6 条目）。"
+ },
+ "axml": {
+  "coordinate": "com.github.Sable:axml:2.0.0",
+  "verdict": "上游现为 Apache-2.0，但**钉住的 2.0.0 tag 上没有许可文本**",
+  "evidence": {
+   "refs": {
+    "2.0.0": {
+     "licence_files_at_ref": [],
+     "licence_named_files_in_root_listing": []
+    },
+    "master": {
+     "licence_files_at_ref": [
+      {
+       "file": "LICENSE.txt",
+       "bytes": 11358,
+       "sha256_16": "cfc7749b96f63bd3",
+       "text_head": " Apache License Version 2.0, January 2004 http://www.apache.org/licenses/ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AN",
+       "is_gpl3": false,
+       "is_apache2": true
+      }
+     ],
+     "licence_named_files_in_root_listing": []
+    }
+   },
+   "github_spdx_on_current_tree": "Apache-2.0",
+   "tags": [
+    "2.0.0"
+   ],
+   "note": "上游唯一 tag 就是 2.0.0，因此\"升级到带许可的发布版\"这条路不存在；master 上的 LICENSE.txt（11,358 字节，Apache-2.0，sha256_16 cfc7749b96f63bd3）晚于该 tag。jitpack 构件 axml-2.0.0.jar 内 45 条目、34 个 class，无任何许可文本。"
+  },
+  "dex": {
+   "needle": "Lpxb/android/",
+   "hits": 81,
+   "dex_files": [
+    "classes16.dex",
+    "classes35.dex"
+   ]
+  },
+  "in_app_screen_claim": "Apache-2.0 —— 与上游现状一致，与被分发的构件不对应",
+  "options": [
+   "向作者取得 2.0.0 的 Apache-2.0 追认（或改用 master 构建）",
+   "整链移除（但 subpack 重打包依赖它，代价高于 libsu）"
+  ]
+ },
+ "RenderX": {
+  "coordinate": "com.github.tech-pw:RenderX:1.0.0",
+  "verdict": "分发的构件**没有任何许可授予**；上游唯一的一份许可是三天后在 main 上加的 GPL-3.0。两种解读都要求移除或替换，且应用内界面写着 \"MIT\"。",
+  "provenance_chain": {
+   "aar_sha1": "d1d4c451eaf5a7437d430efb8a0dcdaa6dd64464",
+   "aar_sha256_16": "099ca2dee756d844",
+   "aar_bytes": 1746805,
+   "gradle_cache_checksum_dir_matches_sha1": true,
+   "jitpack_build_log": "https://jitpack.io/com/github/tech-pw/RenderX/1.0.0/build.log",
+   "built_from_commit": "de7d1e33da264f9969a653a4bd6c6eec7cf143d9",
+   "git_describe": "1.0.0-0-gde7d1e3（即恰在 tag 上，无额外提交）",
+   "commit_message": "Renamed the Library name to RenderX",
+   "commit_author": "Rahul Jindal",
+   "commit_date": "2024-02-23T18:02:26+05:30",
+   "build_start": "Fri Feb 23 12:39:33 UTC 2024"
+  },
+  "at_that_commit": {
+   "root_listing_at_tag": {
+    "status": 200,
+    "entries": [
+     {
+      "name": ".gitignore",
+      "path": ".gitignore",
+      "type": "file"
+     },
+     {
+      "name": ".idea",
+      "path": ".idea",
+      "type": "directory"
+     },
+     {
+      "name": "app",
+      "path": "app",
+      "type": "directory"
+     },
+     {
+      "name": "build.gradle.kts",
+      "path": "build.gradle.kts",
+      "type": "file"
+     },
+     {
+      "name": "gradle",
+      "path": "gradle",
+      "type": "directory"
+     },
+     {
+      "name": "gradle.properties",
+      "path": "gradle.properties",
+      "type": "file"
+     },
+     {
+      "name": "gradle/wrapper",
+      "path": "gradle/wrapper",
+      "type": "directory"
+     },
+     {
+      "name": "gradlew",
+      "path": "gradlew",
+      "type": "file"
+     },
+     {
+      "name": "gradlew.bat",
+      "path": "gradlew.bat",
+      "type": "file"
+     },
+     {
+      "name": "jitpack.yaml",
+      "path": "jitpack.yaml",
+      "type": "file"
+     },
+     {
+      "name": "readme.md",
+      "path": "readme.md",
+      "type": "file"
+     },
+     {
+      "name": "renderX",
+      "path": "renderX",
+      "type": "directory"
+     },
+     {
+      "name": "screenshots",
+      "path": "screenshots",
+      "type": "directory"
+     },
+     {
+      "name": "settings.gradle.kts",
+      "path": "settings.gradle.kts",
+      "type": "file"
+     }
+    ],
+    "refinfo": [
+     "\"name\":\"refs/tags/1.0.0\",\"listCacheKey\":\"v0:1708692523.0\",\"canEdit\":false,\"refType\":\"tag\",\"currentOid\":\"de7d1e33da264f9969a653a4bd6c6eec7cf143d9\"",
+     "\"name\":\"refs/tags/1.0.0\",\"listCacheKey\":\"v0:1708692523.0\",\"canEdit\":false,\"currentOid\":\"de7d1e33da264f9969a653a4bd6c6eec7cf143d9\""
+    ]
+   },
+   "licence_files_any_spelling": [],
+   "probed_names": [
+    "LICENSE",
+    "LICENSE.md",
+    "LICENSE.txt",
+    "LICENCE",
+    "LICENCE.md",
+    "COPYING",
+    "COPYING.md",
+    "UNLICENSE",
+    "NOTICE",
+    "LICENSE-APACHE",
+    "LICENSE-MIT",
+    "renderX/LICENSE",
+    "renderX/license",
+    "app/LICENSE"
+   ],
+   "probe_result": "上述 13 个名字在 raw.githubusercontent.com/tech-pw/RenderX/1.0.0/ 下全部 404；GitHub HTML 树列表（/tree/refs/tags/1.0.0）返回的 14 个根条目里也没有任何许可文件名。",
+   "readme_md_at_tag": {
+    "status": 200,
+    "bytes": 4331,
+    "sha256_16": "b6d85111bbbefca5",
+    "licence_terms": [],
+    "licence_context": []
+   },
+   "readme_licence_statement_at_tag": "无：readme.md 里 MIT/Apache/GPL/AGPL/BSD/Unlicense 六个词 0 命中",
+   "build_files_licence_scan": {
+    "scanned_pattern": "licen|copyright|scm|url（大小写不敏感，整词片段计数）",
+    "files": {
+     "renderX_build_gradle_kts": {
+      "at_commit_path": "renderX/build.gradle.kts",
+      "bytes": 2871,
+      "sha256_16": "36b5317fb8322ea3",
+      "licence_or_scm_word_lines": 0,
+      "matching_lines": []
+     },
+     "root_build_gradle_kts": {
+      "at_commit_path": "build.gradle.kts",
+      "bytes": 343,
+      "sha256_16": "1f8c261bd9e892ac",
+      "licence_or_scm_word_lines": 0,
+      "matching_lines": []
+     },
+     "jitpack_yaml": {
+      "at_commit_path": "jitpack.yaml",
+      "bytes": 21,
+      "sha256_16": "e33c722b5eddcaee",
+      "licence_or_scm_word_lines": 0,
+      "matching_lines": []
+     },
+     "gradle_properties": {
+      "at_commit_path": "gradle.properties",
+      "bytes": 1380,
+      "sha256_16": "eef51f412da5bd49",
+      "licence_or_scm_word_lines": 0,
+      "matching_lines": []
+     }
+    },
+    "result": "四个构建/打包配置文件在提交 de7d1e33 上的版本合计 4,615 字节，没有任何一行出现 license / copyright / scm / url。即 POM 无 `<licenses>` 不是 jitpack 生成时丢字段，而是上游工程本身从未声明。",
+    "why_sources_not_stored": "这四个文件属于一个可能无授权的上游工程，审计结论用字节数＋SHA-256 前 16 位＋命中数固定即可，取回命令 `curl -x http://127.0.0.1:7897 https://raw.githubusercontent.com/tech-pw/RenderX/de7d1e33da264f9969a653a4bd6c6eec7cf143d9/<path>`，故不把其源码抄进本仓库。"
+   },
+   "readme_uppercase_probe": {
+    "filenames": [
+     "README.md",
+     "Readme.md"
+    ],
+    "status": 404,
+    "note": "按惯例大小写探测得到 404，一度被误读成\"该仓库没有 README\"；实际文件名为全小写 `readme.md`（见 readme_md_at_tag，4,331 字节）。"
+   }
+  },
+  "later_on_main": {
+   "only_commit_touching_LICENSE": {
+    "date": "2024-02-26T06:32:08Z",
+    "sha": "88423982e36cce638340b6c232b1e55679f2c091",
+    "message": "Create LICENSE"
+   },
+   "file": {
+    "bytes": 35149,
+    "sha256_16": "3972dc9744f6499f",
+    "fingerprint": "正文首 400 字符含 \"GNU GENERAL PUBLIC LICENSE / Version 3\""
+   },
+   "gap_days": 3,
+   "tags": {
+    "dates": [
+     "2024-02-23T12:35:23Z"
+    ],
+    "oids": [
+     "23bf0ac70e45adc87c19655daf6af5497a5975c4",
+     "24325eeeee92ecf60c4a9340e6eb6675cb4c2159",
+     "2d745bc41df0e7d3984eee00a5492d5b65c795c3",
+     "38519ea1b5fc6f4714a9df6c06e2b679b5551159",
+     "40adab2f12566f5610ce0c45f58341aa7b7737dd"
+    ]
+   },
+   "repo_has_only_one_tag": true
+  },
+  "what_the_aar_carries": {
+   "aar": "RenderX\\1.0.0\\d1d4c451eaf5a7437d430efb8a0dcdaa6dd64464\\RenderX-1.0.0.aar",
+   "entry_count": 219,
+   "class_count": 26,
+   "classes": [
+    "live/pw/renderX/BrutalismFontFamilyKt.class",
+    "live/pw/renderX/CoilImageGetter$DrawablePlaceHolder.class",
+    "live/pw/renderX/CoilImageGetter$getDrawable$lambda$1$$inlined$target$default$1.class",
+    "live/pw/renderX/CoilImageGetter.class",
+    "live/pw/renderX/ImgAttributes.class",
+    "live/pw/renderX/MathViewKt$MathView$1$1.class",
+    "live/pw/renderX/MathViewKt$MathView$2.class",
+    "live/pw/renderX/MathViewKt.class",
+    "live/pw/renderX/RenderXKt$RenderX$1.class",
+    "live/pw/renderX/RenderXKt$RenderX$2$1.class",
+    "live/pw/renderX/RenderXKt$RenderX$2$2$1.class",
+    "live/pw/renderX/RenderXKt$RenderX$2$2.class",
+    "live/pw/renderX/RenderXKt$RenderX$2.class",
+    "live/pw/renderX/RenderXKt$RenderX$3.class",
+    "live/pw/renderX/RenderXKt.class",
+    "live/pw/renderX/TagHandler.class",
+    "live/pw/renderX/Utility.class",
+    "live/pw/renderX/VerticalImageSpan.class",
+    "live/pw/renderX/mathJaxView/MathJaxView$1.class",
+    "live/pw/renderX/mathJaxView/MathJaxView.class",
+    "live/pw/renderX/mathJaxView/MathJaxViewV1.class",
+    "live/pw/renderX/ui/theme/ColorKt.class",
+    "live/pw/renderX/ui/theme/ThemeKt$LatexViewTheme$1.class",
+    "live/pw/renderX/ui/theme/ThemeKt$LatexViewTheme$2.class",
+    "live/pw/renderX/ui/theme/ThemeKt.class",
+    "live/pw/renderX/ui/theme/TypeKt.class"
+   ],
+   "has_LatexView_class": true,
+   "non_class_entries_sample": [
+    "R.txt",
+    "AndroidManifest.xml",
+    "classes.jar",
+    "res/",
+    "res/drawable/",
+    "res/drawable/ic_launcher_background.xml",
+    "res/drawable/ic_launcher_foreground.xml",
+    "res/font/",
+    "res/font/balsamiqsans_bold.ttf",
+    "res/font/balsamiqsans_regular.ttf"
+   ],
+   "assets_count": 178,
+   "res_font_count": 13,
+   "licence_named_entries": [
+    "assets/MathJax/LICENSE"
+   ]
+  },
+  "apk_footprint": {
+   "assets/MathJax_entries": 150,
+   "assets/MathJax_bytes": 1434800,
+   "res/font_entries": [
+    "res/font/balsamiqsans_bold.ttf",
+    "res/font/balsamiqsans_regular.ttf",
+    "res/font/gilroy_bold.otf",
+    "res/font/gilroy_medium.otf",
+    "res/font/gilroy_regular.otf",
+    "res/font/gilroy_semi_bold.otf",
+    "res/font/jetbrains_mono_nerd_font_regular.ttf",
+    "res/font/poppins_bold.xml",
+    "res/font/roboto_bold_font.ttf",
+    "res/font/roboto_light.ttf",
+    "res/font/roboto_medium_font.ttf",
+    "res/font/roboto_medium_numbers.ttf",
+    "res/font/roboto_regular.ttf",
+    "res/font/roboto_thin.ttf"
+   ],
+   "repo_side_sources_of_these_names": 0,
+   "repo_side_sources_note": "rg 全仓检索 MathJax/gilroy/balsamiqsans 的文件名命中数为 0，即这些条目只可能来自 RenderX-1.0.0.aar。",
+   "kotlin_or_java_references_to_the_library": 0,
+   "reference_note": "rg 检索 live.pw / MathView / renderX( 在 *.kt/*.java 里 0 命中；仓库内唯一提到该库代码位置的是 app/src/main/AndroidManifest.xml:112-114，它用 tools:node=\"remove\" 删掉 AAR 自带的 exported activity live.pw.renderX.LatexView（该类在 AAR 的 26 个 class 里并不存在）。",
+   "dex_hits": 72,
+   "mathJaxView_class_hits": 6,
+   "LatexView_class_hits": 0,
+   "fonts_from_this_aar": [
+    "balsamiqsans_bold.ttf",
+    "balsamiqsans_regular.ttf",
+    "gilroy_bold.otf",
+    "gilroy_medium.otf",
+    "gilroy_regular.otf",
+    "gilroy_semi_bold.otf",
+    "poppins_bold.xml",
+    "roboto_bold_font.ttf",
+    "roboto_light.ttf",
+    "roboto_medium_font.ttf",
+    "roboto_regular.ttf",
+    "roboto_thin.ttf"
+   ],
+   "fonts_note": "AAR 的 12 个 res/font 条目全部进入 APK；APK 里另有 2 个字体（jetbrains_mono_nerd_font_regular.ttf、roboto_medium_numbers.ttf）来自仓库自身。AAR 内除 assets/MathJax/LICENSE 外没有任何许可文本，即这 12 个字体二进制是随一个无许可构件一起分发的、自身也无授权的素材。"
+  },
+  "usage": {
+   "kotlin_or_java_references": 0,
+   "manifest_mentions": [
+    "app/src/main/AndroidManifest.xml:112-114 用 tools:node=\"remove\" 删掉 AAR 自带的 exported MAIN/LAUNCHER activity live.pw.renderX.LatexView"
+   ],
+   "aar_own_declares_that_activity": "是：AAR 的 AndroidManifest.xml 声明 <activity android:name=\"live.pw.renderX.LatexView\" android:exported=\"true\"> + MAIN/LAUNCHER intent-filter，而 dex 里 `Llive/pw/renderX/LatexView;` 命中 0，AAR 的 26 个 class 里也没有该类（`LatexView` 只作为 ThemeKt$LatexViewTheme$… 的函数名片段出现）",
+   "declaration_sites": [
+    "app/build.gradle.kts:755",
+    "gradle/libs.versions.toml:167"
+   ],
+   "removal_cost": "删 1 行依赖 + 1 行 version catalog；无源码改动。同时消掉一个 GPL-3.0/无许可构件、150 个 MathJax 资产（1,434,800 字节）与 12 个字体。"
+  },
+  "in_app_screen_claim": "OpenSourceLicenses.kt:113 写 \"MIT\" —— 现已可判定为错误声明（上游从未出现过 MIT 文本；1.0.0 无任何授予，main 是 GPL-3.0）"
+ },
+ "dex_needles_anchored": {
+  "com.itextpdf:itextg:5.5.10": {
+   "needle": "Lcom/itextpdf/text/",
+   "hits": 1808,
+   "dex": [
+    "classes25.dex",
+    "classes39.dex"
+   ]
+  },
+  "com.itextpdf:itextg:5.5.10 (unanchored)": {
+   "needle": "com/itextpdf/text/",
+   "hits": 1814,
+   "dex": [
+    "classes25.dex",
+    "classes39.dex"
+   ]
+  },
+  "com.github.junrar:junrar:7.5.5": {
+   "needle": "Lcom/github/junrar/",
+   "hits": 235,
+   "dex": [
+    "classes25.dex",
+    "classes37.dex"
+   ]
+  },
+  "org.checkerframework:checker-compat-qual:2.5.3": {
+   "needle": "Lorg/checkerframework/",
+   "hits": 716,
+   "dex": [
+    "classes32.dex",
+    "classes38.dex"
+   ]
+  },
+  "ru.noties:jlatexmath-android(+fonts):0.2.0": {
+   "needle": "Lru/noties/jlatexmath/",
+   "hits": 88,
+   "dex": [
+    "classes15.dex",
+    "classes16.dex",
+    "classes29.dex",
+    "classes35.dex",
+    "classes41.dex"
+   ]
+  },
+  "com.tom_roush:pdfbox (对照)": {
+   "needle": "Lcom/tom_roush/pdfbox/",
+   "hits": 1647,
+   "dex": [
+    "classes15.dex",
+    "classes25.dex",
+    "classes30.dex",
+    "classes40.dex"
+   ]
+  },
+  "net.lingala.zip4j:zip4j:2.11.5 (对照)": {
+   "needle": "Lnet/lingala/zip4j/",
+   "hits": 268,
+   "dex": [
+    "classes41.dex"
+   ]
+  },
+  "com.github.topjohnwu.libsu:*:6.0.0": {
+   "needle": "Lcom/topjohnwu/",
+   "hits": 246,
+   "dex": [
+    "classes15.dex",
+    "classes21.dex",
+    "classes23.dex",
+    "classes40.dex"
+   ]
+  },
+  "com.github.Sable:axml:2.0.0": {
+   "needle": "Lpxb/android/",
+   "hits": 81,
+   "dex": [
+    "classes16.dex",
+    "classes35.dex"
+   ]
+  },
+  "com.github.tech-pw:RenderX:1.0.0": {
+   "needle": "Llive/pw/render",
+   "hits": 72,
+   "dex": [
+    "classes15.dex",
+    "classes41.dex"
+   ]
+  },
+  "live.pw.renderX.LatexView (manifest 里被 remove 的那个类)": {
+   "needle": "Llive/pw/renderX/LatexView;",
+   "hits": 0,
+   "dex": []
+  },
+  "  └ RenderX 的 mathJaxView 子包": {
+   "needle": "Llive/pw/renderX/mathJaxView/",
+   "hits": 6,
+   "dex": [
+    "classes41.dex"
+   ]
+  }
+ },
+ "pom_license_block_verification": {
+  "method": "直接读缓存里的 .pom 原文的 <licenses> 块（不是取第一条），用来复核 gradle-dependency-licenses.json 的 kind 分类",
+  "corrections": [
+   {
+    "coord": "org.checkerframework:checker-compat-qual:2.5.3",
+    "recorded_kind": "COPYLEFT",
+    "actual": "双许可：<license>GPL2 with the classpath exception</license> <license>The MIT License</license>",
+    "impact": "可选 MIT，不构成 copyleft 义务；原分类是\"只取第一条 <license>\"的脚本缺陷。"
+   },
+   {
+    "coord": "com.itextpdf:itextg:5.5.10",
+    "recorded_kind": "COPYLEFT",
+    "actual": "<licenses> 里只有 GNU Affero General Public License v3 一条",
+    "impact": "界面写的 MPL/LGPL 在这个构件的 POM 里不存在；AGPL-3.0 无可选弱许可。"
+   },
+   {
+    "coord": "ru.noties:jlatexmath-android:0.2.0",
+    "recorded_kind": "COPYLEFT",
+    "actual": "只有 \"GNU General Public License, version 2\"，无 classpath exception 字样",
+    "impact": "界面写的 \"GPL-2.0 with Classpath Exception\" 在 POM 里没有依据。"
+   },
+   {
+    "coord": "io.objectbox:objectbox-android:5.3.0",
+    "recorded_kind": "permissive",
+    "actual": "三条并列：ObjectBox Binary Licence（含 native runtime）、Apache-2.0（flatbuffers）、OpenLDAP Public License 2.8（LMDB）",
+    "impact": "界面只写 Apache-2.0 是不完整的；native runtime 走的是非开源的二进制许可。"
+   },
+   {
+    "coord": "com.github.junrar:junrar:7.5.5",
+    "recorded_kind": "other",
+    "actual": "单条 UnRar License",
+    "impact": "界面写 \"The Unlicense\" 是把它说成公有领域。"
+   },
+   {
+    "coord": "com.joaomgcd:taskerpluginlibrary:0.4.10",
+    "recorded_kind": "other",
+    "actual": "单条 Tasker Plugin Sample License",
+    "impact": "界面写 Apache-2.0 不符。"
+   },
+   {
+    "coord": "com.google.mlkit:* / com.google.android.gms:play-services-mlkit-*",
+    "recorded_kind": "other",
+    "actual": "ML Kit Terms of Service / Android SDK License",
+    "impact": "界面写 Apache-2.0 不符（共 15+4 个构件）。"
+   }
+  ]
+ },
+ "in_app_screen": {
+  "file": "app/src/main/java/com/ai/assistance/operit/ui/features/about/screens/OpenSourceLicenses.kt",
+  "entries": 68,
+  "verified_conflicts": 7,
+  "note": "逐条对账用的是 POM <licenses> 原文与联网取证结果。自动化的名称↔坐标模糊匹配做过一版（C:/tmp/xcheck2.py），但它会把 junrar 的 \"The Unlicense\" 与 \"UnRar License\" 判成一致、也会把 AndroidX 的 token 匹配到任意含 core/ktx 的构件，因此本表的每一条都是手工核对过的，不采用自动匹配结果。"
+ },
+ "dex_needle_delta_attribution": {
+  "pair": {
+   "unanchored": "com/itextpdf/text/",
+   "anchored": "Lcom/itextpdf/text/"
+  },
+  "counts": {
+   "unanchored": 1814,
+   "anchored": 1808
+  },
+  "delta_located": 6,
+  "verdict": "差额 6 处全部不是类型描述符：位于 classes39.dex 的字符串池，前一字节是 ULEB128 字符串长度而非 `L`，内容是 itextg 运行时加载资源用的路径字面量。itextg 的类链入面以锚定计数 1,808 为准。",
+  "occurrences": [
+   {
+    "dex": "classes39.dex",
+    "offset_hex": "0x689502",
+    "prev_byte_hex": "1d",
+    "context": "fortyfouram.locale.intent.extra.BUNDLE..com/itextpdf/text/l10n/error/..com/itextpdf/text/pdf/fonts/."
+   },
+   {
+    "dex": "classes39.dex",
+    "offset_hex": "0x689521",
+    "prev_byte_hex": "1c",
+    "context": ".BUNDLE..com/itextpdf/text/l10n/error/..com/itextpdf/text/pdf/fonts/.\"com/itextpdf/text/pdf/fonts/cm"
+   },
+   {
+    "dex": "classes39.dex",
+    "offset_hex": "0x68953f",
+    "prev_byte_hex": "22",
+    "context": "n/error/..com/itextpdf/text/pdf/fonts/.\"com/itextpdf/text/pdf/fonts/cmaps/.9com/itextpdf/text/pdf/fo"
+   },
+   {
+    "dex": "classes39.dex",
+    "offset_hex": "0x689563",
+    "prev_byte_hex": "39",
+    "context": "s/.\"com/itextpdf/text/pdf/fonts/cmaps/.9com/itextpdf/text/pdf/fonts/cmaps/cjk_registry.properties.)c"
+   },
+   {
+    "dex": "classes39.dex",
+    "offset_hex": "0x68959e",
+    "prev_byte_hex": "29",
+    "context": "df/fonts/cmaps/cjk_registry.properties.)com/itextpdf/text/pdf/fonts/glyphlist.txt.'com/itextpdf/text"
+   },
+   {
+    "dex": "classes39.dex",
+    "offset_hex": "0x6895c9",
+    "prev_byte_hex": "27",
+    "context": "/itextpdf/text/pdf/fonts/glyphlist.txt.'com/itextpdf/text/pdf/hyphenation/hyph/.1com/kyant/backdrop/"
+   }
+  ],
+  "script": "scripts/itextg_ctx.py（输出 scripts/itextg_ctx.json）"
+ },
+ "own_license_text": {
+  "canonical_reference": {
+   "url": "https://www.gnu.org/licenses/lgpl-3.0.txt",
+   "bytes": 7652,
+   "lines": 165,
+   "sha256_16": "e3a994d82e644b03",
+   "crlf": 0,
+   "embeds_gpl_full_text": false,
+   "last_line": "Library."
+  },
+  "operit_root": {
+   "path": "LICENSE",
+   "bytes": 7817,
+   "lines": 165,
+   "sha256_16": "7d3a95e5e0697806",
+   "crlf": 165,
+   "nonascii_bytes": 0,
+   "byte_equal_canonical_lf_normalised": true,
+   "byte_equal_canonical_as_is": false,
+   "canonical_body_starts_at_line": 0,
+   "canonical_lines_aligned": 165,
+   "canonical_lines_total": 165,
+   "first_mismatches": [],
+   "lines_after_canonical_span": 0,
+   "contains_gpl_preamble_opening": false,
+   "states_verbatim_only": true,
+   "token_diff": {
+    "canonical_tokens": 1234,
+    "file_tokens": 1234,
+    "canonical_is_in_order_subsequence": true,
+    "replaced_or_deleted_groups": [],
+    "inserted_groups": []
+   },
+   "warning_line_alignment_is_not_the_right_measure": "canonical_lines_aligned counts positional matches and collapses when a single blank line shifts the rest of the file; read token_diff instead"
+  },
+  "operit_terminal": {
+   "path": "terminal/LICENSE",
+   "bytes": 10296,
+   "lines": 211,
+   "sha256_16": "40c41f5f4ed9e2f2",
+   "crlf": 210,
+   "nonascii_bytes": 99,
+   "byte_equal_canonical_lf_normalised": false,
+   "byte_equal_canonical_as_is": false,
+   "canonical_body_starts_at_line": 8,
+   "canonical_lines_aligned": 17,
+   "canonical_lines_total": 165,
+   "lines_after_canonical_span": 38,
+   "contains_gpl_preamble_opening": true,
+   "states_verbatim_only": true,
+   "token_diff": {
+    "canonical_tokens": 1234,
+    "file_tokens": 1540,
+    "canonical_is_in_order_subsequence": true,
+    "replaced_or_deleted_groups": [],
+    "inserted_groups": [
+     "Operit AI 项目许可证 (基于GNU宽通用公共许可证v3.0) 版权所有 (C) 2023-2024 Operit AI 项目团队 ========================================================================== GNU宽通用公共许可证第3版 ========================================",
+     "-",
+     "========================================================================== GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/> Every"
+    ]
+   },
+   "warning_line_alignment_is_not_the_right_measure": "canonical_lines_aligned counts positional matches and collapses when a single blank line shifts the rest of the file; read token_diff instead"
+  },
+  "verdict": "两份自有 LICENSE 的许可类别都是 LGPL-3.0，且条款词与 FSF 官方全文逐词一致（canonical_is_in_order_subsequence=true、replaced_or_deleted_groups=0）。根 LICENSE 与官方文本仅差行尾 CRLF。terminal/LICENSE 有 3 处插入：中文标题与版权声明、正文末一个多余的 `-`、以及 LGPL 正文之后另接的 GPL-3.0 标题＋序言开头并以一句 \"omitted for brevity\" 括注截断。",
+  "action": "交付条款文本时取 FSF 官方 LGPL-3.0 与 GPL-3.0 全文，不复制上游这两个文件；上游文件保留作出处与版权声明。",
+  "method_warning": "行级对齐（canonical_lines_aligned，terminal 得 17/165）在许可文本上是假信号：文件开头一个空行的偏移就会让后文逐行错位。判据必须用词级 diff。",
+  "script": "scripts/own_license_compare.py（输出 scripts/own_license_compare.json）"
+ },
+ "bundled_apk_accessibility": {
+  "artifact": "app/src/main/assets/accessibility.apk",
+  "artifact_bytes": 2763980,
+  "artifact_version": "1.5",
+  "upstream_repo": "AAswordman/OperitAccessbility",
+  "verdict": "无可核验授权：随包二进制对应的那个公开提交（main 头 1221cf08…）整棵树没有任何授权文本，唯一的项目级许可信号是 README 里一枚 shields.io 徽章。来源侧本轮反而闭合了一步（见 version_control_info），但闭合方式暴露出未记录的本地改动。",
+  "refs": {
+   "git_ls_remote_heads_tags": [
+    {
+     "ref": "refs/heads/main",
+     "sha": "1221cf08c40f48ee5dfa68d3fc2c5aacbbf01b6a"
+    }
+   ],
+   "tags": [],
+   "releases": [],
+   "note": "git ls-remote 是判断分支真伪的权威通道，优先于任何 HTTP 端点探测。"
+  },
+  "false_branch_master": {
+   "raw_master_README": {
+    "status": 200,
+    "bytes": 1957,
+    "same_bytes_as_main": true
+   },
+   "raw_bogus_branch_README": {
+    "status": 404
+   },
+   "tree_master": {
+    "status": 302,
+    "location": ".../tree/main"
+   },
+   "tree_bogus_branch": {
+    "status": 404
+   },
+   "atom_master_README": {
+    "status": 404
+   },
+   "atom_main_README": {
+    "status": 200,
+    "entry_count": 3
+   },
+   "conclusion": "master 不是活跃分支；raw 端点对改名前的旧默认分支仍返回内容。第二轮'该仓库 main/master 均无 LICENSE'的措辞据订正为'只有 main 一个分支'。",
+   "method_correction": "判断分支是否存在不能凭 raw.githubusercontent 的 200；要用 git ls-remote，或看 github.com/<repo>/tree/<ref> 是否被重定向。"
+  },
+  "full_tree_probe": {
+   "channel": "codeload.github.com/<repo>/tar.gz/refs/heads/main",
+   "tarball_bytes": 79038,
+   "tarball_sha256_16": "51b326fc767f42b8",
+   "entry_count": 78,
+   "root_entries": [
+    ".gitignore",
+    ".idea/",
+    "README.md",
+    "app/",
+    "build.gradle.kts",
+    "docs/",
+    "gradle.properties",
+    "gradle/",
+    "gradlew",
+    "gradlew.bat",
+    "settings.gradle.kts"
+   ],
+   "licence_filename_match_any_depth": [],
+   "licence_history_atom": {
+    "path": "LICENSE",
+    "ref": "main",
+    "status": 404,
+    "positive_control": {
+     "path": "README.md",
+     "status": 200,
+     "entry_count": 3
+    }
+   },
+   "raw_probe_12_spellings": {
+    "all_status": 404,
+    "names": [
+     "LICENSE",
+     "LICENSE.md",
+     "LICENSE.txt",
+     "LICENCE",
+     "LICENCE.md",
+     "COPYING",
+     "license",
+     "licence",
+     "copying",
+     "LICENSE-MIT",
+     "LICENSE-APACHE",
+     "NOTICE"
+    ]
+   }
+  },
+  "only_apache_text_in_tree": {
+   "files": [
+    "gradlew:4-16",
+    "gradlew.bat:2-14"
+   ],
+   "covers": "Gradle wrapper 脚本自身（Copyright 2015 the original author or authors）",
+   "does_not_cover": "仓库的 6 个 Kotlin 源文件、AndroidManifest.xml、AIDL —— 这些文件内无任何 Copyright/SPDX 头（全树 rg 确认）"
+  },
+  "only_project_licence_signal": {
+   "file": "README.md",
+   "line": 5,
+   "text": "![许可证](https://img.shields.io/badge/许可证-Apache%202.0-蓝色.svg)",
+   "assessment": "徽章是一张 SVG 的 URL：无条款正文、无版权声明、无贡献者授权，不构成可核验授权。"
+  },
+  "signature": {
+   "dn": "O=dec, OU=sw, CN=aa",
+   "cert_sha256": "d7ccd870912d42fa761890df41cdf6c78cdcf13a619fb316bae9d24df5e15191",
+   "shared_with": "desktop.apk（同一证书）",
+   "jar_signature": "无 META-INF/*.RSA，仅 APK 签名方案"
+  },
+  "disposition": "M1 已把该载荷及其解包→安装→无障碍代点链路移出分发矩阵并在执行层禁用（capability-gap.md、execution-entrypoints.md §3.9、真机行 E15）。因此本缺口的关闭动作是'按计划删除分发物'，而不是'向作者索文'；不以授权的取得来替代移除。",
+  "scripts": [
+   "scripts/ax_refs_and_tree.py",
+   "scripts/bundled_apk_vcs_info.py"
+  ],
+  "version_control_info": {
+   "channel": "unzip -p <apk> META-INF/version-control-info.textproto（AGP 写入，零联网）",
+   "accessibility_apk": {
+    "system": "GIT",
+    "local_root_path": "$PROJECT_DIR",
+    "revision": "1221cf08c40f48ee5dfa68d3fc2c5aacbbf01b6a",
+    "bytes": 120,
+    "matches_git_ls_remote_main_head": true
+   },
+   "desktop_apk": {
+    "generate_error_reason": "NO_SUPPORTED_VCS_FOUND",
+    "reading": "打包时不在任何 git 工作树内——'无来源'的正向证据，比'搜不到仓库'硬。"
+   },
+   "shizuku_apk": {
+    "file_present": false,
+    "note": "其来源已由 v13.6.0 官方资产逐字节一致 + CN=Rikka 签名闭环，不需要这条通道。"
+   },
+   "correction": "上一版写'没有任何公开提交能声称对应随包 1.5 的二进制'——错了。revision 与 main 头完全相同，随包确实构建自那个公开提交的工作树。已在 markdown §8 订正。"
+  },
+  "uncommitted_local_change": {
+   "shipped_badging": {
+    "versionCode": 4,
+    "versionName": "1.5",
+    "targetSdk": 34,
+    "package": "com.ai.assistance.operit.provider",
+    "tool": "aapt2 36.0.0 dump badging"
+   },
+   "source_at_recorded_commit": {
+    "versionCode": 3,
+    "versionName": "1.4",
+    "minSdk": 26,
+    "targetSdk": 34,
+    "source": "app/build.gradle.kts:22-25"
+   },
+   "no_version_override_found": "gradle.properties / 根与 app 的 build.gradle.kts / libs.versions.toml 中无 1.5 或 versionName 覆盖",
+   "deduction": "textproto 能给出 revision 即证明构建时 .git 在位且 HEAD 为该提交，而版本字段不符，故该次构建的工作树相对提交被改过且未提交；AGP 不证明树干净。",
+   "residual": "改动内容不可从公开物复原（textproto 只给 commit 不给 diff，仓库无 1.5 提交、无 tag、无 release）。",
+   "class_of_finding": "分发物与可核验来源之间存在未记录改动——与 terminal/LICENSE 截断、界面凭空写 MIT 同类。"
+  }
+ }
+}

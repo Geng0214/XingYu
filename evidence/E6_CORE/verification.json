@@ -1,0 +1,96 @@
+{
+  "stage": "E6_CORE",
+  "status": "CORE_IMPLEMENTED_STORAGE_AND_UI_PENDING",
+  "verifiedAtUtc": "2026-09-20T22:30:43.622027+00:00",
+  "sourceCommit": "2a72ca2f8c0ae448a6b83fbc7ad358e650f863ee",
+  "publishedVersion": "0.33.0",
+  "versionCode": 34,
+  "roomSchema": 28,
+  "backupVersion": 23,
+  "newApkProduced": false,
+  "jvm": {
+    "suites": 56,
+    "tests": 401,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "playSuites": [
+    {
+      "name": "com.ai.assistance.operit.PlayCoordinatorTest",
+      "tests": 7,
+      "cases": [
+        "providerToolCallCannotExecuteAnExtensionFromActivityContext",
+        "lockUnlockEpochStillCancelsResponseAndUnrelatedRoleMutationDoesNotCancel",
+        "missingCredentialFinishesRequestWithOriginalFailureAndReleasesGate",
+        "anotherGenerationBlocksBeforeAnyActivityRowIsPrepared",
+        "twentyDelayedCancelRetryConfigEditAndDeletionRoundsRejectOldTokensAndHoldGlobalGate",
+        "invalidResponseKeepsReportedUsageAndDoesNotAlterBoard",
+        "cancellationDuringPreparationClosesTokenWithoutReadingCredentialOrCallingProvider"
+      ],
+      "reportSha256": "38db5724d0edf468aaed327af790e16540ddf86153d2ec63dd8c5ec60cfc8217"
+    },
+    {
+      "name": "com.ai.assistance.operit.PlayGenerationTest",
+      "tests": 11,
+      "cases": [
+        "pauseAndRestartInvalidatePendingActionsWithoutLosingConfirmedStory",
+        "cancellationAfterRoundEndNeverReturnsAUsableAction",
+        "streamRejectsMissingEndDoubleEndLateTextAndOversize",
+        "hiddenDeckIsNeverSentEvenAfterSaveRecovery",
+        "wrongRoleSpaceChatConfigActivityOrVersionCannotPrepareOrCommit",
+        "fiftyAlternatingRequestsContainOnlyTheirTenOwnMarkers",
+        "invalidOccupiedCoordinateKeepsExactStateAndAllowsNewRequest",
+        "onlyOneLegalActionCanBeAcceptedAndNoTextBecomesExecutable",
+        "streamPreservesSplitChineseAndEmojiAndReportsUsageBeforeValidation",
+        "requestFreezesModelAndPersonaWithoutPrivateHistoryOrToolContext",
+        "rawActivityKeepsGameProtocolButExcludesCharacterPersona"
+      ],
+      "reportSha256": "d09ec3734319e82fcd8ed0301f0ddcc870978ae0394681aa7d3effe675a125b3"
+    },
+    {
+      "name": "com.ai.assistance.operit.PlayRulesTest",
+      "tests": 10,
+      "cases": [
+        "malformedSavesRejectUnknownFieldsCoercionsDuplicatesAndIllegalHistory",
+        "escapedStoryCannotCreateAnUnreadableOversizedSave",
+        "memoryMismatchMustBeSeenBeforeTurnChangesAndMatchingKeepsTurn",
+        "illegalMovesLeaveOriginalUntouchedAndSavedHistoryIsImmutable",
+        "hiddenPermutationsHaveIdenticalObservationsAndOnlySeenFacesBecomePublic",
+        "memoryCanTieAndRestoreDoesNotReshuffle",
+        "storyPreservesChineseEmojiOnlyConfirmedTurnsAndExplicitEnding",
+        "fullBoardWithoutFiveIsDrawIncludingBoundaryDiagonals",
+        "fiveInEachDirectionIsLocalTerminalAndCannotBeOverwritten",
+        "bridgeCanWinWithSixAndRoleCanStartAndWin"
+      ],
+      "reportSha256": "e6c137b4d1847c8004eeea54a69c9845aaba5310c7470fac1b41e3b98f2d9fc7"
+    }
+  ],
+  "lint": {
+    "severityCounts": {
+      "Warning": 62,
+      "Hint": 1
+    },
+    "reportSha256": "d46e306268fb5bbdb02c74dd2470c90020e8bf69ed3ae0adef6ebb8778548c4f"
+  },
+  "androidTestCompilation": "PASS",
+  "androidDeviceExecution": "NOT_RUN_NO_DEVICE",
+  "databaseIsolation": "NOT_IMPLEMENTED",
+  "upgradeAndBackup": "NOT_IMPLEMENTED",
+  "realProviders": "NOT_RUN",
+  "interactivePages": "NOT_IMPLEMENTED",
+  "evidenceLogs": [
+    {
+      "path": "regression-build.txt",
+      "sha256": "3bd7e3b3e4ad5f8ac93d196a0ae52dc63554df00f41399c22c92c76fef10f505"
+    },
+    {
+      "path": "rules-protocol-build.txt",
+      "sha256": "c535d7d38bd2178cbb9e6c5b9101e3baed7bdb10f993323dfdc312d41a0ba3bb"
+    },
+    {
+      "path": "targeted-build.txt",
+      "sha256": "04a22bb48ab15000758f48c16421b7049184b0016f6620ec97cc02f701eeab72"
+    }
+  ]
+}

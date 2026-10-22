@@ -1,0 +1,27 @@
+{
+  "status": "NONZERO_PCM_OBSERVED_DESKTOP_ONLY",
+  "environment": "Codex in-app Chromium browser; not Android WebView",
+  "publicFixture": "BV1B7411m7LV",
+  "officialPlayer": "https://player.bilibili.com/player.html?bvid=BV1B7411m7LV&p=1&autoplay=0",
+  "crossOrigin": "anonymous",
+  "sourceKind": "MSE_BLOB",
+  "initialReadyState": 4,
+  "graph": "MediaElementAudioSource -> Analyser -> zero Gain -> destination",
+  "contextState": "running",
+  "sampleRate": 48000,
+  "sampleCount": 2048,
+  "peakAbsoluteFloatSample": 0.23935459554195404,
+  "observedMediaSeconds": 36.539575,
+  "pagePausedAfterProbe": true,
+  "audioContextClosed": true,
+  "temporaryTabClosed": true,
+  "rawPcmStored": false,
+  "mediaUrlTokensOrCookiesStored": false,
+  "limitations": [
+    "Production WebView mute and message transport not used",
+    "Android WebView execution not run",
+    "Native AudioTrack output not run",
+    "Actual audiovisual offset not measured",
+    "No proof of sole audible output or absence of WebView storage residue"
+  ]
+}

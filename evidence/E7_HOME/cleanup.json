@@ -1,0 +1,34 @@
+{
+  "bytesBefore": 25775521,
+  "bytesAfter": 27333435,
+  "obsoleteBaselineRemovedBytes": 9947431,
+  "keptUpgradeBaseline": "output/upgrade-baseline/local-companion-0.38.0.apk",
+  "filesAfter": [
+    {
+      "path": "output/delivery.json",
+      "bytes": 9264,
+      "sha256": "f08e4ec9a41a75680c947cd9da030d7d6fec7992e55aa4056c8bfe589a2a1be8"
+    },
+    {
+      "path": "output/local-companion-0.39.0.apk",
+      "bytes": 11367635,
+      "sha256": "816e5b3cc42617e702415b8b81f6b499864a7e33c887cadb062842f375333bb7"
+    },
+    {
+      "path": "output/local-companion-source.zip",
+      "bytes": 4685677,
+      "sha256": "8bcdc27f6302b37802a8047d55c4271d9596226d4ca506bc3c637de70827bc5f"
+    },
+    {
+      "path": "output/upgrade-baseline/local-companion-0.38.0.apk",
+      "bytes": 11244187,
+      "sha256": "46129be9cbc5e9a064b7d922ce121f83e009195f61ff9285eb2de3700ac72013"
+    },
+    {
+      "path": "output/安装说明.md",
+      "bytes": 26672,
+      "sha256": "565280e203651d20f3d2b2481c57bd48a9e6b86629959cc4e0284d3dcaed95cc"
+    }
+  ],
+  "scope": "output only; explicit paths, hashes, reparse and exclusive-access checks before move/delete"
+}

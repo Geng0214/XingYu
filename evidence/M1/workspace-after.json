@@ -1,0 +1,26 @@
+{
+  "measuredAt": "2026-09-19T12:41:03.465Z",
+  "directories": [
+    {
+      "name": ".gradle-m0",
+      "files": 39497,
+      "bytes": 2981656117
+    },
+    {
+      "name": "keystores",
+      "files": 1,
+      "bytes": 2792
+    },
+    {
+      "name": "manual-deps-cache",
+      "files": 3,
+      "bytes": 52842165
+    },
+    {
+      "name": "operit",
+      "files": 3098,
+      "bytes": 1020091185
+    }
+  ],
+  "copies": []
+}

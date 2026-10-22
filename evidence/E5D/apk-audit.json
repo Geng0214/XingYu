@@ -1,0 +1,58 @@
+{
+  "apk": "app-release.apk",
+  "bytes": 9730942,
+  "sha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "versionCode": 33,
+  "versionName": "0.32.0",
+  "entryCount": 147,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.USE_BIOMETRIC",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.RECORD_AUDIO",
+    "cn.localfirst.companion.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "exportedActivityCount": 1,
+  "services": 1,
+  "receivers": 1,
+  "providers": 0,
+  "binaryManifestSha256": "04f2f3f827a0f340c91c80fc58c4f515b601d11e0e8bc99612c7355c9a99b18a",
+  "binaryManifestVerifiedWithAapt2": true,
+  "forbiddenAssets": [],
+  "nativeLibraries": [
+    {
+      "name": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "sha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libquickjsjni.so",
+      "sha256": "ad02a0d280928a6b14e86db7d9e6007ace2d14bfce94c49fdb9bd20735e1899e",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libsqlcipher.so",
+      "sha256": "bc85746647ce4ea5f390eccd61e5236fbd11786a91802877b9fdbbb66a55192d",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    }
+  ],
+  "status": "PASS",
+  "limitations": "Static package validation only. Installation, Keystore behavior and plaintext storage scans require a real Android device."
+}

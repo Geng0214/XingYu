@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scopeAlternations": 50,
+  "syntheticMessages": 240,
+  "pages": [
+    50,
+    50,
+    20
+  ],
+  "literalSearch": true,
+  "terminalFavoriteGuard": true,
+  "deleteRemovesFavorites": true,
+  "portraitIsolation": true,
+  "pinning": true,
+  "schemaMatchesRoomV4": true,
+  "oldWallpaperAndCredentialPreserved": true,
+  "orphanDetectedBeforeAlter": true,
+  "limitation": "Host SQLite only; encrypted Android migration and UI remain device tests."
+}

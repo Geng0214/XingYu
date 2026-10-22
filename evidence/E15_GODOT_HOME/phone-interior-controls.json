@@ -1,0 +1,112 @@
+{
+  "mapBounds": [
+    0,
+    212,
+    900,
+    1408
+  ],
+  "controls": [
+    {
+      "label": "",
+      "bounds": [
+        622,
+        241,
+        737,
+        356
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        756,
+        241,
+        871,
+        356
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        163,
+        1130,
+        278,
+        1245
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        29,
+        1264,
+        144,
+        1379
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        163,
+        1264,
+        278,
+        1379
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        297,
+        1264,
+        412,
+        1379
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        698,
+        1004,
+        871,
+        1182
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        698,
+        1201,
+        871,
+        1379
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        508,
+        413,
+        681,
+        591
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        700,
+        445,
+        815,
+        560
+      ],
+      "enabled": true
+    }
+  ],
+  "outside": [],
+  "status": "PASS"
+}

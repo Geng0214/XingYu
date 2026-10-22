@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "migrationSha256": "0aa14af1d6561466550fd7f631766132af2f6a415bd4068f498a4580aaeaf716",
+  "daoSha256": "fdab06404f315b92e6e5a6dc7f326f9baf977ada5e1c0530adbf906b2bae620b",
+  "schemaMatchesRoom30": true,
+  "oldRowsPreserved": true,
+  "ddlRollback": true,
+  "orphanPreflight": true,
+  "uniqueHomePerRole": true,
+  "commandIdentityAndVersionUnique": true,
+  "alternatingReads": 50,
+  "markersPerRole": 10,
+  "casAndRollbackRounds": 20,
+  "roleCascade": true,
+  "environment": "host SQLite; not Android/SQLCipher or concurrent Room execution"
+}

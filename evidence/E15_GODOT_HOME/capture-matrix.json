@@ -1,0 +1,178 @@
+{
+  "apkSha256": "d553fee0b827c93f2a27f7660fe2275134bbd1cccfdc7cf148ef5dbe5cb03011",
+  "captureMethod": "Native adb screencap, unedited pixels; uiautomator XML from the displayed home.",
+  "captures": [
+    {
+      "name": "invitation-after-menu",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "78aae7b0d481ba9c0ca09cf137d708251155e157583b19c3b4dac1f6deebc4bf",
+      "controls": "PASS"
+    },
+    {
+      "name": "invitation-after",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "7888dcbb030332d9534a8efee427705b302824c58968d161975b91c0a35567ba",
+      "controls": "PASS"
+    },
+    {
+      "name": "invitation-bag",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "d10991554bc2e0eb4f85b950d13634c887ebb1f76ba7d45fe98932bac3cca1b1",
+      "controls": "PASS"
+    },
+    {
+      "name": "invitation-before",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "24ae17253fcef170b874807e9a89c715aa5e16adf3ffd29f784538e31c95d8e3",
+      "controls": "PASS"
+    },
+    {
+      "name": "invitation-menu",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "dee1fd67c8ca150b3ac65bedb9cf7a5ec46003bb78a0631c6b03c0278d169a2a",
+      "controls": "PASS"
+    },
+    {
+      "name": "landscape",
+      "size": [
+        1600,
+        900
+      ],
+      "sha256": "3823845b29367c916ffcd43eea2c5d24a697de21afa4f888cb0453f041393743",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-activity",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "2442f3caddfee2072bf3f794953e6becd3aec964cbd0de1bf41b6e9d532d3151",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-bag",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "cd62e7ab8e0b37f556312fd6081f66bbe008fb1da3508c9cce7ed5889ccb7567",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-crop",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "c3b8d012765fb67dfc890e427ef4162ba86f350d77ee6d6a69d71a5f272d54fc",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-harvest",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "ec66fc1b7603df4a395fff91179ef747997547d13e4519f769612cbb6ba3f8f7",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-interior",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "033d9d792675edcb3b4c5fa10d219e1dccb6b1e9e1ced85234f968ee06a61a4e",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-large-bag",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "d792dc8779f2e6ad2fdf7fc1c4fab54ea4703107f8827f7d9c5d387b3fb5aa77",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-large-text",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "fe20b99e8b0bbebb460dd469990c285d7559fa4ab8826cfd177805aa953c48f8",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone-overview",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "09578b7828412339f193e37d3bc945c9765d13cd0445a1961086db8c9b7c8a11",
+      "controls": "PASS"
+    },
+    {
+      "name": "phone",
+      "size": [
+        900,
+        1600
+      ],
+      "sha256": "15addd5b47ecd9ac18f5c5c5a10596b75c4ea338f33393174b3928857db52498",
+      "controls": "PASS"
+    },
+    {
+      "name": "reduced-motion-gameplay",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "4ed01c74c0bb805dd038bbf5087faab9313635da839bcd39fb93c6332c89ea2a",
+      "controls": "PASS"
+    },
+    {
+      "name": "tablet-bag",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "b18bf68a81c35892f0bb77fb96ceaa1ecd6ee4752a6f727022a2bafffa664264",
+      "controls": "PASS"
+    },
+    {
+      "name": "tablet-reentry",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "6d8e2f202809520b4a0d9e9b8d0d5ec1cfa642fd502bc6ecedb4df1f0017ac1b",
+      "controls": "PASS"
+    },
+    {
+      "name": "tablet",
+      "size": [
+        1920,
+        1200
+      ],
+      "sha256": "1d5cc692e0de9992da8b84e306865ec404832965f77a67e0f8b4dec0c02afa56",
+      "controls": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

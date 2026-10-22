@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "cycles": [
+    {
+      "cycle": 1,
+      "sameProcess": true,
+      "returnedToHome": true
+    },
+    {
+      "cycle": 2,
+      "sameProcess": true,
+      "returnedToHome": true
+    },
+    {
+      "cycle": 3,
+      "sameProcess": true,
+      "returnedToHome": true
+    }
+  ],
+  "backgroundResumeSameProcess": true,
+  "pid": "9590",
+  "scope": "Native navigation and background resume on MuMu; no force-stop during these actions."
+}

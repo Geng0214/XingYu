@@ -1,0 +1,23 @@
+{
+  "status": "CORE_VERIFIED_FEATURE_INCOMPLETE",
+  "sourceCommit": "23c4ac7fe78ed459cca55cc0d62a88ff002535a1",
+  "unitTests": {
+    "tests": 277,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "groupCoreTests": 10,
+  "androidTestCompilation": "PASS",
+  "groupPersistence": "NOT_IMPLEMENTED",
+  "groupBackup": "NOT_IMPLEMENTED",
+  "groupProductUi": "NOT_IMPLEMENTED",
+  "groupDeviceAcceptance": "NOT_RUN",
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/data/model/GroupConversation.kt": "938d7051edd681dcfd03250752299b525fe948c23df3724c8e028822a067878c",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/GroupRequestContext.kt": "53978e3ab4604e722f6082df52814c6bf6209555e8bcf823fe2bfe670fa3cd52",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/ChatCoordinator.kt": "38ae70636cef90f30379f5a8f57b878d4c9c15417b0cde91c1484e39d1e16399",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/ToolChatService.kt": "5f851f92ae628083a4cdc648b31dcb0ba9732861728ffc5e777dd9bb272dfea1",
+    "app/src/test/java/com/ai/assistance/operit/GroupRequestContextTest.kt": "30e5f6e86e0e064171ef9fac7b316673684340da12747d613104ba73ece3220c"
+  }
+}

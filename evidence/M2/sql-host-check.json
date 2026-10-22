@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "alternatingScopes": 50,
+  "migrationSchemaMatchesRoomV2": true,
+  "existingRowsPreserved": true,
+  "orphanMigrationRejected": true,
+  "guardedWritesAndDeletes": true,
+  "limitation": "Host SQLite in memory. Android Room transactions, SQLCipher, Keystore and APK upgrade require device tests."
+}

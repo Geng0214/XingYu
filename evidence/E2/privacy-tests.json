@@ -1,0 +1,59 @@
+{
+  "sourceCommit": "f4f7be9fc7a0f9f41d3f892b3f8512b569081d9c",
+  "status": "PASS",
+  "counts": {
+    "tests": 90,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.ai.assistance.operit.ChatBubblesTest",
+      "tests": 5
+    },
+    {
+      "name": "com.ai.assistance.operit.ChatCoordinatorTest",
+      "tests": 8
+    },
+    {
+      "name": "com.ai.assistance.operit.McpSessionTest",
+      "tests": 11
+    },
+    {
+      "name": "com.ai.assistance.operit.PrivacyGateTest",
+      "tests": 9
+    },
+    {
+      "name": "com.ai.assistance.operit.ProviderTest",
+      "tests": 13
+    },
+    {
+      "name": "com.ai.assistance.operit.QuickJsScriptTest",
+      "tests": 8
+    },
+    {
+      "name": "com.ai.assistance.operit.RequestContextTest",
+      "tests": 1
+    },
+    {
+      "name": "com.ai.assistance.operit.RoleTemplateTest",
+      "tests": 5
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolChatServiceTest",
+      "tests": 11
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolDispatcherTest",
+      "tests": 10
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolPkgCodecTest",
+      "tests": 9
+    }
+  ],
+  "androidRuntime": "NOT_RUN",
+  "systemAuthentication": "NOT_RUN",
+  "note": "Android UI test injects a trusted authentication result; it cannot validate real system authentication."
+}

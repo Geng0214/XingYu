@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.HomeStateTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2026-09-21T03:24:36.141Z" hostname="DESKTOP-8LJVBMI" time="0.036">
+  <properties/>
+  <testcase name="plotErrorsDoNotConsumeSeedsAndAllSixPlotsAreIndependent" classname="com.ai.assistance.operit.HomeStateTest" time="0.006"/>
+  <testcase name="neighborIsLocalOptInAndClaimsSurviveTogglingAndRestart" classname="com.ai.assistance.operit.HomeStateTest" time="0.004"/>
+  <testcase name="fullHarvestRetainsPlantAndFullGiftRetainsOwnInventory" classname="com.ai.assistance.operit.HomeStateTest" time="0.002"/>
+  <testcase name="malformedTypesUnknownFieldsAndForgedSeedsAreRejected" classname="com.ai.assistance.operit.HomeStateTest" time="0.004"/>
+  <testcase name="clockRollbackAndOverflowRejectWithoutRewritingProgress" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <testcase name="invalidTimePlotShapeAndSeedConservationRejectForgedSave" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <testcase name="giftAndWearRespectSeparateInventoriesAndReserveWornPiece" classname="com.ai.assistance.operit.HomeStateTest" time="0.002"/>
+  <testcase name="staleAndForeignActionsAreRejectedForEveryIdentityComponent" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <testcase name="invalidQuantitiesCannotMintOrDrainItems" classname="com.ai.assistance.operit.HomeStateTest" time="0.002"/>
+  <testcase name="twentyCompetingVersionsPermitOnlyOneCommittedAction" classname="com.ai.assistance.operit.HomeStateTest" time="0.002"/>
+  <testcase name="allPublishedCollectionsAreImmutable" classname="com.ai.assistance.operit.HomeStateTest" time="0.0"/>
+  <testcase name="completeFarmKitchenTailorGiftAndOutfitJourney" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <testcase name="seedsCycleForTwentyHarvestsAndCannotBeLostByClearingOrGifting" classname="com.ai.assistance.operit.HomeStateTest" time="0.003"/>
+  <testcase name="encodedSnapshotPreservesGrowingPlotsGiftsAndClaims" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <testcase name="fiftyAlternatingScopesKeepNamesInventoryAndPlotsIndependent" classname="com.ai.assistance.operit.HomeStateTest" time="0.003"/>
+  <testcase name="virtualPlotMaturesAtBoundaryAndDoesNotGrantAllMissedCycles" classname="com.ai.assistance.operit.HomeStateTest" time="0.0"/>
+  <testcase name="maturityUsesExactBoundaryAndWaterOnlyShortensOnce" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <testcase name="missingIngredientsAndFullOutputRollbackAllConsumption" classname="com.ai.assistance.operit.HomeStateTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

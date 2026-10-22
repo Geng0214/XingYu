@@ -1,0 +1,10 @@
+{
+  "fixture": "https://player.bilibili.com/player.html?bvid=BV1B7411m7LV&p=1&autoplay=0",
+  "environment": "Desktop Chromium in temporary Codex browser tab",
+  "injection": "Shipped bilibili-audio.js and bilibili-audio-worklet.js after page load; synthetic native bridge acknowledges PCM without audible playback",
+  "normal": {"rate": 48000, "packetsCumulative": 163, "peakPcm16": 32767, "errors": 0},
+  "zeroVolume": {"packetsCumulative": 117, "peakPcm16": 0, "playingAfterPause": false, "errors": 0},
+  "cleanup": {"videoPaused": true, "pagehideDispatched": true, "temporaryTabClosed": true},
+  "retained": "Counts and peak only; no PCM, cookies or CDN token URLs retained",
+  "limitations": ["Not Android WebView setAudioMuted", "No native AudioTrack or route observation", "Not AV synchronization or audible-output validation", "Initial combined async probe exceeded the CDP call timeout; subsequent state confirmed completion, and nonzero capture was repeated in a separate completed call"]
+}

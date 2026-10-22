@@ -1,0 +1,38 @@
+[
+ {
+  "dex": "classes39.dex",
+  "off": 6853890,
+  "prev_byte": "1d",
+  "ctx_ascii": "fortyfouram.locale.intent.extra.BUNDLE..com/itextpdf/text/l10n/error/..com/itextpdf/text/pdf/fonts/."
+ },
+ {
+  "dex": "classes39.dex",
+  "off": 6853921,
+  "prev_byte": "1c",
+  "ctx_ascii": ".BUNDLE..com/itextpdf/text/l10n/error/..com/itextpdf/text/pdf/fonts/.\"com/itextpdf/text/pdf/fonts/cm"
+ },
+ {
+  "dex": "classes39.dex",
+  "off": 6853951,
+  "prev_byte": "22",
+  "ctx_ascii": "n/error/..com/itextpdf/text/pdf/fonts/.\"com/itextpdf/text/pdf/fonts/cmaps/.9com/itextpdf/text/pdf/fo"
+ },
+ {
+  "dex": "classes39.dex",
+  "off": 6853987,
+  "prev_byte": "39",
+  "ctx_ascii": "s/.\"com/itextpdf/text/pdf/fonts/cmaps/.9com/itextpdf/text/pdf/fonts/cmaps/cjk_registry.properties.)c"
+ },
+ {
+  "dex": "classes39.dex",
+  "off": 6854046,
+  "prev_byte": "29",
+  "ctx_ascii": "df/fonts/cmaps/cjk_registry.properties.)com/itextpdf/text/pdf/fonts/glyphlist.txt.'com/itextpdf/text"
+ },
+ {
+  "dex": "classes39.dex",
+  "off": 6854089,
+  "prev_byte": "27",
+  "ctx_ascii": "/itextpdf/text/pdf/fonts/glyphlist.txt.'com/itextpdf/text/pdf/hyphenation/hyph/.1com/kyant/backdrop/"
+ }
+]

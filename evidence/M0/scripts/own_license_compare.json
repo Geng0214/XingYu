@@ -1,0 +1,89 @@
+{
+ "canonical_source": "local copy",
+ "files": {
+  "operit_root": {
+   "path": "LICENSE",
+   "bytes": 7817,
+   "lines": 165,
+   "sha256_16": "7d3a95e5e0697806",
+   "crlf": 165,
+   "nonascii_bytes": 0,
+   "byte_equal_canonical_lf_normalised": true,
+   "byte_equal_canonical_as_is": false,
+   "canonical_body_starts_at_line": 0,
+   "canonical_lines_aligned": 165,
+   "canonical_lines_total": 165,
+   "first_mismatches": [],
+   "lines_after_canonical_span": 0,
+   "contains_gpl_preamble_opening": false,
+   "states_verbatim_only": true,
+   "token_diff": {
+    "canonical_tokens": 1234,
+    "file_tokens": 1234,
+    "canonical_is_in_order_subsequence": true,
+    "replaced_or_deleted_groups": [],
+    "inserted_groups": []
+   },
+   "warning_line_alignment_is_not_the_right_measure": "canonical_lines_aligned counts positional matches and collapses when a single blank line shifts the rest of the file; read token_diff instead"
+  },
+  "operit_terminal": {
+   "path": "terminal/LICENSE",
+   "bytes": 10296,
+   "lines": 211,
+   "sha256_16": "40c41f5f4ed9e2f2",
+   "crlf": 210,
+   "nonascii_bytes": 99,
+   "byte_equal_canonical_lf_normalised": false,
+   "byte_equal_canonical_as_is": false,
+   "canonical_body_starts_at_line": 8,
+   "canonical_lines_aligned": 17,
+   "canonical_lines_total": 165,
+   "first_mismatches": [
+    {
+     "canonical_line": 0,
+     "canonical": "                   GNU LESSER GENERAL PUBLIC LICENSE",
+     "file": "                       GNU LESSER GENERAL PUBLIC LICENSE"
+    },
+    {
+     "canonical_line": 7,
+     "canonical": "",
+     "file": "This version of the GNU Lesser General Public License incorporates"
+    },
+    {
+     "canonical_line": 8,
+     "canonical": "  This version of the GNU Lesser General Public License incorporates",
+     "file": "the terms and conditions of version 3 of the GNU General Public"
+    },
+    {
+     "canonical_line": 9,
+     "canonical": "the terms and conditions of version 3 of the GNU General Public",
+     "file": "License, supplemented by the additional permissions listed below."
+    }
+   ],
+   "lines_after_canonical_span": 38,
+   "contains_gpl_preamble_opening": true,
+   "states_verbatim_only": true,
+   "token_diff": {
+    "canonical_tokens": 1234,
+    "file_tokens": 1540,
+    "canonical_is_in_order_subsequence": true,
+    "replaced_or_deleted_groups": [],
+    "inserted_groups": [
+     "Operit AI 项目许可证 (基于GNU宽通用公共许可证v3.0) 版权所有 (C) 2023-2024 Operit AI 项目团队 ========================================================================== GNU宽通用公共许可证第3版 ========================================",
+     "-",
+     "========================================================================== GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/> Every"
+    ]
+   },
+   "warning_line_alignment_is_not_the_right_measure": "canonical_lines_aligned counts positional matches and collapses when a single blank line shifts the rest of the file; read token_diff instead"
+  }
+ },
+ "canonical": {
+  "url": "https://www.gnu.org/licenses/lgpl-3.0.txt",
+  "bytes": 7652,
+  "lines": 165,
+  "sha256_16": "e3a994d82e644b03",
+  "crlf": 0,
+  "embeds_gpl_full_text": false,
+  "last_line": "Library."
+ }
+}

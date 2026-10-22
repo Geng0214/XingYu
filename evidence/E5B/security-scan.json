@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "apkSha256": "dc91674c74f4545801fabbd7df2d5ad90fa401767ff8d5ace5516518649f8020",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-SECRET-key": [],
+    "synthetic-speech-key": [],
+    "synthetic-migration-key": [],
+    "PRIVATE-MEMORY": [],
+    "DIARY-PRIVATE": [],
+    "PLANNER-PRIVATE-A": [],
+    "PROACTIVE-PRIVATE-A": [],
+    "SPEECH-PRIVATE-A": [],
+    "VOICE-PRIVATE-A": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "continuousVoicePolicy": "The microphone starts only after runtime permission and explicit destination confirmation. Each turn uses the frozen role, space, chat and speech endpoints; interruption cancels the current network or playback operation. PCM and WAV bytes remain in memory.",
+  "limitations": "Static APK entry scan in UTF-8 and UTF-16LE. Device database, WAL, cache, Keystore, microphone routing and live provider traffic require a connected device."
+}

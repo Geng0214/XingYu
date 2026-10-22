@@ -1,0 +1,78 @@
+{
+  "stage": "E6_STORE",
+  "status": "STORAGE_IMPLEMENTED_UI_AND_DEVICE_ACCEPTANCE_PENDING",
+  "verifiedAtUtc": "2026-09-20T22:57:03.537216+00:00",
+  "sourceCommit": "3a9a252bd964d8e99436d6896fb2e32598724ce2",
+  "newApkProduced": false,
+  "latestPublishedApkVersion": "0.33.0",
+  "latestPublishedApkSchema": 28,
+  "sourceRoomSchema": 29,
+  "sourceBackupPayloadVersion": 24,
+  "sourceBusinessTables": 40,
+  "jvm": {
+    "suites": 57,
+    "tests": 408,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": {
+    "severityCounts": {
+      "Warning": 62,
+      "Hint": 1
+    },
+    "sha256": "d46e306268fb5bbdb02c74dd2470c90020e8bf69ed3ae0adef6ebb8778548c4f"
+  },
+  "schema29Sha256": "5f5c7d4f58c2d2f96e257ea7002204e7783804aef352fcb0de95a6c5402e587d",
+  "newCoverage": [
+    {
+      "suite": "com.ai.assistance.operit.BackupTest",
+      "tests": [
+        "v23NonemptyGroupsAndPrivateHistoryUpgradeToEmptyPlayTables",
+        "encryptedPlayBackupPreservesStoriesDeckUsageAndRemapsEveryIdentityWithoutResuming",
+        "playBackupRejectsForeignScopesMissingRequestHistoryHiddenDeckLeaksAndInventedUsage"
+      ],
+      "reportSha256": "ecb4a10ce166305ea216174cc66774a862eff6337de87c29979859f95dd26357"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PlayStorageTest",
+      "tests": [
+        "recoveryClearsOnlyPendingTokenAndRetainsPartialTextAndExactSave",
+        "malformedIdentifiersBillingAndUnicodeCannotBecomeStoredRows",
+        "partialAndFailedRecordsPreserveOriginalPricesUsageAndMonotonicTiming",
+        "completedLedgerMatchesConfirmedBoardAndDetectsMissingOrForgedHistory"
+      ],
+      "reportSha256": "69b91fcdbd3b09ddd4ad3f525d266cfb116cf342cfe53173942f6312450fd945"
+    }
+  ],
+  "androidTestCompilation": "PASS",
+  "androidTestsExecution": "NOT_RUN_NO_DEVICE",
+  "androidUpgradeAndCipherAtRest": "NOT_RUN",
+  "realProviderCalls": "NOT_RUN",
+  "playablePages": "NOT_IMPLEMENTED",
+  "modelCostApprovalAndLifecycleWiring": "NOT_IMPLEMENTED",
+  "hostMigration": {
+    "status": "PASS",
+    "migrationSha256": "3c87a082cf0a5cc39d14be59e9c37038964b87af00d040aa5592edf9b3cb2673",
+    "daoSha256": "400f4c2f2e35fb57d38e6540b6a1064ddb0731e7d14ed778e89661bf23679ccb",
+    "schemaMatchesRoom29": true,
+    "oldRowsPreserved": true,
+    "ddlRollback": true,
+    "alternatingScopedReads": 50,
+    "markersPerRole": 10,
+    "lateUpdateRounds": 20,
+    "compositeForeignKeyRejection": true,
+    "chatCascade": true,
+    "environment": "host SQLite; not Android or SQLCipher"
+  },
+  "logs": [
+    {
+      "file": "build.txt",
+      "sha256": "2d3862ee207322b27edfd9e8ee903cdc98fb10f853197c575a5767eb1ba69a55"
+    },
+    {
+      "file": "final-build.txt",
+      "sha256": "29945ad4267a5bc2a27624cc0b1f015b2782dd3c451e83256ebe1ef8d390e8ee"
+    }
+  ]
+}

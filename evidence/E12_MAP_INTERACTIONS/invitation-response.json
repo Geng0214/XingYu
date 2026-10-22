@@ -1,0 +1,16 @@
+{
+  "resident": "初见",
+  "greeting": "来陪你待一会儿",
+  "activity": "TEA",
+  "offerPersistedDuring48SecondObservation": true,
+  "responseTouchEvents": 1,
+  "runningCountdown": "19s",
+  "energyBefore": 7,
+  "energyAfterStart": 6,
+  "coinsBefore": 85,
+  "coinsAfterManualClaim": 97,
+  "offerHierarchy": "invitation.xml",
+  "responseHierarchy": "invitation-response.xml",
+  "status": "PASS",
+  "scope": "Actual MuMu invitation, direct response, TEA progress and manual reward claim. Meal invitations were not separately exercised."
+}

@@ -1,0 +1,12 @@
+diff --git a/build.gradle.kts b/build.gradle.kts
+index 06bb1e6..3765183 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -11,6 +11,7 @@ plugins {
+ android {
+     namespace = "com.ai.assistance.operit.terminal"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26

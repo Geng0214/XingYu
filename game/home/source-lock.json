@@ -1,0 +1,18 @@
+{
+  "godot": {
+    "version": "4.7.2.stable",
+    "editorBuild": "ed1daf0bf",
+    "aarSha256": "8791eecfe7c96a4de2d188a0bccfe9b83b92589a5a6825847473416a990e8629",
+    "source": "https://godotengine.org/license/"
+  },
+  "farming": {
+    "repo": "https://github.com/gadget-hq/2d-farming-game",
+    "commit": "13d602e259fde7fdebaefae132121ecf7e5eae2d",
+    "license": "MIT",
+    "adapted": [
+      "Scripts/crop_resource.gd",
+      "Scripts/mapped_texture_resource.gd"
+    ],
+    "excludedAssets": "Sprout Lands"
+  }
+}

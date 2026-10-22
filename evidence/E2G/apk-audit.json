@@ -1,0 +1,54 @@
+{
+  "apk": "app-release.apk",
+  "bytes": 9165618,
+  "sha256": "d8d7ed3c9c990ccb1815bd7ce1d478af43edd8fcdb116082afaf81f0c34b8132",
+  "versionCode": 12,
+  "versionName": "0.12.0",
+  "entryCount": 116,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.USE_BIOMETRIC",
+    "cn.localfirst.companion.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "exportedActivityCount": 1,
+  "services": 0,
+  "receivers": 0,
+  "providers": 0,
+  "binaryManifestSha256": "1b3c55097ff72ccfb568d1ab6fbfa936883f48154b73c4e58685e0d6e7742e88",
+  "binaryManifestVerifiedWithAapt2": true,
+  "forbiddenAssets": [],
+  "nativeLibraries": [
+    {
+      "name": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "sha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libquickjsjni.so",
+      "sha256": "ad02a0d280928a6b14e86db7d9e6007ace2d14bfce94c49fdb9bd20735e1899e",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libsqlcipher.so",
+      "sha256": "bc85746647ce4ea5f390eccd61e5236fbd11786a91802877b9fdbbb66a55192d",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    }
+  ],
+  "status": "PASS",
+  "limitations": "Static package validation only. Installation, Keystore behavior and plaintext storage scans require a real Android device."
+}

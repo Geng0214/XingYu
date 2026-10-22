@@ -1,0 +1,4362 @@
+{
+ "generatedAt": "2026-09-19",
+ "source": "gradlew --offline :app:dependencies --configuration cloneRuntimeClasspath (GRADLE_USER_HOME=C:/Users/15942/Desktop/Work/.gradle-m0)",
+ "selected": 396,
+ "suppressed": 254,
+ "constraints": 106,
+ "projectDependencies": [],
+ "suppressedCoordinates": [
+  "androidx.activity:activity:1.2.4",
+  "androidx.activity:activity:1.6.0",
+  "androidx.activity:activity:1.8.0",
+  "androidx.activity:activity-compose:1.7.0",
+  "androidx.activity:activity-ktx:1.6.0",
+  "androidx.activity:activity-ktx:1.7.0",
+  "androidx.activity:activity-ktx:1.7.1",
+  "androidx.annotation:annotation:1.0.0",
+  "androidx.annotation:annotation:1.1.0",
+  "androidx.annotation:annotation:1.2.0",
+  "androidx.annotation:annotation:1.3.0",
+  "androidx.annotation:annotation:1.4.0",
+  "androidx.annotation:annotation:1.5.0",
+  "androidx.annotation:annotation:1.7.0",
+  "androidx.annotation:annotation:1.8.1",
+  "androidx.annotation:annotation:1.9.0",
+  "androidx.annotation:annotation-experimental:1.0.0",
+  "androidx.annotation:annotation-experimental:1.1.0",
+  "androidx.annotation:annotation-experimental:1.3.0",
+  "androidx.annotation:annotation-experimental:1.4.1",
+  "androidx.appcompat:appcompat:1.2.0",
+  "androidx.appcompat:appcompat:1.5.1",
+  "androidx.collection:collection:1.0.0",
+  "androidx.collection:collection:1.1.0",
+  "androidx.collection:collection:1.3.0",
+  "androidx.collection:collection:1.4.2",
+  "androidx.collection:collection:1.4.3",
+  "androidx.collection:collection:1.4.5",
+  "androidx.collection:collection-ktx:1.1.0",
+  "androidx.collection:collection-ktx:1.4.2",
+  "androidx.compose:compose-bom:2023.08.00",
+  "androidx.compose:compose-bom:2023.10.01",
+  "androidx.compose.animation:animation:1.10.0",
+  "androidx.compose.animation:animation:1.5.1",
+  "androidx.compose.animation:animation:1.7.1",
+  "androidx.compose.animation:animation:1.8.2",
+  "androidx.compose.animation:animation-core:1.10.0",
+  "androidx.compose.animation:animation-core:1.2.1",
+  "androidx.compose.animation:animation-core:1.8.1",
+  "androidx.compose.animation:animation-core:1.8.2",
+  "androidx.compose.foundation:foundation:1.10.0",
+  "androidx.compose.foundation:foundation:1.10.3",
+  "androidx.compose.foundation:foundation:1.4.3",
+  "androidx.compose.foundation:foundation:1.5.4",
+  "androidx.compose.foundation:foundation:1.7.0",
+  "androidx.compose.foundation:foundation:1.7.1",
+  "androidx.compose.foundation:foundation:1.8.1",
+  "androidx.compose.foundation:foundation:1.8.2",
+  "androidx.compose.foundation:foundation:1.9.3",
+  "androidx.compose.foundation:foundation-layout:1.10.0",
+  "androidx.compose.foundation:foundation-layout:1.5.1",
+  "androidx.compose.foundation:foundation-layout:1.8.1",
+  "androidx.compose.foundation:foundation-layout:1.8.2",
+  "androidx.compose.material:material:1.0.0",
+  "androidx.compose.material:material-ripple:1.8.1",
+  "androidx.compose.material:material-ripple:1.8.2",
+  "androidx.compose.material3:material3:1.0.0",
+  "androidx.compose.material3:material3-window-size-class:1.2.0",
+  "androidx.compose.runtime:runtime:1.0.1",
+  "androidx.compose.runtime:runtime:1.1.1",
+  "androidx.compose.runtime:runtime:1.10.2",
+  "androidx.compose.runtime:runtime:1.2.1",
+  "androidx.compose.runtime:runtime:1.5.1",
+  "androidx.compose.runtime:runtime:1.8.1",
+  "androidx.compose.runtime:runtime:1.9.0",
+  "androidx.compose.runtime:runtime-retain:1.10.2",
+  "androidx.compose.runtime:runtime-saveable:1.0.1",
+  "androidx.compose.runtime:runtime-saveable:1.10.2",
+  "androidx.compose.runtime:runtime-saveable:1.5.1",
+  "androidx.compose.ui:ui:1.0.1",
+  "androidx.compose.ui:ui:1.10.2",
+  "androidx.compose.ui:ui:1.10.3",
+  "androidx.compose.ui:ui:1.4.3",
+  "androidx.compose.ui:ui:1.5.0",
+  "androidx.compose.ui:ui:1.5.1",
+  "androidx.compose.ui:ui:1.6.0",
+  "androidx.compose.ui:ui:1.8.2",
+  "androidx.compose.ui:ui:1.9.0",
+  "androidx.compose.ui:ui:1.9.3",
+  "androidx.compose.ui:ui-geometry:1.10.2",
+  "androidx.compose.ui:ui-graphics:1.1.1",
+  "androidx.compose.ui:ui-graphics:1.10.2",
+  "androidx.compose.ui:ui-graphics:1.10.3",
+  "androidx.compose.ui:ui-text:1.10.2",
+  "androidx.compose.ui:ui-text:1.8.1",
+  "androidx.compose.ui:ui-text:1.8.2",
+  "androidx.compose.ui:ui-unit:1.1.1",
+  "androidx.compose.ui:ui-unit:1.10.2",
+  "androidx.compose.ui:ui-unit:1.8.1",
+  "androidx.compose.ui:ui-util:1.10.2",
+  "androidx.compose.ui:ui-util:1.7.1",
+  "androidx.compose.ui:ui-util:1.8.1",
+  "androidx.compose.ui:ui-util:1.8.2",
+  "androidx.concurrent:concurrent-futures:1.0.0",
+  "androidx.core:core:1.0.0",
+  "androidx.core:core:1.1.0",
+  "androidx.core:core:1.12.0",
+  "androidx.core:core:1.13.1",
+  "androidx.core:core:1.16.0",
+  "androidx.core:core:1.2.0",
+  "androidx.core:core:1.3.0",
+  "androidx.core:core:1.3.1",
+  "androidx.core:core:1.6.0",
+  "androidx.core:core:1.7.0",
+  "androidx.core:core:1.8.0",
+  "androidx.core:core:1.9.0",
+  "androidx.core:core-ktx:1.1.0",
+  "androidx.core:core-ktx:1.12.0",
+  "androidx.core:core-ktx:1.13.1",
+  "androidx.core:core-ktx:1.2.0",
+  "androidx.core:core-ktx:1.5.0",
+  "androidx.core:core-ktx:1.7.0",
+  "androidx.core:core-ktx:1.8.0",
+  "androidx.core:core-ktx:1.9.0",
+  "androidx.customview:customview:1.0.0",
+  "androidx.drawerlayout:drawerlayout:1.0.0",
+  "androidx.emoji2:emoji2:1.2.0",
+  "androidx.emoji2:emoji2:1.3.0",
+  "androidx.emoji2:emoji2-views-helper:1.2.0",
+  "androidx.exifinterface:exifinterface:1.0.0",
+  "androidx.exifinterface:exifinterface:1.3.4",
+  "androidx.fragment:fragment:1.0.0",
+  "androidx.fragment:fragment:1.1.0",
+  "androidx.fragment:fragment:1.2.5",
+  "androidx.lifecycle:lifecycle-common:2.6.1",
+  "androidx.lifecycle:lifecycle-common:2.6.2",
+  "androidx.lifecycle:lifecycle-common:2.9.2",
+  "androidx.lifecycle:lifecycle-common-java8:2.6.1",
+  "androidx.lifecycle:lifecycle-livedata:2.0.0",
+  "androidx.lifecycle:lifecycle-livedata:2.5.1",
+  "androidx.lifecycle:lifecycle-livedata-core:2.3.1",
+  "androidx.lifecycle:lifecycle-process:2.4.1",
+  "androidx.lifecycle:lifecycle-runtime:2.0.0",
+  "androidx.lifecycle:lifecycle-runtime:2.5.1",
+  "androidx.lifecycle:lifecycle-runtime:2.6.1",
+  "androidx.lifecycle:lifecycle-runtime:2.6.2",
+  "androidx.lifecycle:lifecycle-runtime-compose:2.7.0",
+  "androidx.lifecycle:lifecycle-runtime-compose:2.8.7",
+  "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1",
+  "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2",
+  "androidx.lifecycle:lifecycle-runtime-ktx:2.7.0",
+  "androidx.lifecycle:lifecycle-service:2.5.1",
+  "androidx.lifecycle:lifecycle-viewmodel:2.0.0",
+  "androidx.lifecycle:lifecycle-viewmodel:2.3.1",
+  "androidx.lifecycle:lifecycle-viewmodel:2.5.1",
+  "androidx.lifecycle:lifecycle-viewmodel:2.6.1",
+  "androidx.lifecycle:lifecycle-viewmodel:2.9.2",
+  "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2",
+  "androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0",
+  "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1",
+  "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2",
+  "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.2",
+  "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1",
+  "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1",
+  "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2",
+  "androidx.profileinstaller:profileinstaller:1.3.0",
+  "androidx.profileinstaller:profileinstaller:1.3.1",
+  "androidx.recyclerview:recyclerview:1.0.0",
+  "androidx.recyclerview:recyclerview:1.1.0",
+  "androidx.room:room-ktx:2.5.0",
+  "androidx.savedstate:savedstate:1.1.0",
+  "androidx.savedstate:savedstate:1.2.0",
+  "androidx.savedstate:savedstate:1.2.1",
+  "androidx.savedstate:savedstate:1.3.1",
+  "androidx.savedstate:savedstate-compose:1.3.0",
+  "androidx.savedstate:savedstate-compose:1.3.2",
+  "androidx.savedstate:savedstate-ktx:1.2.1",
+  "androidx.savedstate:savedstate-ktx:1.3.1",
+  "androidx.sqlite:sqlite-framework:2.3.0",
+  "androidx.startup:startup-runtime:1.0.0",
+  "androidx.tracing:tracing:1.0.0",
+  "androidx.transition:transition:1.2.0",
+  "androidx.window:window:1.0.0",
+  "androidx.window:window:1.1.0",
+  "androidx.work:work-runtime:2.7.1",
+  "androidx.work:work-runtime-ktx:2.7.1",
+  "com.github.jelmerk:hnswlib-core:0.0.46",
+  "com.google.android.datatransport:transport-api:2.2.1",
+  "com.google.android.datatransport:transport-backend-cct:2.3.3",
+  "com.google.android.datatransport:transport-runtime:2.2.6",
+  "com.google.code.gson:gson:2.8.9",
+  "com.google.errorprone:error_prone_annotations:2.11.0",
+  "com.google.firebase:firebase-encoders:16.1.0",
+  "com.google.firebase:firebase-encoders-json:17.1.0",
+  "com.google.guava:guava:27.0.1-android",
+  "com.google.guava:listenablefuture:1.0",
+  "com.google.mlkit:common:18.6.0",
+  "com.squareup.moshi:moshi:1.8.0",
+  "com.squareup.okhttp3:okhttp:3.14.9",
+  "com.squareup.okio:okio:2.10.0",
+  "com.squareup.okio:okio:3.6.0",
+  "commons-io:commons-io:2.11.0",
+  "org.apache.commons:commons-compress:1.21",
+  "org.apache.commons:commons-compress:1.24.0",
+  "org.jetbrains:annotations:13.0",
+  "org.jetbrains.compose.animation:animation:1.7.0",
+  "org.jetbrains.compose.annotation-internal:annotation:1.10.0",
+  "org.jetbrains.compose.collection-internal:collection:1.10.0",
+  "org.jetbrains.compose.foundation:foundation:1.7.0",
+  "org.jetbrains.compose.runtime:runtime:1.10.0",
+  "org.jetbrains.compose.runtime:runtime:1.7.0",
+  "org.jetbrains.compose.runtime:runtime:1.9.0",
+  "org.jetbrains.compose.runtime:runtime:1.9.3",
+  "org.jetbrains.compose.runtime:runtime-saveable:1.9.2",
+  "org.jetbrains.compose.ui:ui:1.10.0",
+  "org.jetbrains.compose.ui:ui-geometry:1.10.0",
+  "org.jetbrains.compose.ui:ui-text:1.10.0",
+  "org.jetbrains.compose.ui:ui-unit:1.10.0",
+  "org.jetbrains.compose.ui:ui-util:1.10.0",
+  "org.jetbrains.kotlin:kotlin-parcelize-runtime:1.7.20",
+  "org.jetbrains.kotlin:kotlin-reflect:1.8.21",
+  "org.jetbrains.kotlin:kotlin-reflect:1.8.22",
+  "org.jetbrains.kotlin:kotlin-reflect:2.1.21",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.5.10",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.6.21",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.7.10",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.8.22",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.9.10",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.9.20",
+  "org.jetbrains.kotlin:kotlin-stdlib:1.9.24",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.0.21",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.1.0",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.1.20",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.1.21",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.2.0",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.2.21",
+  "org.jetbrains.kotlin:kotlin-stdlib:2.3.0",
+  "org.jetbrains.kotlin:kotlin-stdlib-common:1.8.22",
+  "org.jetbrains.kotlin:kotlin-stdlib-common:1.9.0",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.0",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.21",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0",
+  "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.0",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1",
+  "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0",
+  "org.jetbrains.kotlinx:kotlinx-io-core:0.7.0",
+  "org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3",
+  "org.jetbrains.kotlinx:kotlinx-serialization-core:1.8.1",
+  "org.slf4j:slf4j-api:1.7.32",
+  "org.slf4j:slf4j-api:1.7.35",
+  "org.slf4j:slf4j-api:1.7.36"
+ ],
+ "rows": [
+  {
+   "coord": "androidx.activity:activity:1.8.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.activity:activity-compose:1.8.2",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.activity:activity-ktx:1.8.2",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.annotation:annotation:1.9.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.annotation:annotation-experimental:1.5.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/annotation/annotation-experimental/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.annotation:annotation-jvm:1.9.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/annotation/annotation/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.appcompat:appcompat:1.6.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.appcompat:appcompat-resources:1.6.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.arch.core:core-common:2.2.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.arch.core:core-runtime:2.2.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.autofill:autofill:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.cardview:cardview:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.collection:collection:1.5.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.collection:collection-jvm:1.5.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/collection/collection/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.collection:collection-ktx:1.5.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/collection/collection-ktx/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose:compose-bom:2026.02.01",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.animation:animation:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.animation:animation-android:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.animation:animation-core:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.animation:animation-core-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.foundation:foundation:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.foundation:foundation-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.foundation:foundation-layout:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.foundation:foundation-layout-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material-icons-core:1.7.8",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material-icons-core-android:1.7.8",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material-icons-extended-android:1.7.8",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material-ripple:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material:material-ripple-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material3:material3:1.4.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material3:material3-android:1.4.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material3:material3-window-size-class:1.4.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.material3:material3-window-size-class-android:1.4.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-android:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-annotation:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-annotation-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-retain:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-retain-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-saveable:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.runtime:runtime-saveable-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-android:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-geometry:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-geometry-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-graphics:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-graphics-android:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-text:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-text-android:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-tooling-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-tooling-data:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-tooling-data-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-tooling-preview:1.10.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-tooling-preview-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-unit:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-unit-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-util:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.compose.ui:ui-util-android:1.10.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.concurrent:concurrent-futures:1.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.constraintlayout:constraintlayout:2.0.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.constraintlayout:constraintlayout-solver:2.0.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.coordinatorlayout:coordinatorlayout:1.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.core:core:1.18.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/core/core/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.core:core-ktx:1.18.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/core/core-ktx/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.core:core-remoteviews:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.core:core-viewtree:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/core/core-viewtree/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.cursoradapter:cursoradapter:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.customview:customview:1.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.customview:customview-poolingcontainer:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.databinding:viewbinding:7.3.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.datastore:datastore:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.datastore:datastore-core:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.datastore:datastore-preferences:1.0.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.datastore:datastore-preferences-core:1.0.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.documentfile:documentfile:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.drawerlayout:drawerlayout:1.1.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.dynamicanimation:dynamicanimation:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.emoji2:emoji2:1.4.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.emoji2:emoji2-views-helper:1.4.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.exifinterface:exifinterface:1.3.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.fragment:fragment:1.3.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.glance:glance:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.glance:glance-appwidget:1.0.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.glance:glance-material3:1.0.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.graphics:graphics-path:1.0.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.interpolator:interpolator:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.legacy:legacy-support-core-utils:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-common:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-common-java8:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-common-java8/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-common-jvm:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-common/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-livedata:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-livedata/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-livedata-core:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-livedata-core/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-livedata-core-ktx/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-process:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-process/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-runtime:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-runtime-android:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-runtime-compose:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-runtime-compose-android:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-runtime-ktx:2.9.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-runtime-ktx-android:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-service:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-service/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-viewmodel/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel-android:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel-compose-android:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/lifecycle/lifecycle-viewmodel-ktx/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.lifecycle:lifecycle-viewmodel-savedstate-android:2.9.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.loader:loader:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.localbroadcastmanager:localbroadcastmanager:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.media:media:1.6.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.navigation:navigation-common:2.7.7",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.navigation:navigation-common-ktx:2.7.7",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.navigation:navigation-compose:2.7.7",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.navigation:navigation-runtime:2.7.7",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.navigation:navigation-runtime-ktx:2.7.7",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.print:print:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.profileinstaller:profileinstaller:1.4.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/profileinstaller/profileinstaller/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.recyclerview:recyclerview:1.3.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.resourceinspection:resourceinspection-annotation:1.0.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.room:room-common:2.8.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.room:room-common-jvm:2.8.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/room/room-common/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.room:room-ktx:2.8.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/room/room-ktx/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.room:room-runtime:2.8.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.room:room-runtime-android:2.8.4",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.savedstate:savedstate:1.3.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.savedstate:savedstate-android:1.3.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.savedstate:savedstate-compose:1.3.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.savedstate:savedstate-compose-android:1.3.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.savedstate:savedstate-ktx:1.3.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/savedstate/savedstate-ktx/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.security:security-crypto:1.1.0-alpha06",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.sqlite:sqlite:2.6.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.sqlite:sqlite-android:2.6.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.sqlite:sqlite-framework:2.6.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.sqlite:sqlite-framework-android:2.6.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.startup:startup-runtime:1.1.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.tracing:tracing:1.2.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.transition:transition:1.6.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/transition/transition/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.vectordrawable:vectordrawable:1.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.vectordrawable:vectordrawable-animated:1.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.versionedparcelable:versionedparcelable:1.1.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.viewpager:viewpager:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.viewpager2:viewpager2:1.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.webkit:webkit:1.12.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/webkit/webkit/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.window:window:1.5.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/androidx/window/window/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "androidx.window:window-core:1.5.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.window:window-core-android:1.5.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.work:work-runtime:2.9.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "androidx.work:work-runtime-ktx:2.9.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.android.tools.build:apksig:8.1.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "com.arthenica:smart-exception-common:0.2.1",
+   "direct": true,
+   "licence": "The 3-Clause BSD License",
+   "url": "https://opensource.org/licenses/BSD-3-Clause",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.arthenica:smart-exception-java:0.2.1",
+   "direct": true,
+   "licence": "The 3-Clause BSD License",
+   "url": "https://opensource.org/licenses/BSD-3-Clause",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.benasher44:uuid:0.8.2",
+   "direct": true,
+   "licence": "MIT License",
+   "url": "https://opensource.org/licenses/mit-license",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.benasher44:uuid-jvm:0.8.2",
+   "direct": false,
+   "licence": "MIT License",
+   "url": "https://opensource.org/licenses/mit-license",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.caverock:androidsvg-aar:1.4",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.getkeepsafe.relinker:relinker:1.4.5",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.Sable:axml:2.0.0",
+   "direct": true,
+   "licence": "",
+   "url": "",
+   "source": "no pom licence, no in-archive licence file",
+   "kind": "UNKNOWN",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.bumptech.glide:annotations:4.16.0",
+   "direct": false,
+   "licence": "Simplified BSD License; The Apache Software License, Version 2.0",
+   "url": "http://www.opensource.org/licenses/bsd-license; http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.bumptech.glide:disklrucache:4.16.0",
+   "direct": false,
+   "licence": "Simplified BSD License; The Apache Software License, Version 2.0",
+   "url": "http://www.opensource.org/licenses/bsd-license; http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.bumptech.glide:gifdecoder:4.16.0",
+   "direct": false,
+   "licence": "Simplified BSD License; The Apache Software License, Version 2.0",
+   "url": "http://www.opensource.org/licenses/bsd-license; http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.bumptech.glide:glide:4.16.0",
+   "direct": true,
+   "licence": "Simplified BSD License; The Apache Software License, Version 2.0",
+   "url": "http://www.opensource.org/licenses/bsd-license; http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.iyxan23:zipalign-java:1.2.1",
+   "direct": true,
+   "licence": "MIT License",
+   "url": "https://opensource.org/licenses/MIT",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.jelmerk:hnswlib-core:1.2.1",
+   "direct": true,
+   "licence": "Apache License 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.html",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.jelmerk:hnswlib-utils:0.0.46",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.junrar:junrar:7.5.5",
+   "direct": true,
+   "licence": "UnRar License",
+   "url": "https://github.com/junrar/junrar/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.skydoves:colorpicker-compose:1.0.6",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.tech-pw:RenderX:1.0.0",
+   "direct": true,
+   "licence": "",
+   "url": "",
+   "source": "licence file present in jar, text not fingerprinted",
+   "kind": "UNKNOWN",
+   "jar_licence_entries": [
+    "assets/MathJax/LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "com.github.topjohnwu.libsu:core:6.0.0",
+   "direct": true,
+   "licence": "",
+   "url": "",
+   "source": "no pom licence, no in-archive licence file",
+   "kind": "UNKNOWN",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.topjohnwu.libsu:nio:6.0.0",
+   "direct": true,
+   "licence": "",
+   "url": "",
+   "source": "no pom licence, no in-archive licence file",
+   "kind": "UNKNOWN",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.topjohnwu.libsu:service:6.0.0",
+   "direct": true,
+   "licence": "",
+   "url": "",
+   "source": "no pom licence, no in-archive licence file",
+   "kind": "UNKNOWN",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.github.virtuald:curvesapi:1.07",
+   "direct": false,
+   "licence": "BSD License",
+   "url": "http://opensource.org/licenses/BSD-3-Clause",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.accompanist:accompanist-drawablepainter:0.32.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.accompanist:accompanist-systemuicontroller:0.32.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.datatransport:transport-api:3.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.datatransport:transport-backend-cct:3.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.datatransport:transport-runtime:3.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer:2.19.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-common:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-container:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-core:2.19.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-dash:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-database:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-datasource:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-decoder:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-extractor:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-hls:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-rtsp:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-smoothstreaming:2.19.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.exoplayer:exoplayer-ui:2.19.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.filament:filament-android:1.69.2",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.filament:filament-utils-android:1.69.2",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.filament:gltfio-android:1.69.2",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-base:18.1.0",
+   "direct": false,
+   "licence": "Android Software Development Kit License",
+   "url": "https://developer.android.com/studio/terms.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-basement:18.1.0",
+   "direct": false,
+   "licence": "Android Software Development Kit License",
+   "url": "https://developer.android.com/studio/terms.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-mlkit-text-recognition:19.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-mlkit-text-recognition-chinese:16.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-mlkit-text-recognition-common:19.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-mlkit-text-recognition-devanagari:16.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-mlkit-text-recognition-japanese:16.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-mlkit-text-recognition-korean:16.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.gms:play-services-tasks:18.0.2",
+   "direct": false,
+   "licence": "Android Software Development Kit License",
+   "url": "https://developer.android.com/studio/terms.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.material:material:1.10.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.android.odml:image:1.0.0-beta1",
+   "direct": false,
+   "licence": "Android Software Development Kit License",
+   "url": "https://developer.android.com/studio/terms.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.auto.value:auto-value:1.8.1",
+   "direct": false,
+   "licence": "Apache 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "com.google.auto.value:auto-value-annotations:1.8.1",
+   "direct": false,
+   "licence": "Apache 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.code.findbugs:jsr305:3.0.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.code.gson:gson:2.10.1",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.crypto.tink:tink-android:1.8.0",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.errorprone:error_prone_annotations:2.15.0",
+   "direct": false,
+   "licence": "Apache 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.firebase:firebase-annotations:16.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.firebase:firebase-components:16.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.firebase:firebase-encoders:17.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.firebase:firebase-encoders-json:18.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.firebase:firebase-encoders-proto:16.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.flogger:flogger:0.6",
+   "direct": false,
+   "licence": "Apache 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.flogger:flogger-system-backend:0.6",
+   "direct": false,
+   "licence": "Apache 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.guava:failureaccess:1.0.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.guava:guava:31.1-android",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.j2objc:j2objc-annotations:1.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mediapipe:tasks-core:0.10.11",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mediapipe:tasks-text:0.10.11",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:common:18.8.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:text-recognition:16.0.0",
+   "direct": true,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:text-recognition-bundled-common:16.0.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:text-recognition-chinese:16.0.0",
+   "direct": true,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:text-recognition-devanagari:16.0.0",
+   "direct": true,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:text-recognition-japanese:16.0.0",
+   "direct": true,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:text-recognition-korean:16.0.0",
+   "direct": true,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:vision-common:17.3.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.mlkit:vision-interfaces:16.2.0",
+   "direct": false,
+   "licence": "ML Kit Terms of Service",
+   "url": "https://developers.google.com/ml-kit/terms",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.protobuf:protobuf-javalite:3.19.1",
+   "direct": false,
+   "licence": "3-Clause BSD License",
+   "url": "https://opensource.org/licenses/BSD-3-Clause",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.google.zxing:core:3.5.3",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.huaban:jieba-analysis:1.0.2",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.itextpdf:itextg:5.5.10",
+   "direct": true,
+   "licence": "GNU Affero General Public License v3",
+   "url": "http://www.fsf.org/licensing/licenses/agpl-3.0.html",
+   "source": "pom",
+   "kind": "COPYLEFT",
+   "jar_licence_entries": [
+    "com/itextpdf/text/LICENSE.txt",
+    "com/itextpdf/text/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "com.jcraft:jsch:0.1.55",
+   "direct": false,
+   "licence": "Revised BSD",
+   "url": "http://www.jcraft.com/jsch/LICENSE.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.joaomgcd:taskerpluginlibrary:0.4.10",
+   "direct": true,
+   "licence": "Tasker Plugin Sample License",
+   "url": "https://github.com/joaomgcd/TaskerPluginSample/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.microsoft.onnxruntime:onnxruntime-android:1.17.1",
+   "direct": true,
+   "licence": "MIT License",
+   "url": "https://opensource.org/licenses/MIT",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.moshi:moshi:1.15.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.moshi:moshi-kotlin:1.15.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.okhttp3:logging-interceptor:4.12.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.okhttp3:okhttp:4.12.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "okhttp3/internal/publicsuffix/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.okhttp3:okhttp-sse:4.12.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.okio:okio:3.12.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.okio:okio-jvm:3.12.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.retrofit2:converter-moshi:2.9.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.squareup.retrofit2:retrofit:2.9.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.tom-roush:pdfbox-android:2.0.27.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.typesafe:config:1.4.3",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.vanniktech:android-image-cropper:4.5.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "com.zaxxer:SparseBitSet:1.2",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "commons-codec:commons-codec:1.15",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt",
+    "META-INF/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "commons-io:commons-io:2.13.0",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt",
+    "META-INF/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "dev.rikka.shizuku:aidl:13.1.5",
+   "direct": false,
+   "licence": "MIT License",
+   "url": "https://github.com/RikkaApps/Shizuku-API/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "dev.rikka.shizuku:api:13.1.5",
+   "direct": true,
+   "licence": "MIT License",
+   "url": "https://github.com/RikkaApps/Shizuku-API/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "dev.rikka.shizuku:provider:13.1.5",
+   "direct": true,
+   "licence": "MIT License",
+   "url": "https://github.com/RikkaApps/Shizuku-API/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "dev.rikka.shizuku:shared:13.1.5",
+   "direct": false,
+   "licence": "MIT License",
+   "url": "https://github.com/RikkaApps/Shizuku-API/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.coil-kt:coil:2.5.0",
+   "direct": true,
+   "licence": "The Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.coil-kt:coil-base:2.5.0",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.coil-kt:coil-compose:2.5.0",
+   "direct": true,
+   "licence": "The Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.coil-kt:coil-compose-base:2.5.0",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.coil-kt:coil-gif:2.5.0",
+   "direct": true,
+   "licence": "The Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.fletchmckee.liquid:liquid:1.1.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.fletchmckee.liquid:liquid-android:1.1.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.java-diff-utils:java-diff-utils:4.12",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.kyant0:backdrop:1.0.6",
+   "direct": true,
+   "licence": "The Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.kyant0:shapes:1.2.0",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.kyant0:shapes-android:1.2.0",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.oshai:kotlin-logging:7.0.14",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.github.oshai:kotlin-logging-android-debug:7.0.14",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-client-core:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-client-core-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-client-okhttp:3.2.3",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-client-okhttp-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-events:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-events-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-http:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-http-cio:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-http-cio-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-http-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-io:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-io-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-network:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-network-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-serialization:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-serialization-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-server-core:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-server-core-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-server-websockets:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-server-websockets-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-sse:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-sse-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-utils:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-utils-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-websocket-serialization:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-websocket-serialization-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-websockets:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.ktor:ktor-websockets-jvm:3.2.3",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.modelcontextprotocol:kotlin-sdk-client:0.10.0",
+   "direct": true,
+   "licence": "MIT License",
+   "url": "https://github.com/modelcontextprotocol/kotlin-sdk/blob/main/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.modelcontextprotocol:kotlin-sdk-client-jvm:0.10.0",
+   "direct": false,
+   "licence": "MIT License",
+   "url": "https://github.com/modelcontextprotocol/kotlin-sdk/blob/main/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.modelcontextprotocol:kotlin-sdk-core:0.10.0",
+   "direct": false,
+   "licence": "MIT License",
+   "url": "https://github.com/modelcontextprotocol/kotlin-sdk/blob/main/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.modelcontextprotocol:kotlin-sdk-core-jvm:0.10.0",
+   "direct": false,
+   "licence": "MIT License",
+   "url": "https://github.com/modelcontextprotocol/kotlin-sdk/blob/main/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.objectbox:objectbox-android:5.3.0",
+   "direct": true,
+   "licence": "ObjectBox Binary Licence; The Apache Software License, Version 2.0; The OpenLDAP Public License, Version 2.8, 17 August 2003",
+   "url": "https://objectbox.io; https://www.apache.org/licenses/LICENSE-2.0.txt; https://www.openldap.org/software/release/license.html",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.objectbox:objectbox-java:5.3.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.objectbox:objectbox-java-api:5.3.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "io.objectbox:objectbox-kotlin:5.3.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "javax.inject:javax.inject:1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "me.saket.swipe:swipe:1.2.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "net.dongliu:apk-parser:2.6.10",
+   "direct": true,
+   "licence": "The BSD 2-Clause License",
+   "url": "https://github.com/hsiafan/apk-parser/blob/master/LICENSE.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "net.lingala.zip4j:zip4j:2.11.5",
+   "direct": true,
+   "licence": "Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.commons:commons-collections4:4.4",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt",
+    "META-INF/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.commons:commons-compress:1.25.0",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt",
+    "META-INF/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.commons:commons-lang3:3.3.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt",
+    "META-INF/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.commons:commons-math3:3.6.1",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt",
+    "META-INF/NOTICE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.ftpserver:ftplet-api:1.2.0",
+   "direct": false,
+   "licence": "Apache 2.0 License",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.ftpserver:ftpserver-core:1.2.0",
+   "direct": false,
+   "licence": "Apache 2.0 License",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.logging.log4j:log4j-api:2.18.0",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.mina:mina-core:2.1.6",
+   "direct": false,
+   "licence": "Apache 2.0 License",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.poi:poi:5.2.3",
+   "direct": true,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/NOTICE",
+    "META-INF/LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.poi:poi-ooxml:5.2.3",
+   "direct": true,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/NOTICE",
+    "META-INF/LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.poi:poi-ooxml-lite:5.2.3",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/NOTICE",
+    "META-INF/LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.poi:poi-scratchpad:5.2.3",
+   "direct": true,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/NOTICE",
+    "META-INF/LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.sshd:sshd-common:2.10.0",
+   "direct": false,
+   "licence": "Apache 2.0 License",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.sshd:sshd-core:2.10.0",
+   "direct": false,
+   "licence": "Apache 2.0 License",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.sshd:sshd-sftp:2.10.0",
+   "direct": false,
+   "licence": "Apache 2.0 License",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE",
+    "META-INF/NOTICE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.apache.xmlbeans:xmlbeans:5.1.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "NOTICE.txt",
+    "LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.bouncycastle:bcpkix-jdk18on:1.78",
+   "direct": true,
+   "licence": "Bouncy Castle Licence",
+   "url": "https://www.bouncycastle.org/licence.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.bouncycastle:bcprov-jdk18on:1.78",
+   "direct": true,
+   "licence": "Bouncy Castle Licence",
+   "url": "https://www.bouncycastle.org/licence.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [
+    "org/bouncycastle/LICENSE.class",
+    "org/bouncycastle/asn1/x509/NoticeReference.class",
+    "org/bouncycastle/crypto/generators/OpenSSLPBEParametersGenerator.class",
+    "org/bouncycastle/jcajce/provider/symmetric/OpenSSLPBKDF$Mappings.class"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.bouncycastle:bcutil-jdk18on:1.78",
+   "direct": false,
+   "licence": "Bouncy Castle Licence",
+   "url": "https://www.bouncycastle.org/licence.html",
+   "source": "pom",
+   "kind": "other",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.checkerframework:checker-compat-qual:2.5.3",
+   "direct": false,
+   "licence": "GNU General Public License, version 2 (GPL2), with the classpath exception; The MIT License",
+   "url": "http://www.gnu.org/software/classpath/license.html; http://opensource.org/licenses/MIT",
+   "source": "pom",
+   "kind": "COPYLEFT",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.checkerframework:checker-qual:3.12.0",
+   "direct": false,
+   "licence": "The MIT License",
+   "url": "http://opensource.org/licenses/MIT",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.eclipse.collections:eclipse-collections:9.2.0",
+   "direct": false,
+   "licence": "Eclipse Public License - v 1.0; Eclipse Distribution License - v 1.0",
+   "url": "https://www.eclipse.org/legal/epl-v10.html; https://www.eclipse.org/licenses/edl-v10.html",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "LICENSE-EDL-1.0.txt",
+    "LICENSE-EPL-1.0.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.eclipse.collections:eclipse-collections-api:9.2.0",
+   "direct": false,
+   "licence": "Eclipse Public License - v 1.0; Eclipse Distribution License - v 1.0",
+   "url": "https://www.eclipse.org/legal/epl-v10.html; https://www.eclipse.org/licenses/edl-v10.html",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "LICENSE-EDL-1.0.txt",
+    "LICENSE-EPL-1.0.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.fusesource.jansi:jansi:2.4.2",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.greenrobot:essentials:3.1.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.hjson:hjson:3.0.0",
+   "direct": true,
+   "licence": "The MIT License (MIT)",
+   "url": "https://github.com/hjson/hjson-java/blob/master/LICENSE",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains:annotations:23.0.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.lifecycle:lifecycle-common:2.9.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.lifecycle:lifecycle-runtime:2.9.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.9.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:2.9.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-savedstate:2.9.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.savedstate:savedstate:1.3.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.androidx.savedstate:savedstate-compose:1.3.6",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.animation:animation:1.10.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.animation:animation-core:1.10.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.annotation-internal:annotation:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.collection-internal:collection:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.foundation:foundation:1.10.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.foundation:foundation-layout:1.10.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.runtime:runtime:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.runtime:runtime-saveable:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.ui:ui:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.ui:ui-geometry:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.ui:ui-graphics:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.ui:ui-text:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.ui:ui-unit:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.compose.ui:ui-util:1.10.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-bom:1.8.22",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-parcelize-runtime:2.2.21",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-reflect:2.2.21",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-stdlib:2.3.10",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-stdlib-common:2.3.10",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.21",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.21",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.4.0",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm:0.4.0",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.10.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.10.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.10.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-io-bytestring:0.8.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.8.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-io-core:0.8.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.8.2",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-serialization-core:1.9.0",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.9.0",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0",
+   "direct": true,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.9.0",
+   "direct": false,
+   "licence": "Apache-2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.jsoup:jsoup:1.16.2",
+   "direct": true,
+   "licence": "The MIT License",
+   "url": "https://jsoup.org/license",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.jspecify:jspecify:1.0.0",
+   "direct": false,
+   "licence": "The Apache License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.nanohttpd:nanohttpd:2.3.1",
+   "direct": true,
+   "licence": "The BSD 3-Clause License",
+   "url": "http://opensource.org/licenses/BSD-3-Clause",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.slf4j:jcl-over-slf4j:1.7.32",
+   "direct": false,
+   "licence": "Apache License, Version 2.0",
+   "url": "https://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "org.slf4j:slf4j-api:2.0.17",
+   "direct": false,
+   "licence": "MIT",
+   "url": "https://opensource.org/license/mit",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "META-INF/LICENSE.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.tensorflow:tensorflow-lite:2.10.0",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "org.tensorflow:tensorflow-lite-api:2.10.0",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [
+    "LICENSE"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "pl.droidsonroids.gif:android-gif-drawable:1.2.28",
+   "direct": true,
+   "licence": "The MIT License",
+   "url": "https://spdx.org/licenses/MIT.html",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "ru.noties:jlatexmath-android:0.2.0",
+   "direct": true,
+   "licence": "GNU General Public License, version 2",
+   "url": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+   "source": "pom",
+   "kind": "COPYLEFT",
+   "jar_licence_entries": [
+    "assets/org/scilab/forge/jlatexmath/fonts/licences/License_for_dsrom.txt"
+   ],
+   "cached": true
+  },
+  {
+   "coord": "ru.noties:jlatexmath-android-font-cyrillic:0.2.0",
+   "direct": false,
+   "licence": "GNU General Public License, version 2",
+   "url": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+   "source": "pom",
+   "kind": "COPYLEFT",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "ru.noties:jlatexmath-android-font-greek:0.2.0",
+   "direct": false,
+   "licence": "GNU General Public License, version 2",
+   "url": "https://www.gnu.org/licenses/old-licenses/gpl-2.0.html",
+   "source": "pom",
+   "kind": "COPYLEFT",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "sh.calvin.reorderable:reorderable:2.5.1",
+   "direct": true,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  },
+  {
+   "coord": "sh.calvin.reorderable:reorderable-android-debug:2.5.1",
+   "direct": false,
+   "licence": "The Apache Software License, Version 2.0",
+   "url": "http://www.apache.org/licenses/LICENSE-2.0.txt",
+   "source": "pom",
+   "kind": "permissive",
+   "jar_licence_entries": [],
+   "cached": true
+  }
+ ]
+}

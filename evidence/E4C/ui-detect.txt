@@ -1,0 +1,9 @@
+E4C UI validation summary
+
+- Impeccable CLI: NOT_RUN. The CLI is unavailable in the current Windows toolchain.
+- Compose release compilation: PASS.
+- Android test source compilation: PASS.
+- Android Lint: PASS with 0 errors, 56 warnings and 1 hint. No warning points to the new memory recall, conflict, expiry or forgetting implementation.
+- Manual source review: PASS for recall reason display, match percentage, recall mode, expiry selection, conflict choice, reversible forgetting, restore and permanent deletion controls.
+- Device visual QA: NOT_RUN. No authorized ADB device was connected, so phone/tablet layout, large text, dark mode, rotation, TalkBack and process restoration remain pending.
+

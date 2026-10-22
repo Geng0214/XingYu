@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 108,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "androidPersonaIntegration": "NOT_RUN",
+  "androidMigration": "NOT_RUN",
+  "legacyBackupV1": "PASS",
+  "backupV2": "PASS",
+  "scope": "Host JVM persona/context/coordinator/HTTPS/backup checks plus existing suite",
+  "sourceCommit": "09cfbe6e4bbd9fe51c4b49c467f50f2a122c3660",
+  "cleanBuild": "PASS",
+  "androidTestCompilation": "PASS",
+  "lint": "0 errors, 28 warnings"
+}

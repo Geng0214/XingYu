@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "setting": "0",
+  "waterROI": [
+    1150,
+    735,
+    1290,
+    830
+  ],
+  "changedPixels": 0,
+  "scope": "Unedited MuMu native captures, same open inventory panel; water only, not a whole-frame animation assertion."
+}

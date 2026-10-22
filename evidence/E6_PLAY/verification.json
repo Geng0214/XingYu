@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-09-20T23:28:13.438104+00:00",
+  "sourceCommit": "c5d46e3186bd28c467299d0c8530d460bbe2d356",
+  "cleanBuildCodeCommit": "0584f123edb3290427a94f10854900688ab18da2",
+  "postCleanChanges": [
+    "docs/project/companion-full-plan.md"
+  ],
+  "finalAssemblyWithUpdatedRoadmap": "PASS",
+  "sourceArchiveMatchesGitArchive": true,
+  "sourceArchiveFiles": 963,
+  "apkGitRevisionMatches": true,
+  "unitTests": {
+    "tests": 412,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": 57,
+  "lint": {
+    "Warning": 62,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "hostMigration": "PASS",
+  "webScriptTests": {
+    "tests": 9,
+    "failures": 0
+  },
+  "sourceReview": {
+    "disposition": "ship",
+    "scope": "five listed source fixes resolved; no rendered visual approval"
+  },
+  "device": {
+    "adbDevices": [],
+    "ui": "NOT_RUN",
+    "sqlcipherUpgrade": "NOT_RUN",
+    "encryptionAtRest": "NOT_RUN",
+    "liveProviders": "NOT_RUN"
+  },
+  "cleanup": {
+    "removed": "output/upgrade-baseline/local-companion-0.32.0.apk",
+    "reclaimedBytes": 9730942,
+    "retainedBaseline": "output/upgrade-baseline/local-companion-0.33.0.apk",
+    "latest": "output/local-companion-0.34.0.apk",
+    "outputTotalBytes": 22760363
+  },
+  "status": "Development complete for first three playable activities; acceptance incomplete; remaining E6/E7/E8 active"
+}

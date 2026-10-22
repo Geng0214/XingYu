@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 118,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "androidCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "deviceList": "empty",
+  "hostMigration": "PASS",
+  "scope": "JVM worldbook/context/coordinator/HTTPS/template/backup tests plus previous suite; no UI validation or release APK yet",
+  "legacyBackupV2Sha256": "ace287daf8f54c1e7ee5a9d8986a7ae27e6871d24e80c655f4f46fb9b0c4bb55"
+}

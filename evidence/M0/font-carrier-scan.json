@@ -1,0 +1,14 @@
+{
+  "measuredAt": "2026-09-19T15:11:06",
+  "cacheRoot": "C:/Users/15942/Desktop/Work/.gradle-m0/caches",
+  "method": "遍历缓存下全部 .aar/.jar，用 zipfile.namelist() 对目标条目名做全等匹配（不是子串、不按文件名猜）",
+  "archivesScanned": 1263,
+  "archivesUnreadable": 0,
+  "hits": {
+    "res/font/roboto_medium_numbers.ttf": [
+      "C:/Users/15942/Desktop/Work/.gradle-m0/caches\\modules-2\\files-2.1\\com.google.android.exoplayer\\exoplayer-ui\\2.19.1\\f2854c993ee7c931a9970c22ca8a35ace6b3d9af\\exoplayer-ui-2.19.1.aar"
+    ],
+    "res/font/jetbrains_mono_nerd_font_regular.ttf": []
+  },
+  "caveat": "命中是正证据，未命中不是反证据：transform 期才生成的条目、以及不在本机缓存里的构件都扫不到。"
+}

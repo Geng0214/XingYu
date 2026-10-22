@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-09-19T22:36:10.191670+00:00",
+  "applicationId": "cn.localfirst.companion",
+  "version": "0.7.0",
+  "versionCode": 7,
+  "sourceCommit": "e0a1de3f94e8656bd0e6549027bad828bc29a031",
+  "certificateSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+  "roomMigration": "1 -> 2 -> 3 -> 4 -> 5 -> 6 (unchanged from 0.5.0)",
+  "upgradeFrom": [
+    "0.1.0",
+    "0.2.0",
+    "0.3.0",
+    "0.4.0",
+    "0.5.0",
+    "0.6.0"
+  ],
+  "files": [
+    {
+      "name": "local-companion-0.7.0.apk",
+      "bytes": 9064046,
+      "sha256": "40f19663fd6b06beae6040cd4b6353025ca2e2c64e616fc4b0a458b863778251"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 1713038,
+      "sha256": "72a16101abe95c91af6702f5e25facc116dcecbb606ac45db3edab5092fb099b"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 5296,
+      "sha256": "81bbcd348fd78be4887c168bb1135c825f050b003f894f382f35fe6ce7f753b3"
+    }
+  ],
+  "validation": {
+    "unitTests": {
+      "tests": 100,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hostExtensionAndToolPkgSql": "PASS",
+    "hostQuickJsModelRoundTrip": "PASS",
+    "cleanBuild": "PASS",
+    "finalValidation": "PASS",
+    "apkAudit": "PASS",
+    "signatureContinuity": "PASS",
+    "androidTestCompilation": "PASS",
+    "deviceUpgrade": "NOT_RUN",
+    "deviceStorage": "NOT_RUN",
+    "androidQuickJsRuntime": "NOT_RUN",
+    "systemAuthentication": "NOT_RUN",
+    "lockLifecycleUi": "NOT_RUN",
+    "androidBackupTransaction": "NOT_RUN",
+    "crossDeviceBackup": "NOT_RUN",
+    "backupFilePicker": "NOT_RUN",
+    "visualQA": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "liveMcp": "NOT_RUN",
+    "crossDeviceTemplate": "NOT_RUN",
+    "threePersonObservation": "NOT_RUN"
+  },
+  "compatibility": {
+    "mcp": "Streamable HTTP over HTTPS",
+    "toolPkg": "schema 1 / API 1.0.0 / tools-v1 pure computation; no device/network/filesystem/UI Hook host APIs"
+  },
+  "status": "E2 privacy lock and encrypted backup development complete; E2 persona/worldbook/relationship/usage/onboarding remain; device and human acceptance pending; M1/M2/E1 not fully accepted"
+}

@@ -1,0 +1,9 @@
+{
+  "counts": {
+    "tests": 244,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "limitation": "JVM runtime tests only; Android instrumentation compiled but not device executed."
+}

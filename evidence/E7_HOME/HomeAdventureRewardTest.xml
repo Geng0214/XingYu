@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.HomeAdventureRewardTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-21T04:50:19.040Z" hostname="DESKTOP-8LJVBMI" time="0.07">
+  <properties/>
+  <testcase name="unearnedOrForgedProofsCannotGrantItems" classname="com.ai.assistance.operit.HomeAdventureRewardTest" time="0.025"/>
+  <testcase name="proofSizeRemainsBoundedAndOldCommandsKeepTheirOriginalEncoding" classname="com.ai.assistance.operit.HomeAdventureRewardTest" time="0.008"/>
+  <testcase name="normalizedProofReplaysBothRewardsWithoutNamesDialogueOrFinish" classname="com.ai.assistance.operit.HomeAdventureRewardTest" time="0.01"/>
+  <testcase name="ledgerRejectsDuplicateOriginEvenAfterDiscardAndSeparatesIndependentAdventures" classname="com.ai.assistance.operit.HomeAdventureRewardTest" time="0.018"/>
+  <testcase name="rewardCommandRequiresItsOwnVersionAndStrictFieldsAndIdentity" classname="com.ai.assistance.operit.HomeAdventureRewardTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,297 @@
+{
+  "measuredAt": "2026-09-19T12:02:10.208Z",
+  "directories": [
+    {
+      "name": ".gradle-m0",
+      "files": 31875,
+      "bytes": 2368014835
+    },
+    {
+      "name": ".gradle-m0-1",
+      "files": 15133,
+      "bytes": 1599806786
+    },
+    {
+      "name": ".gradle-m0-2",
+      "files": 9882,
+      "bytes": 1240015437
+    },
+    {
+      "name": ".workbuddy-ai",
+      "files": 3,
+      "bytes": 29422
+    },
+    {
+      "name": "app",
+      "files": 3548,
+      "bytes": 1267306599
+    },
+    {
+      "name": "build-logs",
+      "files": 9,
+      "bytes": 2598379
+    },
+    {
+      "name": "docs",
+      "files": 11,
+      "bytes": 100068
+    },
+    {
+      "name": "keystores",
+      "files": 1,
+      "bytes": 2792
+    },
+    {
+      "name": "m0-apply-probe",
+      "files": 2,
+      "bytes": 2662
+    },
+    {
+      "name": "manual-deps-cache",
+      "files": 3,
+      "bytes": 52842165
+    },
+    {
+      "name": "operit",
+      "files": 87413,
+      "bytes": 9265336770
+    },
+    {
+      "name": "operit-m0-a01-1",
+      "files": 62991,
+      "bytes": 4906906465
+    },
+    {
+      "name": "operit-m0-a01-2",
+      "files": 3270,
+      "bytes": 298116746
+    },
+    {
+      "name": "operit-m0-clean-1",
+      "files": 4379,
+      "bytes": 228929296
+    },
+    {
+      "name": "operit-m0-clean-2",
+      "files": 8431,
+      "bytes": 466031102
+    }
+  ],
+  "copies": [
+    {
+      "name": "operit-m0-a01-1",
+      "differences": [
+        {
+          "path": "ci\\script\\build_m0_local.sh",
+          "kind": "different",
+          "bytes": 4527
+        },
+        {
+          "path": "ci\\script\\materialize_m0_clean.sh",
+          "kind": "different",
+          "bytes": 5191
+        },
+        {
+          "path": "M0-BASELINE.txt",
+          "kind": "copy-only",
+          "bytes": 704
+        }
+      ]
+    },
+    {
+      "name": "operit-m0-a01-2",
+      "differences": [
+        {
+          "path": "app\\objectbox-models\\default.json",
+          "kind": "different",
+          "bytes": 8956
+        },
+        {
+          "path": "app\\objectbox-models\\default.json.bak",
+          "kind": "different",
+          "bytes": 7591
+        },
+        {
+          "path": "ci\\script\\build_m0_local.sh",
+          "kind": "different",
+          "bytes": 4527
+        },
+        {
+          "path": "ci\\script\\materialize_m0_clean.sh",
+          "kind": "different",
+          "bytes": 5191
+        },
+        {
+          "path": "M0-BASELINE.txt",
+          "kind": "copy-only",
+          "bytes": 704
+        }
+      ]
+    },
+    {
+      "name": "operit-m0-clean-1",
+      "differences": [
+        {
+          "path": "app\\build.gradle.kts",
+          "kind": "different",
+          "bytes": 32133
+        },
+        {
+          "path": "app\\libs\\.keep",
+          "kind": "different",
+          "bytes": 2
+        },
+        {
+          "path": "app\\objectbox-models\\default.json",
+          "kind": "different",
+          "bytes": 8956
+        },
+        {
+          "path": "app\\objectbox-models\\default.json.bak",
+          "kind": "different",
+          "bytes": 7591
+        },
+        {
+          "path": "docs\\contracts\\scope-and-security-boundary.md",
+          "kind": "different",
+          "bytes": 2467
+        },
+        {
+          "path": "docs\\plan\\project-structure-and-m0.md",
+          "kind": "different",
+          "bytes": 6015
+        },
+        {
+          "path": "evidence\\M0\\acceptance-log.md",
+          "kind": "different",
+          "bytes": 2090
+        },
+        {
+          "path": "evidence\\M0\\capability-gap.md",
+          "kind": "different",
+          "bytes": 3332
+        },
+        {
+          "path": "evidence\\M0\\decision.md",
+          "kind": "different",
+          "bytes": 1925
+        },
+        {
+          "path": "evidence\\M0\\license-inventory.md",
+          "kind": "different",
+          "bytes": 1875
+        },
+        {
+          "path": "evidence\\M0\\README.md",
+          "kind": "different",
+          "bytes": 976
+        },
+        {
+          "path": "evidence\\M0\\storage-network-inventory.md",
+          "kind": "different",
+          "bytes": 3482
+        },
+        {
+          "path": "evidence\\M0\\upstream-baseline.md",
+          "kind": "different",
+          "bytes": 2412
+        },
+        {
+          "path": "local.properties",
+          "kind": "different",
+          "bytes": 48
+        }
+      ]
+    },
+    {
+      "name": "operit-m0-clean-2",
+      "differences": [
+        {
+          "path": "app\\build.gradle.kts",
+          "kind": "different",
+          "bytes": 32133
+        },
+        {
+          "path": "app\\libs\\.keep",
+          "kind": "different",
+          "bytes": 2
+        },
+        {
+          "path": "app\\objectbox-models\\default.json",
+          "kind": "different",
+          "bytes": 8956
+        },
+        {
+          "path": "app\\objectbox-models\\default.json.bak",
+          "kind": "different",
+          "bytes": 7591
+        },
+        {
+          "path": "docs\\contracts\\scope-and-security-boundary.md",
+          "kind": "different",
+          "bytes": 2467
+        },
+        {
+          "path": "docs\\plan\\project-structure-and-m0.md",
+          "kind": "different",
+          "bytes": 6015
+        },
+        {
+          "path": "evidence\\M0\\acceptance-log.md",
+          "kind": "different",
+          "bytes": 2090
+        },
+        {
+          "path": "evidence\\M0\\capability-gap.md",
+          "kind": "different",
+          "bytes": 3332
+        },
+        {
+          "path": "evidence\\M0\\decision.md",
+          "kind": "different",
+          "bytes": 1925
+        },
+        {
+          "path": "evidence\\M0\\license-inventory.md",
+          "kind": "different",
+          "bytes": 1875
+        },
+        {
+          "path": "evidence\\M0\\README.md",
+          "kind": "different",
+          "bytes": 976
+        },
+        {
+          "path": "evidence\\M0\\storage-network-inventory.md",
+          "kind": "different",
+          "bytes": 3482
+        },
+        {
+          "path": "evidence\\M0\\upstream-baseline.md",
+          "kind": "different",
+          "bytes": 2412
+        },
+        {
+          "path": "local.properties",
+          "kind": "different",
+          "bytes": 48
+        }
+      ]
+    },
+    {
+      "name": "m0-apply-probe",
+      "differences": [
+        {
+          "path": "app\\libs\\.keep",
+          "kind": "different",
+          "bytes": 6
+        },
+        {
+          "path": "app\\src\\main\\assets\\jks.jks",
+          "kind": "copy-only",
+          "bytes": 2656
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Imagegen UI Prototypes"
+  short_description: "Audit, compare, and sheet native UI directions"
+  default_prompt: "Use $prototype-ui-with-imagegen to audit the current UI, create native design directions and a labeled comparison sheet, have a subagent review them, and recommend detailed next steps before changing production code."
+policy:
+  allow_implicit_invocation: false

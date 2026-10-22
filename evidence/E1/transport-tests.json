@@ -1,0 +1,93 @@
+{
+  "stage": "E1 transport and dispatcher contract",
+  "recordedAt": "2026-09-19T19:40:52.372136+00:00",
+  "command": "ci/build.ps1 -Tasks :app:testDebugUnitTest,--offline",
+  "result": "PASS",
+  "tests": 48,
+  "suites": [
+    {
+      "name": "com.ai.assistance.operit.ChatBubblesTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:13.836Z",
+      "time": "0.033"
+    },
+    {
+      "name": "com.ai.assistance.operit.ChatCoordinatorTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:13.871Z",
+      "time": "0.202"
+    },
+    {
+      "name": "com.ai.assistance.operit.McpSessionTest",
+      "tests": "11",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:14.076Z",
+      "time": "7.279"
+    },
+    {
+      "name": "com.ai.assistance.operit.ProviderTest",
+      "tests": "13",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:21.357Z",
+      "time": "1.367"
+    },
+    {
+      "name": "com.ai.assistance.operit.RequestContextTest",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:22.725Z",
+      "time": "0.008"
+    },
+    {
+      "name": "com.ai.assistance.operit.RoleTemplateTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:22.735Z",
+      "time": "0.011"
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolDispatcherTest",
+      "tests": "8",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-09-19T19:40:22.749Z",
+      "time": "0.033"
+    }
+  ],
+  "testedSourceSha256": {
+    "app/build.gradle.kts": "a07872626bc28d0b521f89e467a2755583395e6456cd1bc7c11e46813c5ce239",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/McpSession.kt": "e53b9c284ae3a8e8a1ac927fae66cccf84e407141c5a67857b8166e502dab0c8",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/mcp/RemoteMcpSession.kt": "2f61b21351ab577e5c5a231abb1a6f0a59a3d8fe6e69ac1eb2b64e40984dc831",
+    "app/src/main/java/com/ai/assistance/operit/core/tools/ToolDispatcher.kt": "627a93f7e09440c2d2f87d57f4974b60d66f7cb8ee66654bd797c8e0d58da4a6",
+    "app/src/main/java/com/ai/assistance/operit/data/model/RoleTemplate.kt": "11dbfa6e9173d6b018748f488c92e1985e7d73e188566a7d46430d859e1ff22e",
+    "app/src/test/java/com/ai/assistance/operit/ChatBubblesTest.kt": "76c1849f2701eb9d53add82298065d810df0fe9716b2411d760e7669ed17c1c3",
+    "app/src/test/java/com/ai/assistance/operit/ChatCoordinatorTest.kt": "ff5ed05411c944b0eeecaa10abb1297ecd6109fea8d0ae847eca90378e616f90",
+    "app/src/test/java/com/ai/assistance/operit/McpSessionTest.kt": "d4c9defcf196a9a60193610bec746850b7473353eaba660788703e922fe52b53",
+    "app/src/test/java/com/ai/assistance/operit/ProviderTest.kt": "5e9bd3d33204fa86dca7324ec74df4d46952f326343133ee5ebc445ca11fd90d",
+    "app/src/test/java/com/ai/assistance/operit/RequestContextTest.kt": "21363f6ecded371f8279c498bfca2307b7e1063ba6be960390fa7d6b051d311e",
+    "app/src/test/java/com/ai/assistance/operit/RoleTemplateTest.kt": "5610a40e2f1f03d1d854421704a954ff2f44a0730515aa18fdbd56ed37861207",
+    "app/src/test/java/com/ai/assistance/operit/ToolDispatcherTest.kt": "ee17be4fccdc093f4f47fa690c0dfa41f492cc83ebb80a78554fc84e176d3e8c",
+    "gradle/libs.versions.toml": "3578841940c6a489491a901d4bcbb5a25d51bf47336e78e067bd45cfa1e1feaa"
+  },
+  "buildLogSha256": "c5e2d4107301f2e9a661078b8f989cbbfb747cda0afa15fcebe87f3127b4fbaa",
+  "databaseIntegration": "NOT_RUN",
+  "androidRuntime": "NOT_RUN",
+  "modelToolLoop": "NOT_IMPLEMENTED",
+  "toolPkg": "NOT_IMPLEMENTED",
+  "newApk": "NOT_BUILT"
+}

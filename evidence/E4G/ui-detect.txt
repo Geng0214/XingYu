@@ -1,0 +1,8 @@
+E4G UI validation summary
+
+- Compose debug and release compilation: PASS.
+- Android test source compilation: PASS.
+- Android Lint: PASS with 0 errors, 58 warnings and 1 hint. No warning points to the new proactive settings, JobService, notification permission or message marker implementation.
+- Manual source review: PASS for the global settings dialog, role settings page, destination/model selection, quiet hours, interval, daily limits, monthly budget, notification preview, raw-mode refusal and proactive message marker.
+- Privacy review: PASS. Both switches default off; preview does not call the model; notifications use fixed generic text and VISIBILITY_SECRET; proactive requests contain no tool definitions; role and space are checked on reads and writes.
+- Device visual QA: NOT_RUN. No authorized ADB device was connected, so phone/tablet layout, large text, dark mode, rotation, TalkBack, notification permission, JobScheduler, Doze, boot, force-stop behavior and privacy-lock navigation remain pending.

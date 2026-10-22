@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "sourceSha256": "701ad9ba90cd3616b61652a61a3932d88fbe2f99ebfa785dac9189afc0327916",
+  "schemaMatchesRoomV11": true,
+  "originalConfigRoleChatMessagePreserved": true,
+  "legacyVisionEnabled": false,
+  "newAttachmentRows": 0,
+  "invalidPreMigrationAssociationsRejected": 2,
+  "interruptedDdlRollback": true,
+  "limitation": "Actual migration SQL on host SQLite. Room/SQLCipher/Keystore device migration remains NOT_RUN."
+}

@@ -1,0 +1,43 @@
+{
+  "status": "AUDIO_BINDINGS_VERIFIED_PRODUCT_INTEGRATION_INCOMPLETE",
+  "sourceCommit": "6a0deaec110350eda49fae25d3b3759902033699",
+  "tests": {
+    "tests": 300,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newTests": 10,
+  "observedRouteDisconnectRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "androidAudioExecution": "NOT_RUN",
+  "api26To30Routing": "NOT_IMPLEMENTED",
+  "voiceUiAndRuntimeWiring": "NOT_IMPLEMENTED",
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": ".\\gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 20s; 75 tasks, 10 executed, 65 up-to-date",
+  "earlierFailure": "Full-scale step test used an amplitude threshold incompatible with normal filter ringing; corrected to check sign preservation and saturation. Production conversion unchanged.",
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidObservedAudioRoute.kt": "0d895ac9b255fc42b60c7b060e372039e9c57880c85fcefbbb498719e60b51a1",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidPcmPlayer.kt": "2765b03fb4c7fbe7aa0b7e10f8f0ba50bda99a7e6dac403a39871c03219cdec4",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidVoiceRecorder.kt": "4f7494ed8c86f8a2f1d84df7c83fd49288cdec7af0722b144a39241159ae6d76",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/CommunicationPcm.kt": "9522b04e4195dfe0153d5deaac69a4f9489fd70e173b3b9352f77ff67a93504e",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/ObservedAudioRoute.kt": "c89099f9c6d05f4cc621dcc75d87a7feef4d7f27b983a61b370a3d1513f96d0e",
+    "app/src/test/java/com/ai/assistance/operit/CommunicationPcmTest.kt": "d617e562bdc906ab7df0765a4576f978e5a332b19de38d20eceb1ed8b1540e53",
+    "app/src/test/java/com/ai/assistance/operit/ObservedAudioRouteTest.kt": "6b5ae664f0b7ba6f880d7acc59c67baf5d2cc0162d64ac161d4632b9c0c02d97",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "17b13e74a6ee21ad891c653de2dfc94e4bc32a025ce84410497b0de2499962f0",
+    "docs/TODO/voice-and-shared-activities/index.md": "865f320c3d8bafb709f029a39c05888852b79ce58d6fa5a685da439b5fff2858",
+    "docs/project/STATUS.md": "4081daef593e9dcce423e52e170dd2a726587ce9f6000beb65eaba962a3a4c8d",
+    "docs/project/companion-full-plan.md": "8c813ca782d9e2289dcb43e4b56c9b4947d7886363597e655800db67ea5401e2"
+  },
+  "evidenceSha256": {
+    "evidence/E5_ROUTE_AUDIO/build-validation-final.log": "0ea74ed16a56b40c5490a5facd547075a16f47af09f6ed39c87f2ef02000e6ff",
+    "evidence/E5_ROUTE_AUDIO/build-validation.log": "72e664623b14813ae9ffd14b8b2de3e8d0bd5570238fd070049a7bd49588c775"
+  }
+}

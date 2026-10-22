@@ -1,0 +1,17 @@
+{
+  "sourceCommit": "b3eeaf6b32e9c17d14190b0b996334f8ca4706e9",
+  "method": "Independent read-only Compose code review and one findings-resolution pass; existing Material system preservation check",
+  "findings": {
+    "acceptedDraftRevision": "RESOLVED_BY_CODE_INSPECTION",
+    "stalePreviewRevision": "RESOLVED_BY_CODE_INSPECTION",
+    "oversizedBubbleEndScroll": "RESOLVED_BY_CODE_INSPECTION",
+    "viewModelOnlyDraftAndEditor": "RESOLVED_BY_CODE_INSPECTION",
+    "toggleableSelectableLabels": "RESOLVED_BY_CODE_INSPECTION"
+  },
+  "system": "Existing theme, three tabs and Material components retained; group initials/unified background documented",
+  "screenshots": "NOT_RUN",
+  "androidRuntime": "NOT_RUN",
+  "talkBack": "NOT_RUN",
+  "contrastMeasurement": "NOT_RUN",
+  "limitation": "No Android device connected. Review resolution is limited to five source findings; it is not visual or accessibility acceptance."
+}

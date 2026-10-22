@@ -1,0 +1,159 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.13/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Gradle could not start your build.
+> Cannot create service of type BuildSessionActionExecutor using method LauncherServices$ToolingBuildSessionScopeServices.createActionExecutor() as there is a problem with parameter #21 of type BuildLifecycleAwareVirtualFileSystem.
+   > Cannot create service of type BuildLifecycleAwareVirtualFileSystem using method VirtualFileSystemServices$GradleUserHomeServices.createVirtualFileSystem() as there is a problem with parameter #1 of type FileWatchingFilter.
+      > Cannot create service of type FileWatchingFilter using method VirtualFileSystemServices$GradleUserHomeServices.createFileWatchingFilter() as there is a problem with parameter #1 of type GlobalCacheLocations.
+         > Cannot create service of type GlobalCacheLocations using method GradleUserHomeScopeServices.createGlobalCacheLocations() as there is a problem with parameter #1 of type List<GlobalCache>.
+            > Could not create service of type FileAccessTimeJournal using GradleUserHomeScopeServices.createFileAccessTimeJournal().
+               > java.io.FileNotFoundException: C:\Users\15942\.gradle\caches\journal-1\journal-1.lock (¾Ü¾ø·ÃÎÊ¡£)
+
+* Try:
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+* Exception is:
+org.gradle.initialization.exception.InitializationException: Gradle could not start your build.
+	at org.gradle.initialization.exception.DefaultExceptionAnalyser.collectFailures(DefaultExceptionAnalyser.java:61)
+	at org.gradle.initialization.exception.MultipleBuildFailuresExceptionAnalyser.transform(MultipleBuildFailuresExceptionAnalyser.java:56)
+	at org.gradle.initialization.exception.MultipleBuildFailuresExceptionAnalyser.transform(MultipleBuildFailuresExceptionAnalyser.java:39)
+	at org.gradle.initialization.exception.StackTraceSanitizingExceptionAnalyser.transform(StackTraceSanitizingExceptionAnalyser.java:34)
+	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:60)
+	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:39)
+	at org.gradle.internal.buildprocess.execution.SetupLoggingActionExecutor.execute(SetupLoggingActionExecutor.java:47)
+	at org.gradle.internal.buildprocess.execution.SetupLoggingActionExecutor.execute(SetupLoggingActionExecutor.java:31)
+	at org.gradle.launcher.daemon.server.exec.ExecuteBuild.doBuild(ExecuteBuild.java:70)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.WatchForDisconnection.execute(WatchForDisconnection.java:39)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.ResetDeprecationLogger.execute(ResetDeprecationLogger.java:29)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.RequestStopIfSingleUsedDaemon.execute(RequestStopIfSingleUsedDaemon.java:35)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.lambda$execute$0(ForwardClientInput.java:40)
+	at org.gradle.internal.daemon.clientinput.ClientInputForwarder.forwardInput(ClientInputForwarder.java:80)
+	at org.gradle.launcher.daemon.server.exec.ForwardClientInput.execute(ForwardClientInput.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.LogAndCheckHealth.execute(LogAndCheckHealth.java:53)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.LogToClient.doBuild(LogToClient.java:63)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.EstablishBuildEnvironment.doBuild(EstablishBuildEnvironment.java:84)
+	at org.gradle.launcher.daemon.server.exec.BuildCommandOnly.execute(BuildCommandOnly.java:37)
+	at org.gradle.launcher.daemon.server.api.DaemonCommandExecution.proceed(DaemonCommandExecution.java:104)
+	at org.gradle.launcher.daemon.server.exec.StartBuildOrRespondWithBusy$1.run(StartBuildOrRespondWithBusy.java:52)
+	at org.gradle.launcher.daemon.server.DaemonStateCoordinator.lambda$runCommand$0(DaemonStateCoordinator.java:321)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:48)
+Caused by: org.gradle.internal.service.ServiceCreationException: Cannot create service of type BuildSessionActionExecutor using method LauncherServices$ToolingBuildSessionScopeServices.createActionExecutor() as there is a problem with parameter #21 of type BuildLifecycleAwareVirtualFileSystem.
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:936)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.prepare(DefaultServiceRegistry.java:789)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.getService(DefaultServiceRegistry.java:815)
+	at org.gradle.internal.service.DefaultServiceRegistry$OwnServices.getService(DefaultServiceRegistry.java:484)
+	at org.gradle.internal.service.DefaultServiceRegistry$CompositeServiceProvider.getService(DefaultServiceRegistry.java:1200)
+	at org.gradle.internal.service.DefaultServiceRegistry.find(DefaultServiceRegistry.java:1297)
+	at org.gradle.internal.service.DefaultServiceRegistry.getService(DefaultServiceRegistry.java:362)
+	at org.gradle.internal.service.DefaultServiceRegistry.find(DefaultServiceRegistry.java:355)
+	at org.gradle.internal.service.DefaultServiceRegistry.get(DefaultServiceRegistry.java:340)
+	at org.gradle.internal.service.DefaultServiceRegistry.get(DefaultServiceRegistry.java:335)
+	at org.gradle.internal.session.DefaultBuildSessionContext.execute(DefaultBuildSessionContext.java:46)
+	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor$ActionImpl.apply(BuildSessionLifecycleBuildActionExecutor.java:92)
+	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor$ActionImpl.apply(BuildSessionLifecycleBuildActionExecutor.java:80)
+	at org.gradle.internal.session.BuildSessionState.run(BuildSessionState.java:73)
+	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor.execute(BuildSessionLifecycleBuildActionExecutor.java:62)
+	at org.gradle.internal.buildprocess.execution.BuildSessionLifecycleBuildActionExecutor.execute(BuildSessionLifecycleBuildActionExecutor.java:41)
+	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.execute(StartParamsValidatingActionExecutor.java:64)
+	at org.gradle.internal.buildprocess.execution.StartParamsValidatingActionExecutor.execute(StartParamsValidatingActionExecutor.java:32)
+	at org.gradle.internal.buildprocess.execution.SessionFailureReportingActionExecutor.execute(SessionFailureReportingActionExecutor.java:51)
+	... 28 more
+Caused by: org.gradle.internal.service.ServiceCreationException: Cannot create service of type BuildLifecycleAwareVirtualFileSystem using method VirtualFileSystemServices$GradleUserHomeServices.createVirtualFileSystem() as there is a problem with parameter #1 of type FileWatchingFilter.
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:936)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.prepare(DefaultServiceRegistry.java:789)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.getService(DefaultServiceRegistry.java:815)
+	at org.gradle.internal.service.DefaultServiceRegistry$OwnServices.getService(DefaultServiceRegistry.java:484)
+	at org.gradle.internal.service.DefaultServiceRegistry$CompositeServiceProvider.getService(DefaultServiceRegistry.java:1200)
+	at org.gradle.internal.service.DefaultServiceRegistry$ParentServices.getService(DefaultServiceRegistry.java:1259)
+	at org.gradle.internal.service.DefaultServiceRegistry$CompositeServiceProvider.getService(DefaultServiceRegistry.java:1200)
+	at org.gradle.internal.service.DefaultServiceRegistry$CompositeServiceProvider.getService(DefaultServiceRegistry.java:1200)
+	at org.gradle.internal.service.DefaultServiceRegistry.find(DefaultServiceRegistry.java:1297)
+	at org.gradle.internal.service.DefaultServiceRegistry.access$2300(DefaultServiceRegistry.java:90)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:934)
+	... 46 more
+Caused by: org.gradle.internal.service.ServiceCreationException: Cannot create service of type FileWatchingFilter using method VirtualFileSystemServices$GradleUserHomeServices.createFileWatchingFilter() as there is a problem with parameter #1 of type GlobalCacheLocations.
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:936)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.prepare(DefaultServiceRegistry.java:789)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.getService(DefaultServiceRegistry.java:815)
+	at org.gradle.internal.service.DefaultServiceRegistry$OwnServices.getService(DefaultServiceRegistry.java:484)
+	at org.gradle.internal.service.DefaultServiceRegistry$CompositeServiceProvider.getService(DefaultServiceRegistry.java:1200)
+	at org.gradle.internal.service.DefaultServiceRegistry.find(DefaultServiceRegistry.java:1297)
+	at org.gradle.internal.service.DefaultServiceRegistry.access$2300(DefaultServiceRegistry.java:90)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:934)
+	... 56 more
+Caused by: org.gradle.internal.service.ServiceCreationException: Cannot create service of type GlobalCacheLocations using method GradleUserHomeScopeServices.createGlobalCacheLocations() as there is a problem with parameter #1 of type List<GlobalCache>.
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:936)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.prepare(DefaultServiceRegistry.java:789)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.getService(DefaultServiceRegistry.java:815)
+	at org.gradle.internal.service.DefaultServiceRegistry$OwnServices.getService(DefaultServiceRegistry.java:484)
+	at org.gradle.internal.service.DefaultServiceRegistry$CompositeServiceProvider.getService(DefaultServiceRegistry.java:1200)
+	at org.gradle.internal.service.DefaultServiceRegistry.find(DefaultServiceRegistry.java:1297)
+	at org.gradle.internal.service.DefaultServiceRegistry.access$2300(DefaultServiceRegistry.java:90)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:934)
+	... 63 more
+Caused by: org.gradle.internal.service.ServiceCreationException: Could not create service of type FileAccessTimeJournal using GradleUserHomeScopeServices.createFileAccessTimeJournal().
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryMethodService.invokeMethod(DefaultServiceRegistry.java:1059)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.createServiceInstance(DefaultServiceRegistry.java:959)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryMethodService.createServiceInstance(DefaultServiceRegistry.java:1077)
+	at org.gradle.internal.service.DefaultServiceRegistry$ManagedObjectServiceProvider.getInstance(DefaultServiceRegistry.java:686)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.get(DefaultServiceRegistry.java:771)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.assembleParameters(DefaultServiceRegistry.java:972)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.createServiceInstance(DefaultServiceRegistry.java:958)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryMethodService.createServiceInstance(DefaultServiceRegistry.java:1077)
+	at org.gradle.internal.service.DefaultServiceRegistry$ManagedObjectServiceProvider.getInstance(DefaultServiceRegistry.java:686)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.get(DefaultServiceRegistry.java:771)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.assembleParameters(DefaultServiceRegistry.java:972)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.createServiceInstance(DefaultServiceRegistry.java:958)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryMethodService.createServiceInstance(DefaultServiceRegistry.java:1077)
+	at org.gradle.internal.service.DefaultServiceRegistry$ManagedObjectServiceProvider.getInstance(DefaultServiceRegistry.java:686)
+	at org.gradle.internal.service.DefaultServiceRegistry$SingletonService.get(DefaultServiceRegistry.java:771)
+	at org.gradle.internal.service.DefaultServiceRegistry.getCollectionService(DefaultServiceRegistry.java:1345)
+	at org.gradle.internal.service.DefaultServiceRegistry.getCollectionService(DefaultServiceRegistry.java:1327)
+	at org.gradle.internal.service.DefaultServiceRegistry.find(DefaultServiceRegistry.java:1289)
+	at org.gradle.internal.service.DefaultServiceRegistry.access$2300(DefaultServiceRegistry.java:90)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryService.bind(DefaultServiceRegistry.java:934)
+	... 70 more
+Caused by: org.gradle.api.UncheckedIOException: java.io.FileNotFoundException: C:\Users\15942\.gradle\caches\journal-1\journal-1.lock (¾Ü¾ø·ÃÎÊ¡£)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:63)
+	at org.gradle.internal.UncheckedException.throwAsUncheckedException(UncheckedException.java:42)
+	at org.gradle.cache.internal.DefaultFileLockManager.lock(DefaultFileLockManager.java:128)
+	at org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess.incrementLockCount(LockOnDemandCrossProcessCacheAccess.java:106)
+	at org.gradle.cache.internal.LockOnDemandCrossProcessCacheAccess.acquireFileLock(LockOnDemandCrossProcessCacheAccess.java:163)
+	at org.gradle.cache.internal.DefaultCacheCoordinator.onStartWork(DefaultCacheCoordinator.java:401)
+	at org.gradle.cache.internal.DefaultCacheCoordinator.useCache(DefaultCacheCoordinator.java:240)
+	at org.gradle.cache.internal.DefaultCacheCoordinator.useCache(DefaultCacheCoordinator.java:223)
+	at org.gradle.cache.internal.DefaultCacheCoordinator.newCache(DefaultCacheCoordinator.java:321)
+	at org.gradle.cache.internal.DefaultPersistentDirectoryStore.createIndexedCache(DefaultPersistentDirectoryStore.java:132)
+	at org.gradle.cache.internal.DefaultCacheFactory$ReferenceTrackingCache.createIndexedCache(DefaultCacheFactory.java:188)
+	at org.gradle.api.internal.changedetection.state.DefaultFileAccessTimeJournal.<init>(DefaultFileAccessTimeJournal.java:52)
+	at org.gradle.internal.service.scopes.GradleUserHomeScopeServices.createFileAccessTimeJournal(GradleUserHomeScopeServices.java:274)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at org.gradle.internal.reflect.JavaMethod.invoke(JavaMethod.java:125)
+	at org.gradle.internal.service.ReflectionBasedServiceMethod.invoke(ReflectionBasedServiceMethod.java:35)
+	at org.gradle.internal.service.DefaultServiceRegistry$FactoryMethodService.invokeMethod(DefaultServiceRegistry.java:1057)
+	... 89 more
+Caused by: java.io.FileNotFoundException: C:\Users\15942\.gradle\caches\journal-1\journal-1.lock (¾Ü¾ø·ÃÎÊ¡£)
+	at org.gradle.cache.internal.filelock.LockFileAccess.<init>(LockFileAccess.java:31)
+	at org.gradle.cache.internal.DefaultFileLockManager$DefaultFileLock.<init>(DefaultFileLockManager.java:174)
+	at org.gradle.cache.internal.DefaultFileLockManager.lock(DefaultFileLockManager.java:125)
+	... 105 more
+
+
+BUILD FAILED in 2s

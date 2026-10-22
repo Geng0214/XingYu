@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "schemaMatchesRoomV3": true,
+  "oldTextAndCredentialsPreserved": true,
+  "oldMessagesKeepParagraphStyle": true,
+  "roleSpaceUnchanged": true,
+  "wallpaperScopeGuards": true,
+  "limitation": "In-memory host SQLite; Android encrypted image storage, migration and visual behavior require device validation."
+}

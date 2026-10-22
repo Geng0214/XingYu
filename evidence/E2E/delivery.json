@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-09-19T23:59:53.930298+00:00",
+  "applicationId": "cn.localfirst.companion",
+  "version": "0.10.0",
+  "versionCode": 10,
+  "sourceCommit": "686db0715fe8816d825be8b1e6ac96867b93c36b",
+  "certificateSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+  "roomMigration": "1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9",
+  "upgradeFrom": [
+    "0.1.0",
+    "0.2.0",
+    "0.3.0",
+    "0.4.0",
+    "0.5.0",
+    "0.6.0",
+    "0.7.0",
+    "0.8.0",
+    "0.9.0"
+  ],
+  "files": [
+    {
+      "name": "local-companion-0.10.0.apk",
+      "bytes": 9129582,
+      "sha256": "1ecfff7ef63fae4cdca21a1b961356073d21f88fd7c2c134c92a129911f52058"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 1816357,
+      "sha256": "f3908a5bf55424f17e1ec12f2800398763f8d834cf5a03de875309de5f376a10"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 7094,
+      "sha256": "f4c25189910f9db803e5fd85bb0961ba377bbd0ef407a697c57c26a6eb6f9731"
+    }
+  ],
+  "validation": {
+    "unitTests": {
+      "tests": 129,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hostRelationshipMigration": "PASS",
+    "hostExtensionAndToolPkgSql": "PASS",
+    "hostQuickJsModelRoundTrip": "PASS",
+    "cleanBuild": "PASS",
+    "finalValidation": "PASS",
+    "apkAudit": "PASS",
+    "signatureContinuity": "PASS",
+    "androidTestCompilation": "PASS",
+    "deviceUpgrade": "NOT_RUN",
+    "deviceStorage": "NOT_RUN",
+    "androidQuickJsRuntime": "NOT_RUN",
+    "systemAuthentication": "NOT_RUN",
+    "lockLifecycleUi": "NOT_RUN",
+    "androidBackupTransaction": "NOT_RUN",
+    "crossDeviceBackup": "NOT_RUN",
+    "backupFilePicker": "NOT_RUN",
+    "androidPersonaIsolation": "NOT_RUN",
+    "androidWorldbookIsolation": "NOT_RUN",
+    "worldbookFilePicker": "NOT_RUN",
+    "androidRelationshipIsolation": "NOT_RUN",
+    "rawModeUi": "NOT_RUN",
+    "visualQA": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "liveMcp": "NOT_RUN",
+    "crossDeviceTemplate": "NOT_RUN",
+    "threePersonObservation": "NOT_RUN"
+  },
+  "compatibility": {
+    "mcp": "Streamable HTTP over HTTPS",
+    "toolPkg": "schema 1 / API 1.0.0 / tools-v1 pure computation; no device/network/filesystem/UI Hook host APIs"
+  },
+  "status": "E2 privacy lock, backup, user personas, worldbook, relationships and raw mode development complete; usage/onboarding remain; device and human acceptance pending; M1/M2/E1 not fully accepted"
+}

@@ -1,0 +1,892 @@
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index 562c695e..d120fc6a 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -356,6 +356,85 @@ val syncMainAssets by tasks.registering(Sync::class) {
+     into(generatedMainAssetsDir)
+ }
+ 
++val forbiddenSigningMaterialExtensions = setOf(".jks", ".keystore", ".p12", ".pkcs12", ".pem", ".key")
++val embeddedArchiveExtensions = setOf(".apk", ".zip", ".jar", ".aar")
++
++fun signingMaterialInArchive(archive: File, archiveLabel: String): List<String> {
++    val found = mutableListOf<String>()
++    ZipFile(archive).use { zip ->
++        val entries = zip.entries()
++        while (entries.hasMoreElements()) {
++            val entry = entries.nextElement()
++            if (!entry.isDirectory &&
++                forbiddenSigningMaterialExtensions.any { extension -> entry.name.endsWith(extension, ignoreCase = true) }
++            ) {
++                found.add("$archiveLabel!/${entry.name}")
++            }
++        }
++    }
++    return found
++}
++
++// Library modules are not visible from :app's own srcDirs; AGP only combines their
++// src/main/assets during merge<Variant>Assets. Enumerate every included project so the
++// check sees the packaged set rather than a hand-maintained list of roots.
++val packagedAssetRoots: List<Pair<String, File>> = buildList {
++    add(":app/src/main/assets" to file("src/main/assets"))
++    add(":app/generated-stt-assets" to generatedMainAssetsDir.get().asFile)
++    rootProject.subprojects
++        .filter { subproject -> subproject != project }
++        .map { subproject -> "${subproject.path}/src/main/assets" to subproject.file("src/main/assets") }
++        .filter { (_, candidate) -> candidate.isDirectory }
++        .let { addAll(it) }
++}
++
++fun signingMaterialUnder(assetRoot: File, rootLabel: String): List<String> {
++    if (!assetRoot.isDirectory) {
++        return emptyList()
++    }
++    return assetRoot.walkTopDown()
++        .filter { candidate -> candidate.isFile }
++        .flatMap { candidate ->
++            val relativePath = "$rootLabel/${candidate.relativeTo(assetRoot).path}"
++            val directHits = if (forbiddenSigningMaterialExtensions.any { extension ->
++                    candidate.name.endsWith(extension, ignoreCase = true)
++                }
++            ) {
++                listOf(relativePath)
++            } else {
++                emptyList()
++            }
++            val nestedHits = if (embeddedArchiveExtensions.any { extension ->
++                    candidate.name.endsWith(extension, ignoreCase = true)
++                }
++            ) {
++                signingMaterialInArchive(candidate, relativePath)
++            } else {
++                emptyList()
++            }
++            directHits + nestedHits
++        }
++        .toList()
++}
++
++val verifyNoEmbeddedSigningMaterial by tasks.registering {
++    description = "Prevents private signing material from entering any merged application asset."
++    group = "verification"
++    dependsOn(syncMainAssets)
++    inputs.dir("src/main/assets")
++    inputs.dir(generatedMainAssetsDir)
++    outputs.upToDateWhen { false }
++
++    doLast {
++        val forbiddenFiles = packagedAssetRoots.flatMap { (rootLabel, assetRoot) ->
++            signingMaterialUnder(assetRoot, rootLabel)
++        }
++        require(forbiddenFiles.isEmpty()) {
++            "Signing material must not be embedded in application assets: ${forbiddenFiles.joinToString()}"
++        }
++    }
++}
++
+ android {
+     namespace = "com.ai.assistance.operit"
+     compileSdk = 36
+@@ -397,6 +476,7 @@ android {
+         applicationId = "com.ai.assistance.operit"
+         minSdk = 26
+         targetSdk = 34
++        ndkVersion = "27.3.13750724"
+         versionCode = 50
+         versionName = "1.12.1+7"
+ 
+@@ -563,6 +643,7 @@ tasks.matching { it.name == "assembleNightly" }.configureEach {
+ tasks.named("preBuild") {
+     dependsOn(syncMainAssets)
+     dependsOn(verifyExternallyBuiltNativeLibraries)
++    dependsOn(verifyNoEmbeddedSigningMaterial)
+ }
+ 
+ tasks.matching { it.name.matches(Regex("merge.*Assets")) }.configureEach {
+@@ -818,16 +899,21 @@ dependencies {
+     implementation(libs.mcp.sdk.client)
+     implementation(libs.ktor.client.okhttp)
+     
+-    // Exclude bcprov-jdk15to18 from all configurations to avoid duplicate classes
++    // Exclude the jdk15to18 BouncyCastle artefacts that pdfbox-android drags in: the app
++    // compiles and runs against jdk18on 1.78, which provides the same class names.
+     configurations.all {
+         exclude(group = "org.bouncycastle", module = "bcprov-jdk15to18")
++        exclude(group = "org.bouncycastle", module = "bcpkix-jdk15to18")
++        exclude(group = "org.bouncycastle", module = "bcutil-jdk15to18")
+     }
+ 
+     // Security
+     implementation("androidx.security:security-crypto:1.1.0-alpha06")
+     
+-    // BouncyCastle - explicitly include jdk18on version to avoid conflicts
++    // BouncyCastle - explicitly include jdk18on versions to avoid conflicts.
++    // bcpkix is required to create the per-install export certificate without embedded keys.
+     implementation("org.bouncycastle:bcprov-jdk18on:1.78")
++    implementation("org.bouncycastle:bcpkix-jdk18on:1.78")
+ 
+     // Retrofit
+     implementation("com.squareup.retrofit2:retrofit:2.9.0")
+diff --git a/app/src/main/assets/jks.jks b/app/src/main/assets/jks.jks
+deleted file mode 100644
+index dbbc493bde7a347d52b4eda94499093735bfee3d..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 2656
+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
+
+diff --git a/app/src/main/assets/pkcs12.keystore b/app/src/main/assets/pkcs12.keystore
+deleted file mode 100644
+index 6477818568bf5171de49769a612b22b65507870f..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 2688
+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
+Q>Z*OZ*>*MG|5eDp04~AaqW}N^
+
+diff --git a/app/src/main/java/com/ai/assistance/operit/core/subpack/KeyStoreHelper.kt b/app/src/main/java/com/ai/assistance/operit/core/subpack/KeyStoreHelper.kt
+index e354bdb4..d31b2996 100644
+--- a/app/src/main/java/com/ai/assistance/operit/core/subpack/KeyStoreHelper.kt
++++ b/app/src/main/java/com/ai/assistance/operit/core/subpack/KeyStoreHelper.kt
+@@ -2,196 +2,196 @@ package com.ai.assistance.operit.core.subpack
+ 
+ import android.content.Context
+ import com.ai.assistance.operit.util.AppLogger
+-import org.bouncycastle.jce.provider.BouncyCastleProvider
+ import java.io.File
+ import java.io.FileInputStream
++import java.io.FileOutputStream
++import java.math.BigInteger
++import java.security.KeyPairGenerator
+ import java.security.KeyStore
+ import java.security.Provider
++import java.security.SecureRandom
+ import java.security.Security
++import java.util.Base64
++import java.util.Date
++import javax.security.auth.x500.X500Principal
++import org.bouncycastle.asn1.x500.X500Name
++import org.bouncycastle.cert.jcajce.JcaX509CertificateConverter
++import org.bouncycastle.cert.jcajce.JcaX509v3CertificateBuilder
++import org.bouncycastle.jce.provider.BouncyCastleProvider
++import org.bouncycastle.operator.jcajce.JcaContentSignerBuilder
+ 
+-/** 密钥库辅助类 统一处理密钥库加载、验证和Provider管理 */
++/** 密钥库辅助类。导出签名密钥只在应用私有的 no-backup 目录按安装生成。 */
+ class KeyStoreHelper {
+     companion object {
+         private const val TAG = "KeyStoreHelper"
++        private const val KEYSTORE_FILE_NAME = "export-signing.p12"
++        private const val PASSWORD_FILE_NAME = "export-signing.password"
++        private const val KEY_ALIAS = "operit-export"
++        private const val KEYSTORE_TYPE = "PKCS12"
++        private const val KEY_ALGORITHM = "RSA"
+ 
+         // 保存注册的BouncyCastle提供者引用
+         private var bcProvider: Provider? = null
+ 
+-        /**
+-         * 注册BouncyCastle提供者
+-         * @return 是否成功注册
+-         */
++        /** 注册BouncyCastle提供者。 */
+         @JvmStatic
+         fun registerBouncyCastleProvider(): Boolean {
+-            try {
+-                // 先移除再添加，避免重复添加导致的问题
++            return try {
+                 Security.removeProvider("BC")
+-
+-                // 创建新的BouncyCastle提供者实例
+                 val provider = BouncyCastleProvider()
+-
+-                // 添加到安全提供者列表首位确保优先级
+                 val position = Security.insertProviderAt(provider, 1)
+-
+-                // 保存引用
+                 bcProvider = provider
+-
+-                return position > 0
++                position > 0
+             } catch (e: Exception) {
+                 AppLogger.e(TAG, "注册BouncyCastle提供程序失败: ${e.message}", e)
+-                return false
++                false
+             }
+         }
+ 
+-        /**
+-         * 获取密钥库实例
+-         * @param keyStoreType 密钥库类型 (PKCS12, JKS等)
+-         * @return 密钥库实例或null
+-         */
++        /** 获取密钥库实例。 */
+         @JvmStatic
+         fun getKeyStoreInstance(keyStoreType: String): KeyStore? {
+-            try {
+-                // 对于PKCS12类型，确保BouncyCastle提供者已注册并在第一位
+-                if (keyStoreType == "PKCS12") {
++            return try {
++                if (keyStoreType == KEYSTORE_TYPE) {
+                     registerBouncyCastleProvider()
+-
+-                    // 尝试直接通过类型获取，因为BC现在是第一位提供者
+-                    return KeyStore.getInstance(keyStoreType)
+-                } else {
+-                    // 其他类型直接获取
+-                    return KeyStore.getInstance(keyStoreType)
+                 }
++                KeyStore.getInstance(keyStoreType)
+             } catch (e: Exception) {
+                 AppLogger.e(TAG, "获取${keyStoreType}密钥库实例失败: ${e.message}", e)
+-                return null
++                null
+             }
+         }
+ 
+-        /**
+-         * 验证密钥库文件是否有效
+-         * @param file 密钥库文件
+-         * @param type 密钥库类型
+-         * @param password 密钥库密码
+-         * @return 是否有效
+-         */
++        /** 验证密钥库文件是否有效。 */
+         @JvmStatic
+         fun validateKeystore(file: File, type: String, password: String): Boolean {
+-            try {
+-                // 对于PKCS12类型，确保提供者已正确注册
+-                if (type == "PKCS12") {
++            return try {
++                if (type == KEYSTORE_TYPE) {
+                     registerBouncyCastleProvider()
+                 }
+-
+-                // 获取密钥库实例
+                 val keyStore = getKeyStoreInstance(type) ?: return false
+-
+-                // 加载密钥库
+                 FileInputStream(file).use { input ->
+                     keyStore.load(input, password.toCharArray())
+-
+-                    // 检查是否包含至少一个别名
+-                    return keyStore.aliases().hasMoreElements()
++                    keyStore.aliases().hasMoreElements()
+                 }
+             } catch (e: Exception) {
+                 AppLogger.e(TAG, "$type 密钥库验证失败: ${e.message}")
+-                return false
++                false
+             }
+         }
+ 
+-        /**
+-         * 从应用assets中加载内置密钥库
+-         * @param context 应用上下文
+-         * @param assetName 资产文件名
+-         * @param outputFileName 输出文件名
+-         * @return 密钥库文件或null
+-         */
++        /** 返回本安装生成的导出签名别名。 */
+         @JvmStatic
+-        fun loadKeystoreFromAsset(
+-                context: Context,
+-                assetName: String,
+-                outputFileName: String
+-        ): File? {
+-            try {
+-                val keystoreFile = File(context.filesDir, outputFileName)
+-
+-                // 如果文件已存在且大小合理，直接返回
+-                if (keystoreFile.exists() && keystoreFile.length() > 1000) {
+-                    return keystoreFile
+-                }
+-
+-                // 如果已存在但可能损坏，先删除
+-                if (keystoreFile.exists()) {
+-                    keystoreFile.delete()
+-                }
+-
+-                // 从assets复制密钥库文件
+-                context.assets.open(assetName).use { input ->
+-                    val bytes = input.readBytes()
+-
+-                    if (bytes.size < 1000) {
+-                        AppLogger.e(TAG, "密钥库文件大小异常: ${bytes.size}字节")
+-                        return null
+-                    }
++        fun getKeystoreAlias(): String = KEY_ALIAS
+ 
+-                    keystoreFile.outputStream().use { output ->
+-                        output.write(bytes)
+-                        output.flush()
+-                    }
+-                }
+-
+-                return if (keystoreFile.exists() && keystoreFile.length() > 1000) {
+-                    keystoreFile
+-                } else {
+-                    null
+-                }
+-            } catch (e: Exception) {
+-                AppLogger.e(TAG, "加载内置密钥库失败: ${e.message}", e)
+-                return null
+-            }
+-        }
++        /** 返回本安装生成的导出签名密码，不写入日志或导出包。 */
++        @JvmStatic
++        @Synchronized
++        fun getKeystorePassword(context: Context): String = readOrCreatePassword(context)
+ 
+         /**
+-         * 获取或创建应用签名密钥库
+-         * @param context 应用上下文
+-         * @return 密钥库文件
++         * 获取或创建应用导出签名密钥库。
++         *
++         * 密钥库和密码均位于 noBackupFilesDir，首次使用时用随机 RSA 密钥和自签名证书生成。
++         * 不再从 APK assets、源码或固定口令密钥库加载任何签名材料。
+          */
+         @JvmStatic
++        @Synchronized
+         fun getOrCreateKeystore(context: Context): File {
+-            // 确保BouncyCastle提供者已注册
+             registerBouncyCastleProvider()
++            removeLegacyAssetDerivedKeyMaterial(context)
++
++            val keyStoreFile = File(context.noBackupFilesDir, KEYSTORE_FILE_NAME)
++            val password = readOrCreatePassword(context)
++            if (keyStoreFile.isFile && isUsableGeneratedKeystore(keyStoreFile, password)) {
++                return keyStoreFile
++            }
++
++            if (keyStoreFile.exists() && !keyStoreFile.delete()) {
++                throw IllegalStateException("无法移除无效的本地导出密钥库: ${keyStoreFile.absolutePath}")
++            }
++            createGeneratedKeystore(keyStoreFile, password)
++            check(isUsableGeneratedKeystore(keyStoreFile, password)) {
++                "生成的本地导出密钥库验证失败"
++            }
++            return keyStoreFile
++        }
+ 
+-            // 先尝试PKCS12格式
+-            val pkcs12KeyStoreFile = File(context.filesDir, "pkcs12.keystore")
+-            if (pkcs12KeyStoreFile.exists() && pkcs12KeyStoreFile.length() > 1000) {
+-                if (validateKeystore(pkcs12KeyStoreFile, "PKCS12", "android")) {
+-                    return pkcs12KeyStoreFile
++        private fun readOrCreatePassword(context: Context): String {
++            val passwordFile = File(context.noBackupFilesDir, PASSWORD_FILE_NAME)
++            if (passwordFile.isFile) {
++                val existing = passwordFile.readText(Charsets.UTF_8).trim()
++                if (existing.isNotEmpty()) {
++                    return existing
++                }
++                if (!passwordFile.delete()) {
++                    throw IllegalStateException("无法移除空的本地导出密钥密码文件")
+                 }
+             }
+ 
+-            // 再尝试JKS格式
+-            val jksKeyStoreFile = File(context.filesDir, "jks.jks")
+-            if (jksKeyStoreFile.exists() && jksKeyStoreFile.length() > 1000) {
+-                if (validateKeystore(jksKeyStoreFile, "JKS", "android")) {
+-                    return jksKeyStoreFile
++            val bytes = ByteArray(32)
++            SecureRandom().nextBytes(bytes)
++            val password = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes)
++            passwordFile.parentFile?.mkdirs()
++            passwordFile.writeText(password, Charsets.UTF_8)
++            return password
++        }
++
++        private fun removeLegacyAssetDerivedKeyMaterial(context: Context) {
++            listOf(
++                File(context.filesDir, "jks.jks"),
++                File(context.filesDir, "pkcs12.keystore"),
++            ).forEach { legacyFile ->
++                if (legacyFile.exists() && !legacyFile.delete()) {
++                    throw IllegalStateException("无法移除旧版内置签名密钥库: ${legacyFile.absolutePath}")
+                 }
+             }
++        }
+ 
+-            // 尝试从assets加载
+-            val keystoreFiles = listOf(Pair("pkcs12.keystore", "PKCS12"), Pair("jks.jks", "JKS"))
+-
+-            for ((assetName, type) in keystoreFiles) {
+-                try {
+-                    val keyStoreFile = loadKeystoreFromAsset(context, assetName, assetName)
+-                    if (keyStoreFile != null && validateKeystore(keyStoreFile, type, "android")) {
+-                        return keyStoreFile
+-                    }
+-                } catch (e: Exception) {
+-                    // 忽略单个格式错误，继续尝试下一个
++        private fun isUsableGeneratedKeystore(file: File, password: String): Boolean {
++            return try {
++                val keyStore = getKeyStoreInstance(KEYSTORE_TYPE) ?: return false
++                FileInputStream(file).use { input ->
++                    keyStore.load(input, password.toCharArray())
+                 }
++                keyStore.containsAlias(KEY_ALIAS) && keyStore.getKey(KEY_ALIAS, password.toCharArray()) != null
++            } catch (e: Exception) {
++                AppLogger.e(TAG, "本地导出密钥库不可用: ${e.message}")
++                false
+             }
++        }
+ 
+-            // 如果所有尝试都失败，返回默认文件路径
+-            return pkcs12KeyStoreFile
++        private fun createGeneratedKeystore(file: File, password: String) {
++            val keyPairGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM)
++            keyPairGenerator.initialize(2048, SecureRandom())
++            val keyPair = keyPairGenerator.generateKeyPair()
++            val now = Date()
++            val notAfter = Date(now.time + 10L * 365L * 24L * 60L * 60L * 1000L)
++            val subject = X500Name(X500Principal("CN=Operit Local Export").name)
++            val certificateHolder = JcaX509v3CertificateBuilder(
++                subject,
++                BigInteger(64, SecureRandom()),
++                now,
++                notAfter,
++                subject,
++                keyPair.public,
++            ).build(
++                JcaContentSignerBuilder("SHA256withRSA")
++                    .setProvider("BC")
++                    .build(keyPair.private),
++            )
++            val certificate = JcaX509CertificateConverter()
++                .setProvider("BC")
++                .getCertificate(certificateHolder)
++
++            val keyStore = getKeyStoreInstance(KEYSTORE_TYPE)
++                ?: throw IllegalStateException("无法创建本地导出密钥库实例")
++            keyStore.load(null, password.toCharArray())
++            keyStore.setKeyEntry(KEY_ALIAS, keyPair.private, password.toCharArray(), arrayOf(certificate))
++            file.parentFile?.mkdirs()
++            FileOutputStream(file).use { output ->
++                keyStore.store(output, password.toCharArray())
++            }
+         }
+     }
+ }
+diff --git a/app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ExportDialogs.kt b/app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ExportDialogs.kt
+index b87cfb9c..12055550 100644
+--- a/app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ExportDialogs.kt
++++ b/app/src/main/java/com/ai/assistance/operit/ui/features/chat/components/ExportDialogs.kt
+@@ -822,13 +822,15 @@ suspend fun exportAndroidApp(
+             val outputName = "WebApp_${Date().time}.apk"
+             val outputFile = File(outputDir, outputName)
+ 
+-            AppLogger.d("ExportDialogs", "即将签名APK，使用密钥: ${keyStoreFile.absolutePath}, 别名: androidkey")
++            val keyStorePassword = KeyStoreHelper.getKeystorePassword(context)
++            val keyAlias = KeyStoreHelper.getKeystoreAlias()
++            AppLogger.d("ExportDialogs", "即将签名APK，使用应用私有导出密钥库, 别名: $keyAlias")
+             apkEditor
+                     .withSignature(
+                             keyStoreFile,
+-                            "android", // 密码
+-                            "androidkey", // 别名
+-                            "android" // 密钥密码
++                            keyStorePassword,
++                            keyAlias,
++                            keyStorePassword
+                     )
+                     .setOutput(outputFile)
+ 
+diff --git a/avator/dragonbones/build.gradle.kts b/avator/dragonbones/build.gradle.kts
+index 5b6f0346..67c0b5f5 100644
+--- a/avator/dragonbones/build.gradle.kts
++++ b/avator/dragonbones/build.gradle.kts
+@@ -9,6 +9,7 @@ plugins {
+ android {
+     namespace = "com.dragonbones"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26
+diff --git a/avator/fbx/build.gradle.kts b/avator/fbx/build.gradle.kts
+index d06d8c2a..21b7ddb3 100644
+--- a/avator/fbx/build.gradle.kts
++++ b/avator/fbx/build.gradle.kts
+@@ -8,6 +8,7 @@ plugins {
+ android {
+     namespace = "com.ai.assistance.fbx"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26
+diff --git a/avator/mmd/build.gradle.kts b/avator/mmd/build.gradle.kts
+index b9294f5a..be6f9a65 100644
+--- a/avator/mmd/build.gradle.kts
++++ b/avator/mmd/build.gradle.kts
+@@ -8,6 +8,7 @@ plugins {
+ android {
+     namespace = "com.ai.assistance.mmd"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26
+diff --git a/ci/script/build_m0_local.sh b/ci/script/build_m0_local.sh
+new file mode 100644
+index 00000000..2e6144ac
+--- /dev/null
++++ b/ci/script/build_m0_local.sh
+@@ -0,0 +1,83 @@
++#!/usr/bin/env bash
++# M0 本地可复现构建（Windows / Git Bash）
++#
++# 为什么存在：计划书 M0-T02 要求"依照同一清单完成两次构建"，所以上面的每一步都必须
++# 是显式的、可抄写的，而不是某次会话里凑出来的命令。
++#
++# 关键前提（均为实测得出，不要凭印象改）：
++#   - JDK 必须是 21。CI (.github/workflows/android-build.yml 的 JAVA_VERSION) 与
++#     docs/doc-src/dev-core/BUILDING.md 都钉 21；本机默认 JAVA_HOME 是 jdk-17。
++#   - 外部依赖归档必须先经 ci/script/prepare_android_dependencies.py 解包，
++#     否则 :app:compileCloneAidl 会因缺 app/libs/ffmpeg-kit-local.aar 失败。
++#   - Bash 不继承交互 shell 的代理设置。三个依赖归档来自 Google Drive、STT 资产来自
++#     Hugging Face，不设 https_proxy 会表现为"资源不可得"，实测是环境问题。
++#     直连 huggingface.co 本机实测超时（curl 返回 000），所以代理是构建前置条件。
++#   - STT 资产由 :syncSttModelAssets 用 HttpURLConnection 下载，URL 写死在
++#     app/config/stt-model-assets.properties 的第 2 字段，没有可覆盖的 Gradle 属性；
++#     HttpURLConnection 只认 JVM 的 https.proxyHost/https.proxyPort，不认 https_proxy
++#     环境变量，因此必须把代理翻译进 org.gradle.jvmargs。
++#   - org.gradle.caching/parallel/configureondemand 与 kotlin.incremental 在 Windows 上
++#     会触发 Kotlin 增量缓存 AccessDeniedException 与 Gradle 临时文件
++#     FileNotFoundException，因此在 GRADLE_USER_HOME 的用户级 gradle.properties 中关闭。
++#     用户级属性优先于工程级，这样不必改动上游跟踪的 gradle.properties。
++set -euo pipefail
++
++WORK_ROOT="${WORK_ROOT:-C:/Users/15942/Desktop/Work}"
++REPO="${REPO:-$WORK_ROOT/operit}"
++GRADLE_USER_HOME="${GRADLE_USER_HOME:-$WORK_ROOT/.gradle-m0}"
++ANDROID_HOME="${ANDROID_HOME:-C:/Users/15942/dev/sdk/android-sdk}"
++JAVA_HOME="${BUILD_JAVA_HOME:-C:/Users/15942/dev/jdk-21}"
++GRADLE_TASK="${GRADLE_TASK:-assembleDebugClone}"
++
++export ANDROID_HOME JAVA_HOME
++export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
++export GRADLE_USER_HOME
++
++# 本机交互环境的 JAVA_HOME 指向 C:\DevTools\jdk-17，默认 java 也是 17。
++# 计划书与 CI 钉的是 21，且依赖 io.github.kyant0:backdrop:1.0.6 的 class 文件版本为 65.0，
++# 用 17 会在 :app:kaptCloneKotlin 报 "class file has wrong version 65.0, should be 61.0"。
++# 因此这里不做默认继承，而是显式校验；版本不符就停止，让清单可证伪。
++java_major="$("$JAVA_HOME/bin/java" -version 2>&1 | sed -n '1s/.*version "\([0-9]*\).*/\1/p')"
++if [ "$java_major" != "21" ]; then
++  echo "JAVA_HOME=$JAVA_HOME 解析到 JDK ${java_major:-未知}，本清单要求 21" >&2
++  exit 1
++fi
++test -d "$ANDROID_HOME/platforms/android-36" || { echo "ANDROID_HOME=$ANDROID_HOME 缺 android-36 平台" >&2; exit 1; }
++
++# 代理是构建前置条件：把 https_proxy 的 host:port 交给 JVM。
++https_proxy="${https_proxy:-${HTTPS_PROXY:-}}"
++proxy_authority="${https_proxy#*://}"
++proxy_authority="${proxy_authority%%/*}"
++proxy_host="${proxy_authority%%:*}"
++proxy_port="${proxy_authority##*:}"
++if [ -z "$proxy_host" ] || [ "$proxy_host" = "$proxy_authority" ]; then
++  echo "需要 https_proxy（形如 http://127.0.0.1:7897）：依赖归档与 STT 资产无法直连获取" >&2
++  exit 1
++fi
++
++export ANDROID_HOME JAVA_HOME
++export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
++export GRADLE_USER_HOME
++
++mkdir -p "$GRADLE_USER_HOME"
++
++# 用户级覆盖：只关并发与缓存，不动任何产品行为开关。
++cat > "$GRADLE_USER_HOME/gradle.properties" <<EOF
++org.gradle.jvmargs=-Xmx8192m -Dfile.encoding=UTF-8 -Dhttps.proxyHost=$proxy_host -Dhttps.proxyPort=$proxy_port -Dhttp.proxyHost=$proxy_host -Dhttp.proxyPort=$proxy_port
++org.gradle.parallel=false
++org.gradle.caching=false
++org.gradle.configureondemand=false
++org.gradle.daemon=false
++org.gradle.workers.max=4
++kotlin.incremental=false
++EOF
++
++cd "$REPO"
++test -f local.properties || { echo "local.properties 缺失：需 sdk.dir" >&2; exit 1; }
++test -f app/libs/ffmpeg-kit-local.aar || { echo "缺 app/libs/ffmpeg-kit-local.aar：先跑 prepare_android_dependencies.py" >&2; exit 1; }
++test -s app/src/main/jniLibs/arm64-v8a/liboperit_ripgrep.so || { echo "缺 liboperit_ripgrep.so" >&2; exit 1; }
++
++./gradlew "$GRADLE_TASK" \
++  --no-daemon \
++  --console=plain \
++  --stacktrace
+diff --git a/ci/script/materialize_m0_clean.sh b/ci/script/materialize_m0_clean.sh
+new file mode 100644
+index 00000000..dd7d19a0
+--- /dev/null
++++ b/ci/script/materialize_m0_clean.sh
+@@ -0,0 +1,102 @@
++#!/usr/bin/env bash
++# 计划书 M0-A01：把"冻结基线"物化成一个不含 .git、不含开发目录遗留状态的可构建工作区。
++#
++# 基线由五部分构成，缺一不可，本脚本逐项断言：
++#   1. 主仓库 commit            BASE_COMMIT
++#   2. terminal 子模块 commit   TERMINAL_COMMIT
++#   3. 主仓库源码补丁            evidence/M0/m0-remediation.patch
++#   4. 子模块源码补丁            evidence/M0/terminal-m0-remediation.patch
++#   5. 三个外部归档（按 SHA-256 校验，缓存缺失才下载）
++#
++# 刻意不复用上游 ci/script/download_android_dependencies.sh：它依赖 gdown + pip 联网，
++# 且不校验字节；本脚本用钉死的 SHA-256 做同等或更强的保证。上游解包器
++# prepare_android_dependencies.py（含 zip 炸弹/路径穿越/加密成员防护）照常使用。
++#
++# 用法：M0 之外不要运行。CLEAN_DIR 必须不存在或为空。
++set -euo pipefail
++
++WORK_ROOT="${WORK_ROOT:-C:/Users/15942/Desktop/Work}"
++REPO="${REPO:-$WORK_ROOT/operit}"
++CLEAN_DIR="${1:?用法: materialize_m0_clean.sh <干净目录路径>}"
++
++BASE_COMMIT="${BASE_COMMIT:-31646978aa03520f36916a9efd1d3f508b5ca3e0}"
++TERMINAL_COMMIT="${TERMINAL_COMMIT:-045868988e4091d613cb34b2941057703899b96e}"
++PATCH="$REPO/evidence/M0/m0-remediation.patch"
++TERMINAL_PATCH="$REPO/evidence/M0/terminal-m0-remediation.patch"
++ARCHIVE_CACHE="${ARCHIVE_CACHE:-$WORK_ROOT/manual-deps-cache}"
++
++# 与 evidence/M0/build-manifest.json 的 externalInputs.archives 一一对应。
++DRIVE_IDS="libs.zip:1Va1os7PRpCF3xtTwfx5kO11D7eIAvARG subpack.zip:1SQs_dVPD6ldvwteqoUVjvBLjTWvr5Fpv jniLibs.zip:1-W4fjjUwoShnB8Rh9RT5Gl8sHiGyQUaM"
++EXPECTED_SHA="libs.zip:1625489c81bb6e3ec6d29d41c39a53cb985e997be474425be01f909a6df887f8 subpack.zip:2953448c93b0e4e51a6434b96b0145af271efdf07bf99a54b24925727c8545ae jniLibs.zip:2e8a4efd78b4b9daf3274ee17ba38eb5f42fb57bf43381b63c55aaa1d3148b53"
++
++for required in "$PATCH" "$TERMINAL_PATCH" "$REPO/local.properties"; do
++  test -f "$required" || { echo "缺少基线输入：$required" >&2; exit 1; }
++done
++
++if [ -e "$CLEAN_DIR" ] && [ -n "$(ls -A "$CLEAN_DIR" 2>/dev/null)" ]; then
++  echo "拒绝写入非空目录：$CLEAN_DIR" >&2
++  exit 1
++fi
++mkdir -p "$CLEAN_DIR"
++
++echo "=== 1/5 主仓库 $BASE_COMMIT ==="
++git -C "$REPO" cat-file -e "${BASE_COMMIT}^{commit}"
++git -C "$REPO" archive --format=tar "$BASE_COMMIT" | tar -x -C "$CLEAN_DIR"
++
++echo "=== 2/5 terminal 子模块 $TERMINAL_COMMIT ==="
++# 子模块的 .git 是 gitlink 文件，不是目录。
++test -e "$REPO/terminal/.git" || { echo "开发目录的 terminal 子模块未初始化" >&2; exit 1; }
++git -C "$REPO/terminal" cat-file -e "${TERMINAL_COMMIT}^{commit}"
++# 超级项目的 git archive 完全不含子模块内容，连目录都不会建。
++mkdir -p "$CLEAN_DIR/terminal"
++git -C "$REPO/terminal" archive --format=tar "$TERMINAL_COMMIT" | tar -x -C "$CLEAN_DIR/terminal"
++
++echo "=== 3/5 应用源码补丁 ==="
++git -C "$CLEAN_DIR" apply --binary --check "$PATCH"
++git -C "$CLEAN_DIR" apply --binary "$PATCH"
++git -C "$CLEAN_DIR/terminal" apply --binary --check "$TERMINAL_PATCH"
++git -C "$CLEAN_DIR/terminal" apply --binary "$TERMINAL_PATCH"
++
++echo "=== 4/5 外部归档（校验 SHA-256，缺失才下载） ==="
++mkdir -p "$ARCHIVE_CACHE"
++for pair in $EXPECTED_SHA; do
++  name="${pair%%:*}"; want="${pair##*:}"
++  file="$ARCHIVE_CACHE/$name"
++  if [ ! -f "$file" ]; then
++    test -n "${https_proxy:-}" || { echo "需要 https_proxy 才能补下 $name" >&2; exit 1; }
++    id="${DRIVE_IDS#*$name:}"; id="${id%% *}"
++    echo "缓存缺失，下载 $name"
++    curl -fsSL --retry 3 -x "${https_proxy}" -o "$file" \
++      "https://drive.usercontent.google.com/download?id=${id}&export=download&confirm=t"
++  fi
++  got="$(sha256sum "$file" | cut -d' ' -f1)"
++  [ "$got" = "$want" ] || { echo "$name SHA-256 不符：$got != $want" >&2; exit 1; }
++  echo "ok $name $want"
++done
++python "$REPO/ci/script/prepare_android_dependencies.py" \
++  --profile full --archives "$ARCHIVE_CACHE" --repository "$CLEAN_DIR"
++
++echo "=== 5/5 解包产物再校验 ==="
++check_artifact() {
++  local path="$1" want="$2"
++  local got
++  got="$(sha256sum "$CLEAN_DIR/$path" | cut -d' ' -f1)"
++  [ "$got" = "$want" ] || { echo "$path SHA-256 不符：$got != $want" >&2; exit 1; }
++  echo "ok $path $want"
++}
++check_artifact "app/libs/ffmpeg-kit-local.aar" "b292b0425d3445244832894d3370c46c5b1f80f0b27eb17edb5810b6bc00fffc"
++check_artifact "app/src/main/jniLibs/arm64-v8a/liboperit_ripgrep.so" "71b6e8af8b2c833c85b5119ba0bd0bad05495ce0b9bed68d6e3530cb42a4dad5"
++
++cp "$REPO/local.properties" "$CLEAN_DIR/local.properties"
++
++{
++  echo "materializedAt: $(date -Is)"
++  echo "baseCommit: $BASE_COMMIT"
++  echo "terminalCommit: $TERMINAL_COMMIT"
++  echo "patch: $PATCH $(sha256sum "$PATCH" | cut -d' ' -f1)"
++  echo "terminalPatch: $TERMINAL_PATCH $(sha256sum "$TERMINAL_PATCH" | cut -d' ' -f1)"
++  for pair in $EXPECTED_SHA; do echo "archive ${pair%%:*}: ${pair##*:}"; done
++} > "$CLEAN_DIR/M0-BASELINE.txt"
++
++echo "=== 物化完成：$CLEAN_DIR ==="
++echo "下一步：REPO='$CLEAN_DIR' WORK_ROOT='$WORK_ROOT' bash ci/script/build_m0_local.sh"
+diff --git a/examples/apktool/runtime_helper/src/main/java/com/operit/apkreverse/runtime/ApkReverseHelperFacade.java b/examples/apktool/runtime_helper/src/main/java/com/operit/apkreverse/runtime/ApkReverseHelperFacade.java
+index 4aef3b68..d4e6ac1d 100644
+--- a/examples/apktool/runtime_helper/src/main/java/com/operit/apkreverse/runtime/ApkReverseHelperFacade.java
++++ b/examples/apktool/runtime_helper/src/main/java/com/operit/apkreverse/runtime/ApkReverseHelperFacade.java
+@@ -233,7 +233,17 @@ public final class ApkReverseHelperFacade {
+                     new Class<?>[]{Context.class},
+                     new Object[]{context}
+             );
+-            return new SignInputs("debug", debugKeystore, "android", "androidkey", "android", "PKCS12");
++            String generatedPassword = (String) invokeKeyStoreHelper(
++                    "getKeystorePassword",
++                    new Class<?>[]{Context.class},
++                    new Object[]{context}
++            );
++            String generatedAlias = (String) invokeKeyStoreHelper(
++                    "getKeystoreAlias",
++                    new Class<?>[]{},
++                    new Object[]{}
++            );
++            return new SignInputs("debug", debugKeystore, generatedPassword, generatedAlias, generatedPassword, "PKCS12");
+         }
+         if (!"keystore".equals(normalizedMode)) {
+             throw new IllegalArgumentException("sign_mode must be debug or keystore");
+diff --git a/llm/llama/build.gradle.kts b/llm/llama/build.gradle.kts
+index 96de1a31..116f7c8d 100644
+--- a/llm/llama/build.gradle.kts
++++ b/llm/llama/build.gradle.kts
+@@ -8,6 +8,7 @@ plugins {
+ android {
+     namespace = "com.ai.assistance.llama"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26
+diff --git a/llm/mnn/build.gradle.kts b/llm/mnn/build.gradle.kts
+index 10320559..4aac573f 100644
+--- a/llm/mnn/build.gradle.kts
++++ b/llm/mnn/build.gradle.kts
+@@ -10,6 +10,7 @@ plugins {
+ android {
+     namespace = "com.ai.assistance.mnn"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26
+diff --git a/quickjs/build.gradle.kts b/quickjs/build.gradle.kts
+index cdc9c2e2..2e676b98 100644
+--- a/quickjs/build.gradle.kts
++++ b/quickjs/build.gradle.kts
+@@ -8,6 +8,7 @@ plugins {
+ android {
+     namespace = "com.ai.assistance.quickjs"
+     compileSdk = 36
++    ndkVersion = "27.3.13750724"
+ 
+     defaultConfig {
+         minSdk = 26

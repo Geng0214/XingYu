@@ -1,0 +1,9 @@
+{
+  "device": "emulator-5554",
+  "source": "adb logcat -d -b crash AndroidRuntime:E *:S -T 10-03 14:03:00.000",
+  "scope": "AndroidRuntime crash-buffer entries since final installed build validation began",
+  "exitCode": 0,
+  "output": "",
+  "newEntries": 0,
+  "limitations": "Empty filtered output is not a full error, ANR or performance audit. Historical first-run registry crash retained separately."
+}

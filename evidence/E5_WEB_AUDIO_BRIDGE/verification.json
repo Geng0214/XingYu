@@ -1,0 +1,93 @@
+{
+  "recordedAtUtc": "2026-09-20T21:49:39.595074+00:00",
+  "sourceCommit": "8ba94e360cefa6591c32058aa468e6c7c4250fbc",
+  "sourceSha256": {
+    "THIRD-PARTY-NOTICES.md": "1f06053f0e1bb806c9a2ea4190daf96f16f981c3cb8d0bf500ea98e4e73a47c8",
+    "app/build.gradle.kts": "f0c629ab3a84c1572d415c35eed16580f324e99a4db1f217f417c1c890e2f97b",
+    "app/src/androidTest/java/com/ai/assistance/operit/BilibiliWebAudioAndroidTest.kt": "1b600cecece1e348154563bd94d85d4b8dad5776642680be4d64413a6bc13fc9",
+    "app/src/main/assets/THIRD-PARTY-NOTICES.txt": "1f06053f0e1bb806c9a2ea4190daf96f16f981c3cb8d0bf500ea98e4e73a47c8",
+    "app/src/main/assets/bilibili-audio-worklet.js": "0de681820d5caa466dac767802784010d7ca16a6fc312bb9ab072f3dc0758c6a",
+    "app/src/main/assets/bilibili-audio.js": "c2b3027e056e3438d14b8d079fd0cd7a83ab7c39dfdd17bb6fc5c1e036185143",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliAudioStream.kt": "73e3fc1ed7845b49456375d86731c1b2302215029ab62eff533d14f80fd9d9ef",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliPlayer.kt": "246a59e006b4911d9951fb4886657d570c6e4790566f52f5640a631ce1ddf56a",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliWebAudio.kt": "9db46f794f62fcbc9ff32997f3ddec531b95f33ace922c4eae92c97110e123e0",
+    "app/src/main/java/com/ai/assistance/operit/data/model/CompanionModels.kt": "be0a287fb1093d57e5a7b34886cb8930ca54992979983ab8ef29d9aa9de7f6c8",
+    "app/src/test/java/com/ai/assistance/operit/BilibiliAudioProtocolTest.kt": "4d8776911bfabee6c55df39302a4e5ed82246a830c03ed5a90dd414420638fb9",
+    "ci/script/bilibili_audio_test.cjs": "1e1530e59bd7ac4f55e9f7942b46145d62f28f31dffebd175b499bd565ab37e0",
+    "ci/script/verify_apk.py": "6a925218cd345e7f3ce5b0ebb5c150b630c12f20ac4b1390cc44d9983adc6cb9",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "5df58545b34190210b8845f8e88af09a83bd7bc76bb002796a9952d352c095df",
+    "docs/TODO/voice-and-shared-activities/04c-web-audio-routing.md": "fe176054eb9b65ab6a05a91cf6f4bc4375d748adc6224e4166eba506eea7df89",
+    "docs/TODO/voice-and-shared-activities/index.md": "256b5d5a69896d83b88ac972b1cbcc890c671b62379ed2976fa5230c6aadccd4",
+    "docs/project/STATUS.md": "82686b4385a4aa156b88a38b4be03292d390973da89bf8ddd055af4c983d565e",
+    "docs/project/bilibili-watching.md": "a49aa70877634bcda177de64d929c5e9bb9dd455778a6335922c0256aa9d86f8",
+    "docs/project/companion-full-plan.md": "28cde34e08daae6f2188763bdc68441f72b7a51217bd743a75d5fce424410e98"
+  },
+  "jvm": {
+    "tests": 373,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 53
+  },
+  "nodeScripts": {
+    "tests": 9,
+    "passed": 9,
+    "failed": 0,
+    "twentyPauseSeekCycles": true,
+    "androidEmulation": false
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 62,
+    "hints": 1
+  },
+  "androidInstrumentation": {
+    "compiled": true,
+    "execution": "NOT_RUN",
+    "reason": "adb devices -l returned no devices"
+  },
+  "runtimeCoordinates": 174,
+  "dependencyNoticesMatch": true,
+  "build": {
+    "entry": "ci/build.ps1",
+    "tasks": [
+      ":app:testDebugUnitTest",
+      ":app:compileDebugAndroidTestKotlin",
+      ":app:lintRelease",
+      ":app:writeRuntimeInventory"
+    ],
+    "arguments": [
+      "-PevidenceStage=E5_WEB_AUDIO_BRIDGE",
+      "-Dhttp.proxyHost=",
+      "-Dhttps.proxyHost="
+    ],
+    "java": "JDK 21",
+    "sdkCompile": 36,
+    "gradleCache": "../.gradle-m0",
+    "exitCode": 0,
+    "duration": "3m 16s"
+  },
+  "release": {
+    "changed": false,
+    "version": "0.32.0",
+    "path": "output/local-companion-0.32.0.apk",
+    "sha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+    "bytes": 9730942
+  },
+  "pending": [
+    "Android global WebView mute with nonzero PCM",
+    "unique audible native output and actual route",
+    "WebView audio focus interaction",
+    "AV synchronization and drift",
+    "real Bilibili and old Android devices",
+    "04d signed clean build and APK scan"
+  ],
+  "evidenceSha256": {
+    "evidence/E5_WEB_AUDIO_BRIDGE/browser-probe.json": "b9bb0d1578abc8eb10844df2150f893580a1f24b2dc2f921ba65a6f590443243",
+    "evidence/E5_WEB_AUDIO_BRIDGE/build.txt": "f6b9371d0a9400e33aaa99d19b6fb06779e171ad8fb1e29720855b94848bbeb2",
+    "evidence/E5_WEB_AUDIO_BRIDGE/host-script-summary.txt": "afbd9f17ebcdcd52dcc86be8b5d9af38dc8523425f5e9850b93e0cd500dcf4c9",
+    "evidence/E5_WEB_AUDIO_BRIDGE/new-dependency.json": "1f3ed39ff7451c154ed06336c0f47ff175ce8fddb56d9bb387b9257f320a10bd",
+    "evidence/E5_WEB_AUDIO_BRIDGE/runtime-coordinates.txt": "61e1c0265668d85e2bfc066f2e54873212a464f555cbb2c0000cda0fb10a1cc4",
+    "evidence/E5_WEB_AUDIO_BRIDGE/validation.md": "e180f28ea8d0c3c9aad19ddfe587c29af13d2aaea8b2d31722955cd76c3504d1"
+  }
+}

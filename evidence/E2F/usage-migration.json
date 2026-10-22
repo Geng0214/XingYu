@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "sourceSha256": "29f84764cdb00c5628a97fb81dc996db44ed3b472b21ff1bf9835ca4bc487da6",
+  "ownershipSourceSha256": "c24c157fa6ef5b8cc2f6090f08a890cc27bd5aa52a4f4bfaa6c662ea558d64e7",
+  "schemaMatchesRoomV10": true,
+  "allFourteenOriginalTablesPreserved": true,
+  "invalidAssociationsRejected": 12,
+  "interruptedDdlRollback": true,
+  "legacyPricesRemainUnknown": true,
+  "legacyCurrencyDefault": "USD",
+  "newUsageEmpty": true,
+  "limitation": "Actual migration SQL on host SQLite. Room/SQLCipher/Keystore device migration remains NOT_RUN."
+}

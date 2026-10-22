@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "apkSha256": "e9770a45dfc4a4c70ce6b8847a34703ed4003dd7a6e6efde3570e80237f09537",
+  "syntheticKeyBodyCityAndPathMarkers": {
+    "synthetic-SECRET-key": [],
+    "MEMORY-PRIVATE": [],
+    "PRIVATE-MEMORY": [],
+    "EXTRACTED-PRIVATE": [],
+    "MEMORY-RECALL-PRIVATE": [],
+    "MESSAGE-EXPORT-PRIVATE": [],
+    "READING-PRIVATE": [],
+    "IMAGE-GENERATION-PRIVATE": [],
+    "STICKER-PRIVATE": [],
+    "MATERIAL-PRIVATE": [],
+    "A-PRIVATE-MASK": [],
+    "PRIVATE_SCRIPT": [],
+    "ONLY_THIS_ROLE": [],
+    "synthetic-diary-key": [],
+    "DIARY-PRIVATE": [],
+    "PRIVATE-DIARY": [],
+    "写一篇月光厨房日记": [],
+    "WEATHER-PRIVATE-A": [],
+    "synthetic-weather-key": [],
+    "杭州🙂, 中国": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "environmentPolicy": "Environment rows are role-space scoped. Time and weather are explicitly enabled, raw mode excludes both, city search and forecast use separate confirmations and fixed HTTPS endpoints, no location permission or background refresh is present, and request snapshots freeze the selected environment state.",
+  "limitations": "Static APK entry scan in UTF-8 and UTF-16LE. Device database, WAL, cache, Keystore files, SQLCipher upgrade, UI interaction, actual Open-Meteo requests and chat injection require a connected device or controlled endpoint."
+}

@@ -1,0 +1,149 @@
+原生库内嵌绝对构建路径 —— M0-A01 两次干净构建差异根因与构建者身份外泄
+
+测量日期：2026-09-19
+测量对象：
+- `C:/M0/A/app/build/outputs/apk/clone/app-clone.apk` — 413,136,362 字节，SHA-256 `4fe18558e59bdc12…`
+- `C:/M0/B/app/build/outputs/apk/clone/app-clone.apk` — 413,136,418 字节，SHA-256 `1f4e7d9c27bf26cc…`
+- 开发目录样包 `C:/Users/15942/Desktop/Work/operit/app/build/outputs/apk/clone/app-clone.apk` — 413,136,822 字节，SHA-256 `3142553bb703853b…`
+
+## 1. 两次干净构建的差异定位
+
+条目名集合完全一致（5,550 对 5,550，新增 0、缺失 0）。CRC 不同的只有 16 个 `lib/arm64-v8a/*.so`，且每一个的**未压缩字节数在两份产物中完全相同**，仅压缩后长度不同。
+
+对 16 个 `.so` 逐字节比对，并用自写的 ELF64 节头解析器把差异区间映射到节名。差异总量 1,752,396 字节，全部可归属到 4 个节，无游离字节：
+
+| 节 | 差异字节 | 占比 | 成因 |
+|---|---|---|---|
+| `.rodata` | 1,565,344 | 89.33 % | 字符串池里的**绝对构建路径本身**，以及它引起的池内位移 |
+| `.text` | 180,250 | 10.29 % | 指向 `.rodata` 的取址指令立即数（见下） |
+| `.rela.dyn` | 6,485 | 0.37 % | 重定位 addend/offset，随符号地址漂移 |
+| `.note.gnu.build-id` | 317 | 0.02 % | 链接器输入哈希，必然不同 |
+
+逐文件明细（`covered == total`，即每个差异字节都落进列出的节）：
+
+| 文件 | 差异字节 | `.rodata` | `.text` | `.rela.dyn` |
+|---|---|---|---|---|
+| `libMNN.so` | 1,087,547 | 1,003,042 | 81,887 | 2,598 |
+| `libllama-common.so` | 191,684 | 172,604 | 18,864 | 196 |
+| `libllama.so` | 132,078 | 110,592 | 20,230 | 1,236 |
+| `libMmdWrapper.so` | 65,364 | 55,806 | 9,008 | 530 |
+| `libggml-base.so` | 60,726 | 48,442 | 11,658 | 607 |
+| `libggml-cpu.so` | 50,249 | 34,446 | 15,771 | 12 |
+| `libtoolpkgwasm.so` | 37,025 | 30,678 | 6,048 | 279 |
+| `libsherpa-ncnn-jni.so` | 35,309 | 29,332 | 5,338 | 619 |
+| `libMNNWrapper.so` | 33,084 | 29,006 | 4,051 | 7 |
+| `libdragonbones_native.so` | 31,275 | 27,564 | 3,403 | 289 |
+| `libLlamaWrapper.so` | 15,231 | 13,877 | 1,334 | 0 |
+| `libFbxWrapper.so` | 8,072 | 5,905 | 2,035 | 112 |
+| `libggml.so` | 4,692 | 4,050 | 623 | 0 |
+| `libpty.so`、`libquickjsjni.so`、`libstreamnative.so` | 各 20 | 0 | 0 | 0 |
+
+（其余每行还有 20 字节 `.note.gnu.build-id`，未列入表内。）
+
+`.text` 也变了，这一点必须说清楚，不能靠"链接期地址漂移"含混过去。把 13 个库 `.text` 中差异的 4 字节字全部解码为 AArch64 指令并解析其目标地址，93,739 个差异字的分布如下：
+
+| 差异字类别 | 个数 | 占比 |
+|---|---|---|
+| `ADRP`+`ADD` 配对，解析后指向 `.rodata` 且地址**确实发生位移** | 73,261 | 78.2 % |
+| 孤立 `ADRP`，目标页落在 `.rodata` | 17,912 | 19.1 % |
+| `ADR`，目标落在 `.rodata` | 2,459 | 2.6 % |
+| `ADRP` 目标落在 `.gcc_except_table` | 47 | 0.05 % |
+| `ADRP` 目标落在 `.rela.plt` | 16 | 0.02 % |
+| 编码形式替换（见下） | 44 | 0.05 % |
+| **`BL` / `B` / `B.cond` / `CBZ` / `TBZ` / 基址变体 `LDR` literal 有差异** | **0** | **0 %** |
+
+即：**没有任何一条跳转、调用或字面量取数指令的目标发生变化**，函数排布与调用图在两份产物中完全一致；差异 100 % 是"取数据地址"的立即数，且这些地址全部指向 `.rodata`（含异常表）。
+
+那 44 个"编码形式替换"集中在 `libggml-cpu.so` 的 22 个点，用 NDK 自带的 `llvm-objdump` 逐点看过，是同一件事的两种写法——`ggml_abort(file, line, …)` 前的字符串取址：
+
+```
+A @0x11697c:  nop                   B @0x11697c:  adrp x0, 0x16000
+              adr  x0, 0x1adc3                  add  x0, x0, #0x3d9
+              adrp x2, 0x19000                  adrp x2, 0x19000
+              add  x2, x2, #0xcf7               add  x2, x2, #0xc85
+              adrp x3, 0x17000                  adrp x3, 0x17000
+              add  x3, x3, #0x88c               add  x3, x3, #0x8ff
+              mov  w1, #0x1d62                  mov  w1, #0x1d62
+              bl   ggml_abort@plt               bl   ggml_abort@plt
+```
+
+两侧字数相同、行号常量相同、`bl` 目标相同，只是 x0 用 `NOP+ADR` 还是 `ADRP+ADD` materialize——字符串在池中挪了位置，跨过 `ADR` 的 ±1 MiB 可达边界时链接器换了寻址方式。不是代码差异。
+
+`.rodata` 侧再做了一次内容级验证：抽取每个库 `.rodata` 中所有长度 ≥ 8 的可打印串，把 `C:/M0/A`、`C:/M0/B` 归一化为同一前缀后比较多重集。
+
+| 文件 | `.rodata` 串数 A / B | 归一化后多重集 | 未归一化时仅 A / 仅 B 的串 |
+|---|---|---|---|
+| `libMNN.so` | 22,953 / 22,953 | **完全相同** | 331 / 331 |
+| `libllama.so` | 3,692 / 3,692 | **完全相同** | 143 / 143 |
+| `libsherpa-ncnn-jni.so` | 1,261 / 1,261 | **完全相同** | 17 / 17 |
+| `libggml-cpu.so` | 687 / 687 | **完全相同** | 16 / 16 |
+| `libFbxWrapper.so` | 1,542 / 1,542 | **完全相同** | 2 / 2 |
+
+"仅 A / 仅 B"的串数与第 2 节的逐文件内嵌路径出现次数**逐个相等**（331、143、17、16、2），且这些串全部是 `C:/M0/{A,B}/…` 形态的构建路径。也就是说：字符串内容只差构建根，长度与总条数都没变，但可合并字符串段（`SHF_MERGE|SHF_STRINGS`）按内容做尾部共享，前缀一变池内排布就重排，池内每个符号的地址随之位移——这正是上面 `.text`/`.rela.dyn` 里所有取址立即数变化的来源。
+
+`.rodata` 的实测证据（同一偏移处 A 与 B 各取一条）：
+
+```
+A: C:/M0/A/llm/llama/.cxx/operit_deps/llama_cpp-720d7fa4097f76e5d0eade5a92c1df87c1faf9d9-src/vendor/nlohmann/json.hpp
+B: C:/M0/B/llm/llama/.cxx/operit_deps/llama_cpp-720d7fa4097f76e5d0eade5a92c1df87c1faf9d9-src/vendor/nlohmann/json.hpp
+A: C:/M0/A/llm/mnn/.cxx/operit_deps/mnn-d407447ed56c4121a11ccbd266dc184ca1ead0c2-src/3rd_party/rapidjson/internal/stack.h
+```
+
+结论修正（此前写成"不是代码差异"时只测到了 `.rela.dyn`，漏了 `.text`，现按实测重述）：两次干净构建的产物**不是字节级可复现**，但差异有单一根因——绝对构建路径进了 `.rodata`；`.text`、`.rela.dyn` 的不一致是该根因的下游表现，指令语义与控制流没有变化，这一层已用解码和 objdump 证实，不是推测。计划书 V2.0 对 M0-A01 的原文即"不要求 APK 字节完全一致，分别记录哈希"，所以这份差异**不是缺陷、也不构成验收失败**；本节的作用是排除"差异来自污染或跳步骤"这一解释。仍未证实的是：把构建路径重映射后两份产物能否达到字节一致——这需要一次带 `-fmacro-prefix-map` 的重建才能验证，本轮未做，不作声称。
+
+
+## 2. 顺带测出的构建者身份外泄
+
+同一机制在开发目录样包上泄漏的是**本机 Windows 用户名**：
+
+| 样包 | 内嵌根路径出现次数 | 受影响 `.so` |
+|---|---|---|
+| `C:/M0/A` 干净构建 | 669 | 13 |
+| `C:/M0/B` 干净构建 | 669（同数量） | 13 |
+| 开发目录样包 | 669 形如 `C:/Users/15942/Desktop/Work/…` | 13 |
+
+出现次数在三种检出根下都是 669，说明这是**结构性的**（路径由构建根替换而来），不是本机偶发。逐文件计数：`libMNN.so` 331、`libllama.so` 143、`libMmdWrapper.so` 72、`libggml-base.so` 19、`libllama-common.so` 19、`libtoolpkgwasm.so` 19、`libsherpa-ncnn-jni.so` 17、`libggml-cpu.so` 16、`libdragonbones_native.so` 15、`libMNNWrapper.so` 14、`libFbxWrapper.so` 2、`libLlamaWrapper.so` 1。
+
+泄漏进 APK 的具体内容形态：
+
+- `C:/Users/15942/Desktop/Work/operit/llm/llama/.cxx/…`、`…/avator/mmd/.cx…`、`…/avator/dragonb…`、`…/app/src/main/c…`、`…/avator/fbx/.cx…` —— 完整检出根 + 用户名 + 目录布局。
+- `…/_deps/kiss_fftr.c:125` —— 源文件名与行号（运行期日志字符串，`[ERROR] C:/Users/15942/…`）。
+- `[T = (lambda at C:/Users/15942/Desktop/Work/operit/llm/…` —— Clang 模板诊断串（`process_server_socket_core`、`buft_supported`）。
+- `;C:/Users/15942/Desktop/Work/operit/llm/llama/.cxx…` —— ggml 后端注册表里带分号分隔的**路径常量**。
+
+对本项目的后果：Fork 首版按负责人裁决要发给 5–10 位受邀测试者。如果按当前构建方式出包，发给别人的 APK 里带着负责人自己的 Windows 用户名和目录结构。这属于计划书 §10.2 说的"未实现的保护不能用措辞掩盖"的对偶情形——这里不是掩盖保护缺失，而是**分发物携带构建者身份**，M1 出包前必须处理。
+
+整改方向（本轮未改，改构建标志需要独立验证窗口）：
+
+1. 对 `:mnn`、`:llama`、`:mmd`、`:fbx`、`:dragonbones`、`:quickjs`、`:showerclient`、`:terminal` 与 `:app` 的 externalNativeBuild 统一加 `-fmacro-prefix-map=<检出根>=.`（压住 `__FILE__`）与 `-fdebug-prefix-map=<检出根>=.`（压住 Clang 诊断串）。
+2. ggml 后端注册表那个路径常量属上游生成逻辑，需单独确认它是否在运行期被使用；若是，改为不含构建根的相对标识。
+3. 整改后的验收判据：以第 1 节的扫描脚本对 APK 全条目跑一次，`C:/Users/`、`/home/`、`/Users/` 命中数归零，且 `15942` 仅剩第 4 节列出的良性巧合。
+
+## 3. M0-A01 实际可达的等价性判据（已满足部分）
+
+| 维度 | A | B | 判定 |
+|---|---|---|---|
+| 任务 | `assembleDebugClone` | `assembleDebugClone` | 一致 |
+| 结果 | BUILD SUCCESSFUL 15m28s | BUILD SUCCESSFUL 15m57s | 两次均成功 |
+| 任务数 | 235 executed | 235 executed | 一致 |
+| 门禁 | `objectboxPrepareBuild`、`syncSttModelAssets`、`syncMainAssets`、`verifyExternallyBuiltNativeLibraries`、`verifyNoEmbeddedSigningMaterial` 全部实际执行，无 `UP-TO-DATE`/`FROM-CACHE`，命令行无 `-x` | 同左 | 一致 |
+| applicationId | `com.ai.assistance.operit.clone` | 同 | 一致 |
+| versionCode / versionName | 50 / `1.12.1+7` | 50 / `1.12.1+7` | 一致 |
+| ABI | 仅 arm64-v8a | 仅 arm64-v8a | 一致 |
+| assets 条目 | 823 | 823 | 一致 |
+| 签名方案 | v2 only | v2 only | 一致 |
+| 签名证书 DN | `CN=Operit M0 Test, OU=not-for-release, O=local-development, L=n-a, ST=n-a, C=CN` | 同 | 一致 |
+| 证书 SHA-256 | `ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa` | 同 | **一致** |
+| APK SHA-256 | `4fe18558e59bdc12…` | `1f4e7d9c27bf26cc…` | 不同，成因见第 1 节 |
+| 真机安装 | 未执行 | 未执行 | 仍阻塞（无设备） |
+
+结论：同一基线在两台互不影响的检出下、不跳门禁，能稳定产出**身份与内容结构一致**的 APK；字节级不一致已归因到可命名的构建路径嵌入机制。M0-A01 的"两份干净目录不跳门禁出 APK"部分达成，"真机安装"仍受设备缺失阻塞。
+
+## 4. 已排除的巧合命中
+
+扫描 APK 全条目时 `15942` 另有 8 处命中，逐一核对后**不属于**路径泄漏，记录以免后续复查重复追查：
+
+- `assets/com/tom_roush/fontbox/resources/cmap/{HKscs-B5-H,UniCNS-UCS2-H,UniCNS-UTF16-H,UniGB-UCS2-H,UniGB-UTF16-H}` —— fontbox CMap 表里的十进制码位映射值。
+- `assets/js/katex.min.js` —— 排版度量浮点常量 `.15942`。
+- `classes37.dex` —— androidx.webkit 特性哈希片段 `415942ce`。
+- `prob_emit.txt` —— jieba 词典词频 `-10.01594236`、`-7.78715942205`。

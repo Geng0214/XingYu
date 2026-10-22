@@ -1,0 +1,1198 @@
+{
+ "measuredAt": "2026-09-19",
+ "scope": "tools/native_ripgrep/Cargo.lock 的全部包 —— 即随包 liboperit_ripgrep.so 的 Rust 依赖层",
+ "method": [
+  "Cargo.lock 逐 [[package]] 解析（48 条，含 workspace 根包 operit_ripgrep 0.1.0）。",
+  "declared_in_published_manifest 取本机注册表缓存里已发布构件 `registry/src/index.crates.io-1949cf8c6b5b557f/<crate>-<ver>/Cargo.toml` 的 license 字段（这是发布时被规范化的值，不读上游仓库工作区）。",
+  "licence_files 为该构件目录内文件名以 license/licence/copying/copyright/notice/unlicense 开头的全部文件（跳过 target/.git/tests/examples/benches/fixtures/test_data），逐个记 SHA-256 前 16 位、字节数与按首 1200 字节判出的文本类别。",
+  "role_for_aarch64_linux_android 由 cargo tree 的两个集合判定：-e normal（Android 运行期）与 -e normal,build（含宿主构建期）之差即 host-build-only；两处都没出现的即 lock-only-not-resolved。",
+  "crate_source_path_occurrences_in_shipped_so 是在随包 .so 的字节里实测 `<registry>/<hash>/<crate>-<ver>/` 路径的出现次数，作为\"该 crate 的代码确在二进制里\"的正向证据（反向不成立：未出现不代表没链入，只有带 file!()/ panic 串的源文件才会留路径）。"
+ ],
+ "commands": [
+  "CARGO_HOME='C:/Users/15942/dev/rust/cargo' cargo tree --offline --locked --target aarch64-linux-android -e normal",
+  "CARGO_HOME='C:/Users/15942/dev/rust/cargo' cargo tree --offline --locked --target aarch64-linux-android -e normal,build"
+ ],
+ "counts": {
+  "lock_packages": 48,
+  "android_runtime_libs": 32,
+  "build_time_proc_macro": 4,
+  "host_build_only": 3,
+  "lock_only_not_resolved": 9,
+  "with_embedded_crate_path_in_shipped_so": 13,
+  "copyleft": 0,
+  "no_licence_text_locally": 8
+ },
+ "by_text_class": {
+  "DUAL-POINTER(Unlicense OR MIT) | MIT | Unlicense": 7,
+  "Apache-2.0 | MIT": 25,
+  "MIT": 3,
+  "Apache-2.0 | BSD-family": 1,
+  "MIT | Unlicense": 2,
+  "NONE": 8,
+  "Apache-2.0 | MIT | Unicode": 2
+ },
+ "packages": [
+  {
+   "crate": "aho-corasick",
+   "version": "1.1.4",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 15
+  },
+  {
+   "crate": "bstr",
+   "version": "1.12.3",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "68653aaa727a2bfa",
+     "bytes": 262,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "6b7374c39a57e57f",
+     "bytes": 1086,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 2
+  },
+  {
+   "crate": "bytes",
+   "version": "1.12.0",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT",
+   "text_classes": [
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE",
+     "sha256_16": "45f522cacecb1023",
+     "bytes": 1055,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "cesu8",
+   "version": "1.1.0",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Apache-2.0/MIT",
+   "text_classes": [
+    "Apache-2.0",
+    "BSD-family"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYRIGHT-RUST.txt",
+     "sha256_16": "5ca77347e58205d3",
+     "bytes": 17426,
+     "text_class": "Apache-2.0 + BSD-family"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 1
+  },
+  {
+   "crate": "cfg-if",
+   "version": "1.0.4",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "378f5840b258e277",
+     "bytes": 1057,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "combine",
+   "version": "4.6.7",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT",
+   "text_classes": [
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE",
+     "sha256_16": "9bbc1b3dc4674a9e",
+     "bytes": 1085,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "crossbeam-deque",
+   "version": "0.8.7",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "5734ed989dfca1f6",
+     "bytes": 1099,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "crossbeam-epoch",
+   "version": "0.9.20",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "5734ed989dfca1f6",
+     "bytes": 1099,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "crossbeam-utils",
+   "version": "0.8.22",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "5734ed989dfca1f6",
+     "bytes": 1099,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "globset",
+   "version": "0.4.18",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 3
+  },
+  {
+   "crate": "grep-matcher",
+   "version": "0.1.8",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "grep-regex",
+   "version": "0.1.14",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 4
+  },
+  {
+   "crate": "ignore",
+   "version": "0.4.27",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 5
+  },
+  {
+   "crate": "itoa",
+   "version": "1.0.18",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 1
+  },
+  {
+   "crate": "jni",
+   "version": "0.21.1",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT/Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "fea1d5bf3dd71605",
+     "bytes": 1104,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 3
+  },
+  {
+   "crate": "jni-sys",
+   "version": "0.3.1",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "c6596eb7be8581c1",
+     "bytes": 11358,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "1d85bd754b04ceec",
+     "bytes": 1071,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "jni-sys",
+   "version": "0.4.1",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "c6596eb7be8581c1",
+     "bytes": 11358,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "1d85bd754b04ceec",
+     "bytes": 1071,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "jni-sys-macros",
+   "version": "0.4.1",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "build-time-proc-macro",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "log",
+   "version": "0.4.33",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "6485b8ed310d3f03",
+     "bytes": 1071,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "memchr",
+   "version": "2.8.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 3
+  },
+  {
+   "crate": "operit_ripgrep",
+   "version": "0.1.0",
+   "source": "workspace-local",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "proc-macro2",
+   "version": "1.0.106",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "build-time-proc-macro",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "quote",
+   "version": "1.0.46",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "regex-automata",
+   "version": "0.4.14",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "6485b8ed310d3f03",
+     "bytes": 1071,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 43
+  },
+  {
+   "crate": "regex-syntax",
+   "version": "0.8.11",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT",
+    "Unicode"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "a60eea8175145316",
+     "bytes": 10847,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "6485b8ed310d3f03",
+     "bytes": 1071,
+     "text_class": "MIT"
+    },
+    {
+     "path": "src/unicode_tables/LICENSE-UNICODE",
+     "sha256_16": "74db5baf44a41b10",
+     "bytes": 2847,
+     "text_class": "Unicode"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 9
+  },
+  {
+   "crate": "same-file",
+   "version": "1.0.6",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense/MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "cb3c929a05e6cbc9",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 1
+  },
+  {
+   "crate": "serde",
+   "version": "1.0.228",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "serde_core",
+   "version": "1.0.228",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "serde_derive",
+   "version": "1.0.228",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "build-time-proc-macro",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "serde_json",
+   "version": "1.0.150",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "syn",
+   "version": "2.0.118",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "thiserror",
+   "version": "1.0.69",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "thiserror-impl",
+   "version": "1.0.69",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "build-time-proc-macro",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "unicode-ident",
+   "version": "1.0.24",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "(MIT OR Apache-2.0) AND Unicode-3.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT",
+    "Unicode"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-APACHE",
+     "sha256_16": "62c7a1e35f564068",
+     "bytes": 9723,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    },
+    {
+     "path": "LICENSE-UNICODE",
+     "sha256_16": "f7db81051789b729",
+     "bytes": 1995,
+     "text_class": "MIT + Unicode"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "walkdir",
+   "version": "2.5.0",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense/MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "0f96a83840e146e4",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 1
+  },
+  {
+   "crate": "winapi-util",
+   "version": "0.1.11",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "Unlicense OR MIT",
+   "text_classes": [
+    "DUAL-POINTER(Unlicense OR MIT)",
+    "MIT",
+    "Unlicense"
+   ],
+   "licence_files": [
+    {
+     "path": "COPYING",
+     "sha256_16": "01c266bced4a434d",
+     "bytes": 126,
+     "text_class": "DUAL-POINTER(Unlicense OR MIT)"
+    },
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "cb3c929a05e6cbc9",
+     "bytes": 1081,
+     "text_class": "MIT"
+    },
+    {
+     "path": "UNLICENSE",
+     "sha256_16": "7e12e5df4bae12cb",
+     "bytes": 1211,
+     "text_class": "Unlicense"
+    }
+   ],
+   "role_for_aarch64_linux_android": "host-build-only",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows-link",
+   "version": "0.2.1",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "license-apache-2.0",
+     "sha256_16": "c16f8dcf1a368b83",
+     "bytes": 11351,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "license-mit",
+     "sha256_16": "c2cfccb812fe4821",
+     "bytes": 1141,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "host-build-only",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows-sys",
+   "version": "0.45.0",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "license-apache-2.0",
+     "sha256_16": "c16f8dcf1a368b83",
+     "bytes": 11351,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "license-mit",
+     "sha256_16": "c2cfccb812fe4821",
+     "bytes": 1141,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows-sys",
+   "version": "0.61.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "license-apache-2.0",
+     "sha256_16": "c16f8dcf1a368b83",
+     "bytes": 11351,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "license-mit",
+     "sha256_16": "c2cfccb812fe4821",
+     "bytes": 1141,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "host-build-only",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows-targets",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "license-apache-2.0",
+     "sha256_16": "c16f8dcf1a368b83",
+     "bytes": 11351,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "license-mit",
+     "sha256_16": "c2cfccb812fe4821",
+     "bytes": 1141,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_aarch64_gnullvm",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_aarch64_msvc",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_i686_gnu",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_i686_msvc",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_x86_64_gnu",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_x86_64_gnullvm",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": null,
+   "text_classes": [],
+   "licence_files": [],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "windows_x86_64_msvc",
+   "version": "0.42.2",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT OR Apache-2.0",
+   "text_classes": [
+    "Apache-2.0",
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "license-apache-2.0",
+     "sha256_16": "c16f8dcf1a368b83",
+     "bytes": 11351,
+     "text_class": "Apache-2.0"
+    },
+    {
+     "path": "license-mit",
+     "sha256_16": "c2cfccb812fe4821",
+     "bytes": 1141,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "lock-only-not-resolved",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  },
+  {
+   "crate": "zmij",
+   "version": "1.0.21",
+   "source": "registry+https://github.com/rust-lang/crates.io-index",
+   "declared_in_published_manifest": "MIT",
+   "text_classes": [
+    "MIT"
+   ],
+   "licence_files": [
+    {
+     "path": "LICENSE-MIT",
+     "sha256_16": "23f18e03dc49df91",
+     "bytes": 1023,
+     "text_class": "MIT"
+    }
+   ],
+   "role_for_aarch64_linux_android": "android-runtime",
+   "crate_source_path_occurrences_in_shipped_so": 0
+  }
+ ]
+}

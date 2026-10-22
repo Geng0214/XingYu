@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "role": "你好",
+  "intent": "CLEAN",
+  "hiddenDuring": [
+    "BAG",
+    "MENU"
+  ],
+  "restoredAfterEachClose": true,
+  "evidence": [
+    "invitation-before",
+    "invitation-after",
+    "invitation-after-menu",
+    "invitation-bag",
+    "invitation-menu"
+  ],
+  "scope": "Actual native invitation, inventory and menu transitions; no injected database state."
+}

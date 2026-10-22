@@ -1,0 +1,61 @@
+{
+  "status": "WEB_AUDIO_RECEIVER_CORE_NOT_INTEGRATED",
+  "sourceCommit": "7f5a9892088a0a5db1bb16c3aada53e56fee56be",
+  "baselineCommit": "d57ab5ab",
+  "tests": {
+    "tests": 371,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "testSuites": 53,
+  "newTests": 8,
+  "pauseSeekInterleavingRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "connectedDevices": [],
+  "desktopPublicPcmProbe": "NONZERO_OBSERVED_NOT_ANDROID",
+  "receiverFormat": "1024_FRAMES_STEREO_PCM16",
+  "queuePackets": 8,
+  "messageMaxCharacters": 8192,
+  "acknowledgment": "AFTER_NATIVE_WRITE_IF_EPOCH_CURRENT",
+  "bilibiliPlayerIntegration": "NOT_IMPLEMENTED",
+  "webViewMute": "NOT_IMPLEMENTED",
+  "audioWorklet": "NOT_IMPLEMENTED",
+  "webMessageTransport": "NOT_IMPLEMENTED",
+  "actualWebAudioOutput": "NOT_RUN",
+  "nativeAudioVisualOffset": "NOT_RUN",
+  "webViewActualRouting": "GAP_REMAINS",
+  "databaseSchema": 28,
+  "backupSchema": 23,
+  "newPermissions": [],
+  "newDependencies": [],
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": "./gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 56s; 75 tasks, 22 executed, 53 up-to-date",
+  "buildEvidence": "TERMINAL_RESULT_TRANSCRIPTION_NOT_FULL_LOG",
+  "resolvedCompileFinding": "Android JSONObject keys iterator replaces desktop-only keySet",
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliAudioProtocol.kt": "9902e87650893d1c9a694ccebc348a2fa40d5891fa4098c161b812c1e8d8f2ad",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliAudioStream.kt": "472c949aef0c0db5ca1cc075f39f67062b49351cc526f4ca922970a97b6e5817",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliPcmOutput.kt": "1ee42440f6ce84d3ed4a081acec4b2e1edac83ae36d71962fe5ddf10863617c4",
+    "app/src/test/java/com/ai/assistance/operit/BilibiliAudioProtocolTest.kt": "114dcf2ce16174c049d17420de91997c107a5305a9a56127ad098805c72da8d2",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "706e1a6ce8e847ef94543571c9db461c3d5a8d2c87a145256fd99d8a86578399",
+    "docs/TODO/voice-and-shared-activities/04c-web-audio-routing.md": "101a116183517888e2d7cb85872e22ddeb94d9467637238ffc73012da457aa7c",
+    "docs/TODO/voice-and-shared-activities/index.md": "202497f5d0c3e1603996f41939f9b192b011fe0045c9d2803cd03fd399ea2bda",
+    "docs/project/STATUS.md": "0fa76b0d5faaf7645fdeee7136237969a6acef9e61aad654c0c3c3d053cbd351",
+    "docs/project/bilibili-watching.md": "d83ab6957bd08ca9c379012bab39adfd0410732a28deba0ec79fddbc9784dc48",
+    "docs/project/companion-full-plan.md": "30ffe7c2544aa9c38994482a75e9606db488cba85cca0f4f5e13815e6e948e01"
+  },
+  "evidenceSha256": {
+    "evidence/E5_WEB_AUDIO_CORE/browser-audio-probe.json": "fd52a33f058273253b555a7d236e5e810fdcea27e0687153b60eb6176cda8066",
+    "evidence/E5_WEB_AUDIO_CORE/build-summary.txt": "3a5b53d0f11d91b40b4b2d20b270eec20659df58c67b6206177fc4172f39f4c7",
+    "evidence/E5_WEB_AUDIO_CORE/validation.md": "4df65427e144c60b1ab2911d64caa6a8e17c99da6cf2878b42c4dbe351e6d7a2"
+  }
+}

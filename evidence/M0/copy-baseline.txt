@@ -1,0 +1,8 @@
+materializedAt: 2026-09-19T09:51:42+08:00
+baseCommit: 31646978aa03520f36916a9efd1d3f508b5ca3e0
+terminalCommit: 045868988e4091d613cb34b2941057703899b96e
+patch: C:/Users/15942/Desktop/Work/operit/evidence/M0/m0-remediation.patch 65dfe6dac3344b2c92ca978f9494e0fae08ef19c01d13f641652ce86dd17274f
+terminalPatch: C:/Users/15942/Desktop/Work/operit/evidence/M0/terminal-m0-remediation.patch fb6f473b65aace7f918c63416c12bc09144fd36670fafd50770ba546c2bbc187
+archive libs.zip: 1625489c81bb6e3ec6d29d41c39a53cb985e997be474425be01f909a6df887f8
+archive subpack.zip: 2953448c93b0e4e51a6434b96b0145af271efdf07bf99a54b24925727c8545ae
+archive jniLibs.zip: 2e8a4efd78b4b9daf3274ee17ba38eb5f42fb57bf43381b63c55aaa1d3148b53

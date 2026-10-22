@@ -1,0 +1,59 @@
+{
+  "status": "MEDIA_DEVICE_NOTIFICATIONS_INTEGRATED_ROUTING_INCOMPLETE",
+  "sourceCommit": "30074716d2e2767101176e7628249e5d02a00591",
+  "tests": {
+    "tests": 327,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newTests": 12,
+  "syntheticDisconnectReconnectRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "connectedDevices": [],
+  "mediaNotifications": "OUTPUT_DIRECTORY_NOISY_BROADCAST_FOCUS",
+  "localActualRouting": "API_28_PLUS_IMPLEMENTED_NOT_RUN",
+  "api26And27ActualRouting": "NOT_IMPLEMENTED",
+  "webViewActualRouting": "NOT_AVAILABLE_VIA_CURRENT_WEBVIEW_API",
+  "singleRecordingAndSpeechIntegration": "PENDING",
+  "databaseSchema": 28,
+  "backupSchema": 23,
+  "newPermissions": [],
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": ".\\gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 20s; 75 tasks, 10 executed, 65 up-to-date",
+  "priorValidationFindings": [
+    "Three API 28 MediaPlayer calls initially lacked version boundaries; fixed without raising minSdk",
+    "Coroutine stack recovery copies Throwable; test now verifies category and diagnostic rather than object identity"
+  ],
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidMediaAudioSession.kt": "4a1a104bac96f2a68d8f93b69cd7a16618ab488eaf0ad198b81f4b23f1a826bc",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/BilibiliPlayer.kt": "bf1a043d9c7079e13a2c4204b066c3e5e003aa292990d2765d1213d23172e787",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LocalMusicPlayer.kt": "36065aaf0fe9c2a37c3c9027d4f1f9e856c38e44cd928b3ab60555de3af8d66b",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/MediaAudioHealth.kt": "6053d5c71256edb7a50727271ed452fdb548f6ea570ed67f6d932d6cc1507e96",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/MediaAudioPolicy.kt": "b45258fe6180ea6ec79d3b2912568d20059d63397839d1a9794e622294c97054",
+    "app/src/main/java/com/ai/assistance/operit/data/model/CompanionModels.kt": "f645241d5eb9a8bb6bf8f2381b245d5d41dbd667f46c48584e32e3eff61b8d04",
+    "app/src/test/java/com/ai/assistance/operit/BilibiliWatchingTest.kt": "cb3ca7fec0733b3830e1f8d3ac0f1e6e50034005043ccfb580b9be7d0e6a6b3d",
+    "app/src/test/java/com/ai/assistance/operit/LocalMusicTest.kt": "9e8a8de4c32c6274021d2fc35c5289a8377893c389bb8920b31dc366332b9930",
+    "app/src/test/java/com/ai/assistance/operit/MediaAudioHealthTest.kt": "bedef5dbdb6befec5a2e0784b83f61904352debeed5e3d9de42ef09735482a2a",
+    "app/src/test/java/com/ai/assistance/operit/MediaAudioPolicyTest.kt": "16982d8010713619aeafc55e131b7ef4509334695e09ed9bb7d6325dd212246c",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "853650c7c0a41d7914036b5139c7c2e9a36c6aa3398dc68a7a6fda4a8343b303",
+    "docs/TODO/voice-and-shared-activities/index.md": "17e366a10d4a504faeab388ed79fd4e3947f70b9f8056976ec6265fabf17fc55",
+    "docs/project/STATUS.md": "de9bbf0fa2d5192c8cd03876e6748ea098538ad935b0bba2e57ad0ff17e9ca94",
+    "docs/project/bilibili-watching.md": "3a4be2f1a773ba354c3ef0738f2f8e96a6e7720bf68b43b24b74ddd3943864a7",
+    "docs/project/companion-full-plan.md": "87f8ab62e2c56a5f737f938a328605bf1d9aee2d3bd6f4faf08fed039922c34f",
+    "docs/project/local-music.md": "53b2e21456214ec5b1a45a5ca61a14242040cb5e172e5b51b3e8ed6ef63da100",
+    "docs/project/local-video.md": "7117d388aca7f491946877567b703a91472e835cca7abdc3bf737663caf9389e"
+  },
+  "evidenceSha256": {
+    "evidence/E5_MEDIA_ROUTE/validation.md": "5b1a86b45969f6bbb8a01bb25ff93990c00a2cfe8f880028a89912e28673169c",
+    "evidence/E5_MEDIA_ROUTE/build-validation.log": "0ea74ed16a56b40c5490a5facd547075a16f47af09f6ed39c87f2ef02000e6ff"
+  }
+}

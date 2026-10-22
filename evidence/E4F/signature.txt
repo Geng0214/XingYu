@@ -1,0 +1,30 @@
+|  ��ӭʹ�� JShell -- �汾 17.0.20.1
+|  Ҫ�����˽�ð汾, �����: /help intro
+
+jshell>  
+jshell>  
+jshell>  
+jshell>  
+jshell>  result ==> com.android.apksig.ApkVerifier$Result@6a024a67
+
+jshell>  Verified: true
+
+jshell>  Verified using v1 scheme (JAR signing): false
+
+jshell>  Verified using v2 scheme (APK Signature Scheme v2): true
+
+jshell>  Verified using v3 scheme (APK Signature Scheme v3): false
+
+jshell>  Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+
+jshell>  Verified using v4 scheme (APK Signature Scheme v4): false
+
+jshell>  Number of signers: 1
+
+jshell>  Signer #1 certificate SHA-256 digest: ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa
+
+jshell>  Errors: []
+
+jshell>  Warnings: []
+
+jshell>  |  �ټ�

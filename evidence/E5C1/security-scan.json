@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "apkSha256": "b2d1607e8be564c07e2fbf64750520ad1f159dbb2fc3871c3367528a4bb8cd9b",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-SECRET-key": [],
+    "synthetic-speech-key": [],
+    "synthetic-migration-key": [],
+    "synthetic-key": [],
+    "PRIVATE-MEMORY": [],
+    "DIARY-PRIVATE": [],
+    "PLANNER-PRIVATE-A": [],
+    "PROACTIVE-PRIVATE-A": [],
+    "SPEECH-PRIVATE-A": [],
+    "VOICE-PRIVATE-A": [],
+    "PRIVATE-ACTIVITY": [],
+    "ACTIVITY-PRIVATE": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "limitations": "Static APK scan only. Device SQLCipher, WAL, cache, Keystore, file provider, visual and real model interaction remain NOT_RUN."
+}

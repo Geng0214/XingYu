@@ -1,0 +1,12 @@
+
+com.ai.assistance.operit.BackupAndroidTest:...
+com.ai.assistance.operit.HomeRewardAndroidTest:.
+com.ai.assistance.operit.MigrationAndroidTest:.
+com.ai.assistance.operit.PlayStorageAndroidTest:....
+com.ai.assistance.operit.HomeStorageAndroidTest:..
+
+Time: 75.284
+
+OK (11 tests)
+
+

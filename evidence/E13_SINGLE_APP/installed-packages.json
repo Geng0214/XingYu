@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-03",
+  "device": "emulator-5554",
+  "installedPackages": [
+    "package:cn.localfirst.companion"
+  ],
+  "removedPackages": [
+    "cn.localfirst.companion.debug",
+    "cn.localfirst.companion.debug.test"
+  ],
+  "removalFlags": [
+    "-k",
+    "--user",
+    "0"
+  ],
+  "visibleChatRole": "你好",
+  "visibleLatestMessage": "你好",
+  "visibleHomeName": "我们的家园",
+  "visibleCoins": 120,
+  "visibleEnergy": 7,
+  "fullDatabaseComparison": false,
+  "apkSha256": "87E02A974086856FB0D3766CAB898261577F966234C019BED8FE95AC47AD1D5A",
+  "rebuilt": false
+}

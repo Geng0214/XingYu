@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.PlayOutfitsTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-21T04:22:50.939Z" hostname="DESKTOP-8LJVBMI" time="0.17">
+  <properties/>
+  <testcase name="twentyFrozenRequestsRejectChangedClothesAndKeepTheirOriginalPayload" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.108"/>
+  <testcase name="newDateAndBothJourneysKeepFrozenClothesAcrossTurnsMovesEndingAndReload" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.007"/>
+  <testcase name="completedLedgerRejectsOutfitTamperingInConfirmedStateOrRequestContext" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.008"/>
+  <testcase name="actualGardenClothesAreCapturedOnceAndLaterUnequipOnlyChangesNewSnapshots" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.04"/>
+  <testcase name="legacyStatesKeepExactEncodingAndContextAfterLoadAndContinue" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.001"/>
+  <testcase name="fiftyCrossRoleCapturesRejectForeignHomeAndDoNotCopyPrivateInventoryOrIdentity" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.002"/>
+  <testcase name="malformedClothingAndVersionSpoofingCannotBecomeStates" classname="com.ai.assistance.operit.PlayOutfitsTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

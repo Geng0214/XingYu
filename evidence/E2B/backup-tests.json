@@ -1,0 +1,66 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 100,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "scope": "JVM crypto/codec/validation/identity remapping and existing tests",
+  "androidBackupIntegration": "COMPILED_NOT_RUN",
+  "crossDeviceBackup": "NOT_RUN",
+  "systemFileProvider": "NOT_RUN",
+  "classes": [
+    {
+      "name": "com.ai.assistance.operit.BackupTest",
+      "tests": 10
+    },
+    {
+      "name": "com.ai.assistance.operit.ChatBubblesTest",
+      "tests": 5
+    },
+    {
+      "name": "com.ai.assistance.operit.ChatCoordinatorTest",
+      "tests": 8
+    },
+    {
+      "name": "com.ai.assistance.operit.McpSessionTest",
+      "tests": 11
+    },
+    {
+      "name": "com.ai.assistance.operit.PrivacyGateTest",
+      "tests": 9
+    },
+    {
+      "name": "com.ai.assistance.operit.ProviderTest",
+      "tests": 13
+    },
+    {
+      "name": "com.ai.assistance.operit.QuickJsScriptTest",
+      "tests": 8
+    },
+    {
+      "name": "com.ai.assistance.operit.RequestContextTest",
+      "tests": 1
+    },
+    {
+      "name": "com.ai.assistance.operit.RoleTemplateTest",
+      "tests": 5
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolChatServiceTest",
+      "tests": 11
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolDispatcherTest",
+      "tests": 10
+    },
+    {
+      "name": "com.ai.assistance.operit.ToolPkgCodecTest",
+      "tests": 9
+    }
+  ],
+  "sourceCommit": "e0a1de3f94e8656bd0e6549027bad828bc29a031",
+  "cleanBuild": "PASS",
+  "lint": "0 errors, 28 warnings"
+}

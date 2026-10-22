@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "sourceSha256": "68879e2658c6bf07772d40a185b8430a23954a7716a4b8cc760ccf3cdb5f436a",
+  "daoSourceSha256": "be1d46c6332861c125dbc7d7180fa4971e1c6ccf94385af8244d0f06ca5ae184",
+  "schemaMatchesRoomV28": true,
+  "legacyRowsPreserved": true,
+  "emptyGroupTablesAfterUpgrade": true,
+  "interruptedDdlRollback": true,
+  "alternatingScopedReads": 50,
+  "crossGroupRows": 0,
+  "compositeForeignKeys": true,
+  "requestAndMessagesRollback": true,
+  "roleDeletionRequiresMembershipCleanup": true,
+  "groupCascade": true,
+  "limitation": "Host SQLite executes production DDL and DAO SQL. Kotlin repository transactions and SQLCipher/device storage are compiled but not executed here."
+}

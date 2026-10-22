@@ -1,0 +1,464 @@
+{
+  "recordedAtUtc": "2026-09-20T22:04:26.118078+00:00",
+  "releaseSourceCommit": "1a3ee8f56494d99f31a661a328ee114eefd6fa7f",
+  "apkVersion": "0.33.0",
+  "versionCode": 34,
+  "roomSchema": 28,
+  "backupVersion": 23,
+  "cleanBuild": {
+    "status": "PASS",
+    "duration": "4m 2s",
+    "tasks": 110,
+    "executed": 108,
+    "upToDate": 2,
+    "jdk": 21,
+    "gradle": "8.13",
+    "sdk": 36,
+    "cache": "../.gradle-m0",
+    "proxyOverride": "-Dhttp.proxyHost= -Dhttps.proxyHost=; current build process only"
+  },
+  "unitTests": {
+    "total": 373,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "com.ai.assistance.operit.BackupTest",
+        "tests": 36,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.BilibiliAudioProtocolTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.BilibiliWatchingTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ChatBubblesTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ChatCoordinatorTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.CommunicationPcmTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.CommunicationRoutesTest",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.DecodedMediaPcmTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.DiaryTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.EnvironmentTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ForegroundPublicationTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.GroupRequestContextTest",
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ImageGenerationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.LegacyScoHandshakeTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.LocalMusicTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.MaterialContextTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.McpSessionTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.MediaAudioHealthTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.MediaAudioPolicyTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.MemoryExtractionTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.MemoryTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.MessageExportTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ModelGenerationGateTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ObservedAudioRouteTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.OwnedChatRequestTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.PcmPlaybackTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.PcmTransferTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.PlannerTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.PrivacyGateTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ProactiveMessagesTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ProviderTest",
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.QuickJsScriptTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ReadingContextTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ReadingDocumentReaderTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.RelationshipTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.RequestContextTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.RoleTemplateTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.SharedActivitiesTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.SpeechServiceTest",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.StickerContextTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.SupportDiagnosticsTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.TextMaterialReaderTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.TokenAccountingTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ToolChatServiceTest",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ToolDispatcherTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.ToolPkgCodecTest",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.UserPersonaTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.VerifiedMediaReaderTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.VideoFramePacingTest",
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.VisionMessageTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.VoiceCaptureDeliveryTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.VoiceConversationTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.ai.assistance.operit.WorldbookTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "webScriptTests": {
+    "tests": 9,
+    "failures": 0,
+    "report": "web-script-tests.xml"
+  },
+  "lint": {
+    "Error": 0,
+    "Warning": 62,
+    "Hint": 1
+  },
+  "androidInstrumentation": {
+    "compiled": true,
+    "execution": "NOT_RUN",
+    "connectedDevices": 0
+  },
+  "signatureContinuity": "PASS",
+  "zipalign16KiB": "PASS",
+  "apkAudit": "PASS",
+  "sourceArchive": {
+    "files": 918,
+    "allFilesMatchGitArchive": true,
+    "note": "git archive honors text attributes/platform line endings; all ZIP contents compared with a fresh in-memory TAR of the same release commit"
+  },
+  "outputDeliveryHashesVerified": true,
+  "baseline": {
+    "path": "output/upgrade-baseline/local-companion-0.32.0.apk",
+    "sha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+    "retainedFor": "0.32.0 synthetic-data upgrade test"
+  },
+  "cleanup": {
+    "removedApks": 14,
+    "bytesFreed": 132313140,
+    "outputBytesBefore": 154811493,
+    "outputBytesAfter": 22498353
+  },
+  "files": [
+    {
+      "name": "local-companion-0.33.0.apk",
+      "bytes": 9799511,
+      "sha256": "1e4f8886f59c3e04da646777b4aa3bb22c4eab876085fa635254ba229b3fdea0"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 2938811,
+      "sha256": "44bdfa61161682b5ef76fbcf48e1561bc81cc09a9685d9527063e936a982bf4a"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 21582,
+      "sha256": "01ab6c65e14537f23faeaf9f5cfd456197c33ea79abdf771b3b06f19fb989ffb"
+    }
+  ],
+  "evidenceSha256": {
+    "acceptance.md": "13bc82502b078c50dcb7a40731b1e3a0265e986749d623234d8c4b9d931ad7b6",
+    "alignment.txt": "54061b004dd192c8df309704993d249a519338d46bd4925004626e05f6297b25",
+    "apk-audit.json": "9458f3da2bbed18f843a94b91005e90ef4ca946467a30b881eaeb616ec3f4f46",
+    "apk-cleanup-plan.json": "0431eaa067021c6176f8e6492ac29b9c367d33b34be99203dfdabc05c1065c4a",
+    "apk-cleanup-result.json": "f6a66ece03e866cd81b9cc3c9f87cfb667ac6ee6eccb45dce2f7b33250b29b34",
+    "build-final-clean.log": "843df3d69bf4b952daa8144010801ac66de6ea3d3c67a1b8a3577f1760fe073d",
+    "delivery.json": "80fdcdfe3f3125de8cb0f7256229c508c52b7c0c0f7ebd057127e16759e5c010",
+    "runtime-coordinates.txt": "61e1c0265668d85e2bfc066f2e54873212a464f555cbb2c0000cda0fb10a1cc4",
+    "signature.txt": "802620d1adfe555467542d275c7333b9dab5e42a9e7cf5c52aa496fc3d2161bc",
+    "web-script-tests.xml": "8d4ccdd5333122ef047339b65817938eb33bb67d0e7f13054b9d36b4a4d35225"
+  },
+  "acceptance": "Development delivery only; Android, real providers and human checks remain NOT_RUN; full goal remains active."
+}

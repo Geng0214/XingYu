@@ -1,0 +1,59 @@
+{
+  "status": "LEGACY_MUSIC_TRACK_INTEGRATED_NATIVE_PENDING",
+  "sourceCommit": "62b6f684d330abe4a4b6369f27eb9630720c1184",
+  "baselineCommit": "4460ebf7",
+  "tests": {
+    "tests": 345,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "testSuites": 51,
+  "newTests": 11,
+  "controlledCancellationRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "newAndroidDecoderTests": 2,
+  "androidExecution": "NOT_RUN",
+  "connectedDevices": [],
+  "legacyMusicPath": "MEDIA_EXTRACTOR_MEDIACODEC_AUDIOTRACK_API_26_27",
+  "routeConfirmation": "SILENCE_ON_SAME_PLAYBACK_TRACK_BEFORE_PCM",
+  "progress": "ACTUAL_UNSIGNED_PLAYBACK_HEAD_AND_BLOCK_TIMESTAMPS",
+  "pcmQueueCapacity": 1,
+  "maximumPcmBlockBytes": 524288,
+  "cancellation": "STOP_NATIVE_AUDIO_BEFORE_JOINING_DECODER_THEN_ERASE_QUEUE",
+  "selfReviewFinding": "Fixed native stop occurring after potentially slow decoder cleanup; normal EOS still drains",
+  "nativeCodecsAndFormats": "NOT_RUN",
+  "legacyVideoActualRouting": "PENDING",
+  "webViewActualRouting": "OBSERVABILITY_GAP_REMAINS",
+  "databaseSchema": 28,
+  "backupSchema": 23,
+  "newPermissions": [],
+  "newDependencies": [],
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": "./gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 56s; 75 tasks, 24 executed, 51 up-to-date",
+  "sourceSha256": {
+    "app/src/androidTest/java/com/ai/assistance/operit/MediaDecoderAndroidTest.kt": "0a5845d560e28496a171f44fd50a66a4e9e2f85288b2e5989cfaa932f81f3842",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidMediaPcmDecoder.kt": "12f1c11777cd960d4f59fe840ec56e7241bdbe8b165a9ed289f678f6b14deb4a",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidMediaSource.kt": "28365e4c9b3e62c4dda398f7cfb19b6731d8cbc5cdde76a477a2a29d318ee5c3",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/DecodedMediaPcm.kt": "4631bb06c636cb67562ddfbd7bf8e6bbca27586e3c36666dd08eff167bdd0110",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LegacyLocalAudioPlayer.kt": "487965703cf7dcc7dfa9b2c4f2c6e174bb64717fa046077cf8b64a633976d3de",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/LocalMusicPlayer.kt": "dabebfb61c182612455701b108685ee20852d02548ff886ae1b00e96550a8be8",
+    "app/src/test/java/com/ai/assistance/operit/DecodedMediaPcmTest.kt": "f6f5da36acc5d562a5e211820764da1adad70e5cc49373eaecc9deeddd4a33d4",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "ed6684b1eb01aa536cc4148d4d690f28685ae1ef0eb380ddf204053dfd834e2f",
+    "docs/TODO/voice-and-shared-activities/index.md": "2014880f259996ab68761495ef5c155b661c7713962c35b67ba956f7e9f8fb6f",
+    "docs/project/STATUS.md": "4eb43992f894cec68591fc4cb7615488ccff081d113bd269345c36349cbaa39a",
+    "docs/project/companion-full-plan.md": "2a664414af1004eaf443d753aa0b413d5fab631593f386458d9554661ab60cc1",
+    "docs/project/local-music.md": "807436750f7a61c734f4c5b1c641e307e40d2685b991cc6434aa7f74d0c75562"
+  },
+  "evidenceSha256": {
+    "evidence/E5_LEGACY_MUSIC/build-validation.log": "865b3d2e71acc2f456bef5b503a0a84626903864b2d4b3f2538ebae4753b3cf2",
+    "evidence/E5_LEGACY_MUSIC/validation.md": "02b1d6b9396f7ea5d62e2d5be07bde7ff559b16855529f94de35c0bccf83830e"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "serial": "emulator-5554",
+  "sdk": "35",
+  "size": "Physical size: 900x1600",
+  "density": "Physical density: 240",
+  "fontScale": "1.0",
+  "autoRotation": "1",
+  "rotation": "0",
+  "packages": [
+    "package:cn.localfirst.companion"
+  ]
+}

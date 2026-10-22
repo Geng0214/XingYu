@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "sourceSha256": "326cebd04befa5e4b9b5e213b04cb00a01e0cbe35fc46b11dde2dfae41954ae4",
+  "daoSourceSha256": "2e2bb84e60f7d93e23501df094157bf89cddad7ebe84bd8dd207c8695b335171",
+  "schemaMatchesRoomV26": true,
+  "audioDefaultsPreserved": true,
+  "legacyRowsPreserved": true,
+  "interruptedDdlRollback": true,
+  "alternatingScopedReads": 50,
+  "crossOwnerRows": 0,
+  "chatAndRoleCascade": true,
+  "referencedTrackDeleteRejected": true,
+  "limitation": "Host SQLite DDL and actual DAO read SQL only. Android Room repository, SQLCipher, Keystore and UI remain NOT_RUN."
+}

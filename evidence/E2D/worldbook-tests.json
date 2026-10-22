@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "sourceCommit": "b538c546272df5ed82a1dfb0873bbe9aaee76747",
+  "counts": {
+    "tests": 119,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "lint": "0 errors, 28 warnings",
+  "cleanBuild": "PASS",
+  "androidCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "visualQA": "NOT_RUN",
+  "filePicker": "NOT_RUN"
+}

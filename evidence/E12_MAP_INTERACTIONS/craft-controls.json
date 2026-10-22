@@ -1,0 +1,132 @@
+{
+  "mapBounds": [
+    0,
+    176,
+    750,
+    1440
+  ],
+  "controls": [
+    {
+      "label": "",
+      "bounds": [
+        518,
+        200,
+        614,
+        296
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        630,
+        200,
+        726,
+        296
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        606,
+        712,
+        702,
+        808
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        48,
+        808,
+        192,
+        992
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        208,
+        808,
+        352,
+        992
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        368,
+        808,
+        512,
+        992
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        528,
+        808,
+        672,
+        992
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        48,
+        1008,
+        192,
+        1192
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        208,
+        1008,
+        352,
+        1192
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        368,
+        1008,
+        512,
+        1192
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        528,
+        1008,
+        672,
+        1192
+      ],
+      "enabled": true
+    },
+    {
+      "label": "",
+      "bounds": [
+        48,
+        1208,
+        192,
+        1392
+      ],
+      "enabled": true
+    }
+  ],
+  "outside": [],
+  "status": "PASS"
+}

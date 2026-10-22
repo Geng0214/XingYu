@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="PCM preserves stereo, little endian and clipping while browser output is zero" time="0.010934" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="128-frame rendering waits for a whole 1024-frame packet" time="0.002027" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="unacknowledged audio is bounded and overflow stops instead of dropping and continuing" time="0.013862" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="ordered acknowledgements permit sustained playback and duplicate acknowledgements stop it" time="0.110915" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="20 pause/seek cycles erase partial PCM and old acknowledgements never refill new credits" time="0.050843" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="invalid audio stops and wipes the partial packet" time="0.001009" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="document bridge sends pause/play/seek epochs and erases transferred packets" time="0.011079" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="page bridge rejects another origin or subframe without starting audio" time="0.001337" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<testcase name="video replacement and malformed acknowledgements close the context and pause media" time="0.001602" classname="test" file="C:\Users\15942\Desktop\Work\operit\ci\script\bilibili_audio_test.cjs"/>
+	<!-- tests 9 -->
+	<!-- suites 0 -->
+	<!-- pass 9 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 277.5181 -->
+</testsuites>

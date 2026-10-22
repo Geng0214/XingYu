@@ -1,0 +1,559 @@
+[
+ {
+  "dep": "ncnn",
+  "commit": "70e7bfd6081b912a6521c73f436f9727eb335ce1",
+  "licence_files": [
+   {
+    "path": "LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "7c974bac98848df4",
+    "bytes": 6427
+   }
+  ]
+ },
+ {
+  "dep": "sherpa_ncnn",
+  "commit": "c61e50d61e9fbed5972afa4d95bc560e168affe2",
+  "licence_files": [
+   {
+    "path": "LICENSE",
+    "licence": "Apache-2.0",
+    "sha256": "cfc7749b96f63bd3",
+    "bytes": 11358
+   }
+  ]
+ },
+ {
+  "dep": "wamr",
+  "commit": "4211c313bfacb4a48b901d1a5fd1fdb535f76dc0",
+  "licence_files": [
+   {
+    "path": "LICENSE",
+    "licence": "Apache-2.0",
+    "sha256": "0a274df3755e61b1",
+    "bytes": 12242
+   },
+   {
+    "path": "samples/wasm-c-api/src/LICENSE",
+    "licence": "Apache-2.0",
+    "sha256": "c6596eb7be8581c1",
+    "bytes": 11358
+   },
+   {
+    "path": "test-tools/wamr-ide/VSCode-Extension/LICENSE",
+    "licence": "Apache-2.0",
+    "sha256": "0a274df3755e61b1",
+    "bytes": 12242
+   },
+   {
+    "path": "tests/benchmarks/dhrystone/LICENSE",
+    "licence": null,
+    "sha256": "e02586eabc5e3675",
+    "bytes": 332
+   }
+  ]
+ },
+ {
+  "dep": "dragonbones_cpp",
+  "commit": "f696143045e07b7c4c4590bdd95534e9e8074b37",
+  "licence_files": [
+   {
+    "path": "LICENSE",
+    "licence": "MIT",
+    "sha256": "e055124edff26897",
+    "bytes": 1111
+   }
+  ]
+ },
+ {
+  "dep": "ufbx",
+  "commit": "fcc5d6ba444cfd3eb80677dba5e37e493941abe5",
+  "licence_files": [
+   {
+    "path": "LICENSE",
+    "licence": "MIT",
+    "sha256": "0dd48ebadf52273c",
+    "bytes": 2631
+   }
+  ]
+ },
+ {
+  "dep": "bullet3",
+  "commit": "63c4d67e337017f9d8b298c900e9aabdb69296e7",
+  "licence_files": [
+   {
+    "path": "LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "885cd516a8420acb",
+    "bytes": 1022
+   },
+   {
+    "path": "data/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "7b4b1fc66a8579fa",
+    "bytes": 1001
+   },
+   {
+    "path": "data/differential/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "data/dinnerware/license.txt",
+    "licence": null,
+    "sha256": "1ee232989c3075e1",
+    "bytes": 132
+   },
+   {
+    "path": "data/gripper/license.txt",
+    "licence": "BSD-family",
+    "sha256": "ca24201f176d9250",
+    "bytes": 1473
+   },
+   {
+    "path": "data/humanoid/LICENSE.txt",
+    "licence": "BSD-family",
+    "sha256": "1f1e0ffb393c55d2",
+    "bytes": 1551
+   },
+   {
+    "path": "data/husky/license.txt",
+    "licence": "BSD-family",
+    "sha256": "07a0881843ec604c",
+    "bytes": 1633
+   },
+   {
+    "path": "data/jenga/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "data/kuka_iiwa/license.txt",
+    "licence": "BSD-family",
+    "sha256": "eee857362a707db2",
+    "bytes": 2187
+   },
+   {
+    "path": "data/kuka_lwr/license.txt",
+    "licence": null,
+    "sha256": "2a8513017fe32832",
+    "bytes": 345
+   },
+   {
+    "path": "data/kuka_lwr/meshes_arm/COPYRIGHT",
+    "licence": "CC",
+    "sha256": "60ccb5a178778653",
+    "bytes": 477
+   },
+   {
+    "path": "data/lego/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "data/mjcf/license.txt",
+    "licence": null,
+    "sha256": "f286f90c360c6d74",
+    "bytes": 314
+   },
+   {
+    "path": "data/MPL/LICENSE.txt",
+    "licence": "Apache-2.0",
+    "sha256": "139fd06830b89c24",
+    "bytes": 1378
+   },
+   {
+    "path": "data/Quadrotor/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "data/quadruped/license.txt",
+    "licence": "BSD-family",
+    "sha256": "2697d975d9e601c9",
+    "bytes": 1997
+   },
+   {
+    "path": "data/racecar/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "9e0bf5d85579f45d",
+    "bytes": 1093
+   },
+   {
+    "path": "data/table/license.txt",
+    "licence": "BSD-family",
+    "sha256": "2697d975d9e601c9",
+    "bytes": 1997
+   },
+   {
+    "path": "data/table_square/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "data/torus/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "data/toys/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "2d39a5e7c18e0be4",
+    "bytes": 920
+   },
+   {
+    "path": "examples/ThirdPartyLibs/BussIK/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "fae8efe21fadcf93",
+    "bytes": 927
+   },
+   {
+    "path": "examples/ThirdPartyLibs/clsocket/LICENSE.txt",
+    "licence": "BSD-family",
+    "sha256": "37d4c5a5d0b6c9d7",
+    "bytes": 1736
+   },
+   {
+    "path": "examples/ThirdPartyLibs/cpp_base64/LICENSE",
+    "licence": null,
+    "sha256": "238ae3bcdada1dff",
+    "bytes": 1210
+   },
+   {
+    "path": "examples/ThirdPartyLibs/crossguid/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "54d26948defda122",
+    "bytes": 1103
+   },
+   {
+    "path": "examples/ThirdPartyLibs/enet/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "77f94e3be3993880",
+    "bytes": 1060
+   },
+   {
+    "path": "examples/ThirdPartyLibs/glad/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "602481212ad5b560",
+    "bytes": 2988
+   },
+   {
+    "path": "examples/ThirdPartyLibs/Gwen/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "8a1d14742a412246",
+    "bytes": 957
+   },
+   {
+    "path": "examples/ThirdPartyLibs/imgui/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "c3c47e135626f2ee",
+    "bytes": 1083
+   },
+   {
+    "path": "examples/ThirdPartyLibs/lua-5.2.3/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "5bb4a04f5020de51",
+    "bytes": 1263
+   },
+   {
+    "path": "examples/ThirdPartyLibs/midi/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "9e00a2a70c894ad8",
+    "bytes": 1497
+   },
+   {
+    "path": "examples/ThirdPartyLibs/minizip/LICENSE.txt",
+    "licence": null,
+    "sha256": "5628532d76f79b3e",
+    "bytes": 1810
+   },
+   {
+    "path": "examples/ThirdPartyLibs/openvr/LICENSE",
+    "licence": "BSD-family",
+    "sha256": "f56ff606104d4ef1",
+    "bytes": 1488
+   },
+   {
+    "path": "examples/ThirdPartyLibs/optionalX11/LICENSE.txt",
+    "licence": null,
+    "sha256": "53b5cb9e629de8dc",
+    "bytes": 2141
+   },
+   {
+    "path": "examples/ThirdPartyLibs/serial/LICENSE.txt",
+    "licence": null,
+    "sha256": "eb3db8502445f8f4",
+    "bytes": 213
+   },
+   {
+    "path": "examples/ThirdPartyLibs/stb_image/LICENSE.txt",
+    "licence": null,
+    "sha256": "bdde40b643b206ba",
+    "bytes": 167
+   },
+   {
+    "path": "examples/ThirdPartyLibs/tinyxml2/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "fd7dd135c7b0ca3e",
+    "bytes": 859
+   },
+   {
+    "path": "examples/ThirdPartyLibs/Wavefront/LICENSE.txt",
+    "licence": null,
+    "sha256": "0320a58a59e252c8",
+    "bytes": 82
+   },
+   {
+    "path": "examples/ThirdPartyLibs/zlib/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "b49651e53db17c7e",
+    "bytes": 1313
+   },
+   {
+    "path": "examples/TinyRenderer/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "c2d814ae3f6acbe6",
+    "bytes": 888
+   },
+   {
+    "path": "Extras/ConvexDecomposition/LICENSE.txt",
+    "licence": "BSD-family",
+    "sha256": "6351617ec4f06168",
+    "bytes": 1547
+   },
+   {
+    "path": "Extras/GIMPACTUtils/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "d562509bf51c86e4",
+    "bytes": 893
+   },
+   {
+    "path": "Extras/HACD/LICENSE.txt",
+    "licence": "BSD-family",
+    "sha256": "209223e5972a2374",
+    "bytes": 1480
+   },
+   {
+    "path": "Extras/InverseDynamics/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "cdcfa807e939dcdd",
+    "bytes": 889
+   },
+   {
+    "path": "Extras/VHACD/LICENSE.txt",
+    "licence": "BSD-family",
+    "sha256": "87871b68b96993a8",
+    "bytes": 1482
+   }
+  ]
+ },
+ {
+  "dep": "saba",
+  "commit": "29b8efa8b31c8e746f9a88020fb0ad9dcdcf3332",
+  "licence_files": [
+   {
+    "path": "LICENCE",
+    "licence": "MIT",
+    "sha256": "11a52e2589953f2a",
+    "bytes": 1083
+   },
+   {
+    "path": "external/fcpp/COPYING",
+    "licence": "BSD-family",
+    "sha256": "6da95f4f6a076877",
+    "bytes": 1616
+   },
+   {
+    "path": "license/bullet/LICENSE.txt",
+    "licence": "zlib",
+    "sha256": "885cd516a8420acb",
+    "bytes": 1022
+   },
+   {
+    "path": "license/fcpp/LICENSE.txt",
+    "licence": null,
+    "sha256": "58715485b8f4e4ba",
+    "bytes": 492
+   },
+   {
+    "path": "license/glfw/COPYING.txt",
+    "licence": "zlib",
+    "sha256": "8d85c2fc8de8f3b8",
+    "bytes": 928
+   },
+   {
+    "path": "license/gli/licence.txt",
+    "licence": "MIT",
+    "sha256": "d473e99711721f25",
+    "bytes": 2305
+   },
+   {
+    "path": "license/glm/licence.txt",
+    "licence": "MIT",
+    "sha256": "43dfb4ae144ab7ea",
+    "bytes": 2304
+   },
+   {
+    "path": "license/glslang/licence.txt",
+    "licence": "BSD-family",
+    "sha256": "39d787952dff639d",
+    "bytes": 1597
+   },
+   {
+    "path": "license/googletest/LICENSE",
+    "licence": "BSD-family",
+    "sha256": "9702de7e4117a8e2",
+    "bytes": 1475
+   },
+   {
+    "path": "license/imgui/LICENSE",
+    "licence": "MIT",
+    "sha256": "0a52f6d4954d4054",
+    "bytes": 1106
+   },
+   {
+    "path": "license/ImGuizmo/LICENSE",
+    "licence": "MIT",
+    "sha256": "b957968be18bbc4f",
+    "bytes": 1083
+   },
+   {
+    "path": "license/json/LICENSE.MIT",
+    "licence": "MIT",
+    "sha256": "c983d69523377819",
+    "bytes": 1076
+   },
+   {
+    "path": "license/lua/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "8059373dd194d157",
+    "bytes": 1065
+   },
+   {
+    "path": "license/sol2/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "ea0fcc9dc4da3116",
+    "bytes": 1095
+   },
+   {
+    "path": "license/spdlog/LICENSE",
+    "licence": "MIT",
+    "sha256": "9eb46fbd9cbdb079",
+    "bytes": 1120
+   },
+   {
+    "path": "license/tinyobjloader/LICENSE",
+    "licence": "MIT",
+    "sha256": "27f4ba1a95e3e6b7",
+    "bytes": 1107
+   }
+  ]
+ },
+ {
+  "dep": "llama_cpp",
+  "commit": "720d7fa4097f76e5d0eade5a92c1df87c1faf9d9",
+  "licence_files": [
+   {
+    "path": "LICENSE",
+    "licence": "MIT",
+    "sha256": "94f29bbed6a22c35",
+    "bytes": 1078
+   },
+   {
+    "path": "cmake/license.cmake",
+    "licence": null,
+    "sha256": "083515dff8a9b869",
+    "bytes": 1445
+   },
+   {
+    "path": "gguf-py/LICENSE",
+    "licence": "MIT",
+    "sha256": "ef78c7e6659e34c7",
+    "bytes": 1072
+   },
+   {
+    "path": "licenses/LICENSE-jsonhpp",
+    "licence": "MIT",
+    "sha256": "c0d068392ea65358",
+    "bytes": 1075
+   },
+   {
+    "path": "vendor/cpp-httplib/LICENSE",
+    "licence": "MIT",
+    "sha256": "4b45cbe16d7b71b8",
+    "bytes": 1075
+   }
+  ]
+ },
+ {
+  "dep": "kleidiai",
+  "commit": "fa0a8e861d58451e0a3a0d1588bc0d49bad23743",
+  "licence_files": []
+ },
+ {
+  "dep": "mnn",
+  "commit": "d407447ed56c4121a11ccbd266dc184ca1ead0c2",
+  "licence_files": [
+   {
+    "path": "LICENSE.txt",
+    "licence": "Apache-2.0",
+    "sha256": "a830d59c4f98d110",
+    "bytes": 11346
+   },
+   {
+    "path": "3rd_party/flatbuffers/LICENSE.txt",
+    "licence": "Apache-2.0",
+    "sha256": "7ec9661a8afafab1",
+    "bytes": 11342
+   },
+   {
+    "path": "3rd_party/half/LICENSE.txt",
+    "licence": "MIT",
+    "sha256": "1269110471a5506d",
+    "bytes": 1100
+   },
+   {
+    "path": "3rd_party/protobuf/LICENSE",
+    "licence": "BSD-family",
+    "sha256": "6e5e117324afd944",
+    "bytes": 1732
+   },
+   {
+    "path": "3rd_party/rapidjson/license.txt",
+    "licence": null,
+    "sha256": "a140e5d46fe734a1",
+    "bytes": 5152
+   },
+   {
+    "path": "apps/frameworks/sherpa-mnn/LICENSE",
+    "licence": "Apache-2.0",
+    "sha256": "cfc7749b96f63bd3",
+    "bytes": 11358
+   },
+   {
+    "path": "apps/frameworks/sherpa-mnn/NOTICE",
+    "licence": null,
+    "sha256": "6e2c10758ff27196",
+    "bytes": 470
+   }
+  ]
+ },
+ {
+  "dep": "quickjs",
+  "commit": "04be246001599f5995fa2f2d8c91a0f198d3f34c",
+  "licence_files": [
+   {
+    "path": "LICENSE",
+    "licence": "MIT",
+    "sha256": "598fd7fc928e4350",
+    "bytes": 1130
+   }
+  ]
+ }
+]

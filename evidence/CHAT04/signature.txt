@@ -1,0 +1,4 @@
+Signer #1 certificate DN: CN=Operit M0 Test, OU=not-for-release, O=local-development, L=n-a, ST=n-a, C=CN
+Signer #1 certificate SHA-256 digest: ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa
+Signer #1 certificate SHA-1 digest: 444745ca3ee65bdcb1610f681b2a341253d4008e
+Signer #1 certificate MD5 digest: abee842f673dc644de2432b1721fcd5b

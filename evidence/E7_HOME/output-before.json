@@ -1,0 +1,31 @@
+{
+  "root": "C:\\Users\\15942\\Desktop\\Work\\operit\\output",
+  "bytesBefore": 25775521,
+  "filesBefore": [
+    {
+      "path": "delivery.json",
+      "bytes": 8893,
+      "sha256": "f0b885d3c0a9d199b8858fed05be04aa01cafe87a9eee993b24f39cc08bd58c7"
+    },
+    {
+      "path": "local-companion-0.38.0.apk",
+      "bytes": 11244187,
+      "sha256": "46129be9cbc5e9a064b7d922ce121f83e009195f61ff9285eb2de3700ac72013"
+    },
+    {
+      "path": "local-companion-source.zip",
+      "bytes": 4549200,
+      "sha256": "a9e785685d36113721bd88cab2e1c469f0c08ef3ddc073954f0ec7097bfdb6d7"
+    },
+    {
+      "path": "安装说明.md",
+      "bytes": 25810,
+      "sha256": "56a85f48be4db9f3816284c221b28a00f1f8451e126aa4bde52739db86397df4"
+    },
+    {
+      "path": "upgrade-baseline\\local-companion-0.37.0.apk",
+      "bytes": 9947431,
+      "sha256": "1b4017f051b926e964bd53c4b28c69007564ab92eed91fd382e8a78a3cecdccc"
+    }
+  ]
+}

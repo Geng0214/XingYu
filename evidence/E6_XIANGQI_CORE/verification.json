@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-09-21T01:20:18Z",
+  "sourceCommit": "42bd178d2b6ee8bb4df2d59274b93ec18a4aa548",
+  "status": "UNRELEASED_RULE_CORE_IN_PROGRESS",
+  "gradleTasks": [":app:testDebugUnitTest"],
+  "buildSeconds": 58,
+  "unitTests": {"suites": 67, "tests": 473, "failures": 0, "errors": 0, "skipped": 0},
+  "xiangqiTests": {"board": 5, "gameAndReplay": 6, "repetition": 5, "threats": 6, "wxfExamples": 2},
+  "initialPositionPerft": [44, 1920, 79666],
+  "officialDiagramsTested": [40, 41],
+  "allOfficialDiagramsVerified": false,
+  "productionIntegrated": false,
+  "releaseBuilt": false,
+  "androidDeviceCount": 0,
+  "deviceValidation": "PENDING",
+  "realModelValidation": "PENDING",
+  "latestApk": "output/local-companion-0.36.0.apk",
+  "latestApkSha256": "20dc8ec0354a8bec0612c9a8789487e2d2fc793419e69d1aac8fb8ed61a1ab4b",
+  "ruleSource": {
+    "url": "https://www.wxf-xiangqi.org/images/wxf-rules/2018_World_XiangQi_Rules_English2018.pdf",
+    "sha256": "2b45534953bbfcca42dc2c52e06be48ff44ebe3bf7237248b12e39576c494cf3",
+    "bytes": 8234985,
+    "temporaryRenderedImagesRemoved": 14,
+    "bytesFreed": 11915577
+  }
+}

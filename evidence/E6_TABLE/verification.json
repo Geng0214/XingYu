@@ -1,0 +1,569 @@
+{
+  "recordedAt": "2026-09-21T00:46:53.736136+00:00",
+  "sourceCommit": "45b89813934ea0d15037c76f4528908ea62f0736",
+  "cleanBuildCodeCommit": "45b89813934ea0d15037c76f4528908ea62f0736",
+  "sourceArchiveMatchesGitArchive": true,
+  "sourceArchiveFiles": 1001,
+  "apkGitRevisionMatches": true,
+  "unitTests": {
+    "tests": 449,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": 62,
+  "lint": {
+    "Error": 0,
+    "Warning": 62,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "hostMigration": "PASS",
+  "webScriptTests": {
+    "tests": 9,
+    "failures": 0
+  },
+  "sourceReview": {
+    "disposition": "ship",
+    "scope": "three listed source fixes resolved; not whole-surface or rendered visual approval",
+    "fixes": [
+      "active card comments hide unplayed hand",
+      "dirty creation type navigation confirms discard",
+      "custom puzzle errors explain invalid fields"
+    ]
+  },
+  "device": {
+    "adbDevices": [],
+    "ui": "NOT_RUN",
+    "sqlcipherUpgrade": "NOT_RUN",
+    "encryptionAtRest": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "crossDeviceBackup": "NOT_RUN"
+  },
+  "cleanup": {
+    "removed": "output/upgrade-baseline/local-companion-0.34.0.apk",
+    "removedSha256": "75a4b245c88227cee2d1ebdd965cdd78da0f0e77b0cf4b94665ab4b527e8229a",
+    "reclaimedBytes": 9881431,
+    "retainedBaseline": "output/upgrade-baseline/local-companion-0.35.0.apk",
+    "retainedBaselineSha256": "9ddec51b2886573892bdef21eb0517b4c3e161f39c5f800e9d85bec3d0ae84f5",
+    "deliveryBytesBefore": 22895351,
+    "deliveryBytesAfter": 22979119,
+    "checkedAbsolutePaths": true,
+    "exclusiveReadBeforeMoveDelete": true
+  },
+  "files": [
+    {
+      "name": "local-companion-0.36.0.apk",
+      "bytes": 9914663,
+      "sha256": "20dc8ec0354a8bec0612c9a8789487e2d2fc793419e69d1aac8fb8ed61a1ab4b"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 3134720,
+      "sha256": "b53d45f72c713453e51801ac32f6cecf89b7b82afdb32a8d9f822e419c4f31a4"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 23712,
+      "sha256": "a440b44ac80e01ff2f89719e7e62c928ba09e64b78fa80828e39a06e5155b2ea"
+    }
+  ],
+  "unitReports": [
+    {
+      "suite": "com.ai.assistance.operit.BackupTest",
+      "tests": 42,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "e4e99abda64699fa2d50e8abb3400e8d2b8d989ef84578d3a5b97f2bc93459ec"
+    },
+    {
+      "suite": "com.ai.assistance.operit.BilibiliAudioProtocolTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "fab40a6f2214e81eaada70aa296511bdf31b61e7d1f0958e32fa4c54b1bc4f58"
+    },
+    {
+      "suite": "com.ai.assistance.operit.BilibiliWatchingTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "96e6080279c9a32f8f36c43046f0c481367b5327c32b9f0694e2529348ff7a3b"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ChatBubblesTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "01e9d521d77b0e73d14fface0827fd1275da0676a338f7d302c2f6ec6c07808c"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ChatCoordinatorTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "64fab56e066db27a264308ff4bfeed6961287d611dc16738a2a4ea68215dacb3"
+    },
+    {
+      "suite": "com.ai.assistance.operit.CommunicationPcmTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "05663aa3ae7eb145d481bcf7ef0baf9d1d2a7d727a3147fdfe471b4c9b364baf"
+    },
+    {
+      "suite": "com.ai.assistance.operit.CommunicationRoutesTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a23c8dc45b892a074ceadd53d5a6268a7a674bc38966f0d5cc061c04b5014a35"
+    },
+    {
+      "suite": "com.ai.assistance.operit.DecodedMediaPcmTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ba1362380d9433d83e2609ac5d140e3fbf85c32ce67199f35236b8eadae4b3ba"
+    },
+    {
+      "suite": "com.ai.assistance.operit.DiaryTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "cca9e3361ecb358b044d2f5813a487a70b765704a82b9432a1f69a2f0d2f8569"
+    },
+    {
+      "suite": "com.ai.assistance.operit.EnvironmentTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b6496e35e440bbd56943e800688a6355601656cd12aeae6d22920290133127e5"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ForegroundPublicationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "669ff1da1c78a16d6d6a4174664e93cc772e9c90649da0c1ebd17c5a42154f75"
+    },
+    {
+      "suite": "com.ai.assistance.operit.FourColorGameTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ccfe61b57af8d3a35dc956d861cc0f8a16fa3c02ff8c3d4a84336b32f43015d3"
+    },
+    {
+      "suite": "com.ai.assistance.operit.GroupRequestContextTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "4cb817ce9a46f1a0753a6e5c14f684d1879521d18bc3e888d40109e7b3cc4ad4"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ImageGenerationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b9c3fccba564c7a3434bdd68390bf7e28207589fa8ac7da2cd41d7a65e4da2ad"
+    },
+    {
+      "suite": "com.ai.assistance.operit.JourneyTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "58312656aea7a77e46e3f9023c644f3a311a68632c6d34c44e1ac669d69d464d"
+    },
+    {
+      "suite": "com.ai.assistance.operit.LegacyScoHandshakeTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "6a1d612c963bb9266019e5d3b7afd1a7b64a9f35df32f0c36bfdd7b939544fc8"
+    },
+    {
+      "suite": "com.ai.assistance.operit.LocalMusicTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "e43975b6b20c130b530fc93e82a51aad03bb305d10c3f41e87063fdd724198da"
+    },
+    {
+      "suite": "com.ai.assistance.operit.MaterialContextTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "7bce2387a3444c03275f49d263ae262807c33257d91357466e48ed7f4e8886b4"
+    },
+    {
+      "suite": "com.ai.assistance.operit.McpSessionTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "4341059f2b7f47d617248179b65292074f5528e8d984cd8bf2528541fa054214"
+    },
+    {
+      "suite": "com.ai.assistance.operit.MediaAudioHealthTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a9e3a9fcabdfc484ce2ed0500b330c067a6c0a0a0af2105f304189fc632f4757"
+    },
+    {
+      "suite": "com.ai.assistance.operit.MediaAudioPolicyTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "47d1e87c169ec2490d6f2134c94becb038cc76d8a013efa305114a6f2e1d7e60"
+    },
+    {
+      "suite": "com.ai.assistance.operit.MemoryExtractionTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "5d67e040e225442949d40be49eedd41b8cc57366af49ed5580935faf8527d189"
+    },
+    {
+      "suite": "com.ai.assistance.operit.MemoryTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b09c4aa27689ccfeaba8cb3da81916b62fd6b8f1dbfa3b55d2466bf9f9a2be40"
+    },
+    {
+      "suite": "com.ai.assistance.operit.MessageExportTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "f16eb7fb635431d9229953f8117faca42343d7a26a3a3997f5a8e0e2a45cea53"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ModelGenerationGateTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ca7bb95b3f5e79bc3c07e71bb5a0ff5fdb1e3d1b030bd72f55f73631b6928d3a"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ObservedAudioRouteTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "820cf2983f840dbb8fa648d81674aaa140849fe6a30323cdce1a14bf01e29e1b"
+    },
+    {
+      "suite": "com.ai.assistance.operit.OwnedChatRequestTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "06da987029dae111e81dfa81a083d3776addf7bdaf48008d0f32a9ffb2d19c59"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PcmPlaybackTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "023cad9485aa4516be31a2dea5567ed04f334c702a06accba3be5e4c3b17c968"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PcmTransferTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "7fc46ed8b2a8b6b49eb97a4958499d90c83763064a15e04b7ac3d9624bd8d8d3"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PlannerTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "469ca0163275b37d42ed2a9abc9685613b4b1581071c9d84c571aafe269e6d92"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PlayCoordinatorTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2ab40c46708c3ef3f2f1557e0960f32741654ba26bd1b0aa7cd626a0e039bbe8"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PlayGenerationTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "79c790cadd9bbf1df3775dd639f365d6a09d927ac80e347e4d48f53308bcd174"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PlayRulesTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "0c645e5f46c92c40e7f4aa1c3460aaea27fd882300de51accf3b142b9892f8dc"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PlayStorageTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "83d46e7bd5abac6c8cb06eaabc60065ba11476d0898925aea6267b19397e7aed"
+    },
+    {
+      "suite": "com.ai.assistance.operit.PrivacyGateTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "39c2af314832f0a98d494245a535c2337e6dfafff89fc146fac5e6a1ea4cbf21"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ProactiveMessagesTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "791fbfdf0446a5cea37b8e78db01e5e9fba60528e971dd04cedaa71e00026d74"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ProviderTest",
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "6a88a4b2418a5d557f0f9cc8addd03c130ed7b94dc4d7244558c8c10798a7b2b"
+    },
+    {
+      "suite": "com.ai.assistance.operit.QuickJsScriptTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "b5b24a93a78ae5b793b4699d783c56500e0567c46d51fcf01e3331360a17338c"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ReadingContextTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "5f1155d2dc7c1ea81f57685b8f9c684ddbfc54a6b7d4d65961928ea5d2bb744a"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ReadingDocumentReaderTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "081c65c841ba8eded572b69bace33c85319ff7ee6125cbed6feadd942cbb1c79"
+    },
+    {
+      "suite": "com.ai.assistance.operit.RelationshipTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "5f4dbff03614ecd7fda934d6c38cae044a5076d278baea74fc490e63817178b1"
+    },
+    {
+      "suite": "com.ai.assistance.operit.RequestContextTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "faebd0b60aa20d9fb50b447cf3483219ff0c215f681bef4c58d4aa8f5b856312"
+    },
+    {
+      "suite": "com.ai.assistance.operit.RoleTemplateTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2f7df410c1b25ff3e713f5022e639c3e8928434d0d263ce2a55e30b67d03afda"
+    },
+    {
+      "suite": "com.ai.assistance.operit.SharedActivitiesTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "a1692bdb1699b6c4e6c217af0d89b9819f5e6327344be1debca0a6ee1538a7f0"
+    },
+    {
+      "suite": "com.ai.assistance.operit.SpeechServiceTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "474d6aa2025cff0f24a1bf589ac34be7d33dee60aec10ba18e7f65057e99fdd2"
+    },
+    {
+      "suite": "com.ai.assistance.operit.StickerContextTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "ebd32a84e497ec1f57f198cdef23854a417a399ed641826e2248eb93dcc490b6"
+    },
+    {
+      "suite": "com.ai.assistance.operit.SupportDiagnosticsTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3810e347a17202623aba64cd76dc8772463022f8cbd10e1fe0ca6a51fa02a7ca"
+    },
+    {
+      "suite": "com.ai.assistance.operit.TableGameResponsesTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "7eda759c7df6bb897a0383196387e881b0da888bd164125b14963895eae45009"
+    },
+    {
+      "suite": "com.ai.assistance.operit.TablePlayIntegrationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "c7c41e12d53e46f5b317ff966f0506ba32a84a980ff6a2f79347054f3b89541f"
+    },
+    {
+      "suite": "com.ai.assistance.operit.TextMaterialReaderTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "5a12adc0b4c5e2d2a0e2160ee213f6822b1563d3ddebfa54afa0521fb53d72b1"
+    },
+    {
+      "suite": "com.ai.assistance.operit.TokenAccountingTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1978ac0826ab7444ffd02e8b6a734a3ad03d5d3091d83157dcedab9b687f1663"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ToolChatServiceTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2b6d3d15191d13446b3f010a7af5b1e653d138488e18c41c6c70b77e4f2fcc13"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ToolDispatcherTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "60ce3baf1dd747c68a7e5ce26d5bc05a5aa02213c40d13badac7961b9d77fa0d"
+    },
+    {
+      "suite": "com.ai.assistance.operit.ToolPkgCodecTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "2aed7e489ac9ac29b96498c973b7dff5fcf567415a5eafec4553481e29725a32"
+    },
+    {
+      "suite": "com.ai.assistance.operit.UserPersonaTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "37c53b36e45be6cef0e0330ce5d2c0c933d11adf31989dcfd6b1887d8be7e25d"
+    },
+    {
+      "suite": "com.ai.assistance.operit.VerifiedMediaReaderTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1b89c6ec3edff7197049ec5719c920e677eb3a9a11224ba917bed4cbc58323f2"
+    },
+    {
+      "suite": "com.ai.assistance.operit.VideoFramePacingTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "bd29465076e22ee7f4af9797bc31906bb19f23c12963a08201af9e56d1596ad0"
+    },
+    {
+      "suite": "com.ai.assistance.operit.VisionMessageTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "21b0c039466dd45eb97ad2ab690e32df48a004aa6448b11a77bbe23c7ed74098"
+    },
+    {
+      "suite": "com.ai.assistance.operit.VoiceCaptureDeliveryTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "15ed62e35c2fb7d2c9a7ba845ced7bbe36faed5eca315e72065d3ea0552090db"
+    },
+    {
+      "suite": "com.ai.assistance.operit.VoiceConversationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "3020aedc63984c4afe8162c40075e40e813604ba6ea716a36ba23cdf4bdec643"
+    },
+    {
+      "suite": "com.ai.assistance.operit.WordGuessGameTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1c52c2efcb02feec10f4f62d4d3a47572830895bd12eedc0cb24906845d55750"
+    },
+    {
+      "suite": "com.ai.assistance.operit.WorldbookTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "sha256": "1d9e0067341454344280549387749b750278e1958fc8cb7fdaadee9264adfafb"
+    }
+  ]
+}

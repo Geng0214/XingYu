@@ -1,0 +1,84 @@
+{
+  "recordedAt": "2026-09-21T00:15:10.540422+00:00",
+  "sourceCommit": "81b60ad85fd17be1c5ca79d0100c6ac93d140b1e",
+  "status": "PASS_CORE_ONLY",
+  "tests": 18,
+  "suites": [
+    {
+      "name": "WordGuessGameTest",
+      "counts": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "elapsedSeconds": "0.013",
+      "reportSha256": "cd4e11655ab15f3267356b3afe2c623b99183792917141682769fbfe3da54bb1",
+      "cases": [
+        "strictSaveRoundTripRejectsUnknownSchemaTypesAndTamperedOrder",
+        "answerAndAliasesAreHiddenOnlyFromTheGuesserUntilTheRoundEnds",
+        "nfkcCaseAndTrimDefineCorrectnessWithoutSemanticGuessing",
+        "localCatalogHasFrozenOriginalPuzzlesAndFiftyAlternatingHiddenViews",
+        "wrongSideOrderLeakingCluesAndMalformedTextAreRejected",
+        "eightWrongGuessesOrGiveUpFinishWithoutAnExtraPaidTurn"
+      ]
+    },
+    {
+      "name": "FourColorGameTest",
+      "counts": {
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "elapsedSeconds": "3.993",
+      "reportSha256": "0bbf961bce33036e6c2ba5ab1540869861b44fa81e92fa91da9d9894dcdb4ff0",
+      "cases": [
+        "skipReverseAndDrawTwoRetainTurnForTwoPlayersWithoutStacking",
+        "fullDeckCompositionAndFaceScoringAreExact",
+        "fullReplaysConserveCardsReshuffleDeterministicallyAndReachAResult",
+        "wildDrawFourRequiresNoMatchingColorAndSetsDeclaredColor",
+        "drawingOnlyAllowsNewCardOrPassAndUnplayableDrawEndsTurn",
+        "maxHistoryClosesLocallyAndStrictSaveRejectsTampering",
+        "dealAndProjectionNeverExposeOtherHandDeckOrReshuffleSecret",
+        "colorOrFaceMatchAndWrongSideOrForeignCardAreChecked",
+        "lastPenaltyCardDrawsBeforeScoringAndEndedGamesRejectMoreMoves"
+      ]
+    },
+    {
+      "name": "TableGameResponsesTest",
+      "counts": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "elapsedSeconds": "0.02",
+      "reportSha256": "170e1a5e0d856f9d9df8a358a935a1358122ed926c5c4b57b463b0cf2bad480b",
+      "cases": [
+        "roleClueCannotRevealAnswerOrInjectForeignFields",
+        "roleGuessAndGiveUpUseLocalResultAndNeverTrustSelfReportedVictory",
+        "onlyLegalCardActionsCanPassTheModelDecoder"
+      ]
+    }
+  ],
+  "sources": {
+    "app/src/main/java/com/ai/assistance/operit/data/model/WordGuessGame.kt": "2b160de82b2d0c75572189d2f0eb25e45aa3f488f685e99d434184e88678a7b3",
+    "app/src/main/java/com/ai/assistance/operit/data/model/FourColorGame.kt": "d75b4efb79aedbdb1ee899c96a65c813e2f1c399f770f988c26777f797d04752",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/TableGameResponses.kt": "a8d6a3410254b75553247384f319cbfef053b449aab39ec8e20f7fba6cd036fc",
+    "app/src/test/java/com/ai/assistance/operit/WordGuessGameTest.kt": "658c91556e7e758e432d36009f3b9b58cc23cbe646652e86cb27cfa232b1afa8",
+    "app/src/test/java/com/ai/assistance/operit/FourColorGameTest.kt": "6759a8983a21dc3d40494de162c8f8318c11607de602d79e2623372c3d81d17d",
+    "app/src/test/java/com/ai/assistance/operit/TableGameResponsesTest.kt": "c3b3e0a24427e8b5f61139512b3df80decf433127f537298aec0a7495fd18dbb"
+  },
+  "validationScope": "Host JVM rules, replay and response decoding; not production request wiring, Room, backup, UI or live providers",
+  "latestApk": "0.35.0",
+  "latestApkSha256": "9ddec51b2886573892bdef21eb0517b4c3e161f39c5f800e9d85bec3d0ae84f5",
+  "pending": [
+    "PlayState and frozen request wiring",
+    "Room and SQLCipher lifecycle",
+    "backup format compatibility and identity remapping",
+    "interactive pages",
+    "Android and real providers"
+  ],
+  "fullPlanStatus": "active"
+}

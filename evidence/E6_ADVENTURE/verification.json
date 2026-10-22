@@ -1,0 +1,120 @@
+{
+  "sourceCommit": "ce2abc2c34af041f247ce35c34e032cd36258844",
+  "cleanBuildCodeCommit": "c25e1c7409118a5fe9d698c0173aa042f0883436",
+  "cleanBuild": {
+    "status": "PASS",
+    "duration": "4m 1s",
+    "tasks": [
+      "clean",
+      ":app:testDebugUnitTest",
+      ":app:compileDebugAndroidTestKotlin",
+      ":app:lintRelease",
+      ":app:assembleRelease"
+    ]
+  },
+  "finalPackage": {
+    "status": "PASS",
+    "duration": "10s",
+    "sourceRevisionMatchesApk": true,
+    "changesSinceClean": [
+      "docs/project/games-and-stories.md",
+      "ci/script/verify_apk.py"
+    ],
+    "applicationTreeUnchanged": true,
+    "applicationGitTree": "84fac12cb4387738f4177a83cc02339d47035ed1"
+  },
+  "unitTests": {
+    "tests": 510,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": 70,
+  "lint": {
+    "Error": 0,
+    "Warning": 62,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "hostMigration": "PASS",
+  "webScriptTests": {
+    "tests": 9,
+    "failures": 0
+  },
+  "adventure": {
+    "world": "harbor-light-v1",
+    "maps": 3,
+    "contextAlternations": 50,
+    "markersPerRole": 10,
+    "coordinatorCancellationRounds": 20,
+    "backupAppendRounds": 20,
+    "backupVersion": 28,
+    "roomSchema": 29,
+    "playStateVersion": 5,
+    "roleAction": "say only",
+    "interruption": "confirmed progress retained; explicit SkipDialogue; no fabricated reply"
+  },
+  "sourceReview": {
+    "disposition": "ship at source scope",
+    "scope": "three listed fixes resolved; not rendered/runtime approval",
+    "fixes": [
+      "completed landmarks retained independently of interactability",
+      "scoped memory drafts/form survive accessible configuration recreation",
+      "capacity-aware dialogue/finish/skip controls and recovery text"
+    ]
+  },
+  "documentationReview": {
+    "status": "COMPLETE",
+    "scope": "ordinary extension of incumbent Compose Material 3 activity page; games document and two TODO files; no global design rewrite"
+  },
+  "atlas": {
+    "path": "app/src/main/res/drawable-nodpi/adventure_atlas.png",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "bytes": 1323436,
+    "sha256": "946904d1fdb5b14cee3df3b59902d4ce62adcf000d17e31f0f187c8e79c35292",
+    "mode": "built-in imagegen",
+    "prompt": "evidence/E6_ADVENTURE/acceptance.md#素材来源",
+    "apkResourceTableResolved": true
+  },
+  "sourceArchiveMatchesGitArchive": true,
+  "sourceArchiveFiles": 1051,
+  "apk": {
+    "bytes": 11244187,
+    "sha256": "46129be9cbc5e9a064b7d922ce121f83e009195f61ff9285eb2de3700ac72013"
+  },
+  "sourceArchive": {
+    "bytes": 4549200,
+    "sha256": "a9e785685d36113721bd88cab2e1c469f0c08ef3ddc073954f0ec7097bfdb6d7"
+  },
+  "signatureCertificateSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+  "apkAudit": "PASS",
+  "zipalign16KiB": "PASS",
+  "device": {
+    "adbDevices": [],
+    "upgrade": "NOT_RUN",
+    "sqlcipherAtRest": "NOT_RUN",
+    "androidAdventureRoundTrip": "NOT_RUN",
+    "nativeVisuals": "NOT_RUN",
+    "talkBack": "NOT_RUN",
+    "largeTextAndDarkMode": "NOT_RUN",
+    "rotationLockProcessDeath": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "crossDeviceBackup": "NOT_RUN",
+    "threePersonObservation": "NOT_RUN"
+  },
+  "cleanup": {
+    "scope": "operit/output",
+    "beforeBytes": 23082296,
+    "afterBytes": 25775521,
+    "removed": "upgrade-baseline/local-companion-0.36.0.apk",
+    "removedBytes": 9914663,
+    "retainedBaseline": "upgrade-baseline/local-companion-0.37.0.apk",
+    "retainedBaselineSha256": "1b4017f051b926e964bd53c4b28c69007564ab92eed91fd382e8a78a3cecdccc",
+    "absolutePathsHashesProcessesExclusiveReadChecked": true,
+    "newProjectOrCacheCopies": 0
+  },
+  "status": "Development delivered; acceptance pending. Complete E6 and total plan remain active; continue E7 and E8."
+}

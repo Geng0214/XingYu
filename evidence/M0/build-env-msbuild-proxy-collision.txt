@@ -1,0 +1,74 @@
+MSBuild 环境变量大小写冲突：:mnn 主机侧 flatc 配置失败的可复现证据
+日期：2026-09-19；来源：干净副本 C:/M0/B 第一次构建失败后的最小复现
+
+## 现象（首次出现在真实构建里）
+
+`evidence/M0/build-B-shortroot.log:3191` 起，`llm/mnn/CMakeLists.txt:77` 抛
+"Failed to configure the host FlatBuffers compiler for MNN schema generation."，
+其中只有 CMake 侧的表层信息：
+
+    -- The C compiler identification is unknown
+    -- The CXX compiler identification is unknown
+    CMake Error at CMakeLists.txt:6 (project): No CMAKE_C_COMPILER could be found.
+    CMake Error at CMakeLists.txt:6 (project): No CMAKE_CXX_COMPILER could be found.
+
+同一台机器、同一脚本、同一基线，`C:/M0/A` 却在 15m28s 前构建成功。表层信息看不出差异，
+真正的原因只在被删掉的构建目录里的 `flatc-host/CMakeFiles/CMakeError.log` 中（72 处）：
+
+    error MSB6001: “CL.exe”的命令行开关无效。
+      System.ArgumentException: 已添加项。字典中的关键字:“HTTPS_PROXY”所添加的关键字:“https_proxy”
+        at System.Collections.Hashtable.Insert(Object key, Object nvalue, Boolean add)
+        at System.Diagnostics.ProcessStartInfo.get_EnvironmentVariables()
+        at Microsoft.Build.Utilities.ToolTask.GetProcessStartInfo(...)
+        ...
+        at Microsoft.Build.CPPTasks.CL.ExecuteTool(...)
+
+（原始日志是 GBK 编码，Git Bash 按 UTF-8 读取会显示为乱码；上面是人工照抄的解码结果。）
+
+## 机制
+
+`llm/mnn/CMakeLists.txt:69` 用 `${CMAKE_COMMAND}` 以默认生成器为宿主配置 FlatBuffers；
+Windows 上默认生成器是 `Visual Studio 17 2022`，因此编译器探测由 **MSBuild** 驱动。
+MSBuild 是 .NET Framework 进程，`ProcessStartInfo.EnvironmentVariables` 是用
+`OrdinalIgnoreCase` 比较的 `Hashtable`。若进程环境里同时存在只按大小写区分的两个键
+（本次是 `https_proxy` 与 `HTTPS_PROXY`，都是我为了保险在同一行命令里导出的），
+构造该字典就抛 `ArgumentException`，`CL.exe` 根本不会被启动，编译器识别失败，
+CMake 于是报 "No CMAKE_CXX_COMPILER could be found"，并把真实原因留在 CMakeError.log 里。
+
+后果与提示都指错了方向：报的是"找不到编译器"，实际是"环境变量不允许启动编译器"。
+
+## 最小复现与对照（本机实测）
+
+同一份 FlatBuffers 源码（`C:/M0/A/llm/mnn/.cxx/operit_deps/mnn-d407447ed56c4121a11ccbd266dc184ca1ead0c2-src/3rd_party/flatbuffers`），
+同一组 `-DFLATBUFFERS_*` 参数，只改变代理变量的大小写集合，
+SDK 的 `cmake/3.22.1/bin/cmake.exe`，默认生成器：
+
+| 用例 | 环境 | CMake 结果 |
+|---|---|---|
+| 1（复现） | `https_proxy` 与 `HTTPS_PROXY` 同时设置 | `The C/CXX compiler identification is unknown`；`No CMAKE_C_COMPILER could be found.`；`No CMAKE_CXX_COMPILER could be found.`；`Configuring incomplete, errors occurred!` |
+| 2（对照） | 只设置 `https_proxy` | `The C compiler identification is MSVC 19.44.35229.0`；`The CXX compiler identification is MSVC 19.44.35229.0`；`Generating done` |
+
+用例 1 的目录是 `C:\tmp\repro_poison`（`CMakeError.log` 内 72 处 MSB6001），
+用例 2 的目录是 `C:\tmp\repro_single`。命令：
+
+    CMAKE=/c/Users/15942/dev/sdk/android-sdk/cmake/3.22.1/bin/cmake.exe
+    S=/c/M0/A/llm/mnn/.cxx/operit_deps/mnn-<sha>-src/3rd_party/flatbuffers
+    ARGS="-DFLATBUFFERS_BUILD_TESTS=OFF -DFLATBUFFERS_BUILD_FLATLIB=OFF \
+          -DFLATBUFFERS_BUILD_FLATHASH=OFF -DFLATBUFFERS_BUILD_GRPCTEST=OFF \
+          -DFLATBUFFERS_BUILD_SHAREDLIB=OFF -DFLATBUFFERS_INSTALL=OFF -DCMAKE_BUILD_TYPE=Release"
+    # 失败
+    https_proxy=http://127.0.0.1:7897 HTTPS_PROXY=http://127.0.0.1:7897 \
+      "$CMAKE" -S "$S" -B /c/tmp/repro_poison $ARGS
+    # 成功
+    https_proxy=http://127.0.0.1:7897 \
+      "$CMAKE" -S "$S" -B /c/tmp/repro_single $ARGS
+
+## 处置
+
+- 构建环境侧修复：一次构建只设置**一个**大小写形式的 `https_proxy`。
+  `ci/script/build_m0_local.sh` 读的是 `${https_proxy:-${HTTPS_PROXY:-}}`，只需要其中一个。
+- 失败副本处理：`C:/M0/B`（含被污染的 `flatc-host` 缓存）整体删除，按同一基线重物化后重建；
+  没有改动 `llm/mnn/CMakeLists.txt`，也没有为这个坑加任何自动纠正逻辑——它是操作失误，
+  不是基线缺陷，加"检测到重复大小写就删掉一个"的回退只会掩盖下一个同类误用。
+- 归属：`build-manifest.json` 的 `environmentConstraints.proxyVarCaseCollision`
+  与 `artifacts.cleanBuildEvidence.rejectedAttempts[1]`。

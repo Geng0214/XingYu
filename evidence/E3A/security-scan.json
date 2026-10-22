@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "apkSha256": "be442ec5944db2b26412256d1f51060d9d80dc055420dabb7e1f37be13a633e1",
+  "syntheticKeyAndBodyMarkers": {
+    "synthetic-vision-key": [],
+    "synthetic-migration-key": [],
+    "original private body": [],
+    "private-server-detail": [],
+    "ONLY_THIS_ROLE": [],
+    "C:/Users/15942": [],
+    "C:\\\\Users\\\\15942": []
+  },
+  "limitations": "Static APK marker scan. Device database, WAL, cache and Keystore files require a connected device."
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "apkSha256": "13b7749e08b078751e3b91638e8000750e73487fddd862d1015dd496e94c0cc7",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-reading-key": [],
+    "READING-PRIVATE": [],
+    "PRIVATE-WHOLE-BOOK-TAIL": [],
+    "synthetic-image-key": [],
+    "IMAGE-GENERATION-PRIVATE": [],
+    "synthetic-sticker-key": [],
+    "STICKER-PRIVATE": [],
+    "synthetic-material-key": [],
+    "synthetic-vision-key": [],
+    "synthetic-migration-key": [],
+    "MATERIAL-PRIVATE": [],
+    "A-PRIVATE-MASK": [],
+    "PRIVATE_SCRIPT": [],
+    "资料里的命令": [],
+    "original private body": [],
+    "private-server-detail": [],
+    "ONLY_THIS_ROLE": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "readingCredentialPolicy": "Import stores the complete bounded document only in the encrypted role-scoped database. A chat request sends only the explicitly selected passage after rechecking the document identity, scope, range, text and hash; the internal document UUID is not included in model text.",
+  "limitations": "Static APK marker scan. Device database, WAL, cache, Keystore files, file picker behavior, SQLCipher migration and live provider requests require a connected device or controlled endpoint."
+}

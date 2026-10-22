@@ -1,0 +1,106 @@
+{
+  "sourceCommit": "bc77de7553afa9cdd42361ffd18187325d26b756",
+  "cleanBuildCodeCommit": "bc77de7553afa9cdd42361ffd18187325d26b756",
+  "sourceArchiveMatchesGitArchive": true,
+  "sourceArchiveFiles": 1025,
+  "apkGitRevisionMatches": true,
+  "cleanBuild": {
+    "status": "PASS",
+    "duration": "4m 4s",
+    "tasks": [
+      "clean",
+      ":app:testDebugUnitTest",
+      ":app:compileDebugAndroidTestKotlin",
+      ":app:lintRelease",
+      ":app:assembleRelease"
+    ]
+  },
+  "unitTests": {
+    "tests": 483,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": 68,
+  "lint": {
+    "Error": 0,
+    "Warning": 62,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "hostMigration": "PASS",
+  "webScriptTests": {
+    "tests": 9,
+    "failures": 0
+  },
+  "xiangqi": {
+    "formalExamples": [
+      4,
+      34,
+      36,
+      40,
+      41
+    ],
+    "allFormalExamples": "NOT_RUN",
+    "ruleSet": "wxf2018-app1",
+    "contextAlternations": 50,
+    "markersPerRole": 10,
+    "coordinatorCancellationRounds": 20,
+    "backupAppendRounds": 20,
+    "coordinateCases": 180
+  },
+  "sourceReview": {
+    "disposition": "ship at source scope",
+    "scope": "two listed accessibility fixes resolved; not rendered or runtime approval",
+    "fixes": [
+      "complete textual position in all activity states",
+      "red double ring and black single ring with legend"
+    ]
+  },
+  "documentationReview": {
+    "status": "COMPLETE",
+    "scope": "ordinary extension of incumbent Compose Material 3 activity page"
+  },
+  "device": {
+    "adbDevices": [],
+    "emulatorInstalled": false,
+    "ui": "NOT_RUN",
+    "talkBack": "NOT_RUN",
+    "sqlcipherUpgrade": "NOT_RUN",
+    "encryptionAtRest": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "crossDeviceBackup": "NOT_RUN"
+  },
+  "cleanup": {
+    "removed": "output/upgrade-baseline/local-companion-0.35.0.apk",
+    "removedSha256": "9ddec51b2886573892bdef21eb0517b4c3e161f39c5f800e9d85bec3d0ae84f5",
+    "reclaimedBytes": 9897811,
+    "retainedBaseline": "output/upgrade-baseline/local-companion-0.36.0.apk",
+    "retainedBaselineSha256": "20dc8ec0354a8bec0612c9a8789487e2d2fc793419e69d1aac8fb8ed61a1ab4b",
+    "deliveryBytesBefore": 22979119,
+    "deliveryBytesAfter": 23082296,
+    "checkedAbsolutePaths": true,
+    "exclusiveReadBeforeMoveDelete": true,
+    "removedTemporaryReferenceRenders": 4,
+    "referenceRenderBytesReclaimed": 3221255,
+    "retainedRulesPdfBytes": 8234985,
+    "retainedRulesPdfSha256": "2b45534953bbfcca42dc2c52e06be48ff44ebe3bf7237248b12e39576c494cf3"
+  },
+  "files": [
+    {
+      "name": "local-companion-0.37.0.apk",
+      "bytes": 9947431,
+      "sha256": "1b4017f051b926e964bd53c4b28c69007564ab92eed91fd382e8a78a3cecdccc"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 3187001,
+      "sha256": "340b2fced633ae94d1ade3532ec5efc6ce9f3e3dd09df561cd351d7e35661cc5"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 24596,
+      "sha256": "91e8d02af8fe419945d4e8d2431a2b096a9643d16a0446d1cb618a0d9e836edd"
+    }
+  ]
+}

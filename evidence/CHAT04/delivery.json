@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-09-19T18:59:22.611526+00:00",
+  "applicationId": "cn.localfirst.companion",
+  "version": "0.4.0",
+  "versionCode": 4,
+  "sourceCommit": "234f82309c2af304366c795dced0e6149511c396",
+  "certificateSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+  "roomMigration": "1 -> 2 -> 3 -> 4",
+  "upgradeFrom": [
+    "0.1.0",
+    "0.2.0",
+    "0.3.0"
+  ],
+  "files": [
+    {
+      "name": "local-companion-0.4.0.apk",
+      "bytes": 6758464,
+      "sha256": "d2e359844a91d62efbb2773896235b85d9a85966825abb4e9bc8dd4956658577"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 1009853,
+      "sha256": "6bfcf55894a8f4dd60694bf867855359f2f4c5a3c014c3f5785f38cced776234"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 2741,
+      "sha256": "027f2afd2fd1d1e4793b45e82a89032d079510f653742d03db8180795b5640fd"
+    }
+  ],
+  "validation": {
+    "unitTests": {
+      "tests": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hostLibrarySql": "PASS",
+    "cleanBuild": "PASS",
+    "finalValidation": "PASS",
+    "apkAudit": "PASS",
+    "signatureContinuity": "PASS",
+    "androidTestCompilation": "PASS",
+    "deviceUpgrade": "NOT_RUN",
+    "deviceStorage": "NOT_RUN",
+    "visualQA": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "crossDeviceTemplate": "NOT_RUN",
+    "threePersonObservation": "NOT_RUN"
+  },
+  "status": "Development complete; device and human acceptance pending; M1/M2 not fully accepted"
+}

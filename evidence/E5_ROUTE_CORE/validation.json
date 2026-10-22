@@ -1,0 +1,30 @@
+{
+  "status": "CORE_VERIFIED_PRODUCT_INTEGRATION_INCOMPLETE",
+  "sourceCommit": "8c41002c070293c7fca134b64b06130a2b10c671",
+  "tests": {
+    "tests": 290,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newCoreTests": 7,
+  "disconnectReconnectRounds": 20,
+  "lint": "0 errors, 60 warnings, 1 hint",
+  "androidTestCompilation": "PASS",
+  "androidRouteAdapterExecution": "NOT_RUN",
+  "deviceTests": "NOT_RUN",
+  "api26To30Routing": "NOT_IMPLEMENTED",
+  "voiceUiAndRuntimeWiring": "NOT_IMPLEMENTED",
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidCommunicationRoutes.kt": "c97ce8deeb4d3e485e306a2e2115da9577028a5ab8054a501f608e8320e2cb08",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/CommunicationRoutes.kt": "61cce699a9d722c35efd3a083bfed0445a5ad524c326e58a57fade29e4d55455",
+    "app/src/test/java/com/ai/assistance/operit/CommunicationRoutesTest.kt": "d6023338c44e320d4aa681f31a9e88cf87cebf4c7dc9b03e1ab50320e1e29a8d",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "c0d916d2b4f4ad73b29a049f7df933eb0d61b2015980c3e98764f211838ed94d",
+    "docs/TODO/voice-and-shared-activities/index.md": "593cfb0f92ca70815e17e0f9018b9cf755b4f1fbc8d8565ce3df57449e373869",
+    "docs/project/STATUS.md": "deb581901d2b86698fac7b7fe72d2c6695907f05154ce357f5cd63ecea0b6617",
+    "docs/project/companion-full-plan.md": "f4d4e31fd7685b948b24341e518fffdb1b6044ac0614fcd5ce03013ef6f1b5d9"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 137,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "androidCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "deviceList": "empty",
+  "hostMigration": "PASS",
+  "legacyBackupV3Sha256": "27abbf3612a23571dfbce58c95b16cfa7806bf29211572812b26f39cf6fc72c5",
+  "scope": "JVM token accounting/provider usage/tool rounds/coordinator/backup plus prior suite; Compose UI and Android SQLCipher tests compiled; device execution not run"
+}

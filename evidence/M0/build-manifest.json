@@ -1,0 +1,435 @@
+{
+ "schema": "operit-m0-build-manifest/1",
+ "recordedAt": "2026-09-19",
+ "purpose": "M0-T01/T02 冻结基线与可复现构建输入指纹。计划书要求两次干净目录构建依照同一清单，本文件即该清单。",
+ "upstream": {
+  "canonicalRepository": "https://github.com/AAswordman/Operit.git",
+  "fetchedThrough": "https://gh-proxy.com/https://github.com/AAswordman/Operit.git",
+  "candidateTag": "v1.12.2",
+  "candidateTagCommit": "dbf71916fae9750cfdc9f9a774f5a0fee56633fb",
+  "tagType": "lightweight (ref object points directly at the commit)",
+  "tagVerifiedAgainst": "GitHub REST API /repos/AAswordman/Operit/git/ref/tags/v1.12.2 on 2026-09-19, sha matches",
+  "workingHeadAtRecordTime": "31646978aa03520f36916a9efd1d3f508b5ca3e0",
+  "headRelationToTag": "HEAD is a strict ancestor of v1.12.2; merge-base equals HEAD",
+  "treeDeltaTagToHead": {
+   "files": 19,
+   "insertions": 140,
+   "deletions": 739,
+   "note": "v1.12.2 领先当前工作树的内容，集中在工具结果排序、悬浮窗、Web Chat 桥接与性能监控。基线重挂到 v1.12.2 时 app/build.gradle.kts 需手工合并。"
+  },
+  "policy": "不持续追随 main。基线只能是本文件记录的 commit。"
+ },
+ "submodules": [
+  {
+   "path": "terminal",
+   "url": "https://github.com/AAswordman/OperitTerminalCore.git",
+   "commit": "045868988e4091d613cb34b2941057703899b96e",
+   "initialised": true,
+   "requiredForBuild": true
+  },
+  {
+   "path": "tools/hotbuild/OperitNightlyRelease",
+   "url": "git@github.com:AAswordman/OperitNightlyRelease.git",
+   "commit": "350165237e89b370e45213dcd7ab02ee7e7a6361",
+   "initialised": false,
+   "requiredForBuild": false,
+   "note": "SSH 地址、夜间发布流水线用；assembleDebugClone 不需要。个人分发路线下建议保持不初始化，并在许可清单中记为不适用而非未知。"
+  }
+ ],
+ "toolchain": {
+  "os": "Windows 10 10.0.19045 x64",
+  "shell": "Git Bash",
+  "jdk": {
+   "home": "C:/Users/15942/dev/jdk-21",
+   "version": "Temurin 21.0.12.1+1-LTS",
+   "matchesCi": "ci JAVA_VERSION=21",
+   "pitfall": "本机环境默认 JAVA_HOME=C:\\DevTools\\jdk-17、PATH 上 java 为 Temurin 17。构建脚本必须显式指定并校验 21，用 ${JAVA_HOME:-...} 继承会静默落在 17，表现为 :app:kaptCloneKotlin 报 'class file has wrong version 65.0, should be 61.0'（io.github.kyant0:backdrop:1.0.6 为 Java 21 字节码）。"
+  },
+  "gradle": {
+   "wrapper": "8.13",
+   "distributionUrl": "https://mirrors.aliyun.com/macports/distfiles/gradle/gradle-8.13-bin.zip",
+   "distributionSha256Sum": "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78",
+   "note": "distributionUrl 与校验和均为上游原样配置，非本机改动；校验和钉死使镜像主机不构成溯源缺口。",
+   "userProps": "GRADLE_USER_HOME/gradle.properties 由 ci/script/build_m0_local.sh 生成，工程级 gradle.properties 未被修改"
+  },
+  "androidSdk": {
+   "home": "C:/Users/15942/dev/sdk/android-sdk",
+   "platforms": [
+    "android-35",
+    "android-36"
+   ],
+   "buildTools": [
+    "35.0.0",
+    "36.0.0"
+   ],
+   "cmake": "3.22.1",
+   "ndkPinned": "27.3.13750724",
+   "ndkAlsoInstalled": [
+    "27.0.12077973",
+    "28.2.13676358"
+   ],
+   "compileSdk": 36,
+   "targetSdk": 34,
+   "minSdk": 26,
+   "abi": "arm64-v8a"
+  },
+  "hostCpp": {
+   "installed": "Microsoft Visual Studio 2022 Build Tools (VCTools workload, includeRecommended)",
+   "msvcToolchain": "14.44.35207",
+   "windowsSdk": "10.0.26100",
+   "path": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools",
+   "requiredBy": "llm/mnn/CMakeLists.txt 在 Android configure 内用 execute_process 再跑一次面向主机的 cmake 构建 flatc（MNN schema 生成）。Linux 分支显式要求 gcc/g++；Windows 分支不传 -G，落到 CMake 默认生成器。",
+   "whyThisWasMissed": "本机原先无任何主机 C++ 编译器。第一次表现为 'Building for: NMake Makefiles' 后由 Operit 自己的 FATAL_ERROR 报 'Failed to configure the host FlatBuffers compiler'；装上 Build Tools 后旧 flatc-host 缓存仍钉着 NMake 且无编译器，表现为 'CMAKE_CXX_COMPILER not set, after EnableLanguage'，需删除 llm/mnn/.cxx 才会用新的默认生成器重新配置。",
+   "consequence": "第二次干净构建目录必须是全新 .cxx，或先删 llm/mnn/.cxx；同时这使 liboperit_ripgrep.so 的源码级复现（cargo 需 link.exe）成为可行项而非缺口。"
+  },
+  "agp": "8.13.2",
+  "kotlin": "2.2.21",
+  "room": "2.8.4",
+  "objectbox": "5.3.0",
+  "node": {
+   "localVersion": "v24.18.0",
+   "ciPinned": "22",
+   "usedByGradleBuild": false,
+   "note": "assembleDebugClone 不消费 npm 产物；CI 的 build:webchat 只更新 examples/web_content，不在本清单的构建路径内。"
+  },
+  "rust": {
+   "installed": true,
+   "usable": true,
+   "usableNote": "Rust 1.88.0 + aarch64-linux-android 目标已装；此前 cargo 因无 C++ 链接器全量失败，安装 Build Tools 后该前提解除。",
+   "pending": "尚未用 tools/native_ripgrep/build_native_ripgrep.ps1 从源码重建 liboperit_ripgrep.so。该脚本按版本降序挑选 NDK，会取 28.2.13676358 而非清单钉住的 27.3.13750724，执行前必须显式设置 ANDROID_NDK_HOME。"
+  }
+ },
+ "externalInputs": {
+  "downloadRequiresProxy": true,
+  "proxyMechanism": "JVM 属性 https.proxyHost/https.proxyPort（由 build_m0_local.sh 从 https_proxy 解析后写入 org.gradle.jvmargs）。直连 huggingface.co 实测 curl 返回 000。",
+  "archives": [
+   {
+    "name": "libs.zip",
+    "driveId": "1Va1os7PRpCF3xtTwfx5kO11D7eIAvARG",
+    "bytes": 15222473,
+    "sha256": "1625489c81bb6e3ec6d29d41c39a53cb985e997be474425be01f909a6df887f8",
+    "unpacksTo": "app/libs",
+    "keyArtifact": {
+     "path": "app/libs/ffmpeg-kit-local.aar",
+     "bytes": 15264401,
+     "sha256": "b292b0425d3445244832894d3370c46c5b1f80f0b27eb17edb5810b6bc00fffc"
+    }
+   },
+   {
+    "name": "subpack.zip",
+    "driveId": "1SQs_dVPD6ldvwteqoUVjvBLjTWvr5Fpv",
+    "bytes": 35269539,
+    "sha256": "2953448c93b0e4e51a6434b96b0145af271efdf07bf99a54b24925727c8545ae",
+    "unpacksTo": "app/src/main/assets/subpack"
+   },
+   {
+    "name": "jniLibs.zip",
+    "driveId": "1-W4fjjUwoShnB8Rh9RT5Gl8sHiGyQUaM",
+    "bytes": 2350153,
+    "sha256": "2e8a4efd78b4b9daf3274ee17ba38eb5f42fb57bf43381b63c55aaa1d3148b53",
+    "unpacksTo": "app/src/main/jniLibs",
+    "keyArtifact": {
+     "path": "app/src/main/jniLibs/arm64-v8a/liboperit_ripgrep.so",
+     "bytes": 3599272,
+     "sha256": "71b6e8af8b2c833c85b5119ba0bd0bad05495ce0b9bed68d6e3530cb42a4dad5"
+    }
+   }
+  ],
+  "archivePreparer": "ci/script/prepare_android_dependencies.py（含 zip 炸弹、路径穿越、加密成员、重复成员防护）",
+  "sttAssets": {
+   "manifest": "app/config/stt-model-assets.properties",
+   "count": 8,
+   "verifiedBy": ":app:syncSttModelAssets（逐文件字节数 + SHA-256）",
+   "downloadedBytes": 142635813,
+   "licenceGap": "其中 7 项 sherpa-ncnn 资产上游未声明许可，随包分发属 M0-A05 阻塞项"
+  }
+ },
+ "buildInvocation": {
+  "script": "ci/script/build_m0_local.sh",
+  "task": "assembleDebugClone",
+  "flags": [
+   "--no-daemon",
+   "--console=plain",
+   "--stacktrace"
+  ],
+  "gatesSkipped": [],
+  "userLevelGradleProps": {
+   "org.gradle.jvmargs": "-Xmx8192m -Dfile.encoding=UTF-8 -Dhttps.proxyHost=<proxy> -Dhttps.proxyPort=<proxy>",
+   "org.gradle.parallel": false,
+   "org.gradle.caching": false,
+   "org.gradle.configureondemand": false,
+   "org.gradle.daemon": false,
+   "org.gradle.workers.max": 4,
+   "kotlin.incremental": false
+  },
+  "whyPropsDifferFromProject": "工程级 gradle.properties 开启 parallel/caching/configureondemand/workers.max=16 与 daemon，在 Windows 上实测触发 Kotlin 增量缓存 AccessDeniedException 与 Gradle 临时文件 FileNotFoundException。用户级属性优先，因此不改上游文件。放行用的两份干净构建必须使用同一份用户级属性。"
+ },
+ "sourceDeviationsFromBaseline": [
+  {
+   "scope": "app/build.gradle.kts",
+   "change": "新增 verifyNoEmbeddedSigningMaterial 门禁；ndkVersion 固定；bcpkix/bcutil-jdk18on 依赖与 jdk15to18 全局 exclude",
+   "reason": "M0-B02 密钥整改与其引发的重复类冲突"
+  },
+  {
+   "scope": "app/src/main/assets/jks.jks, pkcs12.keystore",
+   "change": "删除被跟踪的固定口令签名材料",
+   "reason": "M0-B02 (S0)"
+  },
+  {
+   "scope": "core/subpack/KeyStoreHelper.kt, ui/features/chat/components/ExportDialogs.kt, examples/apktool/runtime_helper/.../ApkReverseHelperFacade.java",
+   "change": "导出签名密钥改为每安装在 noBackupFilesDir 生成，随机口令与别名，并清除旧内置材料落盘残留",
+   "reason": "M0-B02 (S0)"
+  },
+  {
+   "scope": "dragonbones, fbx, mmd, llama, mnn, quickjs, terminal 的 build.gradle.kts",
+   "change": "补 ndkVersion = 27.3.13750724",
+   "reason": "上游只在 :app 固定；未固定的模块会随本机安装的 NDK 变化，破坏两次构建同清单前提"
+  }
+ ],
+ "baselineDefinition": {
+  "statement": "M0-A01 的\"冻结基线\"= 主仓库 commit + terminal 子模块 commit + 两份源码补丁 + 三个按 SHA-256 钉死的外部归档。物化由 ci/script/materialize_m0_clean.sh 执行，构建由 ci/script/build_m0_local.sh 执行。",
+  "mainPatch": {
+   "path": "evidence/M0/m0-remediation.patch",
+   "bytes": 41567,
+   "files": 14,
+   "sha256": "65dfe6dac3344b2c92ca978f9494e0fae08ef19c01d13f641652ce86dd17274f"
+  },
+  "terminalPatch": {
+   "path": "evidence/M0/terminal-m0-remediation.patch",
+   "bytes": 316,
+   "files": 1,
+   "sha256": "fb6f473b65aace7f918c63416c12bc09144fd36670fafd50770ba546c2bbc187",
+   "content": "给 :terminal 补 ndkVersion = 27.3.13750724"
+  },
+  "whyTwoPatches": "git archive 不导出子模块内容，超级项目里 terminal 只是一个 gitlink；:terminal 的改动无法随主仓库补丁传递，必须单独导出、单独应用。旧版单文件 m0-remediation.patch（725,761 字节）既漏了子模块改动，又把构建日志当输入，已废弃。",
+  "excludedFromBuildInputs": [
+   "evidence/**",
+   "docs/**",
+   "app/objectbox-models/**"
+  ],
+  "exclusionReason": "前两项是记录构建的文档而非构建输入，放进补丁会自引用并造成哈希循环。第三项见 buildSideEffectsOnTrackedSource。",
+  "verifiedByMaterializeScript": "脚本对 commit 存在性、补丁 --check、三个归档与两个关键解包产物的 SHA-256 逐一断言，任一不符即退出非零。"
+ },
+ "buildSideEffectsOnTrackedSource": {
+  "observed": "app/objectbox-models/default.json 与 default.json.bak 的 mtime 为 2026-09-19T09:06:21，正落在 m0-smoke-7 构建窗口内；default.json.bak 相对 HEAD 有 58 行差异。",
+  "assessed": "default.json 的内容与 HEAD 一致（git diff 只剩换行符噪声），说明插件的重写是幂等的；.bak 是插件生成的备份，不作为构建输入。",
+  "consequence": "干净目录构建一次之后，其工作树就不再等于 HEAD+补丁。因此 M0-A01 的复现比对只能比 APK 字节与关键生成物，不能比源码树；objectbox-models 因此排除在基线补丁外，让两次构建各自从 HEAD 的模型文件重新生成，其一致性本身作为一项检查。",
+  "coreAutocrlf": "本机 core.autocrlf=true 且仓库无 .gitattributes，app/libs/.keep 这类文件仅因换行符就显示为已修改。跨机器 checkout 的脏/净状态不稳定，是复现性风险，需在上游补 .gitattributes 才谈得上按源码树比对。"
+ },
+ "signing": {
+  "requirement": "M0-T02 要求用\"自己的测试签名\"出包，而非机器环境里的 Android debug 键。",
+  "mechanism": "app/build.gradle.kts:433-452 只在 local.properties 同时提供 RELEASE_STORE_FILE/RELEASE_STORE_PASSWORD/RELEASE_KEY_ALIAS/RELEASE_KEY_PASSWORD 且文件存在时创建 release signingConfig；clone 与 release 随后启用它，否则 clone 回落到环境 debug 键（app/build.gradle.kts:455-513）。",
+  "testKeystore": {
+   "path": "C:/Users/15942/Desktop/Work/keystores/operit-m0-test.keystore",
+   "inRepository": false,
+   "format": "PKCS12, RSA-2048, SHA384withRSA, 有效期 3650 天",
+   "alias": "operit-m0-test",
+   "subjectDN": "CN=Operit M0 Test, OU=not-for-release, O=local-development, L=n-a, ST=n-a, C=CN",
+   "certSha256": "ac7283d4cc843d71…f497fa",
+   "passwordLocation": "operit/local.properties（git 忽略，仓库外）；口令随机生成且未在任何日志、清单或文档中出现",
+   "generatedAt": "2026-09-19"
+  },
+  "previousSigner": "首次成功的完整构建 m0-smoke-7 由本机环境 debug 键签名：CN=Android Debug，证书 SHA-256 前缀 649615a521453cff…（即 ../docs/m0/day3-5-model-adapter.md 记录的签名），不满足 M0-T02，该样包已作废重出。",
+  "schemeObserved": "apksigner 实测：v2 = true，v1 = false，v3/v3.1/v4 = false。AGP 按 minSdk 26 只出 v2；上游发布路线另有 signRotatedReleaseApk / signRotatedNightlyApk（app/build.gradle.kts:592-626）用 apksigner 补 v2+v3 与 rotation lineage，只挂在 assembleRelease / assembleNightly 上，不经过 clone。",
+  "dangerNote": "RELEASE_* 一旦被 release/nightly 读到也会生效。M0 期间不得执行 assembleRelease / assembleNightly，否则产出的是被测试键签名、却标着 release 名字的包。真正的发布键属于阶段 5 之前的独立决策。"
+ },
+ "artifacts": {
+  "status": "clean-build evidence recorded; device install pending",
+  "note": "样包与两份干净目录产物均已实测。两次干净构建身份一致、条目集合一致，但 APK SHA-256 不同，成因是可命名的构建路径嵌入机制，详见 cleanBuildEvidence.byteReproducibility 与 evidence/M0/native-build-path-embedding.txt。真机安装仍未执行，因此本文件构成 M0-A01 的“构建”证据，不构成“安装”证据。",
+  "workingTreeSample": {
+   "builtAt": "2026-09-19",
+   "build": "m0-smoke-8（57s 增量，签名变更后重打包）",
+   "task": "assembleDebugClone",
+   "gatesSkipped": [],
+   "path": "app/build/outputs/apk/clone/app-clone.apk",
+   "bytes": 413136822,
+   "sha256": "3142553bb703853bdf0e229e125132285fe4c6b0427461149a2f6ec34e555a63",
+   "entries": 5550,
+   "applicationId": "com.ai.assistance.operit.clone",
+   "versionCode": 50,
+   "versionName": "1.12.1+7",
+   "abis": [
+    "arm64-v8a"
+   ],
+   "signer": "CN=Operit M0 Test（见 signing.testKeystore）"
+  },
+  "cleanBuildEvidence": {
+   "status": "builds-complete; device-install-pending",
+   "directories": [
+    "C:/M0/A",
+    "C:/M0/B"
+   ],
+   "requirement": "计划书 V2.0 第 7 页 M0-A01 原文：两次均成功；完整源码/依赖版本可追溯；不要求 APK 字节完全一致，分别记录哈希；证据为构建日志、版本清单、安装录像。",
+   "rejectedAttempts": [
+    {
+     "attempt": "长检出根",
+     "directories": [
+      "C:/Users/15942/Desktop/Work/operit-m0-a01-1"
+     ],
+     "outcome": "BUILD FAILED in 10m41s，:mnn:buildCMakeDebug[arm64-v8a] 未产出 APK；四个门禁全部执行、无 -x 跳过",
+     "log": "build-logs/m0-a01-1.log:3201（CMake 对象路径警告）与 :3207（ninja 260 字符拒绝）",
+     "cause": "见 environmentConstraints.windowsCheckoutRootMaxChars"
+    },
+    {
+     "attempt": "代理变量大小写重复",
+     "directories": [
+      "C:/M0/B（首次物化，已删除后重物化）"
+     ],
+     "outcome": "BUILD FAILED in 11m14s，:mnn:configureCMakeDebug[arm64-v8a] 未产出 APK；四个门禁同样先跑完、无 -x 跳过",
+     "log": "evidence/M0/build-B-shortroot.log:3191 与 :3761（Gradle 摘要）；根因原文在 C:/M0/B/.../flatc-host/CMakeFiles/CMakeError.log，已摘入 evidence/M0/build-env-msbuild-proxy-collision.txt",
+     "cause": "见 environmentConstraints.proxyVarCaseCollision——由本次会话的命令行同时导出 https_proxy 与 HTTPS_PROXY 造成，属操作失误，不是构建系统缺陷"
+    }
+   ],
+   "builds": [
+    {
+     "directory": "C:/M0/A",
+     "task": "assembleDebugClone",
+     "outcome": "BUILD SUCCESSFUL in 15m 28s",
+     "actionableTasks": "235 executed (0 from cache)",
+     "gates": {
+      "objectboxPrepareBuild": "executed",
+      "syncSttModelAssets": "executed",
+      "syncMainAssets": "executed",
+      "verifyExternallyBuiltNativeLibraries": "executed",
+      "verifyNoEmbeddedSigningMaterial": "executed"
+     },
+     "excludeTaskFlags": false,
+     "log": "evidence/M0/build-A-shortroot.log",
+     "artifact": "C:/M0/A/app/build/outputs/apk/clone/app-clone.apk",
+     "bytes": 413136362,
+     "sha256": "4fe18558e59bdc12e1dafd5be25ffa2e9dc3d0be6b12081363a0662d53c2890b",
+     "entries": 5550,
+     "assetsEntries": 823,
+     "abis": [
+      "arm64-v8a"
+     ],
+     "applicationId": "com.ai.assistance.operit.clone",
+     "versionCode": 50,
+     "versionName": "1.12.1+7",
+     "minSdkVersionForDexing": 26,
+     "signatureSchemes": [
+      "v2"
+     ],
+     "signerCertDn": "CN=Operit M0 Test, OU=not-for-release, O=local-development, L=n-a, ST=n-a, C=CN",
+     "signerCertSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa"
+    },
+    {
+     "directory": "C:/M0/B",
+     "task": "assembleDebugClone",
+     "outcome": "BUILD SUCCESSFUL in 15m 57s",
+     "actionableTasks": "235 executed (0 from cache)",
+     "gates": {
+      "objectboxPrepareBuild": "executed",
+      "syncSttModelAssets": "executed",
+      "syncMainAssets": "executed",
+      "verifyExternallyBuiltNativeLibraries": "executed",
+      "verifyNoEmbeddedSigningMaterial": "executed"
+     },
+     "excludeTaskFlags": false,
+     "log": "evidence/M0/build-B-shortroot-2.log",
+     "artifact": "C:/M0/B/app/build/outputs/apk/clone/app-clone.apk",
+     "bytes": 413136418,
+     "sha256": "1f4e7d9c27bf26ccdeff435e0d6eb95ec16f7531461d585d4cd6fb7972c07287",
+     "entries": 5550,
+     "assetsEntries": 823,
+     "abis": [
+      "arm64-v8a"
+     ],
+     "applicationId": "com.ai.assistance.operit.clone",
+     "versionCode": 50,
+     "versionName": "1.12.1+7",
+     "minSdkVersionForDexing": 26,
+     "signatureSchemes": [
+      "v2"
+     ],
+     "signerCertDn": "CN=Operit M0 Test, OU=not-for-release, O=local-development, L=n-a, ST=n-a, C=CN",
+     "signerCertSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+     "note": "首次物化后的构建因代理变量大小写双写失败，见 rejectedAttempts[1]；本行是同一基线重新物化后的第二次尝试。"
+    }
+   ],
+   "comparison": {
+    "entryNameSets": "identical (5,550 vs 5,550; 0 added, 0 removed)",
+    "entriesWithDifferentCrc": 16,
+    "entriesWithDifferentCrcScope": "all under lib/arm64-v8a/, all with identical uncompressed size",
+    "applicationId": "identical",
+    "versionCode": "identical",
+    "versionName": "identical",
+    "abis": "identical (arm64-v8a only)",
+    "signerCertSha256": "identical",
+    "signatureScheme": "identical (v2 only, no v1/v3/v3.1/v4)",
+    "apkSha256": "differs",
+    "verdict": "同一基线在两份互不影响的检出下、不跳门禁，稳定产出身份与条目结构一致的 APK；字节级差异 1,752,396 字节全部可归属到 4 个节、收敛到单一根因（内嵌绝对构建路径），无未解释差异。"
+   },
+   "byteReproducibility": {
+    "claim": "byte-identical output across clean checkouts is NOT achievable with the current build configuration",
+    "measuredCause": [
+     "single root cause: the absolute checkout root is baked into .rodata strings (__FILE__-derived assert/log text and Clang \"(lambda at ...)\" diagnostic text), 669 occurrences across 13 libs",
+     "differing bytes total 1,752,396 across 16 libs, fully attributed with no stray bytes: .rodata 1,565,344 (89.33%), .text 180,250 (10.29%), .rela.dyn 6,485 (0.37%), .note.gnu.build-id 317 (0.02%)",
+     "3 of 16 libs (libpty, libquickjsjni, libstreamnative) differ only in .note.gnu.build-id (20 bytes each)",
+     "13 of 16 libs differ in .text as well; decoding all 93,739 differing AArch64 words shows zero differing BL/B/B.cond/CBZ/TBZ/LDR-literal targets, and 100% of the rest resolve to shifted .rodata (plus .gcc_except_table / .rela.plt) address materializations - control flow and instruction semantics are unchanged",
+     "22 sites in libggml-cpu.so swap the encoding form between NOP+ADR and ADRP+ADD for the same string address (same word count, same line-number constant, same bl target), verified with NDK llvm-objdump",
+     ".rela.dyn addends drift for the same reason; .rodata string multisets are exactly equal after normalizing the C:/M0/{A,B} prefix, and the per-lib count of path-only strings equals the 669-occurrence per-lib tally"
+    ],
+    "method": "zipfile CRC diff, per-.so byte-run diff mapped to ELF section names with a minimal ELF64 section-header parser (pyelftools not installed on this box), then AArch64 word decoding of every differing .text instruction with ADRP+ADD pair resolution, llvm-objdump spot check, and .rodata printable-string multiset comparison after path normalization",
+    "unverified": "whether remapping the build root (-fmacro-prefix-map / -fdebug-prefix-map) makes the two outputs byte-identical was not tested this round - no reproducibility claim is made beyond 'single named root cause'",
+    "evidence": "evidence/M0/native-build-path-embedding.txt",
+    "corollaryPrivacyFinding": {
+     "summary": "669 occurrences of the absolute checkout root are embedded in 13 shipped native libraries; building from the default long root ships the builder's Windows username inside the APK",
+     "measuredAt": "2026-09-19",
+     "sampleCounts": {
+      "C:/M0/A build": 669,
+      "C:/M0/B build": 669,
+      "working-tree sample at C:/Users/15942/Desktop/Work/operit": 669
+     },
+     "severityForFirstRelease": "blocking for distribution to invited testers: the fork is distributed as-is, so the builder's username and directory layout would reach 5-10 external devices",
+     "remediationDirection": "-fmacro-prefix-map / -fdebug-prefix-map for all externalNativeBuild modules, plus verifying the ggml backend-registry path constant; not applied this round because build-flag changes need their own verification window",
+     "seeAlso": "knownGaps entry added for this item"
+    },
+    "notADefect": "计划书本就不要求字节一致；本节记录的是差异已被完全解释、不存在来源不明的字节，用途是排除构建被污染这一解释。"
+   },
+   "planConformance": {
+    "bothSucceeded": true,
+    "sourceAndDependencyVersionsTraceable": true,
+    "byteIdentityRequired": false,
+    "hashesRecordedSeparately": true,
+    "buildLogsAndVersionManifest": "evidence/M0/build-A-shortroot.log, build-B-shortroot-2.log, this file",
+    "installRecording": "未执行（无设备）——M0-A01 唯一未达成的计划要求"
+   }
+  }
+ },
+ "environmentConstraints": {
+  "windowsCheckoutRootMaxChars": 38,
+  "measuredAt": "2026-09-19",
+  "mechanism": "上游 cmake/operit_git_source.cmake 把 MNN/kleidiai 放在 <root>/llm/mnn/.cxx/operit_deps/<name>-<40hex>-{src,build}，因此 :mnn 的对象目录绝对长度为 len(root)+104（CMake 在干净副本上实测报 146，root 42 字符）。CMake 3.22.1 的预算 CMAKE_OBJECT_PATH_MAX=250 按“对象目录 + 对象文件名”计算，超预算时先把源外目录段换成 32 位哈希子目录（+33），若哈希后仍超 250 就放弃哈希、回落到 __/kleidiai-<40hex>-src/... 相对形式，并且只打印 “cannot be safely placed under this directory. The build may not work correctly.” 警告而不中止。回落后的相对路径长 282 字符，ninja 自身的 260 字符检查（与本机的 LongPathsEnabled=1 无关）随即报 “Filename longer than 260 characters”。",
+  "arithmetic": "哈希后总长 = len(root) + 104 + 33 + 74（最长的 kleidiai SME2 目标文件名 kai_matmul_clamp_f*_qsi8d32p1vlx4_qai4c32p4vlx4_1vlx4vl_sme2_mopa_asm.S.o）= len(root) + 211，需 ≤250，即 len(root) ≤ 39；清单把上限收紧到 38 留一格余量。",
+  "observedPoints": [
+   "len(root)=42（C:/Users/15942/Desktop/Work/operit-m0-a01-1）→ 253 > 250 → 回落 → ninja 失败",
+   "len(root)=33（C:/Users/15942/Desktop/Work/operit）→ 244 ≤ 250 → 哈希布局；buildCMakeDebug 真实执行，MNNARM64.dir 下 243 个 .o 与 libMNN.so 247,193,488 字节都是本次产物，样包的 native 产物不是残留",
+   "len(root)=8（C:/W/m0a 连接点，仅用于验证）→ 219 ≤ 250，警告消失，build.ninja 里两个此前失败的目标回到 4632b60b…/ 与 d3a204a2…/ 哈希目录，最长 __ 形式目标路径降到 152"
+  ],
+  "guard": "ci/script/materialize_m0_clean.sh 在写入任何文件前断言目标路径 ≤38 字符，超过即拒绝并提示换短根目录。",
+  "notFixedInBaseline": "没有改上游的 <name>-<40hex>-src 命名，也没有伪造调 CMAKE_OBJECT_PATH_MAX：调高会让 CMake 直接采用更长的相对形式（同样被 ninja 拒绝），调低也不能让哈希形式落回预算内。真正的上游修复要缩短依赖目录名，属 M1 构建环境议题。",
+  "proxyVarCaseCollision": {
+   "rule": "一次构建只能存在一个大小写形式的代理变量：https_proxy 与 HTTPS_PROXY 同时导出会让 :mnn 的宿主 flatc 配置失败。",
+   "measuredAt": "2026-09-19",
+   "mechanism": "llm/mnn/CMakeLists.txt:69 用默认生成器为宿主配置 FlatBuffers，Windows 上默认生成器是 Visual Studio 17 2022，编译器探测由 MSBuild 驱动。MSBuild 的 .NET ProcessStartInfo.EnvironmentVariables 是 OrdinalIgnoreCase 的 Hashtable，环境里同时有 https_proxy 与 HTTPS_PROXY 时构造字典抛 ArgumentException（已添加项），CL.exe 无法启动，CMake 只报 No CMAKE_CXX_COMPILER could be found，真因留在 flatc-host/CMakeFiles/CMakeError.log 的 MSB6001（72 处）。",
+   "misleadingSymptom": "表层报“找不到编译器”，实际是“环境变量导致编译器进程无法启动”；VS BuildTools 与 14.44.35207 工具集本身完好（vswhere 可查到 Microsoft.VisualStudio.Component.VC.Tools.x86.x64）。",
+   "proof": "同一份 FlatBuffers 源码、同一组参数、只差代理变量集合：两者都设 → compiler identification is unknown / Configuring incomplete；只设 https_proxy → MSVC 19.44.35229.0 / Generating done。全过程记在 evidence/M0/build-env-msbuild-proxy-collision.txt。",
+   "disposition": "属操作失误，不加自动纠正回退：ci/script/build_m0_local.sh 读 ${https_proxy:-${HTTPS_PROXY:-}}，只需其中一个；失败副本 C:/M0/B 删除后按同一基线重物化重建。"
+  }
+ },
+ "knownGaps": [
+  "liboperit_ripgrep.so 的源码级重建已执行：用仓库内 tools/native_ripgrep（--locked、--offline）在同机重出 3,741,008 字节产物，与随包 3,599,272 字节逐字节不等，原因实测为工具链版本不同（rustc 1.88.0 + NDK 27.3 clang 18.0.4/LLD 18 对 rustc 1.95.0 + clang 21.0.0/LLD 21，后者本机不存在）。功能面等价已证：54 个 .dynsym 条目、唯一 JNI 导出、DT_NEEDED 与 crate 字符串字面量覆盖集完全一致，仅 getpid/gettid 一个导入差异且已验证在 arm64 各 API 档均可用。附带查出：随包产物内嵌 106 处以 C:\\Users\\12809\\.cargo 和 C:\\Users\\12809\\.rustup 为根的 Windows 反斜杠路径（91 + 15 处），即该二进制由一个身份不可核查的个人 Windows 机器手建（非 CI），并通过无校验 Drive 归档进入分发链。因此\"逐字节一致\"不作为目标，判据改为\"源码在本仓库 + 自建替换 + 构建者身份可核查\"。明细见 evidence/M0/ripgrep-source-rebuild.txt。",
+  "7 项 sherpa-ncnn STT 资产的许可其实已声明（钉死 commit 05945efc… 的 HF cardData.license = apache-2.0），但 app/config/stt-model-assets.properties 第 6 字段写的是 \"upstream license not declared in model metadata\" —— 随包分发的是一条与事实相反的声明文本。未闭合的是训练数据出处（k2-fsa 文档称训练自未具名内部数据集）。首版范围不含语音，建议连同该错误注解一起从分发矩阵中移除。",
+  "assets 内嵌可执行产物的来源本轮已分层：shizuku.apk 与官方 v13.6.0 release 资产逐字节一致（SHA-256 6e273ab0…、签名 CN=Rikka）已闭环；accessibility.apk 的上游取证已完成——来源仓库 AAswordman/OperitAccessbility 实测只有 main 一个分支（git ls-remote，无 tag、无 release），该分支整棵归档 78 个条目里没有任何授权文本（12 种许可文件名大小写全 404，全树唯一的 Apache-2.0 文本是 gradlew/gradlew.bat 自带的 wrapper 头，不覆盖仓库自己的源码），项目级许可信号只有 README 一枚 shields.io 徽章；并且随包 1.5 的 META-INF/version-control-info.textproto 记录的 revision 恰等于 main 头那个提交，而该提交自带 versionName \"1.4\"/versionCode 3，即**分发物相对可核验来源含未记录的本地改动**（AGP 只记 commit、不证树干净）；desktop.apk 与前者共用自签证书 O=dec,OU=sw,CN=aa（SHA-256 d7ccd870…）、全仓零引用，且其 textproto 为 generate_error_reason: NO_SUPPORTED_VCS_FOUND，即打包时不在任何 git 工作树内；subpack/android.apk 是 CN=Android Debug 的 debug 构建，且只能从无校验的 Drive 归档取得；ffmpeg-kit-local.aar 的 FFmpeg 配置串含 --enable-libtwolame --enable-libshine --enable-gnutls --enable-version3 而无 --enable-gpl，其 res/raw/source.txt 又称 \"GPL v3.0\"。accessibility 与 desktop 的处置随 M1 载荷移除一并关闭，不以取得授权替代移除；其余待负责人处置，明细见 license-inventory.md §第二轮复核与其末补做段、upstream-license-retrieval.md §8。",
+  "terminal 子模块 src/main/assets 另带 64,133,552 字节的 ubuntu-noble-aarch64-pd-v4.18.0.tar.xz（proot-distro Ubuntu 24.04 rootfs，XZ 压缩 tar（magic fd 37 7a 58 5a 00），成员根 ubuntu-noble-aarch64/，内层时间戳 2025-01-10，Git blob 0757d861babd58b6e51aad3f8786096caa424757），经 mergeCloneAssets 进入 APK。来源本轮已证实与 termux/proot-distro v4.18.0 官方 release 资产逐字节一致（SHA-256 91acaa78…）。它是 :app 之外的第二个 assets 根，verifyNoEmbeddedSigningMaterial 现会枚举到它，但 .tar.xz 不在归档展开扩展名集合内，因此只按成员名匹配、不进入其内部。首版范围不含 Linux 终端，该产物应从分发中移除。",
+  "terminal 模块还提供 Apache FtpServer 图形界面开关（ui/SettingsViewModel.kt → utils/FtpServerManager.kt，监听端口由用户启用）与 UbuntuDocumentsProvider（把 rootfs 内文件挂成系统文档提供者）。两者都是首版要关闭的网络/文件入口，须进 M1 执行层禁用清单与真机出网清单。",
+  "verifyNoEmbeddedSigningMaterial 现会展开一层 .apk/.zip/.jar/.aar 按成员名匹配（探针实测可命中），但不递归归档内的归档，也不解析 PKCS#8/私钥结构。",
+  "本机无 ARM64 真机连接，adb devices 为空；M0-A01 的安装环节未完成。",
+  "原生库把绝对检出根编进了 .rodata：13 个 .so 共 669 处，形如 <检出根>/llm/llama/.cxx/operit_deps/… 以及带源文件名行号的运行期日志串。后果有两层：(a) 干净目录产物无法声称字节级可复现；(b) 从默认长根出包会把构建者的 Windows 用户名带进分发给外部测试者的 APK。整改方向与实测数据见 evidence/M0/native-build-path-embedding.txt，本轮只登记未整改。",
+  "依赖树层的 copyleft 载荷已进入分发物（M0-B08）：com.itextpdf:itextg:5.5.10 的缓存 POM 原文为 GNU Affero General Public License v3，直接声明于 app/build.gradle.kts:744、唯一调用点 util/DocumentConversionUtil.kt，对 C:/M0/A 产物的 43 个 classes*.dex 锚定搜类型描述符命中 Lcom/itextpdf/text/ 1,808 处（classes25、classes39；非锚定的 1,814 那 6 处差额已逐条定位到 classes39 串池里的 itextg 资源路径字面量，不是漏了 6 个类）；ru.noties:jlatexmath-android 三件套 GPL-2.0（88 处描述符）、com.github.junrar:junrar:7.5.5 受 UnRar License 约束（235 处）。原生侧反而无 copyleft：11 个 commit 钉死的 CMake FetchContent 依赖顶层许可全为 MIT/Apache-2.0/zlib；Rust 层 48 包、Node 层 92 包 copyleft 亦为 0。同时测出随包界面 ui/features/about/screens/OpenSourceLicenses.kt（硬编码 68 条）有 8 条与 POM 原文／上游实测不符且方向一律是低估义务。本轮只实测登记，未改依赖、未改该界面。明细见 evidence/M0/gradle-dependency-licenses.md 与 evidence/M0/native-dependency-licenses.md，机器可读表 gradle-dependency-licenses.json、native-dependency-licenses.json、原始树 dependency-tree-clone-runtime.raw.txt。",
+  "THIRD-PARTY-NOTICES.md 已于第五轮成文：operit/THIRD-PARTY-NOTICES.md，全文 10 节，由 evidence/M0/scripts/third_party_notices.py 只读四层实测 JSON、evidence/M0/licence-texts/（17 份许可全文 + sources.json 的逐文件 URL/字节数/SHA-256 前 16 位）与字体条目归属（apk-font-entries.txt 83 条目、font-carrier-scan.json 的 1,263 归档载体检索）生成；该脚本内没有一个手写计数、映射不上即 SystemExit，所以这份声明是派生物，不得手改——要改就改上游 JSON 或分类表。成文不等于处置完成，仍缺的都列在该文件第 2 节 15 项里：依赖未删未换；OpenSourceLicenses.kt 的 8 条错误声明原文未改（该界面始终不作声明原料——68 条里 8 条低估义务，且整层漏掉 Rust、Node、JS 资产）；UnRAR 许可第 2 条（不得用于开发 RAR 兼容压缩器）这句义务尚未写进任何文档或源码注释；ObjectBox Binary Licence 正文仍未取得（POM 的 url 只指向 objectbox.io 站点根，公开可得的那份 PDF 是网站服务条款而非产品二进制许可，其第 2 节把产品条款外推、第 5 节禁止复制）；83 个字体条目只完成到载体归属，各家族上游授权文本仍为零；该声明以什么形式随包（APK 内资产还是分发页）与是否在应用内加入口未决。许可正文一律取 FSF/SPDX 官方全文而非仓库里那两份（terminal/LICENSE 的 GPL 正文被一句\"为篇幅省略\"的括注截断，见 upstream-license-retrieval.md §7）。dex 检索覆盖 11 个 needle / 7 个高风险条目，仍未逐构件证明链入面；原生嵌套许可仍只数到文件存在、未按 CMake target 源文件列表收敛。",
+  "Rust 层（liboperit_ripgrep.so 的 Cargo.lock 48 包）已实测：按 --target aarch64-linux-android 的依赖图分为 32 个运行期库 / 4 个构建期 proc-macro / 3 个宿主构建专用（winapi-util、windows-link、windows-sys 0.61.2）/ 9 个本目标从未解析的 Windows 系占位包，许可文本全为 MIT / Apache-2.0 / Unlicense / Unicode / BSD 家族，copyleft 计数 0；随包 .so 内实测 91 处 <crate>-<ver> 源码路径，正向证明 13 个 crate 确有代码进二进制（未出现路径不代表未链入，只有 13 个是正证据，其余 19 个运行期 crate 仅到依赖图层面）。两个待办：(1) 我们自己的 crate operit_ripgrep 0.1.0 在 tools/native_ripgrep/Cargo.toml 里既无 license 字段、目录内也无 LICENSE 文件，授权只能由仓库根 LGPL-3.0-only 推定，应在 M1 出包前补齐；(2) unicode-ident 的声明是 (MIT OR Apache-2.0) AND Unicode-3.0，regex-syntax 另有嵌套 src/unicode_tables/LICENSE-UNICODE，THIRD-PARTY-NOTICES 不能只写 MIT/Apache。明细见 evidence/M0/rust-dependency-licenses.md 与 rust-crate-licenses.json。",
+  "上游取证轮（联网）把 5 个\"本机不可证\"构件落定，但只结掉一条，另两条升格为阻塞：libsu:6.0.0 的 Apache-2.0 在钉住的 tag 上可证（结案）；com.github.Sable:axml:2.0.0 的 Apache-2.0 只存在于晚于 2.0.0 的上游 master，而 2.0.0 是上游唯一的 tag，故对被分发构件无效力——需作者追认或整链移除；com.github.tech-pw:RenderX:1.0.0 对应提交 de7d1e33da264f99…（jitpack build.log 的 git describe = 1.0.0-0-gde7d1e3）根目录 14 个条目无任何许可文件、13 种拼写全 404、readme.md 六个许可词 0 命中，上游唯一一次 LICENSE 提交（88423982…，2024-02-26）比该 tag 晚 3 天且内容是 GPL-3.0——即该构件分发时**没有任何许可授予**，而随包界面把它写成 MIT，登记为 M0-B09。Kotlin/Java 侧引用实测为 0，移除成本是两行依赖声明，顺带带走 72 个 dex 描述符、150 个 MathJax 资产（其中 22 个是 TeX 派生字体文件）与 11 个 `res/font` 字体本体；第五轮订正：原记\"12 个自身无授权文本的字体\"不成立——该 AAR 的 res/font 是 12 个条目，但第 12 个 poppins_bold.xml 只是 font-family 声明不是字体本体，而随它进来的字体实际是 22 + 11 = 33 个。逐组归属见 THIRD-PARTY-NOTICES.md §8.1。本仓库自身的两份 LICENSE 同轮复核到字节级：根 LICENSE 与 FSF 官方 lgpl-3.0.txt 逐字节相同（仅 CRLF 差异），terminal/LICENSE 的官方 1,234 词全部按序出现、替换/删除 0 组但含 3 处插入（中文标题与版权行、一个多余 - 词、被截断的 GPL 正文）。tools/hotbuild/OperitNightlyRelease 子模块未检出、构建脚本零引用，不产 APK 侧义务，但只有 SSH 地址，属发布流水线复现待办。明细见 upstream-license-retrieval.md 与 .json，脚本与输出在 evidence/M0/scripts/。"
+ ]
+}

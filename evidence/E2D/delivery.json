@@ -1,0 +1,73 @@
+{
+  "generatedAt": "2026-09-19T23:29:09.213021+00:00",
+  "applicationId": "cn.localfirst.companion",
+  "version": "0.9.0",
+  "versionCode": 9,
+  "sourceCommit": "b538c546272df5ed82a1dfb0873bbe9aaee76747",
+  "certificateSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+  "roomMigration": "1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8",
+  "upgradeFrom": [
+    "0.1.0",
+    "0.2.0",
+    "0.3.0",
+    "0.4.0",
+    "0.5.0",
+    "0.6.0",
+    "0.7.0",
+    "0.8.0"
+  ],
+  "files": [
+    {
+      "name": "local-companion-0.9.0.apk",
+      "bytes": 9113202,
+      "sha256": "8a97d3c68e0e680f74866c4e56cee4e3e51fc6f8f16466d2a93c13a9c875e40a"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 1783303,
+      "sha256": "362a5e87a9e05738654adb9a2158945c3bc030f725c76f2c12596410254d9e85"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 6395,
+      "sha256": "2db63468922d5bfc2840bcc558edfdb9cbc04fd527f0a94d9b9bee81fa614bdb"
+    }
+  ],
+  "validation": {
+    "unitTests": {
+      "tests": 119,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hostWorldbookMigration": "PASS",
+    "hostExtensionAndToolPkgSql": "PASS",
+    "hostQuickJsModelRoundTrip": "PASS",
+    "cleanBuild": "PASS",
+    "finalValidation": "PASS",
+    "apkAudit": "PASS",
+    "signatureContinuity": "PASS",
+    "androidTestCompilation": "PASS",
+    "deviceUpgrade": "NOT_RUN",
+    "deviceStorage": "NOT_RUN",
+    "androidQuickJsRuntime": "NOT_RUN",
+    "systemAuthentication": "NOT_RUN",
+    "lockLifecycleUi": "NOT_RUN",
+    "androidBackupTransaction": "NOT_RUN",
+    "crossDeviceBackup": "NOT_RUN",
+    "backupFilePicker": "NOT_RUN",
+    "androidPersonaIsolation": "NOT_RUN",
+    "androidWorldbookIsolation": "NOT_RUN",
+    "worldbookFilePicker": "NOT_RUN",
+    "visualQA": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "liveMcp": "NOT_RUN",
+    "crossDeviceTemplate": "NOT_RUN",
+    "threePersonObservation": "NOT_RUN"
+  },
+  "compatibility": {
+    "mcp": "Streamable HTTP over HTTPS",
+    "toolPkg": "schema 1 / API 1.0.0 / tools-v1 pure computation; no device/network/filesystem/UI Hook host APIs"
+  },
+  "status": "E2 privacy lock, backup, user personas and worldbook development complete; relationship/usage/onboarding remain; device and human acceptance pending; M1/M2/E1 not fully accepted"
+}

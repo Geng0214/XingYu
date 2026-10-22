@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ai.assistance.operit.HomeUiTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-09-21T04:50:19.158Z" hostname="DESKTOP-8LJVBMI" time="0.043">
+  <properties/>
+  <testcase name="displayedCraftLimitsRespectAllMaterialsAndOutputCapacity" classname="com.ai.assistance.operit.HomeUiTest" time="0.002"/>
+  <testcase name="ledgerDerivesTypedGiftRowsOnceAndPublishesImmutableOrderedRecords" classname="com.ai.assistance.operit.HomeUiTest" time="0.005"/>
+  <testcase name="countdownShowsExactMaturityAndClockRollbackStopsActions" classname="com.ai.assistance.operit.HomeUiTest" time="0.002"/>
+  <testcase name="giftAndDiscardLimitsProtectSeedsWornClothesAndRecipientCapacity" classname="com.ai.assistance.operit.HomeUiTest" time="0.001"/>
+  <testcase name="successfulReceiptUpdatesVisibleStateBeforeNextClickAndDoesNotDuplicateRecord" classname="com.ai.assistance.operit.HomeUiTest" time="0.002"/>
+  <testcase name="privateNameDraftSurvivesRefreshButOnlyCreationOrRenameCompletionClearsIt" classname="com.ai.assistance.operit.HomeUiTest" time="0.001"/>
+  <testcase name="fiftyAlternatingPageSnapshotsRejectEveryForeignIdentity" classname="com.ai.assistance.operit.HomeUiTest" time="0.017"/>
+  <testcase name="fullHistoryIsDiscardedWhenStateChangesAndLateHistoryCannotReplaceNewerData" classname="com.ai.assistance.operit.HomeUiTest" time="0.002"/>
+  <testcase name="twentyLateReceiptsCannotRewindNewerStateOrClearAnotherCommand" classname="com.ai.assistance.operit.HomeUiTest" time="0.011"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

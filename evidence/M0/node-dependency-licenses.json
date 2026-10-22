@@ -1,0 +1,2079 @@
+{
+ "measuredAt": "2026-09-19",
+ "case": "M0-A05 依赖来源与许可闭环 —— Node/JS 分发层",
+ "scope": "随 APK 分发的 JS（app/src/main/assets/bridge/*）及其 npm 版本闭包与授权文本；以及未分发的 web-chat 层与远端加载的 ECharts。",
+ "method": [
+  "分发确认：解压两份 M0-A01 干净构建 APK，按条目名取 assets/bridge/* 并与仓库内副本逐字节比较。",
+  "版本闭包：解析仓库根 pnpm-lock.yaml（lockfileVersion 9.0）的 snapshots 段，从 importers[tools/mcp_bridge].dependencies 的 @modelcontextprotocol/sdk@1.30.0(zod@3.25.76) 起做 BFS，沿 dependencies/optionalDependencies 展开，得到 92 个包、0 个未解析。",
+  "离线限制：本机没有 node_modules，也没有 pnpm store（检查 4 个候选路径均不存在），所以许可文本无法从本机取得。",
+  "联网取证：经本机代理 127.0.0.1:7897 向 registry.npmjs.org 逐个取 92 个版本的元数据与 tarball，比对 registry dist.integrity 与 pnpm-lock 钉住的 integrity（同截 sha512 前 16 字符），再从 tarball 根目录取许可文本（仅接受 package/ 前缀、拒绝 .. 成员，filter=\"data\" 解包），按文本指纹分类并计 SHA-256 前缀。",
+  "产物归属：在两个 bundle 内检索各包特有的字符串字面量（不被压缩改名），命中即正向证明该包代码在包内。",
+  "源码一致性：取 tools/mcp_bridge/*.ts 的字符串字面量（≥8 字符）在对应 bundle 中检索；字符串在 tsc+ncc 后原样保留，未命中即为漂移信号。"
+ ],
+ "lockfile": {
+  "path": "pnpm-lock.yaml",
+  "header": "lockfileVersion: '9.0'",
+  "sections": {
+   "packages": 190,
+   "snapshots": 190
+  },
+  "importer_tools_mcp_bridge": "  tools/mcp_bridge:\n    dependencies:\n      '@modelcontextprotocol/sdk':\n        specifier: 1.30.0\n        version: 1.30.0(zod@3.25.76)\n    devDependencies:\n      '@types/node':\n        specifier: ^18.0.0\n        version: 18.19.130\n      '@vercel/ncc':\n        specifier: ^0.38.1\n        version: 0.38.4\n      ts-node:\n        specifier: ^10.9.1\n        version: 10.9.2(@types/node@18.19.130)(typescript@5.9.3)\n      typescript:\n        specifier: ^5.0.0\n        version: 5.9.3"
+ },
+ "distributed_js": {
+  "index.js": {
+   "path": "app/src/main/assets/bridge/index.js",
+   "bytes": 57268,
+   "sha256_16": "6425a33ac581307a",
+   "crc32": "800224c7",
+   "in_apk": {
+    "A": {
+     "bytes": 57268,
+     "sha256_16": "6425a33ac581307a",
+     "identical_to_repo_copy": true
+    },
+    "B": {
+     "bytes": 57268,
+     "sha256_16": "6425a33ac581307a",
+     "identical_to_repo_copy": true
+    }
+   },
+   "copyright_banner_count": 0,
+   "bang_comment_banners": 0,
+   "mit_word": 0,
+   "node_modules_path_tokens": 0,
+   "webpack_runtime_markers": {
+    "__webpack_modules__": 2,
+    "__webpack_module_cache__": 4
+   },
+   "unused_webpack_module_occurrences": 1,
+   "source_mapping_url_refs": 1,
+   "source_mapping_url_basenames": [
+    "index.js.map"
+   ],
+   "source_map_files_shipped": false
+  },
+  "spawn-helper.js": {
+   "path": "app/src/main/assets/bridge/spawn-helper.js",
+   "bytes": 1320909,
+   "sha256_16": "03f0b790b7c6f99d",
+   "crc32": "951a97ed",
+   "in_apk": {
+    "A": {
+     "bytes": 1320909,
+     "sha256_16": "03f0b790b7c6f99d",
+     "identical_to_repo_copy": true
+    },
+    "B": {
+     "bytes": 1320909,
+     "sha256_16": "03f0b790b7c6f99d",
+     "identical_to_repo_copy": true
+    }
+   },
+   "copyright_banner_count": 0,
+   "bang_comment_banners": 0,
+   "mit_word": 0,
+   "node_modules_path_tokens": 1,
+   "webpack_runtime_markers": {
+    "__webpack_modules__": 2,
+    "__webpack_module_cache__": 4
+   },
+   "unused_webpack_module_occurrences": 196,
+   "source_mapping_url_refs": 76,
+   "source_mapping_url_basenames": [
+    "additionalItems.js.map",
+    "additionalProperties.js.map",
+    "ajv-provider.js.map",
+    "ajv.js.map",
+    "allOf.js.map",
+    "anyOf.js.map",
+    "applicability.js.map",
+    "boolSchema.js.map",
+    "client.js.map",
+    "code.js.map",
+    "const.js.map",
+    "contains.js.map",
+    "core.js.map",
+    "dataType.js.map",
+    "defaults.js.map",
+    "dependencies.js.map",
+    "draft7.js.map",
+    "enum.js.map",
+    "equal.js.map",
+    "errors.js.map",
+    "format.js.map",
+    "formats.js.map",
+    "helpers.js.map",
+    "id.js.map",
+    "if.js.map",
+    "index.js.map",
+    "interfaces.js.map",
+    "items.js.map",
+    "items2020.js.map",
+    "keyword.js.map",
+    "limit.js.map",
+    "limitItems.js.map",
+    "limitLength.js.map",
+    "limitNumber.js.map",
+    "limitProperties.js.map",
+    "metadata.js.map",
+    "multipleOf.js.map",
+    "names.js.map",
+    "not.js.map",
+    "oneOf.js.map",
+    "pattern.js.map",
+    "patternProperties.js.map",
+    "prefixItems.js.map",
+    "properties.js.map",
+    "propertyNames.js.map",
+    "protocol.js.map",
+    "ref.js.map",
+    "ref_error.js.map",
+    "required.js.map",
+    "resolve.js.map",
+    "rules.js.map",
+    "scope.js.map",
+    "spawn-helper.js.map",
+    "stdio.js.map",
+    "subschema.js.map",
+    "thenElse.js.map",
+    "types.js.map",
+    "ucs2length.js.map",
+    "uniqueItems.js.map",
+    "uri.js.map",
+    "util.js.map",
+    "validation_error.js.map",
+    "zod-compat.js.map",
+    "zod-json-schema-compat.js.map"
+   ],
+   "source_map_files_shipped": false
+  }
+ },
+ "closure": {
+  "root": "@modelcontextprotocol/sdk@1.30.0(zod@3.25.76)",
+  "count": 92,
+  "license_histogram_field_vs_text": {
+   "MIT|MIT": 82,
+   "BSD-3-Clause|BSD-3-Clause": 2,
+   "ISC|ISC": 7,
+   "BSD-2-Clause|BSD-2-or-other": 1
+  },
+  "distinct_licence_texts": 72,
+  "copyleft_packages": [],
+  "field_disagreements": [],
+  "integrity_mismatches": [],
+  "packages": [
+   {
+    "pkg": "@hono/node-server",
+    "version": "2.0.12",
+    "lock_key": "@hono/node-server@2.0.12(hono@4.12.32)",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1101,
+    "licence_text_sha256_16": "6895190430d809c4",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2022 - present, Yusuke Wada and Hono contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/honojs/node-server.git",
+    "tarball_bytes": 33061,
+    "tarball_sha256_16": "529895f679d9e0a6",
+    "deprecated": null
+   },
+   {
+    "pkg": "@modelcontextprotocol/sdk",
+    "version": "1.30.0",
+    "lock_key": "@modelcontextprotocol/sdk@1.30.0(zod@3.25.76)",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e13dbbc1d120fc2",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Anthropic, PBC"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/modelcontextprotocol/typescript-sdk.git",
+    "tarball_bytes": 582844,
+    "tarball_sha256_16": "2cac3f3e38fec281",
+    "deprecated": null
+   },
+   {
+    "pkg": "accepts",
+    "version": "2.0.0",
+    "lock_key": "accepts@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1167,
+    "licence_text_sha256_16": "71f83c4c0621102a",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/accepts.git",
+    "tarball_bytes": 5460,
+    "tarball_sha256_16": "173d915f7d88df8c",
+    "deprecated": null
+   },
+   {
+    "pkg": "ajv",
+    "version": "8.20.0",
+    "lock_key": "ajv@8.20.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1090,
+    "licence_text_sha256_16": "a05350a88e318e4f",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2015-2021 Evgeny Poberezkin"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ajv-validator/ajv.git",
+    "tarball_bytes": 217611,
+    "tarball_sha256_16": "b2f0b3a893bbb8cc",
+    "deprecated": null
+   },
+   {
+    "pkg": "ajv-formats",
+    "version": "3.0.1",
+    "lock_key": "ajv-formats@3.0.1(ajv@8.20.0)",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1074,
+    "licence_text_sha256_16": "9df3bb69929a3b65",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2020 Evgeny Poberezkin"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ajv-validator/ajv-formats.git",
+    "tarball_bytes": 15999,
+    "tarball_sha256_16": "f4d6980fd367381f",
+    "deprecated": null
+   },
+   {
+    "pkg": "body-parser",
+    "version": "2.3.0",
+    "lock_key": "body-parser@2.3.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1172,
+    "licence_text_sha256_16": "23d466b1b134b415",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/expressjs/body-parser.git",
+    "tarball_bytes": 11135,
+    "tarball_sha256_16": "031d7f6c5142e31b",
+    "deprecated": null
+   },
+   {
+    "pkg": "bytes",
+    "version": "3.1.2",
+    "lock_key": "bytes@3.1.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1153,
+    "licence_text_sha256_16": "e3b44af066615de2",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012-2014 TJ Holowaychuk <tj@vision-media.ca>",
+     "2015 Jed Watson <jed.watson@me.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/visionmedia/bytes.js.git",
+    "tarball_bytes": 4496,
+    "tarball_sha256_16": "835e37ad5a40da45",
+    "deprecated": null
+   },
+   {
+    "pkg": "call-bind-apply-helpers",
+    "version": "1.0.2",
+    "lock_key": "call-bind-apply-helpers@1.0.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/call-bind-apply-helpers.git",
+    "tarball_bytes": 6067,
+    "tarball_sha256_16": "073e9ff9dbabedf5",
+    "deprecated": null
+   },
+   {
+    "pkg": "call-bound",
+    "version": "1.0.4",
+    "lock_key": "call-bound@1.0.4",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/call-bound.git",
+    "tarball_bytes": 6382,
+    "tarball_sha256_16": "32086f492fedf1b9",
+    "deprecated": null
+   },
+   {
+    "pkg": "content-disposition",
+    "version": "1.1.0",
+    "lock_key": "content-disposition@1.1.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "bd47ce7b88c77596",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2017 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/content-disposition.git",
+    "tarball_bytes": 7066,
+    "tarball_sha256_16": "2f8b1925a8b123a8",
+    "deprecated": null
+   },
+   {
+    "pkg": "content-type",
+    "version": "1.0.5",
+    "lock_key": "content-type@1.0.5",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1089,
+    "licence_text_sha256_16": "257aed98914108e9",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2015 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/content-type.git",
+    "tarball_bytes": 3914,
+    "tarball_sha256_16": "ac31d098405f0242",
+    "deprecated": null
+   },
+   {
+    "pkg": "content-type",
+    "version": "2.0.0",
+    "lock_key": "content-type@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1089,
+    "licence_text_sha256_16": "257aed98914108e9",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2015 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/content-type.git",
+    "tarball_bytes": 5728,
+    "tarball_sha256_16": "a2d4689d44f4de2c",
+    "deprecated": null
+   },
+   {
+    "pkg": "cookie",
+    "version": "0.7.2",
+    "lock_key": "cookie@0.7.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1175,
+    "licence_text_sha256_16": "c02110eedc16c711",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012-2014 Roman Shtylman <shtylman@gmail.com>",
+     "2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/cookie.git",
+    "tarball_bytes": 8220,
+    "tarball_sha256_16": "76b160f8251c630a",
+    "deprecated": null
+   },
+   {
+    "pkg": "cookie-signature",
+    "version": "1.2.2",
+    "lock_key": "cookie-signature@1.2.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1124,
+    "licence_text_sha256_16": "0dd4e47333485760",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012–2024 LearnBoost <tj@learnboost.com> and other contributors;"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/visionmedia/node-cookie-signature.git",
+    "tarball_bytes": 2524,
+    "tarball_sha256_16": "4d2bbaaf1c299e60",
+    "deprecated": null
+   },
+   {
+    "pkg": "cors",
+    "version": "2.8.6",
+    "lock_key": "cors@2.8.6",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1095,
+    "licence_text_sha256_16": "1aa9a12863eefb58",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2013 Troy Goode <troygoode@gmail.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/expressjs/cors.git",
+    "tarball_bytes": 6456,
+    "tarball_sha256_16": "3224212439714080",
+    "deprecated": null
+   },
+   {
+    "pkg": "cross-spawn",
+    "version": "7.0.6",
+    "lock_key": "cross-spawn@7.0.6",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1105,
+    "licence_text_sha256_16": "aaa78451b6fecd1b",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2018 Made With MOXY Lda <hello@moxy.studio>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+ssh://git@github.com/moxystudio/node-cross-spawn.git",
+    "tarball_bytes": 6255,
+    "tarball_sha256_16": "188c320cdc413adf",
+    "deprecated": null
+   },
+   {
+    "pkg": "debug",
+    "version": "4.4.3",
+    "lock_key": "debug@4.4.3",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1139,
+    "licence_text_sha256_16": "3a61c6c96caf5c1d",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2017 TJ Holowaychuk <tj@vision-media.ca>",
+     "2018-2021 Josh Junon"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/debug-js/debug.git",
+    "tarball_bytes": 13449,
+    "tarball_sha256_16": "89c1ac9c946ee890",
+    "deprecated": null
+   },
+   {
+    "pkg": "depd",
+    "version": "2.0.0",
+    "lock_key": "depd@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "bd134b41da59e452",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2018 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/dougwilson/nodejs-depd.git",
+    "tarball_bytes": 8374,
+    "tarball_sha256_16": "28a58a2056093441",
+    "deprecated": null
+   },
+   {
+    "pkg": "dunder-proto",
+    "version": "1.0.1",
+    "lock_key": "dunder-proto@1.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1073,
+    "licence_text_sha256_16": "2b770a704c15de23",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 ECMAScript Shims"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/es-shims/dunder-proto.git",
+    "tarball_bytes": 5049,
+    "tarball_sha256_16": "ed1342228c82c10d",
+    "deprecated": null
+   },
+   {
+    "pkg": "ee-first",
+    "version": "1.1.1",
+    "lock_key": "ee-first@1.1.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1099,
+    "licence_text_sha256_16": "965ef284f7f4c176",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong me@jongleberry.com"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "https://github.com/jonathanong/ee-first",
+    "tarball_bytes": 2733,
+    "tarball_sha256_16": "5148e8eb7e222b2a",
+    "deprecated": null
+   },
+   {
+    "pkg": "encodeurl",
+    "version": "2.0.0",
+    "lock_key": "encodeurl@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1089,
+    "licence_text_sha256_16": "7585ea7bba616ccb",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2016 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/encodeurl.git",
+    "tarball_bytes": 3020,
+    "tarball_sha256_16": "9b2e418b8851b8f9",
+    "deprecated": null
+   },
+   {
+    "pkg": "es-define-property",
+    "version": "1.0.1",
+    "lock_key": "es-define-property@1.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/es-define-property.git",
+    "tarball_bytes": 4431,
+    "tarball_sha256_16": "5986b8b13121340a",
+    "deprecated": null
+   },
+   {
+    "pkg": "es-errors",
+    "version": "1.3.0",
+    "lock_key": "es-errors@1.3.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/es-errors.git",
+    "tarball_bytes": 5338,
+    "tarball_sha256_16": "d14dd1c35b4bd3b8",
+    "deprecated": null
+   },
+   {
+    "pkg": "es-object-atoms",
+    "version": "1.1.2",
+    "lock_key": "es-object-atoms@1.1.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/es-object-atoms.git",
+    "tarball_bytes": 4820,
+    "tarball_sha256_16": "f295c5df6751c65b",
+    "deprecated": null
+   },
+   {
+    "pkg": "escape-html",
+    "version": "1.0.3",
+    "lock_key": "escape-html@1.0.3",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1157,
+    "licence_text_sha256_16": "255aa557a1f55224",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012-2013 TJ Holowaychuk",
+     "2015 Andreas Lubbe",
+     "2015 Tiancheng \"Timothy\" Gu"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "https://github.com/component/escape-html",
+    "tarball_bytes": 1917,
+    "tarball_sha256_16": "a101155c3cbdfb1e",
+    "deprecated": null
+   },
+   {
+    "pkg": "etag",
+    "version": "1.8.1",
+    "lock_key": "etag@1.8.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "a7996721249a136f",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2016 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/etag.git",
+    "tarball_bytes": 4386,
+    "tarball_sha256_16": "f6a96c78a973d2ab",
+    "deprecated": null
+   },
+   {
+    "pkg": "eventsource",
+    "version": "3.0.7",
+    "lock_key": "eventsource@3.0.7",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1087,
+    "licence_text_sha256_16": "f683a72ffe6a9675",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "EventSource GitHub organisation"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://git@github.com/EventSource/eventsource.git",
+    "tarball_bytes": 24507,
+    "tarball_sha256_16": "7c62d4bb196e59b3",
+    "deprecated": null
+   },
+   {
+    "pkg": "eventsource-parser",
+    "version": "3.1.0",
+    "lock_key": "eventsource-parser@3.1.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1098,
+    "licence_text_sha256_16": "835eb611a23301b2",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2026 Espen Hovlandsdal <espen@hovlandsdal.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+ssh://git@github.com/rexxars/eventsource-parser.git",
+    "tarball_bytes": 23296,
+    "tarball_sha256_16": "eca84ce0e9314076",
+    "deprecated": null
+   },
+   {
+    "pkg": "express",
+    "version": "5.2.1",
+    "lock_key": "express@5.2.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1249,
+    "licence_text_sha256_16": "95a5762890e5c1c9",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2009-2014 TJ Holowaychuk <tj@vision-media.ca>",
+     "2013-2014 Roman Shtylman <shtylman+expressjs@gmail.com>",
+     "2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/expressjs/express.git",
+    "tarball_bytes": 22560,
+    "tarball_sha256_16": "1773a16c02b44226",
+    "deprecated": null
+   },
+   {
+    "pkg": "express-rate-limit",
+    "version": "8.6.1",
+    "lock_key": "express-rate-limit@8.6.1(express@5.2.1)",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license.md",
+    "licence_text_bytes": 1082,
+    "licence_text_sha256_16": "90021adfb24b0a7a",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2023 Nathan Friedly, Vedant K"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/express-rate-limit/express-rate-limit.git",
+    "tarball_bytes": 32307,
+    "tarball_sha256_16": "a2f551248b42cddd",
+    "deprecated": null
+   },
+   {
+    "pkg": "fast-deep-equal",
+    "version": "3.1.3",
+    "lock_key": "fast-deep-equal@3.1.3",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1074,
+    "licence_text_sha256_16": "7bf9b2de73a6b356",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2017 Evgeny Poberezkin"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/epoberezkin/fast-deep-equal.git",
+    "tarball_bytes": 3656,
+    "tarball_sha256_16": "b019a0980f27638d",
+    "deprecated": null
+   },
+   {
+    "pkg": "fast-uri",
+    "version": "3.1.4",
+    "lock_key": "fast-uri@3.1.4",
+    "declared_license_field": "BSD-3-Clause",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1813,
+    "licence_text_sha256_16": "b010b0dfdfdb23d7",
+    "licence_text_class": "BSD-3-Clause",
+    "copyright_lines": [
+     "2011-2021, Gary Court until https://github.com/garycourt/uri-js/commit/a1acf730b4bba3f1…",
+     "2021-present The Fastify team <https://github.com/fastify/fastify#team>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/fastify/fast-uri.git",
+    "tarball_bytes": 30556,
+    "tarball_sha256_16": "9950db3e5239f5c1",
+    "deprecated": null
+   },
+   {
+    "pkg": "finalhandler",
+    "version": "2.1.1",
+    "lock_key": "finalhandler@2.1.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1119,
+    "licence_text_sha256_16": "47dcccf62bf40469",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2022 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/finalhandler.git",
+    "tarball_bytes": 6341,
+    "tarball_sha256_16": "22949bfc51a620b3",
+    "deprecated": null
+   },
+   {
+    "pkg": "forwarded",
+    "version": "0.2.0",
+    "lock_key": "forwarded@0.2.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "bd47ce7b88c77596",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2017 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/forwarded.git",
+    "tarball_bytes": 2696,
+    "tarball_sha256_16": "9b5a5de95fb85fcb",
+    "deprecated": null
+   },
+   {
+    "pkg": "fresh",
+    "version": "2.0.0",
+    "lock_key": "fresh@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1174,
+    "licence_text_sha256_16": "a0ec0dab16b3666f",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012 TJ Holowaychuk <tj@vision-media.ca>",
+     "2016-2017 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/fresh.git",
+    "tarball_bytes": 4330,
+    "tarball_sha256_16": "ad08397ab05f62b2",
+    "deprecated": null
+   },
+   {
+    "pkg": "function-bind",
+    "version": "1.1.2",
+    "lock_key": "function-bind@1.1.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1052,
+    "licence_text_sha256_16": "773e131a76847260",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2013 Raynos."
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/Raynos/function-bind.git",
+    "tarball_bytes": 9799,
+    "tarball_sha256_16": "704402651b02a145",
+    "deprecated": null
+   },
+   {
+    "pkg": "get-intrinsic",
+    "version": "1.3.0",
+    "lock_key": "get-intrinsic@1.3.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "39c5ec504cf6bd5c",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2020 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/get-intrinsic.git",
+    "tarball_bytes": 13800,
+    "tarball_sha256_16": "662e27e54e00fe46",
+    "deprecated": null
+   },
+   {
+    "pkg": "get-proto",
+    "version": "1.0.1",
+    "lock_key": "get-proto@1.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "be46ce1e3b0479af",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2025 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/get-proto.git",
+    "tarball_bytes": 4474,
+    "tarball_sha256_16": "eb2cc52afb1f1fd8",
+    "deprecated": null
+   },
+   {
+    "pkg": "gopd",
+    "version": "1.2.0",
+    "lock_key": "gopd@1.2.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "d90bf0a089da4cf4",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2022 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/gopd.git",
+    "tarball_bytes": 4584,
+    "tarball_sha256_16": "d536d0de4dd285dc",
+    "deprecated": null
+   },
+   {
+    "pkg": "has-symbols",
+    "version": "1.1.0",
+    "lock_key": "has-symbols@1.1.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "206c1adcf206dc00",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2016 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/inspect-js/has-symbols.git",
+    "tarball_bytes": 8059,
+    "tarball_sha256_16": "4460c7532f28b8df",
+    "deprecated": null
+   },
+   {
+    "pkg": "hasown",
+    "version": "2.0.4",
+    "lock_key": "hasown@2.0.4",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1083,
+    "licence_text_sha256_16": "bf9b0d665be2a689",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Jordan Harband and contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/inspect-js/hasOwn.git",
+    "tarball_bytes": 4608,
+    "tarball_sha256_16": "e9d2b03f95573600",
+    "deprecated": null
+   },
+   {
+    "pkg": "hono",
+    "version": "4.12.32",
+    "lock_key": "hono@4.12.32",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1101,
+    "licence_text_sha256_16": "a6ab98e5c77b9070",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2021 - present, Yusuke Wada and Hono contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/honojs/hono.git",
+    "tarball_bytes": 225579,
+    "tarball_sha256_16": "5a7c082e37096f44",
+    "deprecated": null
+   },
+   {
+    "pkg": "http-errors",
+    "version": "2.0.1",
+    "lock_key": "http-errors@2.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1168,
+    "licence_text_sha256_16": "dcb94ff9b1e037a8",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong me@jongleberry.com",
+     "2016 Douglas Christopher Wilson doug@somethingdoug.com"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/http-errors.git",
+    "tarball_bytes": 6448,
+    "tarball_sha256_16": "ad62bbb11baf0796",
+    "deprecated": null
+   },
+   {
+    "pkg": "iconv-lite",
+    "version": "0.7.3",
+    "lock_key": "iconv-lite@0.7.3",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1064,
+    "licence_text_sha256_16": "ac779f7314c74f23",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2011 Alexander Shtuchkin"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/iconv-lite.git",
+    "tarball_bytes": 189859,
+    "tarball_sha256_16": "40789b7733e230a0",
+    "deprecated": null
+   },
+   {
+    "pkg": "inherits",
+    "version": "2.0.4",
+    "lock_key": "inherits@2.0.4",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 749,
+    "licence_text_sha256_16": "5ffe28e7ade7d8f1",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "Isaac Z. Schlueter"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/isaacs/inherits.git",
+    "tarball_bytes": 2030,
+    "tarball_sha256_16": "d94dbc6c1bb3c5ac",
+    "deprecated": null
+   },
+   {
+    "pkg": "ip-address",
+    "version": "10.4.0",
+    "lock_key": "ip-address@10.4.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1061,
+    "licence_text_sha256_16": "f8d791359a50cbca",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "(C) 2011 by Beau Gunderson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/beaugunderson/ip-address.git",
+    "tarball_bytes": 67265,
+    "tarball_sha256_16": "e1faffa2aa19b438",
+    "deprecated": null
+   },
+   {
+    "pkg": "ipaddr.js",
+    "version": "1.9.1",
+    "lock_key": "ipaddr.js@1.9.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1087,
+    "licence_text_sha256_16": "62568a2d1337b771",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "(C) 2011-2017 whitequark <whitequark@whitequark.org>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/whitequark/ipaddr.js.git",
+    "tarball_bytes": 11501,
+    "tarball_sha256_16": "7441d9623f67fe41",
+    "deprecated": null
+   },
+   {
+    "pkg": "is-promise",
+    "version": "4.0.0",
+    "lock_key": "is-promise@4.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1058,
+    "licence_text_sha256_16": "44191656d296391e",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Forbes Lindesay"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/then/is-promise.git",
+    "tarball_bytes": 1620,
+    "tarball_sha256_16": "853891173876fa03",
+    "deprecated": null
+   },
+   {
+    "pkg": "isexe",
+    "version": "2.0.0",
+    "lock_key": "isexe@2.0.0",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 765,
+    "licence_text_sha256_16": "4ec3d4c66cd87f5c",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "Isaac Z. Schlueter and Contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/isaacs/isexe.git",
+    "tarball_bytes": 3756,
+    "tarball_sha256_16": "47cfe872e088e28c",
+    "deprecated": null
+   },
+   {
+    "pkg": "jose",
+    "version": "6.2.5",
+    "lock_key": "jose@6.2.5",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE.md",
+    "licence_text_bytes": 1079,
+    "licence_text_sha256_16": "8078b0829d6c3e9e",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2018 Filip Skokan"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/panva/jose.git",
+    "tarball_bytes": 52888,
+    "tarball_sha256_16": "db734e0d3fcbe063",
+    "deprecated": null
+   },
+   {
+    "pkg": "json-schema-traverse",
+    "version": "1.0.0",
+    "lock_key": "json-schema-traverse@1.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1074,
+    "licence_text_sha256_16": "7bf9b2de73a6b356",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2017 Evgeny Poberezkin"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/epoberezkin/json-schema-traverse.git",
+    "tarball_bytes": 6074,
+    "tarball_sha256_16": "023222622df29fc2",
+    "deprecated": null
+   },
+   {
+    "pkg": "json-schema-typed",
+    "version": "8.0.2",
+    "lock_key": "json-schema-typed@8.0.2",
+    "declared_license_field": "BSD-2-Clause",
+    "shipped_licence_file": "package/LICENSE.md",
+    "licence_text_bytes": 2859,
+    "licence_text_sha256_16": "bbe87b573c12bda5",
+    "licence_text_class": "BSD-2-or-other",
+    "copyright_lines": [],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/RemyRylan/json-schema-typed.git",
+    "tarball_bytes": 37491,
+    "tarball_sha256_16": "e7dc4126e4fcf4c3",
+    "deprecated": null
+   },
+   {
+    "pkg": "math-intrinsics",
+    "version": "1.1.0",
+    "lock_key": "math-intrinsics@1.1.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1073,
+    "licence_text_sha256_16": "2b770a704c15de23",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 ECMAScript Shims"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/es-shims/math-intrinsics.git",
+    "tarball_bytes": 6355,
+    "tarball_sha256_16": "b8c2c35575493dc0",
+    "deprecated": null
+   },
+   {
+    "pkg": "media-typer",
+    "version": "1.1.1",
+    "lock_key": "media-typer@1.1.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "bd47ce7b88c77596",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2017 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/media-typer.git",
+    "tarball_bytes": 3751,
+    "tarball_sha256_16": "412fefe4130ee5ab",
+    "deprecated": null
+   },
+   {
+    "pkg": "merge-descriptors",
+    "version": "2.0.0",
+    "lock_key": "merge-descriptors@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license",
+    "licence_text_bytes": 1231,
+    "licence_text_sha256_16": "70b126abc64d7ea0",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Jonathan Ong <me@jongleberry.com>",
+     "Douglas Christopher Wilson <doug@somethingdoug.com>",
+     "Sindre Sorhus <sindresorhus@gmail.com> (https://sindresorhus.com)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/sindresorhus/merge-descriptors.git",
+    "tarball_bytes": 2013,
+    "tarball_sha256_16": "ae88322a5fc71952",
+    "deprecated": null
+   },
+   {
+    "pkg": "mime-db",
+    "version": "1.54.0",
+    "lock_key": "mime-db@1.54.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1172,
+    "licence_text_sha256_16": "cc1dfd4dafa27271",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2015-2022 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/mime-db.git",
+    "tarball_bytes": 29535,
+    "tarball_sha256_16": "2b21054e65d0eabd",
+    "deprecated": null
+   },
+   {
+    "pkg": "mime-types",
+    "version": "3.0.2",
+    "lock_key": "mime-types@3.0.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1167,
+    "licence_text_sha256_16": "71f83c4c0621102a",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/mime-types.git",
+    "tarball_bytes": 7375,
+    "tarball_sha256_16": "2f9dd28353c303ff",
+    "deprecated": null
+   },
+   {
+    "pkg": "ms",
+    "version": "2.1.3",
+    "lock_key": "ms@2.1.3",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license.md",
+    "licence_text_bytes": 1079,
+    "licence_text_sha256_16": "1662fae9b5314d11",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2020 Vercel, Inc."
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/vercel/ms.git",
+    "tarball_bytes": 2967,
+    "tarball_sha256_16": "f6616e15e530ed55",
+    "deprecated": null
+   },
+   {
+    "pkg": "negotiator",
+    "version": "1.0.0",
+    "lock_key": "negotiator@1.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1177,
+    "licence_text_sha256_16": "553d4d20029a24e3",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012-2014 Federico Romero",
+     "2012-2014 Isaac Z. Schlueter",
+     "2014-2015 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/negotiator.git",
+    "tarball_bytes": 6792,
+    "tarball_sha256_16": "b5a2dfee1dc0ac52",
+    "deprecated": null
+   },
+   {
+    "pkg": "object-assign",
+    "version": "4.1.1",
+    "lock_key": "object-assign@4.1.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license",
+    "licence_text_bytes": 1119,
+    "licence_text_sha256_16": "6fb9754611c20f66",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/sindresorhus/object-assign.git",
+    "tarball_bytes": 2675,
+    "tarball_sha256_16": "782d726a263ba7b2",
+    "deprecated": null
+   },
+   {
+    "pkg": "object-inspect",
+    "version": "1.13.4",
+    "lock_key": "object-inspect@1.13.4",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "bd40cc437e28a3ad",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2013 James Halliday"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/inspect-js/object-inspect.git",
+    "tarball_bytes": 28026,
+    "tarball_sha256_16": "8324967a3afd8a45",
+    "deprecated": null
+   },
+   {
+    "pkg": "on-finished",
+    "version": "2.4.1",
+    "lock_key": "on-finished@2.4.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1167,
+    "licence_text_sha256_16": "8089bcc08845ec14",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2013 Jonathan Ong <me@jongleberry.com>",
+     "2014 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/on-finished.git",
+    "tarball_bytes": 5052,
+    "tarball_sha256_16": "f64d42f1049c386c",
+    "deprecated": null
+   },
+   {
+    "pkg": "once",
+    "version": "1.4.0",
+    "lock_key": "once@1.4.0",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 765,
+    "licence_text_sha256_16": "4ec3d4c66cd87f5c",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "Isaac Z. Schlueter and Contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/isaacs/once.git",
+    "tarball_bytes": 1979,
+    "tarball_sha256_16": "cf51460ba370c698",
+    "deprecated": null
+   },
+   {
+    "pkg": "parseurl",
+    "version": "1.3.3",
+    "lock_key": "parseurl@1.3.3",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1173,
+    "licence_text_sha256_16": "11d017c3b9f1ee3f",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2014-2017 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/parseurl.git",
+    "tarball_bytes": 3952,
+    "tarball_sha256_16": "56ef4bfa11e097ce",
+    "deprecated": null
+   },
+   {
+    "pkg": "path-key",
+    "version": "3.1.1",
+    "lock_key": "path-key@3.1.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license",
+    "licence_text_bytes": 1109,
+    "licence_text_sha256_16": "48da2f39e100d408",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/sindresorhus/path-key.git",
+    "tarball_bytes": 2258,
+    "tarball_sha256_16": "4b8999acb914830e",
+    "deprecated": null
+   },
+   {
+    "pkg": "path-to-regexp",
+    "version": "8.4.2",
+    "lock_key": "path-to-regexp@8.4.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1103,
+    "licence_text_sha256_16": "4eeb3271453a891d",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Blake Embrey (hello@blakeembrey.com)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/path-to-regexp.git",
+    "tarball_bytes": 14900,
+    "tarball_sha256_16": "e8712a9c53b0a2a2",
+    "deprecated": null
+   },
+   {
+    "pkg": "pkce-challenge",
+    "version": "5.0.1",
+    "lock_key": "pkce-challenge@5.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1057,
+    "licence_text_sha256_16": "feb87a2e0c305de3",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2019"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/crouchcd/pkce-challenge.git",
+    "tarball_bytes": 4210,
+    "tarball_sha256_16": "d1fcbbae5bc05562",
+    "deprecated": null
+   },
+   {
+    "pkg": "proxy-addr",
+    "version": "2.0.7",
+    "lock_key": "proxy-addr@2.0.7",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "a7996721249a136f",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2016 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/proxy-addr.git",
+    "tarball_bytes": 5495,
+    "tarball_sha256_16": "a0d1b6f34f6d4e73",
+    "deprecated": null
+   },
+   {
+    "pkg": "qs",
+    "version": "6.15.3",
+    "lock_key": "qs@6.15.3",
+    "declared_license_field": "BSD-3-Clause",
+    "shipped_licence_file": "package/LICENSE.md",
+    "licence_text_bytes": 1600,
+    "licence_text_sha256_16": "e7dc37bf662d7f78",
+    "licence_text_class": "BSD-3-Clause",
+    "copyright_lines": [
+     "2014, Nathan LaFreniere and other [contributors](https://github.com/ljharb/qs/graphs/contributors)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/qs.git",
+    "tarball_bytes": 71213,
+    "tarball_sha256_16": "c0278b636e7a016d",
+    "deprecated": null
+   },
+   {
+    "pkg": "range-parser",
+    "version": "1.3.0",
+    "lock_key": "range-parser@1.3.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1178,
+    "licence_text_sha256_16": "f655e6291356ec0d",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012-2014 TJ Holowaychuk <tj@vision-media.ca>",
+     "2015-2016 Douglas Christopher Wilson <doug@somethingdoug.com"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/range-parser.git",
+    "tarball_bytes": 3783,
+    "tarball_sha256_16": "51b79ec072db6788",
+    "deprecated": null
+   },
+   {
+    "pkg": "raw-body",
+    "version": "3.0.2",
+    "lock_key": "raw-body@3.0.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1181,
+    "licence_text_sha256_16": "37876d7de8bdf5e5",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2013-2014 Jonathan Ong <me@jongleberry.com>",
+     "2014-2022 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/stream-utils/raw-body.git",
+    "tarball_bytes": 6308,
+    "tarball_sha256_16": "66de2a025036de58",
+    "deprecated": null
+   },
+   {
+    "pkg": "require-from-string",
+    "version": "2.0.2",
+    "lock_key": "require-from-string@2.0.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license",
+    "licence_text_bytes": 1128,
+    "licence_text_sha256_16": "6ee0feb1f6ef996f",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Vsevolod Strukchinsky <floatdrop@gmail.com> (github.com/floatdrop)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/floatdrop/require-from-string.git",
+    "tarball_bytes": 1816,
+    "tarball_sha256_16": "cb694a4965908f77",
+    "deprecated": null
+   },
+   {
+    "pkg": "router",
+    "version": "2.2.0",
+    "lock_key": "router@2.2.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1128,
+    "licence_text_sha256_16": "d0bca4e517157b7a",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2013 Roman Shtylman",
+     "2014-2022 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/router.git",
+    "tarball_bytes": 14251,
+    "tarball_sha256_16": "b144af37b39a9517",
+    "deprecated": null
+   },
+   {
+    "pkg": "safer-buffer",
+    "version": "2.1.2",
+    "lock_key": "safer-buffer@2.1.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "4bc935e71be198c6",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2018 Nikita Skovoroda <chalkerx@gmail.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ChALkeR/safer-buffer.git",
+    "tarball_bytes": 12035,
+    "tarball_sha256_16": "78812f65ae3b9807",
+    "deprecated": null
+   },
+   {
+    "pkg": "send",
+    "version": "1.2.1",
+    "lock_key": "send@1.2.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1128,
+    "licence_text_sha256_16": "25a328069fe771f8",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2012 TJ Holowaychuk",
+     "2014-2022 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/pillarjs/send.git",
+    "tarball_bytes": 10317,
+    "tarball_sha256_16": "fa254fb316dd23dd",
+    "deprecated": null
+   },
+   {
+    "pkg": "serve-static",
+    "version": "2.2.1",
+    "lock_key": "serve-static@2.2.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1189,
+    "licence_text_sha256_16": "63b9a188d7d43e64",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2010 Sencha Inc.",
+     "2011 LearnBoost",
+     "2011 TJ Holowaychuk",
+     "2014-2016 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/expressjs/serve-static.git",
+    "tarball_bytes": 5463,
+    "tarball_sha256_16": "36d4f72bb59372eb",
+    "deprecated": null
+   },
+   {
+    "pkg": "setprototypeof",
+    "version": "1.2.0",
+    "lock_key": "setprototypeof@1.2.0",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 727,
+    "licence_text_sha256_16": "76d6d1ea0c268da3",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "2015, Wes Todd"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/wesleytodd/setprototypeof.git",
+    "tarball_bytes": 1969,
+    "tarball_sha256_16": "c83bcc6ea632567e",
+    "deprecated": null
+   },
+   {
+    "pkg": "shebang-command",
+    "version": "2.0.0",
+    "lock_key": "shebang-command@2.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license",
+    "licence_text_bytes": 1116,
+    "licence_text_sha256_16": "69dee148a2cc4705",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Kevin Mårtensson <kevinmartensson@gmail.com> (github.com/kevva)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/kevva/shebang-command.git",
+    "tarball_bytes": 1506,
+    "tarball_sha256_16": "9acba5bd18a51e9c",
+    "deprecated": null
+   },
+   {
+    "pkg": "shebang-regex",
+    "version": "3.0.0",
+    "lock_key": "shebang-regex@3.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/license",
+    "licence_text_bytes": 1109,
+    "licence_text_sha256_16": "48da2f39e100d408",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/sindresorhus/shebang-regex.git",
+    "tarball_bytes": 1503,
+    "tarball_sha256_16": "fedbabaa6db26c6b",
+    "deprecated": null
+   },
+   {
+    "pkg": "side-channel",
+    "version": "1.1.1",
+    "lock_key": "side-channel@1.1.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "cfc3f455254c0af0",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2019 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/side-channel.git",
+    "tarball_bytes": 8083,
+    "tarball_sha256_16": "e6edbc8f20390161",
+    "deprecated": null
+   },
+   {
+    "pkg": "side-channel-list",
+    "version": "1.0.1",
+    "lock_key": "side-channel-list@1.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/side-channel-list.git",
+    "tarball_bytes": 6135,
+    "tarball_sha256_16": "793c94ac215be772",
+    "deprecated": null
+   },
+   {
+    "pkg": "side-channel-map",
+    "version": "1.0.1",
+    "lock_key": "side-channel-map@1.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "5e325595b4ea8cfe",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2024 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/side-channel-map.git",
+    "tarball_bytes": 5280,
+    "tarball_sha256_16": "3b256b6421300bcc",
+    "deprecated": null
+   },
+   {
+    "pkg": "side-channel-weakmap",
+    "version": "1.0.2",
+    "lock_key": "side-channel-weakmap@1.0.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1071,
+    "licence_text_sha256_16": "cfc3f455254c0af0",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2019 Jordan Harband"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/ljharb/side-channel-weakmap.git",
+    "tarball_bytes": 5442,
+    "tarball_sha256_16": "3b2a54f0c5e7ad89",
+    "deprecated": null
+   },
+   {
+    "pkg": "statuses",
+    "version": "2.0.2",
+    "lock_key": "statuses@2.0.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1172,
+    "licence_text_sha256_16": "512cfa4d5e7a7569",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2016 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/statuses.git",
+    "tarball_bytes": 4797,
+    "tarball_sha256_16": "ca800a24710488b5",
+    "deprecated": null
+   },
+   {
+    "pkg": "toidentifier",
+    "version": "1.0.1",
+    "lock_key": "toidentifier@1.0.1",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1108,
+    "licence_text_sha256_16": "a832d679750e49ab",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2016 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/component/toidentifier.git",
+    "tarball_bytes": 2347,
+    "tarball_sha256_16": "186fcc77488de327",
+    "deprecated": null
+   },
+   {
+    "pkg": "type-is",
+    "version": "2.1.0",
+    "lock_key": "type-is@2.1.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1172,
+    "licence_text_sha256_16": "23d466b1b134b415",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014 Jonathan Ong <me@jongleberry.com>",
+     "2014-2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/type-is.git",
+    "tarball_bytes": 6752,
+    "tarball_sha256_16": "9a53088d69cd488e",
+    "deprecated": null
+   },
+   {
+    "pkg": "unpipe",
+    "version": "1.0.0",
+    "lock_key": "unpipe@1.0.0",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1114,
+    "licence_text_sha256_16": "1a526fbe8d8577f5",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2015 Douglas Christopher Wilson <doug@somethingdoug.com>"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "https://github.com/stream-utils/unpipe",
+    "tarball_bytes": 2096,
+    "tarball_sha256_16": "2dfb5e06d1d4bf1f",
+    "deprecated": null
+   },
+   {
+    "pkg": "vary",
+    "version": "1.1.2",
+    "lock_key": "vary@1.1.2",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1094,
+    "licence_text_sha256_16": "bd47ce7b88c77596",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2014-2017 Douglas Christopher Wilson"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/jshttp/vary.git",
+    "tarball_bytes": 3772,
+    "tarball_sha256_16": "7378860671377a35",
+    "deprecated": null
+   },
+   {
+    "pkg": "which",
+    "version": "2.0.2",
+    "lock_key": "which@2.0.2",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 765,
+    "licence_text_sha256_16": "4ec3d4c66cd87f5c",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "Isaac Z. Schlueter and Contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git://github.com/isaacs/node-which.git",
+    "tarball_bytes": 4496,
+    "tarball_sha256_16": "a13adf5fddeb7696",
+    "deprecated": null
+   },
+   {
+    "pkg": "wrappy",
+    "version": "1.0.2",
+    "lock_key": "wrappy@1.0.2",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 765,
+    "licence_text_sha256_16": "4ec3d4c66cd87f5c",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "Isaac Z. Schlueter and Contributors"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/npm/wrappy.git",
+    "tarball_bytes": 1676,
+    "tarball_sha256_16": "aff3730d91b7b1e1",
+    "deprecated": null
+   },
+   {
+    "pkg": "zod",
+    "version": "3.25.76",
+    "lock_key": "zod@3.25.76",
+    "declared_license_field": "MIT",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 1072,
+    "licence_text_sha256_16": "3f1189b28e3866e0",
+    "licence_text_class": "MIT",
+    "copyright_lines": [
+     "2025 Colin McDonnell"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/colinhacks/zod.git",
+    "tarball_bytes": 583600,
+    "tarball_sha256_16": "9e1f1a05f0dd0c1d",
+    "deprecated": null
+   },
+   {
+    "pkg": "zod-to-json-schema",
+    "version": "3.25.2",
+    "lock_key": "zod-to-json-schema@3.25.2(zod@3.25.76)",
+    "declared_license_field": "ISC",
+    "shipped_licence_file": "package/LICENSE",
+    "licence_text_bytes": 745,
+    "licence_text_sha256_16": "80d3168ad2f70f6f",
+    "licence_text_class": "ISC",
+    "copyright_lines": [
+     "2020, Stefan Terdell"
+    ],
+    "field_agrees_with_text": true,
+    "registry_integrity_matches_lockfile": true,
+    "repository": "git+https://github.com/StefanTerdell/zod-to-json-schema.git",
+    "tarball_bytes": 46362,
+    "tarball_sha256_16": "a4919ab5a32aff4f",
+    "deprecated": null
+   }
+  ],
+  "copyright_lines_note": "copyright_lines 是从上游 LICENSE 里正则取出的版权行，按本目录约定把 40 位提交号截到 16 位；成文 THIRD-PARTY-NOTICES 时要从取回的 tarball package/LICENSE 原文复制，不要从本文件复制。"
+ },
+ "attribution": {
+  "index.js": {
+   "positive": [],
+   "probe_count": 26,
+   "note": "index.ts 只 import Node 内建模块（net/child_process/crypto/path/os），所以 57 KB 的 index.js 里没有任何第三方包特征串，与闭包结论一致。"
+  },
+  "spawn-helper.js": {
+   "positive": [
+    {
+     "package": "ajv@8.20.0",
+     "literals": [
+      "raw.githubusercontent.com/ajv-validator/ajv"
+     ]
+    },
+    {
+     "package": "ajv-formats@3.0.1",
+     "literals": [
+      "formatMinimum",
+      "formatMaximum"
+     ]
+    },
+    {
+     "package": "cross-spawn@7.0.6",
+     "literals": [
+      "isCmdShimRegExp",
+      "detectShebang"
+     ]
+    },
+    {
+     "package": "shebang-command@2.0.0",
+     "literals": [
+      "shebangCommand"
+     ]
+    },
+    {
+     "package": "shebang-regex@3.0.0",
+     "literals": [
+      "shebangRegex"
+     ]
+    },
+    {
+     "package": "which@2.0.2",
+     "literals": [
+      "pathExt",
+      "nothrow"
+     ]
+    },
+    {
+     "package": "zod@3.25.76",
+     "literals": [
+      "ZodError",
+      "invalid_type"
+     ]
+    },
+    {
+     "package": "zod-to-json-schema@3.25.2",
+     "literals": [
+      "zodToJsonSchema"
+     ]
+    },
+    {
+     "package": "@modelcontextprotocol/sdk@1.30.0",
+     "literals": [
+      "notifications/initialized",
+      "MethodNotFound",
+      "McpError"
+     ]
+    },
+    {
+     "package": "json-schema-typed@8.0.2",
+     "literals": [
+      "json-schema.org/draft/2020-12/schema"
+     ]
+    }
+   ],
+   "probe_count": 26,
+   "negative_probes": [
+    {
+     "probe": "ws (NOT in the pinned 1.30.0 closure)",
+     "literals_present": []
+    },
+    {
+     "probe": "react (web-chat only, not shipped)",
+     "literals_present": []
+    },
+    {
+     "probe": "echarts (loaded from CDN, not shipped)",
+     "literals_present": []
+    }
+   ],
+   "note": "spawn-helper.ts 才 import @modelcontextprotocol/sdk/{client/index.js,client/stdio.js}，92 包闭包来自这一支。"
+  },
+  "unproven": "正向命中 10/26；其余包未命中特征串，\"未命中\"不等于\"未链入\"（只有以字符串字面量出现过的才可见）。"
+ },
+ "source_vs_artifact": {
+  "index.ts -> index.js": {
+   "literals": 40,
+   "present": 40,
+   "missing": []
+  },
+  "spawn-helper.ts -> spawn-helper.js": {
+   "literals": 14,
+   "present": 12,
+   "missing": [
+    "@modelcontextprotocol/sdk/client/index.js",
+    "@modelcontextprotocol/sdk/client/stdio.js"
+   ],
+   "missing_explained": "两个 import 说明符被 ncc 解析掉是预期行为，不构成漂移证据。"
+  }
+ },
+ "build_tool": {
+  "name": "@vercel/ncc",
+  "version": "0.38.4",
+  "declared_license": "MIT",
+  "repository": "git+https://github.com/vercel/ncc.git",
+  "registry_runtime_dependencies": 0,
+  "evidence_its_runtime_is_embedded": "两个 bundle 里都有 __webpack_modules__ 与 __webpack_module_cache__（各 2/4 次），即 ncc 注入的 webpack 运行时随包分发；但 ncc 的元数据 dependencies 为空（它自带打过包的 dist），所以按 npm 元数据生成的许可清单会漏掉它注入的这段第三方代码。"
+ },
+ "in_repo_self_declarations": {
+  "repo_root_LICENSE": "GNU LESSER GENERAL PUBLIC LICENSE Version 3（LICENSE 文件实测文本头）",
+  "package_json_license": "ISC",
+  "tools_mcp_bridge_package_json_license": "MIT（且 \"author\": \"\"，tools/ 下无任何 LICENSE 文件）",
+  "web_chat_package_json_license": null,
+  "licence_files_under_tools_or_web_chat": [],
+  "finding": "仓库根是 LGPL-3.0-only，三个 JS 清单里两个自述为 ISC/MIT、一个不写，且仓内没有任何支撑文本 —— 与仓库自身许可相互矛盾，归属无法从仓内确定。"
+ },
+ "not_distributed": {
+  "web-chat": "app/src/main/assets/web-chat/ 被 .gitignore 第 74 行忽略；工作树、两份干净构建与 APK（5,550 条目）内均为 0 命中；app/build.gradle.kts 里 \"web-chat\" 出现 0 次，只有手工脚本 npm run build:webchat 会产出它。",
+  "source_maps": "两个 bundle 合计引用 65 个 //# sourceMappingURL 目标，但 assets/ 下 .map 条目为 0，且 tools/mcp_bridge/.gitignore 忽略 dist、bundle、bundle-helper，所以 ncc 写在 bundle/ 里的任何 sidecar（含许可 sidecar）都既不进仓库也不进 APK。",
+  "echarts": "app/src/main/assets/web/echarts_template.html（2,709 B）实测就在 APK 里：C:/M0/A 与 C:/M0/B 两份产物均含条目 assets/web/echarts_template.html，内容 SHA-256 前 16 位同为 c4b8656cf65d413c；它是产物 5,550 条目里 4 个 .html 中唯一带远端 <script src> 的那一个，URL 为 https://cdn.jsdelivr.net/npm/echarts@5.3.3/dist/echarts.min.js，无 integrity、无 crossorigin（各 0 次）。分发义务仍无（ECharts 代码不在包里，只是 URL），但风险面上调：这是随包分发、零完整性校验的远端代码加载路径。当前加载者实测为 0——全仓大小写敏感检索 echarts 只命中模板自身，Kotlin/Java 无引用。订正：上一版写'因为不进 APK'是错的。处置见 markdown §7：随包 ECharts 并补 Apache-2.0 声明，或删除该孤儿模板。"
+ },
+ "artifacts_outside_repo": {
+  "tarballs_and_extracted_licence_texts": "C:/tmp/npm_packages/（92 个 .tgz 与解出的 package/LICENSE），C:/tmp/npm_packages_smoke/（前 4 包冒烟）（tarball 与解出的许可文本体积大且可重新下载，未纳入仓库副本）",
+  "scripts": "C:/tmp/npm_closure4.py（锁文件闭包）、C:/tmp/npm_lic.py（registry 取证）、C:/tmp/npm_reclass.py（文本重分类与完整性核对）、C:/tmp/npm_attrib.py（bundle 内特征串归属）、C:/tmp/npm_stale.py（TS 源与产物字面量对账）、C:/tmp/asset_urls.py（assets 远端 URL 扫描）、C:/tmp/npm_doc.py（本文件生成器）。同名脚本副本已存进 `evidence/M0/scripts/`，其 README 标出哪一版产出正式数字、哪几版是被取代的中间态。",
+  "note": "这些都是本轮临时脚本与缓存，不在仓库里；重建证据请按 method 数组描述的口径重跑。"
+ }
+}

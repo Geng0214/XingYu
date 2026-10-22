@@ -1,0 +1,26 @@
+{
+  "beforeBytes": 154811493.0,
+  "scope": "Only named APK files inside current workspace output; no recursive removal",
+  "afterBytes": 22498353.0,
+  "status": "COMPLETE",
+  "reclaimedBytes": 132313140.0,
+  "exclusiveReadChecks": "All old APKs and baseline opened with FileShare.None before mutation",
+  "baselineDestination": "output/upgrade-baseline/local-companion-0.32.0.apk",
+  "removed": [
+    "output/local-companion-0.19.0.apk",
+    "output/local-companion-0.20.0.apk",
+    "output/local-companion-0.21.0.apk",
+    "output/local-companion-0.22.0.apk",
+    "output/local-companion-0.23.0.apk",
+    "output/local-companion-0.24.0.apk",
+    "output/local-companion-0.25.0.apk",
+    "output/local-companion-0.26.0.apk",
+    "output/local-companion-0.27.0.apk",
+    "output/local-companion-0.27.1.apk",
+    "output/local-companion-0.28.0.apk",
+    "output/local-companion-0.29.0.apk",
+    "output/local-companion-0.30.0.apk",
+    "output/local-companion-0.31.0.apk"
+  ],
+  "baselineMoved": true
+}

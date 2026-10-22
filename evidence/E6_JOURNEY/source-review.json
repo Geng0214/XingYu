@@ -1,0 +1,25 @@
+{
+  "reviewer": "impeccable_finish_reviewer_journeys",
+  "disposition": "ship",
+  "scope": "Verdict on three listed source fixes only; no whole-surface or rendered visual approval",
+  "fixes": [
+    {"finding": "Prevent paid invitations when no legal reply fits event, character or encoded-byte capacity", "verdict": "resolved"},
+    {"finding": "Protect modified scene arrangements when closing the editor", "verdict": "resolved"},
+    {"finding": "Confirm loss of unwritten dialogue on navigation, travel and ending", "verdict": "resolved"}
+  ],
+  "documentation": {
+    "agent": "impeccable_documenter_journeys",
+    "files": ["docs/project/games-and-stories.md", "docs/TODO/games-and-stories/03-journeys.md"],
+    "mode": "Ordinary extension of incumbent Android Compose and Material 3 UI",
+    "preExistingDrift": "PRODUCT.md and DESIGN.md absent; not created or repaired as a side effect",
+    "newRasterAssets": 0
+  },
+  "deviceChecks": {
+    "renderedVisuals": "NOT_RUN",
+    "darkTheme": "NOT_RUN",
+    "largeFonts": "NOT_RUN",
+    "talkBack": "NOT_RUN",
+    "ime": "NOT_RUN",
+    "gestures": "NOT_RUN"
+  }
+}

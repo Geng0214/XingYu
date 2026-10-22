@@ -1,0 +1,26 @@
+[
+  {
+    "path": "game/home/art/tiny-town.png",
+    "source": "https://kenney.nl/assets/tiny-town",
+    "license": "CC0-1.0",
+    "sha256": "d71cc26ec37728d1b1f5f22c291b7de0af4156b2f91a3ecd9ff5f3d6d1b94edb",
+    "originalSha256": "3a54d99ecde790d4fdea207a3644cf130fc56fa838f1beb1507c185a95b8e902",
+    "metadata": "Origin embedded by Impeccable; image pixels unchanged"
+  },
+  {
+    "path": "game/home/art/tiny-farm.png",
+    "source": "https://kenney.nl/assets/tiny-farm",
+    "license": "CC0-1.0",
+    "sha256": "211e711d0d10f2653b0dadba24426e72b527103a8d8b24ef097b877b8b72c874",
+    "originalSha256": "0c4b3b4058cacf6a9bf021666838156d46da9ce27500d4c13e30cd5a92b722f4",
+    "metadata": "Origin embedded by Impeccable; image pixels unchanged"
+  },
+  {
+    "path": "game/home/art/tiny-dungeon.png",
+    "source": "https://kenney.nl/assets/tiny-dungeon",
+    "license": "CC0-1.0",
+    "sha256": "102e72b54bfbe42298cac44f429f2d8c7d0925ffa46cc1355642ee0792892055",
+    "originalSha256": "d24e60a41e4ac7a745c0304dfde121143688557f40215f23221c29cfe683825f",
+    "metadata": "Origin embedded by Impeccable; image pixels unchanged"
+  }
+]

@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 156,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "androidCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "deviceList": "no authorized devices (adb returned only the header)",
+  "schema": 13,
+  "scope": "JVM role-scoped static sticker validation, text-only and visual prompt behavior, shared visual history window, ownership, backup v8/v7 compatibility and complete prior suite; Android migration and sticker integration sources compiled; device execution not run",
+  "stickerTests": [
+    "com.ai.assistance.operit.StickerContextTest"
+  ],
+  "testClasses": [
+    "com.ai.assistance.operit.BackupTest",
+    "com.ai.assistance.operit.ChatBubblesTest",
+    "com.ai.assistance.operit.ChatCoordinatorTest",
+    "com.ai.assistance.operit.MaterialContextTest",
+    "com.ai.assistance.operit.McpSessionTest",
+    "com.ai.assistance.operit.PrivacyGateTest",
+    "com.ai.assistance.operit.ProviderTest",
+    "com.ai.assistance.operit.QuickJsScriptTest",
+    "com.ai.assistance.operit.RelationshipTest",
+    "com.ai.assistance.operit.RequestContextTest",
+    "com.ai.assistance.operit.RoleTemplateTest",
+    "com.ai.assistance.operit.StickerContextTest",
+    "com.ai.assistance.operit.SupportDiagnosticsTest",
+    "com.ai.assistance.operit.TextMaterialReaderTest",
+    "com.ai.assistance.operit.TokenAccountingTest",
+    "com.ai.assistance.operit.ToolChatServiceTest",
+    "com.ai.assistance.operit.ToolDispatcherTest",
+    "com.ai.assistance.operit.ToolPkgCodecTest",
+    "com.ai.assistance.operit.UserPersonaTest",
+    "com.ai.assistance.operit.VisionMessageTest",
+    "com.ai.assistance.operit.WorldbookTest"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "status": "CONTINUOUS_VOICE_ROUTE_WIRED_NATIVE_ACCEPTANCE_PENDING",
+  "sourceCommit": "c342bf609d8abdf1a5a2a2bd553df8a2fc2b163b",
+  "tests": {
+    "tests": 315,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newTests": 3,
+  "disconnectDuringInterruptRounds": 20,
+  "continuousVoiceStateMachineRounds": 20,
+  "lint": {
+    "Warning": 60,
+    "Hint": 1
+  },
+  "androidTestCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "nativeVisualReview": "NOT_RUN",
+  "connectedDevices": [],
+  "reviewerDisposition": "ship",
+  "reviewerScope": "Only the three listed material fixes; all resolved; not native visual or release approval",
+  "voiceUiAndRuntimeWiring": "IMPLEMENTED_COMPILED",
+  "manifestRoutingPermission": "MODIFY_AUDIO_SETTINGS_ADDED_TO_SOURCE",
+  "apkPermissionRule": "EXPECTED_FOR_VERSION_CODE_34_AND_ABOVE",
+  "databaseSchema": 28,
+  "backupSchema": 23,
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkVersionCode": 33,
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "remaining": [
+    "04c single recording and speech routing",
+    "04c music and video device policy",
+    "04d native visual and live audio validation",
+    "04d signed build and install over existing data",
+    "remaining full companion plan"
+  ],
+  "command": ".\\gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 1m 5s; 75 tasks, 27 executed, 48 up-to-date",
+  "sourceSha256": {
+    "app/src/main/AndroidManifest.xml": "edf9d57e4c1671a7385e9d9f204a6e47bd505440a3bc83a77531feeb718cb30b",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidLegacyCommunicationRoutes.kt": "02839bc33cbc7096196ac0dff146f93f3dc6e4c1d75166d3ab29e2b6fcb828a0",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidVoiceRecorder.kt": "d35ef2b5c4e8cdea3d11fb01cf67be385ab3ee16904407933b0f591aaa5a0503",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/CommunicationDevicePair.kt": "3ac4b5f6c17104504b4c005e49ffe6403fa8925bee6690313b1f246a230e4eb1",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/CommunicationRoutes.kt": "4431df9e3ad9c69886fbdef55ed0c49f1f8b174d4d234ffb35c75d65ac3947fb",
+    "app/src/main/java/com/ai/assistance/operit/data/model/CompanionModels.kt": "2ff0fcea0605db948904af1b97a4bf43d4f8f90d96157fd5d235bceab95924b5",
+    "app/src/main/java/com/ai/assistance/operit/data/model/SpeechServices.kt": "3e8cee1f5f07b356103b8a5df639e4c1eb9c2f391e951871ad22e3369b06634d",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/CompanionViewModel.kt": "e8e91822f243374d664cbbd99f045ed624aefd85b4052d1acd25f1d10f01c6a5",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/MessengerPage.kt": "31808387e033e8fdf90b573d6d9f190b76bb78e8f4eb71283dd97f71fdcb3fa2",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/SpeechPages.kt": "8aac9143a14142309a711b7d4cd4b068542bda2d7bb8722ccd5f84da90a68bd6",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/VoiceAudioPicker.kt": "84b9e5d19f06d2ed6721a8d5093daab366bf14e6091a4b908ef79c3b14b41369",
+    "app/src/test/java/com/ai/assistance/operit/CommunicationRoutesTest.kt": "7187423da0f1a82b943ec631a959d4d66038d4553c472983219e92c7b9a2a639",
+    "app/src/test/java/com/ai/assistance/operit/VoiceConversationTest.kt": "033010a7ce189305d3927693ab2f46de1c239250ec35eaa26c0e75b42e14445f",
+    "ci/script/verify_apk.py": "05392e21514b7b23355c6737049e22837f22888a3d7f5d2bb1e74f7c5ccc2699",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "d7c211388d48edb2fa395b3e4f566ac868889d6a4e5383a9f280930c77a0cfd9",
+    "docs/TODO/voice-and-shared-activities/index.md": "4786f5ea82930a1515a62c1a8e01fe69b119b0be8679c8686ca5dc1f318bac59",
+    "docs/project/STATUS.md": "0bfeb84fcd89a9d8098342e15aae62ca0cd1a58eefe5bec6ca13676307de4d64",
+    "docs/project/companion-full-plan.md": "4172bf3dab56bc148a08adde7be56859330d6c3e877faf934056556bea0deb10",
+    "docs/project/continuous-voice-conversation.md": "904e083ea6e4beb0e38a8c65111c999212956356c312a9b2d5b7491603850654"
+  },
+  "evidenceSha256": {
+    "evidence/E5_ROUTE_UI/build-validation.log": "2309912cd31bbdfcf0037a3c01e6a11639d58c5dadb5089f72e70dfc366f5eb1",
+    "evidence/E5_ROUTE_UI/design-review.md": "de77c4308ba5936f9fcac16e24ed03a8800d11fe8df5086d32aac557f0b55c68",
+    "evidence/E5_ROUTE_UI/validation.md": "3b3b13431d6a57a1fa66cdeeeae63438ec7955fecd88bc4a7edcdcd69e1afc2b"
+  }
+}

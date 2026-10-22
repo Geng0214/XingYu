@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "toolpkg_id": "cn.localfirst.companion.time",
+  "version": "1.0.0",
+  "api_version": "1.0.0",
+  "main": "main.js",
+  "display_name": "本机时间",
+  "description": "使用 Operit 时间工具的函数实现，在本机读取和格式化时间。每次执行前确认，不联网、不读取聊天或设备文件。",
+  "author": "Operit contributors / Local Companion",
+  "enabled_by_default": false,
+  "companion_profile": "tools-v1",
+  "subpackages": [{"id": "time", "entry": "packages/time.js"}]
+}

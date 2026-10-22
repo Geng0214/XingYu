@@ -1,0 +1,6 @@
+# Copy to local.properties and enter your own paths. Never commit credentials.
+# sdk.dir=C\:/Android/Sdk
+# RELEASE_STORE_FILE=C\:/secure/companion.keystore
+# RELEASE_STORE_PASSWORD=
+# RELEASE_KEY_ALIAS=
+# RELEASE_KEY_PASSWORD=

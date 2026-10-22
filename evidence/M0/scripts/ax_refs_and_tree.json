@@ -1,0 +1,136 @@
+{
+ "repo": "AAswordman/OperitAccessbility",
+ "refs": {
+  "rc": 0,
+  "refs": [
+   {
+    "ref": "refs/heads/main",
+    "sha": "1221cf08c40f48ee5dfa68d3fc2c5aacbbf01b6a"
+   }
+  ],
+  "heads": [
+   {
+    "ref": "refs/heads/main",
+    "sha": "1221cf08c40f48ee5dfa68d3fc2c5aacbbf01b6a"
+   }
+  ],
+  "tags": []
+ },
+ "full_tree": {
+  "tarball_bytes": 79038,
+  "entry_count": 78,
+  "root_entries": [
+   ".gitignore",
+   ".idea",
+   "README.md",
+   "app",
+   "build.gradle.kts",
+   "docs",
+   "gradle",
+   "gradle.properties",
+   "gradlew",
+   "gradlew.bat",
+   "settings.gradle.kts"
+  ],
+  "licence_filename_hits_any_depth": []
+ },
+ "licence_text_in_sources": {
+  "files_with_apache_or_copyright_header": [
+   "gradlew",
+   "gradlew.bat"
+  ],
+  "note": "只有 gradlew / gradlew.bat 命中，那是 Gradle wrapper 自带的头部，不覆盖仓库自己的源码",
+  "kt_manifest_aidl_have_spdx_or_copyright": [],
+  "readme_licence_badge_line": "![Kotlin](https://img.shields.io/badge/Kotlin-1.8-蓝色.svg)![Android](https://img.shields.io/badge/Android-26%2B-绿色.svg)![许可证](https://img.shields.io/badge/许可证-Apache%202.0-蓝色.svg)"
+ },
+ "source_version_fields_at_this_ref": {
+  "versionCode": "3",
+  "versionName": "1.4",
+  "minSdk": "26",
+  "targetSdk": "34",
+  "compare_with": "随包二进制的实测版本见 bundled_apk_vcs_info.json（同一轮、同一台机器）"
+ },
+ "ref_semantics": {
+  "raw_README_main": [
+   200,
+   1957
+  ],
+  "raw_README_master": [
+   200,
+   1957
+  ],
+  "raw_README_bogus_branch": [
+   404,
+   null
+  ],
+  "tree_main_chain": [
+   {
+    "url": "https://github.com/AAswordman/OperitAccessbility/tree/main",
+    "status": 200
+   }
+  ],
+  "tree_master_chain": [
+   {
+    "url": "https://github.com/AAswordman/OperitAccessbility/tree/master",
+    "status": 302,
+    "location": "https://github.com/AAswordman/OperitAccessbility/tree/main"
+   },
+   {
+    "url": "https://github.com/AAswordman/OperitAccessbility/tree/main",
+    "status": 200
+   }
+  ],
+  "tree_bogus_chain": [
+   {
+    "url": "https://github.com/AAswordman/OperitAccessbility/tree/definitely-not-a-branch-xyz-000",
+    "status": 404,
+    "location": null
+   }
+  ],
+  "verdict": "raw 端点对 master 也返回 200 而未知分支名返回 404 —— 单看 raw 会误判 master 是个分支；ls-remote 只有 main，且 tree/master 是 302 到 main。"
+ },
+ "raw_licence_spelling_probe": {
+  "probed": [
+   "LICENSE",
+   "LICENSE.md",
+   "LICENSE.txt",
+   "LICENCE",
+   "LICENCE.md",
+   "COPYING",
+   "license",
+   "licence",
+   "copying",
+   "LICENSE-MIT",
+   "LICENSE-APACHE",
+   "NOTICE"
+  ],
+  "statuses": {
+   "LICENSE": 404,
+   "LICENSE.md": 404,
+   "LICENSE.txt": 404,
+   "LICENCE": 404,
+   "LICENCE.md": 404,
+   "COPYING": 404,
+   "license": 404,
+   "licence": 404,
+   "copying": 404,
+   "LICENSE-MIT": 404,
+   "LICENSE-APACHE": 404,
+   "NOTICE": 404
+  }
+ },
+ "file_history_atom": {
+  "target": {
+   "path": "LICENSE",
+   "ref": "main",
+   "status": 404,
+   "entry_count": 0
+  },
+  "positive_control": {
+   "path": "README.md",
+   "ref": "main",
+   "status": 200,
+   "entry_count": 3
+  }
+ }
+}

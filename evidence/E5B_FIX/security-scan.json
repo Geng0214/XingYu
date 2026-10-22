@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "apkSha256": "445e87f2544f6e46683ee89e15feb3065b64e311331a26f8cc995d6b28e664cb",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-SECRET-key": [],
+    "synthetic-speech-key": [],
+    "synthetic-migration-key": [],
+    "synthetic-key": [],
+    "PRIVATE-MEMORY": [],
+    "DIARY-PRIVATE": [],
+    "PLANNER-PRIVATE-A": [],
+    "PROACTIVE-PRIVATE-A": [],
+    "SPEECH-PRIVATE-A": [],
+    "VOICE-PRIVATE-A": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "limitations": "Static APK entry scan in UTF-8 and UTF-16LE. Device database, WAL, cache, Keystore, microphone routing and live provider traffic remain NOT_RUN."
+}

@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-09-19T12:45:35.944Z",
+  "applicationId": "cn.localfirst.companion",
+  "version": "0.1.0",
+  "sourceCommit": "68339bebea1e70850e86c9d16ebab6de78b6b4e0",
+  "files": [
+    {
+      "name": "local-companion-0.1.0.apk",
+      "bytes": 6791284,
+      "sha256": "091fe5ddb459f893c154df8e1b36be4a174cb59bddfe7b4de3b55d566740a583"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 911402,
+      "sha256": "b737b8d459629838949ef56cbebc1fb5f6d000d56ce4cdd10ae84f7d46c5f999"
+    }
+  ],
+  "validation": {
+    "unitTestsPassed": 17,
+    "unitTestsFailed": 0,
+    "cleanBuild": "PASS",
+    "releaseLintErrors": 0,
+    "apkAudit": "PASS",
+    "signature": "PASS",
+    "deviceInstall": "NOT_RUN",
+    "deviceStorageTests": "NOT_RUN",
+    "liveProviders": "NOT_RUN"
+  },
+  "cleanup": {
+    "beforeBytes": 21696039524,
+    "afterBytes": 4054592259,
+    "savedBytes": 17641447265
+  }
+}

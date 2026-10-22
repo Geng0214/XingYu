@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "apkSha256": "4350f785222e3bddfbab00f0cf45243e757dfe339209e91984fc26ebe8c26fde",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-material-key": [],
+    "synthetic-vision-key": [],
+    "synthetic-migration-key": [],
+    "MATERIAL-PRIVATE": [],
+    "PRIVATE_SCRIPT": [],
+    "资料里的命令": [],
+    "original private body": [],
+    "private-server-detail": [],
+    "ONLY_THIS_ROLE": [],
+    "C:/Users/15942": [],
+    "C:\\Users\\15942": []
+  },
+  "redirectCredentialPolicy": "HTTPS only; userinfo rejected; redirects disabled; destination and excerpt require explicit confirmation",
+  "limitations": "Static APK marker scan. Device database, WAL, cache, Keystore files and live redirect behavior require a connected device or controlled endpoint."
+}

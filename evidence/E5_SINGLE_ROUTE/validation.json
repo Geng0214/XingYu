@@ -1,0 +1,71 @@
+{
+  "status": "SINGLE_VOICE_ROUTES_INTEGRATED_NATIVE_PENDING",
+  "sourceCommit": "a7966b82ace175e310fb3500968e8d9fb1f6f02b",
+  "tests": {
+    "tests": 334,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newTests": 7,
+  "controlledCancellationRaceRounds": 20,
+  "lint": {
+    "Error": 0,
+    "Warning": 60,
+    "Hint": 1
+  },
+  "compilationWarning": "MutableStateFlow test proxy requires coroutines inheritance opt-in",
+  "androidTestCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "connectedDevices": [],
+  "outputOnlySpeech": "NO_INPUT_ENUMERATION_OR_RECORDING_PERMISSION",
+  "audioBindings": "MANDATORY",
+  "review": {
+    "originalFinding": "PCM publication/cancellation race",
+    "verdict": "RESOLVED",
+    "disposition": "SHIP_FOR_LISTED_FINDING_ONLY",
+    "nativeVisual": "NOT_RUN"
+  },
+  "databaseSchema": 28,
+  "backupSchema": 23,
+  "newPermissions": [],
+  "newApk": "NOT_PRODUCED",
+  "latestApkVersion": "0.32.0",
+  "latestApkSha256": "aa92b7ba7b0842ff19f33e5e0e2d90cffde60532dfbe9e555dd20f65c3a9d499",
+  "command": "./gradlew.bat :app:testDebugUnitTest :app:compileDebugAndroidTestKotlin :app:lintRelease --console=plain",
+  "validationBuild": "SUCCESSFUL; 1m 1s; 75 tasks, 25 executed, 50 up-to-date",
+  "remaining": [
+    "API 26-27 media actual track routing",
+    "WebView actual route observation gap",
+    "04d native/device/provider validation and signed release",
+    "Full plan remaining stages"
+  ],
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidCommunicationRoutes.kt": "b1a9d055923414bba10faf351d6641723624063e59f1cb8ca9072568e4be6c1b",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidLegacyCommunicationRoutes.kt": "3b1f993baac2b727036503030d43351af990a1af0b80df1c7585b9640962cc6c",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidPcmPlayer.kt": "f42e67f48e806827865c26a2ad36a94917708bdcaa03fef8aff78ab88c522b52",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/AndroidVoiceRecorder.kt": "73cc393219741a5b8ca815508ff381d6a9db3ce7e62d06987d11970a33489653",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/CommunicationRoutes.kt": "36f3c033859cd3c78f8243a64b13c8afca1f26169f027e039f85220796a4f719",
+    "app/src/main/java/com/ai/assistance/operit/api/audio/ObservedAudioRoute.kt": "fa4a64870c8ae0f396f0de6965cbebdb8ebc7b03d31180c0193e7137df053a75",
+    "app/src/main/java/com/ai/assistance/operit/data/security/PrivacyGate.kt": "675e47f2071d2a6b2873f988502af0690acff25f4a55339d4528b598293de466",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/CompanionViewModel.kt": "a753a4239c5dda812bf35bed2e9039a63fae6e693b794a5f142c31ecd0083e85",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/MessengerPage.kt": "ebf2fb1063997429379e0c7df4c2d0ed15f2aec8236bbc1961e3cb887462383c",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/SpeechPages.kt": "6bea6daf518aa0f1f60aabaf5d3abeb26f1b4a2a8e3b26319055d3fb84de7f4b",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/VoiceAudioPicker.kt": "7f6cb062f697bc03958b16636f42ba884d1341a1864e8c07efca21dd3b38b79b",
+    "app/src/main/java/com/ai/assistance/operit/ui/main/VoiceCaptureDelivery.kt": "525e3754bdb5972135ca85e2af021ecb372b89d6f6aab8f51b843777e412bbf2",
+    "app/src/test/java/com/ai/assistance/operit/CommunicationRoutesTest.kt": "383946a20cb5c71a5d7499ecc6bbafe527502c8be432ce70477be76339cc7cce",
+    "app/src/test/java/com/ai/assistance/operit/ForegroundPublicationTest.kt": "5d5b95d62c8e26e5b422a75ee499ff6288732e44fd1d9753e95e4f411e06ac4a",
+    "app/src/test/java/com/ai/assistance/operit/VoiceCaptureDeliveryTest.kt": "a43c06012f744baf78cf29f1a94638c4a3f611f9a2d59e0c1b1bf5a8091e45c7",
+    "docs/TODO/voice-and-shared-activities/04-audio-routing.md": "5662ef1d1bdc6b7cd44f845cd066c96faa3e775233fa68bb1d9035b60c0bd664",
+    "docs/TODO/voice-and-shared-activities/index.md": "65a95ce53985a7e97d3bcb4ed493be6281358f352197c6b8c4878be419e2fad2",
+    "docs/project/STATUS.md": "77976e15193e526f65218c1113f48480c941884419b1208fb171b399039edbf4",
+    "docs/project/companion-full-plan.md": "417852aaeb1ff08cfb26cca8412f9b6624291fd138fad53a65d27350d68bc808",
+    "docs/project/continuous-voice-conversation.md": "e5b97153905de3714d11a966e041374f76c36ef667b05ea71ea107c6cbd346e5",
+    "docs/project/voice-transcription-and-speech.md": "293828ff87f3027a771cba9db295b9c24be4ece785779d20d15d61898bcda927"
+  },
+  "evidenceSha256": {
+    "evidence/E5_SINGLE_ROUTE/build-validation.log": "42aba9ef1b83336e12aec156acac699a489959fb2fdab9c39690b89ec0d7fec6",
+    "evidence/E5_SINGLE_ROUTE/design-review.md": "3607c2a5a476b98b676e4613e3f4462904b8d0a453bc08822be5af51f8c091d4",
+    "evidence/E5_SINGLE_ROUTE/validation.md": "ec50fe72010a12cf0aa2108492853c64dcd6e78dfc2acd2fb615ef0454051358"
+  }
+}

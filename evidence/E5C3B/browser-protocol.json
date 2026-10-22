@@ -1,0 +1,18 @@
+{
+  "status": "PASS_WITH_LIMITATIONS",
+  "environment": "Codex desktop in-app Chromium browser; not Android WebView",
+  "publicFixture": "BV1B7411m7LV",
+  "officialDocumentation": "https://player.bilibili.com/",
+  "observedSamples": [
+    {"phase": "initial-paused", "positionSeconds": 0, "durationSeconds": 590, "paused": true},
+    {"phase": "playing", "positionSeconds": 38.548159, "durationSeconds": 590, "paused": false},
+    {"phase": "resume-url-t-30", "positionSeconds": 30, "durationSeconds": 590, "readyState": 4},
+    {"phase": "playing-after-resume", "positionSeconds": 85.086664, "durationSeconds": 590, "paused": false},
+    {"phase": "pause-control", "positionSeconds": 96.053661, "durationSeconds": 590, "paused": true}
+  ],
+  "productionSampleExpressionChecked": true,
+  "transientLoadMessage": "The page briefly displayed an unavailable-media message before the video became ready. No error or ready state was inferred from a single early snapshot.",
+  "observedResourceDomains": ["player.bilibili.com", "api.bilibili.com", "data.bilibili.com", "s1.hdslb.com", "i0.hdslb.com", "i1.hdslb.com", "i2.hdslb.com", "upos-sz-estghw.bilivideo.com", "upos-sz-estgoss.bilivideo.com", "bvc.bilivideo.com"],
+  "excludedFromEvidence": "No cookies, request signatures, user identifiers, IP addresses or media URL tokens were exported.",
+  "limitations": ["Android WebView playback not run", "Production WebView cache/cookie settings not applied to this desktop browser test", "Encrypted device storage and browser residual-data scan not run", "Fullscreen, focus, lifecycle and upgrade not run on device"]
+}

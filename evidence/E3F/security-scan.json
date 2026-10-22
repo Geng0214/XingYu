@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "apkSha256": "c8f97325fd55cd99f211862b25ec2c5d68c95126210eed07806516f7f113ab6d",
+  "syntheticKeyBodyAndPathMarkers": {
+    "synthetic-export-key": [],
+    "MESSAGE-EXPORT-PRIVATE": [],
+    "# 私密回复": [],
+    "PRIVATE-REPLY-EXPORT": [],
+    "synthetic-reading-key": [],
+    "READING-PRIVATE": [],
+    "PRIVATE-WHOLE-BOOK-TAIL": [],
+    "synthetic-image-key": [],
+    "IMAGE-GENERATION-PRIVATE": [],
+    "synthetic-sticker-key": [],
+    "STICKER-PRIVATE": [],
+    "synthetic-material-key": [],
+    "synthetic-vision-key": [],
+    "synthetic-migration-key": [],
+    "MATERIAL-PRIVATE": [],
+    "A-PRIVATE-MASK": [],
+    "PRIVATE_SCRIPT": [],
+    "资料里的命令": [],
+    "original private body": [],
+    "private-server-detail": [],
+    "ONLY_THIS_ROLE": [],
+    "C:/Users/15942": [],
+    "C:\\\\Users\\\\15942": []
+  },
+  "messageExportPolicy": "Only a selected non-empty COMPLETE assistant reply in the active role/space/chat can be frozen. The approved immutable UTF-8 bytes are written directly to the user-selected system URI, then reopened and compared byte-for-byte; no public-directory or cache copy is created.",
+  "limitations": "Static APK marker scan. Device database, WAL, cache, Keystore files, Storage Access Framework behavior, SQLCipher upgrade and live provider requests require a connected device or controlled endpoint."
+}

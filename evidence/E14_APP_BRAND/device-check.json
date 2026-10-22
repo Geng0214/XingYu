@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-03",
+  "installedPackages": [
+    "package:cn.localfirst.companion"
+  ],
+  "displayName": "星语",
+  "settingsTagline": "和更懂你的 AI 聊天",
+  "visibleChatRoleAndLatestMessage": "你好",
+  "visibleHomeName": "我们的家园",
+  "visibleCoins": 120,
+  "visibleEnergy": 7,
+  "fullDatabaseComparison": false,
+  "apkSha256": "4b02ee0e5c9bc1c46b8c3e6c894f6ed6ad908704c2f29a7fad60a588ff18a3ae",
+  "apkBytes": 17142744,
+  "releaseBuild": "SUCCESSFUL in 3m 15s",
+  "signatureV2": true,
+  "zipalign16KB": true,
+  "currentPid": 4012,
+  "androidRuntimeErrors": [],
+  "unitTestsRun": false,
+  "instrumentationTestsRun": false
+}

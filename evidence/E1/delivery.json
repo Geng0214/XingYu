@@ -1,0 +1,60 @@
+{
+  "generatedAt": "2026-09-19T21:28:24.693587+00:00",
+  "applicationId": "cn.localfirst.companion",
+  "version": "0.5.0",
+  "versionCode": 5,
+  "sourceCommit": "65dfb0de9e3310ac6d9258c23935529af60169de",
+  "certificateSha256": "ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa",
+  "roomMigration": "1 -> 2 -> 3 -> 4 -> 5 -> 6",
+  "upgradeFrom": [
+    "0.1.0",
+    "0.2.0",
+    "0.3.0",
+    "0.4.0"
+  ],
+  "files": [
+    {
+      "name": "local-companion-0.5.0.apk",
+      "bytes": 9014854,
+      "sha256": "02e3de173cc64987c0ae82cadb3668f6efa623c4033e5c37ece17302718ea328"
+    },
+    {
+      "name": "local-companion-source.zip",
+      "bytes": 1649123,
+      "sha256": "45dd2137772860acb71efce8487d13818dfcf45e73d20c477b9d46efb96b82fb"
+    },
+    {
+      "name": "安装说明.md",
+      "bytes": 3538,
+      "sha256": "e062939db55c3d4c0a452602baa9ac743ef7ab413dd7a7d489680dab498ab1c6"
+    }
+  ],
+  "validation": {
+    "unitTests": {
+      "tests": 76,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "hostExtensionAndToolPkgSql": "PASS",
+    "hostQuickJsModelRoundTrip": "PASS",
+    "cleanBuild": "PASS",
+    "finalValidation": "PASS",
+    "apkAudit": "PASS",
+    "signatureContinuity": "PASS",
+    "androidTestCompilation": "PASS",
+    "deviceUpgrade": "NOT_RUN",
+    "deviceStorage": "NOT_RUN",
+    "androidQuickJsRuntime": "NOT_RUN",
+    "visualQA": "NOT_RUN",
+    "liveProviders": "NOT_RUN",
+    "liveMcp": "NOT_RUN",
+    "crossDeviceTemplate": "NOT_RUN",
+    "threePersonObservation": "NOT_RUN"
+  },
+  "compatibility": {
+    "mcp": "Streamable HTTP over HTTPS",
+    "toolPkg": "schema 1 / API 1.0.0 / tools-v1 pure computation; no device/network/filesystem/UI Hook host APIs"
+  },
+  "status": "E1 supported subset development complete; device and human acceptance pending; M1/M2/E1 not fully accepted"
+}

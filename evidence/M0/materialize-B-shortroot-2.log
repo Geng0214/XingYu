@@ -1,0 +1,13 @@
+=== 1/5 主仓库 31646978aa03520f36916a9efd1d3f508b5ca3e0 ===
+=== 2/5 terminal 子模块 045868988e4091d613cb34b2941057703899b96e ===
+=== 3/5 应用源码补丁 ===
+=== 4/5 外部归档（校验 SHA-256，缺失才下载） ===
+ok libs.zip 1625489c81bb6e3ec6d29d41c39a53cb985e997be474425be01f909a6df887f8
+ok subpack.zip 2953448c93b0e4e51a6434b96b0145af271efdf07bf99a54b24925727c8545ae
+ok jniLibs.zip 2e8a4efd78b4b9daf3274ee17ba38eb5f42fb57bf43381b63c55aaa1d3148b53
+Prepared Android full dependencies from C:\Users\15942\Desktop\Work\manual-deps-cache.
+=== 5/5 解包产物再校验 ===
+ok app/libs/ffmpeg-kit-local.aar b292b0425d3445244832894d3370c46c5b1f80f0b27eb17edb5810b6bc00fffc
+ok app/src/main/jniLibs/arm64-v8a/liboperit_ripgrep.so 71b6e8af8b2c833c85b5119ba0bd0bad05495ce0b9bed68d6e3530cb42a4dad5
+=== 物化完成：C:/M0/B ===
+下一步：REPO='C:/M0/B' WORK_ROOT='C:/Users/15942/Desktop/Work' bash ci/script/build_m0_local.sh

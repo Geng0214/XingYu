@@ -1,0 +1,41 @@
+{
+  "sourceRevision": "3edb3f162fc8e976b818ff611188fbc252d4905d",
+  "createdAt": "2026-09-20T14:28:29.030019+00:00",
+  "unitTests": {
+    "tests": 253,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "newSuite": {
+    "com.ai.assistance.operit.BackupTest": {
+      "tests": "29",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    "com.ai.assistance.operit.LocalMusicTest": {
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  },
+  "migration": {
+    "status": "PASS",
+    "sourceSha256": "8e5ade54feb16f75678ae603fee1b4721025a77abc578eda7d07f87977722aea",
+    "daoSourceSha256": "2e2bb84e60f7d93e23501df094157bf89cddad7ebe84bd8dd207c8695b335171",
+    "schemaMatchesRoomV25": true,
+    "legacyRowsPreserved": true,
+    "interruptedDdlRollback": true,
+    "alternatingScopedReads": 50,
+    "crossOwnerRows": 0,
+    "chatAndRoleCascade": true,
+    "referencedTrackDeleteRejected": true,
+    "limitation": "Host SQLite DDL and actual DAO read SQL only. Android Room repository, SQLCipher, Keystore and UI remain NOT_RUN."
+  },
+  "limitations": [
+    "Android SQLCipher repository tests compiled, not run",
+    "MediaPlayer decoding, audio focus, SAF permission lifetime, migration on device, cross-device relink and visual QA NOT_RUN"
+  ]
+}

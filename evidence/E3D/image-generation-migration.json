@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "sourceSha256": "3f2d87f8418232e53a7bc61e8e94f2f20c7aaed0b90c699038039bea8545cd13",
+  "schemaMatchesRoomV14": true,
+  "allLegacyTablesAndRowsPreserved": true,
+  "newImageGenerationConfigs": 0,
+  "newGeneratedImages": 0,
+  "invalidPreMigrationAssociationsRejected": 3,
+  "interruptedDdlRollback": true,
+  "limitation": "Actual migration SQL on host SQLite. Room/SQLCipher/Keystore device migration remains NOT_RUN."
+}

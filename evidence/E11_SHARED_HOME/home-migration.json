@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "schemaMatchesRoom34": true,
+  "sharedWorldWithoutRoleOwner": true,
+  "duplicateVersionRejected": true,
+  "staleWriteRejected": true,
+  "worldSurvivesRoleDeletion": true,
+  "migrationSha256": "568aca11430af2211dfb510ffc23c5e5f89a840674db6fbd491d6f32b2aa7978",
+  "daoSha256": "ef18ebeeaed4774163c1364381349a345c437b1375d2663821ee97c9d19eeb60",
+  "environment": "host SQLite; not Android/SQLCipher or concurrent Room execution"
+}

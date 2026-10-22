@@ -1,0 +1,67 @@
+{
+  "sourceCommit": "b07388f708e83e718c4c8c50f763840753c3bc60",
+  "status": "RULE_CORE_TESTED_NOT_INTEGRATED",
+  "unitTests": {
+    "tests": 502,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "unitSuites": 69,
+  "adventureTests": 19,
+  "testTimestamp": "2026-09-21T02:08:34.018Z",
+  "buildDuration": "1m 54s",
+  "sourceSha256": {
+    "app/src/main/java/com/ai/assistance/operit/data/model/AdventureWorld.kt": "6a1d6816c67b9e89241bce455d00f34dfcaeac6c273257575b23013e20cc23c4",
+    "app/src/main/java/com/ai/assistance/operit/data/model/AdventureProgress.kt": "9faae1d4d0f908c9648309b5ae2c5e05e56a083524acad20373040fd7e70aedc",
+    "app/src/main/java/com/ai/assistance/operit/data/model/AdventureGame.kt": "f7a003813b243b7c048b8d37e2feb01d8f436627549ddae1b4566d4d72d4aa3e",
+    "app/src/main/java/com/ai/assistance/operit/api/chat/AdventureDialogue.kt": "2e9d8c73dfe7b889c72591d727c6aac29abc99038454726c379938ec35feddf6",
+    "app/src/test/java/com/ai/assistance/operit/AdventureGameTest.kt": "ac349cbb9ccf2dda8f80d87f59d5263166c96b5ff36047e015dd28dffba276f9"
+  },
+  "world": {
+    "id": "harbor-light-v1",
+    "areas": 3,
+    "width": 13,
+    "height": 11,
+    "objects": 16,
+    "mainQuest": "PASS",
+    "optionalScarfBeforeOrAfterMainQuest": "PASS",
+    "repeatRewardRejection": "PASS",
+    "closedBridgeAndGate": "PASS",
+    "frozenCollections": "PASS",
+    "strictReplay": "PASS",
+    "unknownMapProjection": "PASS",
+    "roleDialogueProtocol": "PASS",
+    "actionAndRecordCapacityReservation": "PASS"
+  },
+  "isolation": {
+    "coreStateAlternations": 50,
+    "uniqueMarkersPerRole": 10,
+    "productionCoordinator": "NOT_INTEGRATED",
+    "database": "NOT_INTEGRATED",
+    "backup": "NOT_INTEGRATED"
+  },
+  "delivery": {
+    "version": "0.37.0",
+    "versionCode": 38,
+    "apkUnchanged": true,
+    "bytes": 9947431,
+    "sha256": "1b4017f051b926e964bd53c4b28c69007564ab92eed91fd382e8a78a3cecdccc",
+    "roomSchema": 29,
+    "backupVersion": 27
+  },
+  "device": {
+    "pixelUi": "NOT_IMPLEMENTED",
+    "screenshots": "NOT_RUN",
+    "touchAndTalkBack": "NOT_RUN",
+    "sqlcipher": "NOT_INTEGRATED",
+    "liveProviders": "NOT_RUN"
+  },
+  "next": [
+    "PlayState and owned model coordination",
+    "activity storage and backup",
+    "native pixel surface and assets",
+    "signed release and required acceptance",
+    "remaining E6 and E7-E8"
+  ]
+}

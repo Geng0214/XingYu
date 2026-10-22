@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "counts": {
+    "tests": 139,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "androidCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "deviceList": "empty",
+  "schema": 10,
+  "schemaChange": "NONE",
+  "scope": "JVM onboarding milestones, diagnostic allowlist and recovery routing plus the complete prior suite; Compose and Android tests compiled; device execution not run"
+}

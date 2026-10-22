@@ -1,0 +1,448 @@
+{
+  "generatedAt": "2026-09-21T04:56:16.411576+00:00",
+  "sourceCommit": "5da65ec02d3c2a1976f59d065896bcb7f043778c",
+  "version": "0.39.0",
+  "jvm": {
+    "tests": 563,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 75
+  },
+  "junitResults": [
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.AdventureGameTest.xml",
+      "bytes": 3394,
+      "sha256": "05b5c4325d94f906a8a01904fdb6b9ddf42d97e4302291b25dc4f78cd9b163c4"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.AdventureIntegrationTest.xml",
+      "bytes": 1142,
+      "sha256": "1537f0cfadc65882b6aa329a92719c30214fa0ad9773883a1aa2988198c09221"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.BackupTest.xml",
+      "bytes": 7866,
+      "sha256": "3db8e964322432c1b7629d95d2bb7973c404a33721125b43384c6ee378dc38bb"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.BilibiliAudioProtocolTest.xml",
+      "bytes": 1890,
+      "sha256": "eada5e6ea9314030f7d760ab45c8019d33618b501ce2608ef6d1f7b392df3ef8"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.BilibiliWatchingTest.xml",
+      "bytes": 1593,
+      "sha256": "dbae17bb8ff3d56bf2caab75e5f74ac3b217991b43f2bd3d39ebee45ded4f894"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ChatBubblesTest.xml",
+      "bytes": 1014,
+      "sha256": "c76eca3aa1f9efd80119327bdfe7b64b3a43c17e78fb3eeaea79687fa259fbdc"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ChatCoordinatorTest.xml",
+      "bytes": 2089,
+      "sha256": "72372f97ffd2a7e13a0c33c3761b76d3452e917d8b93f130904735d59de10ff4"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.CommunicationPcmTest.xml",
+      "bytes": 1224,
+      "sha256": "16df9c2330ff12a6081188cb13e6a6fd9c7f82b199cb105c8613edd0dafac4b4"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.CommunicationRoutesTest.xml",
+      "bytes": 2602,
+      "sha256": "cb71b031163e0015aa26b9cbb7de49bbe281f906ff018e6757f8a1c449365e10"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.DecodedMediaPcmTest.xml",
+      "bytes": 1925,
+      "sha256": "cd0a49a644f1b74b656c90bf5e74d061561ea75f003ad670d71d1fe5f42c32d9"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.DiaryTest.xml",
+      "bytes": 1089,
+      "sha256": "b3fbd8537f96c11ffb4314f9a3d18c22f2d3fb7b273030bc7b8af6c3ceb36b47"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.EnvironmentTest.xml",
+      "bytes": 3377,
+      "sha256": "2334c255953913e9c07057b02a1d1e6abca977ef3f682d68fbe59c8f675686e9"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ForegroundPublicationTest.xml",
+      "bytes": 663,
+      "sha256": "6ba9efbd6b8e71a3cb1cada753278ab70d6aec7e1ebb4bb3489aacb45f48476f"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.FourColorGameTest.xml",
+      "bytes": 1654,
+      "sha256": "73ddea44c53ac1f7d2896f82aca078db044d550eec83f90a281eb2c0437121fb"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.GroupRequestContextTest.xml",
+      "bytes": 2301,
+      "sha256": "f6ffcf5a80cb8ea98ae5c944c6c98e20a8403233d9ce0191133edc617617e11c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.HomeAdventureRewardTest.xml",
+      "bytes": 1126,
+      "sha256": "75c3384d0c5886fc7054636f69a232ff304f06578d56a25ef7671a59f391796d"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.HomeStateTest.xml",
+      "bytes": 2833,
+      "sha256": "dbb8c63e5b09d0f8139a51688cfb55f14cb7897b645991b1c7d38cb4adb521ef"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.HomeStorageTest.xml",
+      "bytes": 1456,
+      "sha256": "c9b4bb5a4a0173aedf7955998a6ceecf8913c5150a52dd0aedb2c54c564f843c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.HomeUiTest.xml",
+      "bytes": 1665,
+      "sha256": "3c8e8c250296935d88c91637d2a486f4089dc642756eb867fa853099b7799ff1"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ImageGenerationTest.xml",
+      "bytes": 3062,
+      "sha256": "a156a3882b3cdea3d3ffee8a3d9c0766959667b56798ab5d14efa1a493e19c0d"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.JourneyTest.xml",
+      "bytes": 1721,
+      "sha256": "bfe4aea3c6b43ebd6511c57db0478b4f0d9bb39f192e1a9f0300fc624de8a506"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.LegacyScoHandshakeTest.xml",
+      "bytes": 1129,
+      "sha256": "87bd243e7efcd6d47659a1633747189c786b77c2778a3b43a293aa4a9ef61fd2"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.LocalMusicTest.xml",
+      "bytes": 1738,
+      "sha256": "afe1559be98700247645d7bb2eb0d97fac429f4a5c264a06caca0d3a4f8fd867"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.MaterialContextTest.xml",
+      "bytes": 791,
+      "sha256": "de342f277297dbfe6b3352255dcfab0570b31630126a5ea2a28c3e606a87e90b"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.McpSessionTest.xml",
+      "bytes": 6955,
+      "sha256": "ad1a2b29d248c67a7c15546287c0335e8a42c9d252d37ab161560a3e07b8b749"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.MediaAudioHealthTest.xml",
+      "bytes": 980,
+      "sha256": "bb73b83d01a9a9f117bce1225d87422000c0bf7df040a507595aac289400ca67"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.MediaAudioPolicyTest.xml",
+      "bytes": 1264,
+      "sha256": "6c7e39b90d4ed9fdea29601a82b99e0d003b8bd6a129e75374ae09131646a89d"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.MemoryExtractionTest.xml",
+      "bytes": 1097,
+      "sha256": "886c00575cfb08058713f092535dc1e7e20b0a23c3fb5c728c7728d5d13601a2"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.MemoryTest.xml",
+      "bytes": 1353,
+      "sha256": "c0827e0345fdb4d91d3622f898ccf4944dc76a5cbe623ba803cc0b4c469cb005"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.MessageExportTest.xml",
+      "bytes": 1029,
+      "sha256": "68161db6f4d33059240de563de1a748c7f31025d1ab2304211f466c086a5e853"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ModelGenerationGateTest.xml",
+      "bytes": 482,
+      "sha256": "53a7c76b23680b7251b12944e1defe6bfdc778fb848fe59acffba292ce214535"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ObservedAudioRouteTest.xml",
+      "bytes": 938,
+      "sha256": "f85e6e3424865d58f7c203317f17a349d04048b6bef3ab8c4eab05eb370c8a69"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.OwnedChatRequestTest.xml",
+      "bytes": 1436,
+      "sha256": "de4fca8b3f6ac82559878a11df79720fc1fc619453f683bef49d1a53b6634a17"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PcmPlaybackTest.xml",
+      "bytes": 908,
+      "sha256": "78f29e7d7ae3383f85085299e41f84f6ee1089ef5693a75669831eb202b39884"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PcmTransferTest.xml",
+      "bytes": 1048,
+      "sha256": "60c6b064536f97f0edaa895d6f976ffdd21aaeaac7a45d2c8936c0f8bc6466dc"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PlannerTest.xml",
+      "bytes": 1051,
+      "sha256": "9d8d86ff0f88259a552cb4919451232baa278ce3c41c88e24bd65bba191cbc00"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PlayCoordinatorTest.xml",
+      "bytes": 2528,
+      "sha256": "0098d6f49f880b5f1affb1b77bb168a3be7065acf81647c06816a1eeb36a33c9"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PlayGenerationTest.xml",
+      "bytes": 2138,
+      "sha256": "408a608b97364e54a8d0e76a225d3c812d09c0ef57232b02d7c7c71e5b2f3a8a"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PlayOutfitsTest.xml",
+      "bytes": 1425,
+      "sha256": "b5ac2e936f90a15fe451d036c37b955abe5e4fe84356424e26242bc0a2fc151e"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PlayRulesTest.xml",
+      "bytes": 1761,
+      "sha256": "66a6f877ae5f7505531fce50fbc46aa0209fcfe1d8433bcba757fa191b79c0a0"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PlayStorageTest.xml",
+      "bytes": 951,
+      "sha256": "0cb10d6aba0c8756961d6e90e9550ba2aaa88cb27a673fced05b6171171d27b5"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.PrivacyGateTest.xml",
+      "bytes": 1589,
+      "sha256": "493cdd6d1e61ae828a77c2b9b6fdd749c70d3f9ec9b679d019d081c4cdf4c2ed"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ProactiveMessagesTest.xml",
+      "bytes": 1036,
+      "sha256": "76e2cf7b14d524ddde6380b18b20ec368e066fc465804994489745b19a3f3b7c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ProviderTest.xml",
+      "bytes": 4498,
+      "sha256": "331f4c04eda74b2bb6d0e8e5c210bb2a8f72bc464163080611d963c1cef96a01"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.QuickJsScriptTest.xml",
+      "bytes": 1478,
+      "sha256": "61c7cc44d5c36a0bd92f728493e8ea9ebba72388ef1b712720da60820f9e37d1"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ReadingContextTest.xml",
+      "bytes": 623,
+      "sha256": "7ec19b51925f4109628dbaf8ec86551eac3bde297be8f5d2996de5ba7df0245c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ReadingDocumentReaderTest.xml",
+      "bytes": 1101,
+      "sha256": "ad9d5fe1debd561c0561d648f4db6094b4f681be804a2a31cc84280f091c08a4"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.RelationshipTest.xml",
+      "bytes": 1259,
+      "sha256": "8ae7bccb9684d53496ec267fbbd525e03c0f18645493efa1ae6f8831ef589f43"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.RequestContextTest.xml",
+      "bytes": 492,
+      "sha256": "f1fd72eaa3b8faf8536ea9f97ff88826c6a4fd7e1a188ff8845fdf8d693cb267"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.RoleTemplateTest.xml",
+      "bytes": 1004,
+      "sha256": "4ac4335e9eef2785d42dfb83bb3574daf7d6609074735b89eec961e99a130b56"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.SharedActivitiesTest.xml",
+      "bytes": 1206,
+      "sha256": "9d978542a1a0c4df404351517e84019aaf309f8fc88f71a68b744c1acfc81fc1"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.SpeechServiceTest.xml",
+      "bytes": 1169,
+      "sha256": "110765123e96dc1f883f08c3dd60424143a906fd9ddf414efcd24b4f97dfe85a"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.StickerContextTest.xml",
+      "bytes": 755,
+      "sha256": "414ea53187bb4c198e4adb5fbb3f58ef83e38090d2684075c09d7156cb8f5714"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.SupportDiagnosticsTest.xml",
+      "bytes": 618,
+      "sha256": "441375d0d34e24d65dad4f59fa1f9cbd84f96fa0a58d8303af090a2e4f97eac6"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.TableGameResponsesTest.xml",
+      "bytes": 785,
+      "sha256": "47e5bb6433eca03218aef817b592ab8399bb717dd437413411d349db2266f2c7"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.TablePlayIntegrationTest.xml",
+      "bytes": 1169,
+      "sha256": "2182612b7a69dcf94ad19a343180f13591adc53f6b8c00cf10705bae6e1e9cd7"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.TextMaterialReaderTest.xml",
+      "bytes": 943,
+      "sha256": "75fd7ae60c565be0a2192f2af2ae9e331f3984d0526db3e7caea8e78ecb5d004"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.TokenAccountingTest.xml",
+      "bytes": 787,
+      "sha256": "18813dc6c010ef81c9cac23feb04f5a972245ece91106937d93cb854a645fe49"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ToolChatServiceTest.xml",
+      "bytes": 2231,
+      "sha256": "a8b4bbfaeb8dd7db64802d17becc98efa77ae95d4a76368cf10c0565cbee9bbc"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ToolDispatcherTest.xml",
+      "bytes": 1798,
+      "sha256": "e9a3743fc6a91de8cb589ac479b2b4b5ba8c52f5418261564819f35ec537810a"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.ToolPkgCodecTest.xml",
+      "bytes": 1589,
+      "sha256": "8f8d6a4a23e18c2a11443780e4cb473edaeed3eb07ec7c2d5506f249f55af835"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.UserPersonaTest.xml",
+      "bytes": 944,
+      "sha256": "64c09a69b3144380303f9e08daf95ca7f41eec7f31a3f6294f2cebb12003b688"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.VerifiedMediaReaderTest.xml",
+      "bytes": 796,
+      "sha256": "57b3a825eb07d4e9e9979905f7c1b9724bfa66dbfa38644675c395ac1031c9fa"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.VideoFramePacingTest.xml",
+      "bytes": 3039,
+      "sha256": "2e1b91ededcf6dd5bd929fa6f9582a97924c5ae90bf5da0acf166477f682198e"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.VisionMessageTest.xml",
+      "bytes": 762,
+      "sha256": "88f58b6f5c93d14d41f7ecea60f7eb54c8cfc028874c0f9c4002ee286983eb98"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.VoiceCaptureDeliveryTest.xml",
+      "bytes": 799,
+      "sha256": "60167608131b456d6888cc60b40bbd32d664d09a9551bdae2b48f7c9c4cdf25c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.VoiceConversationTest.xml",
+      "bytes": 1060,
+      "sha256": "2f06dff9d7989ad67c9ca9591f04e2d29688f4ee5e88284bd65af3ee42640f9c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.WordGuessGameTest.xml",
+      "bytes": 1230,
+      "sha256": "019a38ba1490080d47ef20d77fb930622191dfde97e10be288e06ae8fda5e02c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.WorldbookTest.xml",
+      "bytes": 1544,
+      "sha256": "6af4796fdda2ba6cbc66c3c2270e3e374fb666a1c3f5d1fd24b43405d10998d2"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.XiangqiBoardTest.xml",
+      "bytes": 1027,
+      "sha256": "71ce9e2ea3e346c84e65b8cb052a6e25b5054abb6a50b0bfe8e034fac37ac797"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.XiangqiGameTest.xml",
+      "bytes": 1170,
+      "sha256": "1a616a34992c7ba220c28dca34b6127131f61f449f6424fbf9d84e8a6d523a7c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.XiangqiLineTest.xml",
+      "bytes": 1028,
+      "sha256": "8ccfc26310042775a1db98115930aa5b224cc735e3f45441b3f2a4adfb35bd53"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.XiangqiPlayIntegrationTest.xml",
+      "bytes": 1159,
+      "sha256": "3b15cbbbe5d79ff95dda8fab9869ea406811ee5aaf77a8513f6e01367511474c"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.XiangqiThreatsTest.xml",
+      "bytes": 1166,
+      "sha256": "5c35170a14a4d514538925ea0941d22cd4c2bdbba59a0911c8611001ec3ff52f"
+    },
+    {
+      "path": "build/app/test-results/testDebugUnitTest/TEST-com.ai.assistance.operit.XiangqiWxfExamplesTest.xml",
+      "bytes": 1115,
+      "sha256": "b0c081a8b42b866645fa381ad715a7e248a9646c680af70a099e24dc468fb0c1"
+    }
+  ],
+  "lint": {
+    "Hint": 1,
+    "Warning": 62
+  },
+  "cleanBuild": "PASS",
+  "buildLog": {
+    "path": "evidence/E7_HOME/build-final-clean.log",
+    "bytes": 10041,
+    "sha256": "feb5bed34f0f7c69d3449465a0a6a89f036fd973cc0cf4cf21510e79e75aca06"
+  },
+  "androidTestCompilation": "PASS",
+  "androidExecution": "NOT_RUN",
+  "deviceCheck": "adb devices -l returned no connected devices",
+  "realProviders": "NOT_RUN",
+  "visualQA": "NOT_RUN",
+  "deliveryHashes": "PASS",
+  "finalValidation": "PENDING_DEVICE_ACCEPTANCE",
+  "evidence": [
+    {
+      "path": "evidence/E7_HOME/home-migration.json",
+      "bytes": 579,
+      "sha256": "ccf57bd3e804009467edb38712062184a72309e1502e803f9743924bd224c203"
+    },
+    {
+      "path": "evidence/E7_HOME/migration.json",
+      "bytes": 494,
+      "sha256": "15ef1ae3cb77852a19b700b47250111710d593efc453d891871db9c4063178ef"
+    },
+    {
+      "path": "evidence/E7_HOME/apk-audit.json",
+      "bytes": 1876,
+      "sha256": "f2511a5931bb964c279a8adbde0e48cfbbf30f9ffeb7b74c9ea27f76e5aa48a7"
+    },
+    {
+      "path": "evidence/E7_HOME/signature.txt",
+      "bytes": 1018,
+      "sha256": "802620d1adfe555467542d275c7333b9dab5e42a9e7cf5c52aa496fc3d2161bc"
+    },
+    {
+      "path": "evidence/E7_HOME/baseline-signature.txt",
+      "bytes": 1018,
+      "sha256": "802620d1adfe555467542d275c7333b9dab5e42a9e7cf5c52aa496fc3d2161bc"
+    },
+    {
+      "path": "evidence/E7_HOME/alignment.txt",
+      "bytes": 27,
+      "sha256": "f44c90a1c3e3f90b04091117321c7eb03d3e9ce7612d1345abafa6cf87508568"
+    },
+    {
+      "path": "evidence/E7_HOME/web-script-tests.xml",
+      "bytes": 2065,
+      "sha256": "95660e1c81cac04abbbd5eb26d1d9cbecdacb3fa06c5ae2ce52aabc0813b3015"
+    },
+    {
+      "path": "evidence/E7_HOME/cleanup.json",
+      "bytes": 1185,
+      "sha256": "4df1eed0dac8b81bbc852cb6531f4a05c616c00ef05b9374bdaaca0ea0fb1712"
+    }
+  ]
+}

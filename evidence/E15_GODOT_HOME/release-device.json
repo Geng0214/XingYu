@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "installedSha256": "d553fee0b827c93f2a27f7660fe2275134bbd1cccfdc7cf148ef5dbe5cb03011",
+  "deliverySha256": "d553fee0b827c93f2a27f7660fe2275134bbd1cccfdc7cf148ef5dbe5cb03011",
+  "oneInstalledApp": [
+    "package:cn.localfirst.companion"
+  ],
+  "restoredDeviceSettings": {
+    "size": "Physical size: 900x1600",
+    "density": "Physical density: 240",
+    "fontScale": "1.0",
+    "animatorScale": "0.5",
+    "autoRotation": "1",
+    "userRotation": "0",
+    "rotationMode": "free"
+  },
+  "visibleHome": {
+    "coins": 160,
+    "energy": 8,
+    "name": "我们的家园",
+    "resident": "你好"
+  },
+  "dataScope": "Visible original role/recent message and shared home retained; normal gameplay QA changed inventory and rewards. No full database or backup comparison.",
+  "signatureV2": true,
+  "zipalign16KB": true,
+  "signatureScope": "SDK apksigner and zipalign manually ran on this exact delivery APK."
+}

@@ -667,20 +667,10 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                     border=when {selected->BorderStroke(2.dp,MaterialTheme.colorScheme.primary);highlighted->BorderStroke(2.dp,MaterialTheme.colorScheme.primary);else->null},
                     color=if(user)palette.outgoing else palette.incoming,shape=themedMessageShape(user),shadowElevation=0.5.dp) {
                     Column(Modifier.padding(horizontal=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null&&bubble.voice==null)14.dp else 6.dp,vertical=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null&&bubble.voice==null)11.dp else 6.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
-                        bubble.message?.takeIf {it.quotedPreview.isNotBlank()}?.let {message->Surface(color=palette.ink.copy(alpha=0.08f),shape=RoundedCornerShape(8.dp)) {
-                            Text("${message.quotedSpeaker}：${message.quotedPreview.replace('\n',' ')}",Modifier.padding(horizontal=9.dp,vertical=6.dp),maxLines=2,overflow=TextOverflow.Ellipsis,fontSize=12.sp,fontWeight=FontWeight.Medium,color=palette.ink.copy(alpha=0.78f))
-                        } }
-                        bubble.attachment?.let {attachment->
-                            val bitmap=remember(attachment.sha256){BitmapFactory.decodeByteArray(attachment.data,0,attachment.data.size)}
-                            if(bitmap!=null)Image(bitmap.asImageBitmap(),"用户发送的图片",Modifier.width(260.dp).aspectRatio(attachment.width.toFloat()/attachment.height).clip(RoundedCornerShape(14.dp)),contentScale=ContentScale.Crop)
-                            else Text("图片无法显示",Modifier.padding(8.dp),color=MaterialTheme.colorScheme.error)
-                        }
+                        bubble.message?.takeIf {it.quotedPreview.isNotBlank()}?.let {message->QuotePreview(message,palette)}
+                        bubble.attachment?.let {attachment->ImageContent(attachment)}
                         bubble.material?.let {material->MessageMaterialCard(material,palette.ink)}
-                        bubble.sticker?.let {sticker->
-                            val bitmap=remember(sticker.sha256){BitmapFactory.decodeByteArray(sticker.data,0,sticker.data.size)}
-                            if(bitmap!=null)Image(bitmap.asImageBitmap(),sticker.displayName,Modifier.widthIn(max=190.dp).heightIn(max=190.dp).aspectRatio(sticker.width.toFloat()/sticker.height).clip(RoundedCornerShape(14.dp)),contentScale=ContentScale.Fit)
-                            else Text("表情素材无法显示",Modifier.padding(8.dp),color=MaterialTheme.colorScheme.error)
-                        }
+                        bubble.sticker?.let {sticker->StickerContent(sticker)}
                         bubble.voice?.let {voice->VoiceBubbleContent(voice,palette)}
                         if(bubble.text.isNotEmpty()&&bubble.voice==null)Box(Modifier.padding(horizontal=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)0.dp else 8.dp,vertical=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)0.dp else 4.dp)){BasicMarkdown(bubble.text,palette.ink)}
                     }
@@ -740,6 +730,24 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
         }
         if(user) { Spacer(Modifier.width(10.dp));if(role!=null)PortraitAvatar(role.selfName(),role.scope(),vm,36.dp,"self") } else Spacer(Modifier.width(46.dp))
     }
+}
+
+@Composable private fun QuotePreview(message:MessageEntity,palette:ChatPalette) {
+    Surface(color=palette.ink.copy(alpha=0.08f),shape=RoundedCornerShape(8.dp)) {
+        Text("${message.quotedSpeaker}：${message.quotedPreview.replace('\n',' ')}",Modifier.padding(horizontal=9.dp,vertical=6.dp),maxLines=2,overflow=TextOverflow.Ellipsis,fontSize=12.sp,fontWeight=FontWeight.Medium,color=palette.ink.copy(alpha=0.78f))
+    }
+}
+
+@Composable private fun ImageContent(attachment:MessageAttachment) {
+    val bitmap=remember(attachment.sha256){BitmapFactory.decodeByteArray(attachment.data,0,attachment.data.size)}
+    if(bitmap!=null)Image(bitmap.asImageBitmap(),"用户发送的图片",Modifier.width(260.dp).aspectRatio(attachment.width.toFloat()/attachment.height).clip(RoundedCornerShape(14.dp)),contentScale=ContentScale.Crop)
+    else Text("图片无法显示",Modifier.padding(8.dp),color=MaterialTheme.colorScheme.error)
+}
+
+@Composable private fun StickerContent(sticker:MessageSticker) {
+    val bitmap=remember(sticker.sha256){BitmapFactory.decodeByteArray(sticker.data,0,sticker.data.size)}
+    if(bitmap!=null)Image(bitmap.asImageBitmap(),sticker.displayName,Modifier.widthIn(max=190.dp).heightIn(max=190.dp).aspectRatio(sticker.width.toFloat()/sticker.height).clip(RoundedCornerShape(14.dp)),contentScale=ContentScale.Fit)
+    else Text("表情素材无法显示",Modifier.padding(8.dp),color=MaterialTheme.colorScheme.error)
 }
 
 @Composable private fun VoiceBubbleContent(voice:MessageVoice,palette:ChatPalette) {

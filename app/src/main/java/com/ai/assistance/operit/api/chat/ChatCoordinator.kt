@@ -32,6 +32,10 @@ interface RequestStore {
         if(quote!=null)throw ChatFailure("QUOTE_UNSUPPORTED")
         return prepareWithPayload(scope,chatId,text,image,material,sticker,requestId)
     }
+    suspend fun prepareWithVoice(scope:RoleAccessScope,chatId:String,text:String,voice:PromptVoice?,quote:MessageQuoteSnapshot?,requestId:String):RequestSnapshot {
+        if(voice!=null)throw ChatFailure("VOICE_UNSUPPORTED")
+        return prepareWithQuote(scope,chatId,text,null,null,null,quote,requestId)
+    }
     suspend fun update(snapshot: RequestSnapshot, text: String, state: MessageState, error: String, first: Long, elapsed: Long)
     suspend fun complete(snapshot:RequestSnapshot,text:String,state:MessageState,error:String,first:Long,elapsed:Long) {
         update(snapshot,text,state,error,first,elapsed)
@@ -43,14 +47,17 @@ class RoomRequestStore(private val db: AppDatabase) : RequestStore {
     override suspend fun prepareWithImage(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,requestId:String)=prepareWithContent(scope,chatId,text,image,null,requestId)
     override suspend fun prepareWithContent(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,material:PromptMaterial?,requestId:String)=prepareWithPayload(scope,chatId,text,image,material,null,requestId)
     override suspend fun prepareWithPayload(scope: RoleAccessScope, chatId: String, text: String, image:PromptImage?,material:PromptMaterial?,sticker:PromptSticker?, requestId: String): RequestSnapshot = db.withTransaction {
-        preparePayload(scope,chatId,text,image,material,sticker,null,requestId)
+        preparePayload(scope,chatId,text,image,material,sticker,null,null,requestId)
     }
     override suspend fun prepareWithQuote(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,material:PromptMaterial?,sticker:PromptSticker?,quote:MessageQuoteSnapshot?,requestId:String):RequestSnapshot = db.withTransaction {
-        preparePayload(scope,chatId,text,image,material,sticker,quote,requestId)
+        preparePayload(scope,chatId,text,image,material,sticker,null,quote,requestId)
     }
-    private suspend fun preparePayload(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,material:PromptMaterial?,sticker:PromptSticker?,quote:MessageQuoteSnapshot?,requestId:String):RequestSnapshot {
-        require((text.isNotBlank()||image!=null||material!=null||sticker!=null) && text.length <= 12000)
-        require(listOfNotNull(image,material,sticker).size<=1)
+    override suspend fun prepareWithVoice(scope:RoleAccessScope,chatId:String,text:String,voice:PromptVoice?,quote:MessageQuoteSnapshot?,requestId:String):RequestSnapshot = db.withTransaction {
+        preparePayload(scope,chatId,text,null,null,null,voice,quote,requestId)
+    }
+    private suspend fun preparePayload(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,material:PromptMaterial?,sticker:PromptSticker?,voice:PromptVoice?,quote:MessageQuoteSnapshot?,requestId:String):RequestSnapshot {
+        require((text.isNotBlank()||image!=null||material!=null||sticker!=null||voice!=null) && text.length <= 12000)
+        require(listOfNotNull(image,material,sticker,voice).size<=1)
         val frozenImage=image?.let {PromptImage(it.mimeType,it.width,it.height,it.sha256,it.data.copyOf()).also(PromptImage::validate)}
         val frozenMaterial=material?.copy()?.also(PromptMaterial::validate)
         val dao = db.dao()
@@ -67,6 +74,7 @@ class RoomRequestStore(private val db: AppDatabase) : RequestStore {
             }
             candidate.copy(sourceAssetId=null,data=candidate.data.copyOf())
         }
+        val frozenVoice=voice?.let {PromptVoice(it.sampleRate,it.durationMs,it.waveform.copyOf(),it.sha256,it.data.copyOf()).also(PromptVoice::validate)}
         val history = dao.history(scope.roleId,scope.spaceId,chatId)
         val historyAttachments=dao.historyAttachments(scope.roleId,scope.spaceId,chatId)
         val historyMaterials=dao.historyMaterials(scope.roleId,scope.spaceId,chatId)
@@ -78,18 +86,21 @@ class RoomRequestStore(private val db: AppDatabase) : RequestStore {
         }
         val now = maxOf(System.currentTimeMillis(),(history.maxOfOrNull { it.createdAt } ?: 0L)+1)
         // Keep the stored reply text clean while giving the model the exact referenced message as context.
-        val modelText=frozenQuote?.let {"引用消息（${it.speaker}）：\n${it.preview}\n\n用户回复：\n$text"}?:text
+        // A voice-only turn still needs text for history and the model; the UI renders the bubble instead.
+        val storedText=if(text.isBlank()&&frozenVoice!=null)frozenVoice.label() else text
+        val modelText=frozenQuote?.let {"引用消息（${it.speaker}）：\n${it.preview}\n\n用户回复：\n$storedText"}?:storedText
         val resolved = RequestContext.resolve(scope,role,chat,history,modelText,db.worldbook().read(scope.roleId,scope.spaceId),db.relationships().read(scope.roleId,scope.spaceId),historyAttachments,frozenImage,historyMaterials,frozenMaterial,historyStickers,frozenSticker,config.visionEnabled,
             db.memories().read(scope.roleId,scope.spaceId),db.environment().profile(scope.roleId,scope.spaceId),now,plannerEntries=db.planner().readPlanner(scope.roleId,scope.spaceId),cycleRecords=db.planner().readCycles(scope.roleId,scope.spaceId))
         val reply = UUID.randomUUID().toString()
         val userId=UUID.randomUUID().toString()
         dao.insertMessages(listOf(
-            MessageEntity(userId,chatId,requestId,"user",text,MessageState.COMPLETE,now,
+            MessageEntity(userId,chatId,requestId,"user",storedText,MessageState.COMPLETE,now,
                 quotedMessageId=frozenQuote?.messageId,quotedSpeaker=frozenQuote?.speaker.orEmpty(),quotedPreview=frozenQuote?.preview.orEmpty()),
             MessageEntity(reply,chatId,requestId,"assistant","",MessageState.QUEUED,now+1,bubbleStyle=role.effectiveReplyStyle())))
         frozenImage?.let {dao.insertAttachment(MessageAttachment(userId,chatId,requestId,it.mimeType,it.width,it.height,it.sha256,it.data.copyOf()))}
         frozenMaterial?.let {dao.insertMaterial(MessageMaterial(userId,chatId,requestId,it.kind,it.displayName,it.sourceUrl,it.mimeType,it.text,it.originalChars,it.truncated,it.sha256))}
         frozenSticker?.let {dao.insertMessageSticker(MessageSticker(userId,chatId,requestId,it.displayName,it.mimeType,it.width,it.height,it.sha256,it.data.copyOf()))}
+        frozenVoice?.let {dao.insertMessageVoice(MessageVoice(userId,chatId,requestId,it.sampleRate,it.durationMs,it.waveform.copyOf(),it.sha256,it.data.copyOf()))}
         val tools=if(role.isRaw())emptyList()else RoomToolInvocationStore(db).freeze(ToolRequestOwner(scope,chatId,requestId,reply))
         val snapshot=RequestSnapshot(requestId,chatId,reply,role.copy(),config.copy(),resolved.turns.toList(),scope,tools,resolved.worldbook,resolved.relationships,resolved.memories,resolved.environment,resolved.planner)
         return snapshot
@@ -114,6 +125,10 @@ class RoomRequestStore(private val db: AppDatabase) : RequestStore {
                         firstTokenMs=first,elapsedMs=elapsed,bubbleStyle=snapshot.role.effectiveReplyStyle())
                 })
             }
+            // A completed reply gets one stable reaction; the choice depends only on the message id.
+            if(state==MessageState.COMPLETE&&storedText.isNotBlank()) {
+                db.dao().saveReaction(MessageReaction(snapshot.assistantId,Reactions.ROLE,Reactions.roleReactionFor(snapshot.assistantId),snapshot.chatId,System.currentTimeMillis()))
+            }
         }
     }
 }
@@ -135,8 +150,8 @@ class ChatCoordinator(private val store: RequestStore, private val service: AISe
     val busyChat: StateFlow<String?> = _busyChat.asStateFlow()
     val errors = MutableSharedFlow<String>(extraBufferCapacity = 1)
 
-    suspend fun send(scope: RoleAccessScope, chatId: String, text: String, image:PromptImage?=null,material:PromptMaterial?=null,sticker:PromptSticker?=null,quote:MessageQuoteSnapshot?=null): Boolean =
-        start(scope,chatId,text,image,material,sticker,quote=quote)!=null
+    suspend fun send(scope: RoleAccessScope, chatId: String, text: String, image:PromptImage?=null,material:PromptMaterial?=null,sticker:PromptSticker?=null,quote:MessageQuoteSnapshot?=null,voice:PromptVoice?=null): Boolean =
+        start(scope,chatId,text,image,material,sticker,quote=quote,voice=voice)!=null
 
     // A frozen store belongs to this request; group and private sends share one lock and job.
     suspend fun sendGroup(groupStore:RequestStore, scope:RoleAccessScope, group:GroupAccessScope, text:String):Boolean =
@@ -153,7 +168,7 @@ class ChatCoordinator(private val store: RequestStore, private val service: AISe
         }
     }
 
-    private suspend fun start(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,material:PromptMaterial?,sticker:PromptSticker?, requestStore:RequestStore=store, expectedGroup:GroupAccessScope?=null,quote:MessageQuoteSnapshot?=null):RequestHandle? = mutex.withLock {
+    private suspend fun start(scope:RoleAccessScope,chatId:String,text:String,image:PromptImage?,material:PromptMaterial?,sticker:PromptSticker?, requestStore:RequestStore=store, expectedGroup:GroupAccessScope?=null,quote:MessageQuoteSnapshot?=null,voice:PromptVoice?=null):RequestHandle? = mutex.withLock {
         currentCoroutineContext().ensureActive()
         val permissionVersion=accessVersion()
         fun allowed()=accessAllowed()&&accessVersion()==permissionVersion
@@ -162,7 +177,8 @@ class ChatCoordinator(private val store: RequestStore, private val service: AISe
         val requestId=UUID.randomUUID().toString()
         if(!ModelGenerationGate.acquire(requestId))return null
         val snapshot = try {
-            val prepared=if(quote!=null)requestStore.prepareWithQuote(scope,chatId,text,image,material,sticker,quote,requestId)
+            val prepared=if(voice!=null)requestStore.prepareWithVoice(scope,chatId,text,voice,quote,requestId)
+                else if(quote!=null)requestStore.prepareWithQuote(scope,chatId,text,image,material,sticker,quote,requestId)
                 else when {sticker!=null->requestStore.prepareWithPayload(scope,chatId,text,image,material,sticker,requestId);material!=null->requestStore.prepareWithContent(scope,chatId,text,image,material,requestId);image!=null->requestStore.prepareWithImage(scope,chatId,text,image,requestId);else->requestStore.prepare(scope,chatId,text,requestId)}
             prepared.also {if(it.group?.group!=expectedGroup)throw ChatFailure("ACCESS")}
         }

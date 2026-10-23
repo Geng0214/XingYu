@@ -86,9 +86,10 @@ import com.ai.assistance.operit.data.model.*
     val configs=state.speechServiceConfigs.filter {it.kind==SpeechServices.TRANSCRIPTION}
     var selected by remember(recording){mutableStateOf(configs.firstOrNull()?.id)}
     val config=configs.firstOrNull {it.id==selected}
-    AlertDialog(onDismissRequest={if(!state.transcribingVoice)vm.dismissRecordedVoice()},icon={Icon(Icons.Default.Mic,null)},title={Text("录音识别预览")},text={
+    AlertDialog(onDismissRequest={if(!state.transcribingVoice)vm.dismissRecordedVoice()},icon={Icon(Icons.Default.Mic,null)},title={Text("语音预览")},text={
         Column(verticalArrangement=Arrangement.spacedBy(12.dp)) {
             Text("录音时长：${"%.1f".format(recording.durationMs/1000.0)} 秒 · 16 kHz 单声道")
+            Text("可以直接发送为语音消息，或先识别成文字再编辑。发送上限 30 秒。",style=MaterialTheme.typography.bodySmall)
             if(configs.isEmpty()) {
                 Text("还没有录音识别服务。录音仍只保存在内存中。")
                 OutlinedButton(onClick=onSettings,modifier=Modifier.fillMaxWidth()){Text("打开语音服务设置")}
@@ -104,7 +105,10 @@ import com.ai.assistance.operit.data.model.*
             }
             if(state.transcribingVoice)Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)){CircularProgressIndicator(Modifier.size(22.dp),strokeWidth=2.dp);Text("正在识别…")}
         }
-    },confirmButton={if(config!=null)TextButton(enabled=!state.transcribingVoice,onClick={vm.transcribeVoice(config.id)}){Text("确认上传并识别")}},dismissButton={
+    },confirmButton={Row {
+        TextButton(enabled=!state.transcribingVoice,onClick={vm.sendVoice {}}){Text("发送语音")}
+        if(config!=null)TextButton(enabled=!state.transcribingVoice,onClick={vm.transcribeVoice(config.id)}){Text("识别成文字")}
+    }},dismissButton={
         TextButton(onClick={if(state.transcribingVoice)vm.stopSpeech()else vm.dismissRecordedVoice()}){Text(if(state.transcribingVoice)"停止" else "丢弃")}
     })
 }

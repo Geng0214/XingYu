@@ -119,7 +119,7 @@ class BackupTest {
     }
     @Test fun sharedWorldBackupKeepsOneWorldAndRebindsEveryResidentAndEvent() {
         val source=homeFixture();BackupValidation.validate(source)
-        val raw=BackupFormat.encode(source);assertEquals(32,ByteBuffer.wrap(raw).int);assertEquals(34,ByteBuffer.wrap(raw,4,4).int)
+        val raw=BackupFormat.encode(source);assertEquals(33,ByteBuffer.wrap(raw).int);assertEquals(35,ByteBuffer.wrap(raw,4,4).int)
         val decoded=BackupFormat.decrypt(BackupFormat.encrypt(source,password),password)
         val restored=BackupRemap.create(decoded,mapOf("key-ref" to "restored"),2000000);BackupValidation.validate(restored)
         assertEquals(1,restored.summary().homes)
@@ -202,7 +202,7 @@ class BackupTest {
     }
     @Test fun v25JourneysRoundTripAndRemapWithNoPlaintextOrImplicitContinuation() {
         val source=playFixture(true);BackupValidation.validate(source)
-        val plain=BackupFormat.encode(source);assertEquals(32,ByteBuffer.wrap(plain).int)
+        val plain=BackupFormat.encode(source);assertEquals(33,ByteBuffer.wrap(plain).int)
         val previous=legacyPlay(plain,25)
         assertArrayEquals(plain,BackupFormat.encode(BackupFormat.decode(previous)))
         val encrypted=BackupFormat.encrypt(source,password)
@@ -220,8 +220,8 @@ class BackupTest {
         }
         val disguised=legacyPlay(plain,24)
         rejected("BACKUP_FORMAT"){BackupFormat.decode(disguised)}
-        // v32 is the current shared-world archive; use the next version to exercise rejection of future formats.
-        val future=plain.copyOf();ByteBuffer.wrap(future).putInt(33)
+        // v33 is the current archive with voices, reactions and scheduled messages; use the next version to exercise rejection of future formats.
+        val future=plain.copyOf();ByteBuffer.wrap(future).putInt(34)
         rejected("BACKUP_FORMAT"){BackupFormat.decode(future)}
     }
     @Test fun actualV24PlayPayloadStillReadsWithoutChangingIdsOrData() {
@@ -234,7 +234,7 @@ class BackupTest {
     }
     @Test fun v26TableGamesPreserveSecretsAndRemapInterruptedRequestsWhileOlderHeadersRejectThem() {
         val source=playFixture(tables=true);BackupValidation.validate(source)
-        val raw=BackupFormat.encode(source);assertEquals(32,ByteBuffer.wrap(raw).int)
+        val raw=BackupFormat.encode(source);assertEquals(33,ByteBuffer.wrap(raw).int)
         val old=legacyPlay(raw,26)
         assertArrayEquals(raw,BackupFormat.encode(BackupFormat.decode(old)))
         val encrypted=BackupFormat.encrypt(source,password)
@@ -255,7 +255,7 @@ class BackupTest {
     }
     @Test fun v27XiangqiKeepsSidesMovesAndInterruptedRequestsAcrossTwentyAppendedRestores() {
         val source=playFixture(chess=true);BackupValidation.validate(source)
-        val raw=BackupFormat.encode(source);assertEquals(32,ByteBuffer.wrap(raw).int)
+        val raw=BackupFormat.encode(source);assertEquals(33,ByteBuffer.wrap(raw).int)
         val previous=legacyPlay(raw,27)
         assertArrayEquals(raw,BackupFormat.encode(BackupFormat.decode(previous)))
         val decoded=BackupFormat.decrypt(BackupFormat.encrypt(source,password),password)
@@ -277,7 +277,7 @@ class BackupTest {
     }
     @Test fun v28AdventurePreservesInventoryAndDialogueAcrossTwentyIndependentRestores() {
         val source=playFixture(adventure=true);BackupValidation.validate(source)
-        val raw=BackupFormat.encode(source);assertEquals(32,ByteBuffer.wrap(raw).int)
+        val raw=BackupFormat.encode(source);assertEquals(33,ByteBuffer.wrap(raw).int)
         val encrypted=BackupFormat.encrypt(source,password);assertFalse(encrypted.toString(Charsets.ISO_8859_1).contains("ADVENTURE-A"))
         val decoded=BackupFormat.decrypt(encrypted,password);val ids=mutableSetOf<String>()
         repeat(20){n->
@@ -690,7 +690,7 @@ class BackupTest {
         assertArrayEquals(bundle.archive(),restored.rows("toolpkg_packages")[0]["archive"] as ByteArray)
     }
     @Test fun tablesExactlyMatchExportedLegacyAndCurrentRoomSchemas() {
-      for((version,specs) in listOf(6 to BackupSchema.tablesV1,7 to BackupSchema.tablesV2,8 to BackupSchema.tablesV3,9 to BackupSchema.tablesV4,10 to BackupSchema.tablesV5,11 to BackupSchema.tablesV6,12 to BackupSchema.tablesV7,13 to BackupSchema.tablesV8,14 to BackupSchema.tablesV9,15 to BackupSchema.tablesV10,16 to BackupSchema.tablesV11,17 to BackupSchema.tablesV12,18 to BackupSchema.tablesV13,19 to BackupSchema.tablesV14,20 to BackupSchema.tablesV15,21 to BackupSchema.tablesV16,22 to BackupSchema.tablesV17,23 to BackupSchema.tablesV18,24 to BackupSchema.tablesV19,25 to BackupSchema.tablesV20,26 to BackupSchema.tablesV21,27 to BackupSchema.tablesV22,28 to BackupSchema.tablesV23,29 to BackupSchema.tablesV24,30 to BackupSchema.tablesV30,33 to BackupSchema.tablesV31,34 to BackupSchema.tables)) {
+      for((version,specs) in listOf(6 to BackupSchema.tablesV1,7 to BackupSchema.tablesV2,8 to BackupSchema.tablesV3,9 to BackupSchema.tablesV4,10 to BackupSchema.tablesV5,11 to BackupSchema.tablesV6,12 to BackupSchema.tablesV7,13 to BackupSchema.tablesV8,14 to BackupSchema.tablesV9,15 to BackupSchema.tablesV10,16 to BackupSchema.tablesV11,17 to BackupSchema.tablesV12,18 to BackupSchema.tablesV13,19 to BackupSchema.tablesV14,20 to BackupSchema.tablesV15,21 to BackupSchema.tablesV16,22 to BackupSchema.tablesV17,23 to BackupSchema.tablesV18,24 to BackupSchema.tablesV19,25 to BackupSchema.tablesV20,26 to BackupSchema.tablesV21,27 to BackupSchema.tablesV22,28 to BackupSchema.tablesV23,29 to BackupSchema.tablesV24,30 to BackupSchema.tablesV30,33 to BackupSchema.tablesV31,34 to BackupSchema.tablesV32,35 to BackupSchema.tables)) {
         val schema=org.json.JSONObject(Files.readAllBytes(Path.of(System.getProperty("companion.repo"),"app/schemas/com.ai.assistance.operit.data.db.AppDatabase/$version.json")).toString(Charsets.UTF_8))
         val entities=schema.getJSONObject("database").getJSONArray("entities")
         assertEquals(specs.size,entities.length())

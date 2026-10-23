@@ -20,6 +20,10 @@ import com.ai.assistance.operit.data.model.PromptMaterial
 import com.ai.assistance.operit.data.model.TextMaterials
 import com.ai.assistance.operit.data.model.PromptSticker
 import com.ai.assistance.operit.data.model.StickerAssets
+import com.ai.assistance.operit.data.model.PromptVoice
+import com.ai.assistance.operit.data.model.Reactions
+import com.ai.assistance.operit.data.model.ScheduledMessage
+import com.ai.assistance.operit.data.model.ScheduledMessages
 import com.ai.assistance.operit.data.model.ImageGenerationConfig
 import com.ai.assistance.operit.data.model.GeneratedImage
 import com.ai.assistance.operit.data.model.ImageGenerations
@@ -205,7 +209,23 @@ internal object BackupValidation {
             require(message?.text("kind")=="user"&&message.text("chatId")==r.text("chatId")&&message.text("requestId")==r.text("requestId"))
             PromptSticker(null,r.text("displayName"),r.text("mimeType"),r.number("width").toInt(),r.number("height").toInt(),r.text("sha256"),r["data"] as ByteArray).validate()
         }
-        val payloadMessageIds=listOf("message_attachments","message_materials","message_stickers").map {table->s.rows(table).map {it.text("messageId")}.toSet()}
+        s.rows("message_voices").forEach {r->
+            val message=messages[r.text("messageId")]
+            require(message?.text("kind")=="user"&&message.text("chatId")==r.text("chatId")&&message.text("requestId")==r.text("requestId"))
+            PromptVoice(r.number("sampleRate").toInt(),r.number("durationMs"),r["waveform"] as ByteArray,r.text("sha256"),r["data"] as ByteArray).validate()
+        }
+        s.rows("message_reactions").forEach {r->
+            val message=messages[r.text("messageId")]
+            require(message!=null&&message.text("chatId")==r.text("chatId"))
+            require(Reactions.validSide(r.text("side"))&&r.text("emoji") in StickerAssets.EMOJI&&r.number("createdAt")>=0)
+        }
+        s.rows("message_reactions").groupBy {it.text("messageId")+"|"+it.text("side")}.values.forEach {require(it.size<=Reactions.MAX_PER_SIDE)}
+        s.rows("scheduled_messages").forEach {r->
+            scope(r)
+            require(chats[r.text("chatId")]?.text("roleId")==r.text("roleId"))
+            ScheduledMessages.validate(ScheduledMessage(r.text("id"),r.text("roleId"),r.text("spaceId"),r.text("chatId"),r.text("configId"),r.number("configVersion"),r.number("dueAt"),r.text("mode"),r.text("content"),r.text("state"),r.text("assistantId"),r.text("errorCode"),r.number("notificationSent")!=0L,r.number("createdAt"),r.number("finishedAt")))
+        }
+        val payloadMessageIds=listOf("message_attachments","message_materials","message_stickers","message_voices").map {table->s.rows(table).map {it.text("messageId")}.toSet()}
         require(payloadMessageIds.indices.none {a->payloadMessageIds.indices.any {b->a<b&&payloadMessageIds[a].intersect(payloadMessageIds[b]).isNotEmpty()}})
         imageConfigs.values.forEach {r->
             val config=ImageGenerationConfig(r.text("id"),r.text("name"),r.text("endpoint"),r.text("model"),r.number("timeoutSeconds").toInt(),r.text("credentialRef"),r.number("version"),r.text("size"))
@@ -364,7 +384,7 @@ internal object BackupRemap {
             val changes=mutableMapOf<String,Any?>()
             r.table.columns.forEach {c->val value=r[c.name]
                 val domain=when(c.name){
-                    "id"->when(r.table.name){"home_world"->null;"play_sessions"->"play_activity";"group_members"->"group_member";"group_messages"->"group_message";"roles"->"role";"chats"->"chat";"messages"->"message";"model_configs"->"config";"image_generation_configs"->"image_config";"generated_images"->"generated_image";"music_tracks"->"music_track";"bilibili_watches"->"bilibili_watch";"music_sessions"->"music_session";"shared_activities"->"shared_activity";"speech_service_configs"->"speech_config";"reading_documents"->"reading_document";"mcp_extensions"->"extension";"worldbook_entries"->"worldbook";"relationship_entries"->"relationship";"memory_entries"->"memory";"diary_entries"->"diary";"planner_entries"->"planner";"cycle_records"->"cycle";"sticker_assets"->"sticker";else->error("Unknown ID")}
+                    "id"->when(r.table.name){"home_world"->null;"play_sessions"->"play_activity";"group_members"->"group_member";"group_messages"->"group_message";"roles"->"role";"chats"->"chat";"messages"->"message";"model_configs"->"config";"image_generation_configs"->"image_config";"generated_images"->"generated_image";"music_tracks"->"music_track";"bilibili_watches"->"bilibili_watch";"music_sessions"->"music_session";"shared_activities"->"shared_activity";"speech_service_configs"->"speech_config";"reading_documents"->"reading_document";"mcp_extensions"->"extension";"worldbook_entries"->"worldbook";"relationship_entries"->"relationship";"memory_entries"->"memory";"diary_entries"->"diary";"planner_entries"->"planner";"cycle_records"->"cycle";"sticker_assets"->"sticker";"scheduled_messages"->"scheduled_message";else->error("Unknown ID")}
                     "commandId"->"home_command";"activityId"->"play_activity";"trackId"->"music_track";"readingDocumentId"->"reading_document";"roleId"->"role";"spaceId"->if(r.table.name.startsWith("group_"))"group_space"else "space";"groupId"->"group";"roleSpaceId"->"space";"participantId"->"group_member";"userId"->"group_message";"chatId","sourceChatId"->"chat";"configId"->if(r.table.name=="generated_images")"image_config" else "config";"defaultConfigId"->"config"
                     "assistantId","messageId","sourceUserMessageId","sourceAssistantMessageId"->when {r.table.name.startsWith("play_")->"play_assistant";r.table.name.startsWith("group_")->"group_message";else->"message"};"requestId","sourceRequestId"->when {r.table.name.startsWith("play_")->"play_request";r.table.name.startsWith("group_")->"group_request";else->"request"};"replacedById"->"memory";"extensionId"->"extension";else->null
                 }
@@ -397,6 +417,7 @@ internal object BackupRemap {
             if(r.table.name=="messages"&&r.text("state") in setOf("QUEUED","WAITING","GENERATING")){changes["state"]="FAILED";changes["errorCode"]="INTERRUPTED"}
             if(r.table.name=="tool_invocations"&&r.text("state") in setOf("WAITING_APPROVAL","RUNNING")){changes["state"]="FAILED";changes["errorCode"]="INTERRUPTED";changes["finishedAt"]=now}
             if(r.table.name=="proactive_role_settings"){changes["enabled"]=0L;changes["nextEligibleAt"]=now;changes["version"]=r.number("version")+1;changes["updatedAt"]=now}
+            if(r.table.name=="scheduled_messages"&&r.text("state")==ScheduledMessages.STATE_PENDING){changes["state"]=ScheduledMessages.STATE_CANCELLED;changes["finishedAt"]=now}
             if(r.table.name=="proactive_requests"&&r.text("state")=="PENDING"){changes["state"]="FAILED";changes["errorCode"]="INTERRUPTED";changes["notificationSent"]=0L;changes["finishedAt"]=now}
             if(r.table.name=="generated_images"&&r.text("state") in setOf("QUEUED","WAITING","GENERATING")){changes["state"]="FAILED";changes["errorCode"]="INTERRUPTED";changes["finishedAt"]=now;changes["elapsedMs"]=(now-r.number("createdAt")).coerceAtLeast(0)}
             r.changing(changes)

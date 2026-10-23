@@ -23,7 +23,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import com.ai.assistance.operit.data.model.RoleEntity
 
-internal data class ChatPalette(val background: Color,val outgoing: Color,val incoming: Color,val ink: Color,val ornament: Color)
+internal data class ChatPalette(val background: Color,val outgoing: Color,val incoming: Color,val ink: Color,val ornament: Color,
+    val reaction: Color=incoming,val waveform: Color=ink,val quoteBar: Color=ornament,val muted: Color=ink.copy(alpha=0.6f))
 internal val LocalCompanionChatPalette=staticCompositionLocalOf { "rose" }
 internal class LocalImagePicker : ActivityResultContracts.OpenDocument() {
     override fun createIntent(context: Context,input: Array<String>): Intent = super.createIntent(context,input).putExtra(Intent.EXTRA_LOCAL_ONLY,true)

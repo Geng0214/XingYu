@@ -33,8 +33,22 @@ class RoleRepository(private val db: AppDatabase,private val homeClock:()->Long=
         HomeRepository(db,homeClock).join(saved.scope())
         saved
     }
-    suspend fun copyRole(scope: RoleAccessScope): RoleEntity = db.withTransaction {
-        val role=requireRole(scope)
+    /** 角色与角色卡世界书在同一事务写入，失败时不会留下半个角色。 */
+    suspend fun importCharacterCard(card:CharacterCard,configId:String?):RoleEntity = db.withTransaction {
+        require(card.name.length in 1..CharacterCards.MAX_NAME&&card.prompt.length in 1..CharacterCards.MAX_PROMPT&&card.openingMessage.length<=CharacterCards.MAX_OPENING)
+        if(configId!=null)requireNotNull(db.dao().config(configId))
+        val role=RoleEntity(UUID.randomUUID().toString(),card.name,card.prompt,openingMessage=card.openingMessage,defaultConfigId=configId)
+        db.dao().saveRole(role)
+        card.lore.forEach {entry->
+            val trigger=if(entry.keywords.isEmpty())"always" else "keywords"
+            val keywords=entry.keywords.joinToString("\n")
+            Worldbook.validate(entry.title,entry.content,trigger,keywords,entry.priority)
+            db.worldbook().insert(listOf(WorldbookEntry(UUID.randomUUID().toString(),role.id,role.spaceId,null,entry.title,entry.content,trigger,keywords,false,entry.priority)))
+        }
+        HomeRepository(db,homeClock).join(role.scope())
+        role
+    }
+    suspend fun copyRole(scope: RoleAccessScope): RoleEntity = db.withTransaction {        val role=requireRole(scope)
         val copy=RoleEntity(UUID.randomUUID().toString(),role.name,role.prompt,openingMessage=role.openingMessage,defaultConfigId=role.defaultConfigId,replyStyle=role.replyStyle,conversationMode=role.conversationMode)
         db.dao().saveRole(copy)
         HomeRepository(db,homeClock).join(copy.scope())

@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ai.assistance.operit.data.model.*
+import com.ai.assistance.operit.api.audio.MessageVoicePlayer
 import com.ai.assistance.operit.data.db.GroupInboxRow
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.delay
@@ -225,7 +226,7 @@ private sealed class InboxEntry(val key:String,val pinned:Boolean,val updatedAt:
     class Group(val row:GroupInboxRow):InboxEntry("group:${row.spaceId}:${row.groupId}",false,row.updatedAt?:0L,row.title)
 }
 private data class ForwardDraft(val scope:RoleAccessScope,val chatId:String,val text:String)
-private data class TimelineBubble(val key:String,val text:String,val message:MessageEntity?,val last:Boolean,val attachment:MessageAttachment?=null,val material:MessageMaterial?=null,val sticker:MessageSticker?=null,val generated:GeneratedImage?=null,val timeSeparator:String?=null)
+private data class TimelineBubble(val key:String,val text:String,val message:MessageEntity?,val last:Boolean,val attachment:MessageAttachment?=null,val material:MessageMaterial?=null,val sticker:MessageSticker?=null,val voice:MessageVoice?=null,val reactions:List<MessageReaction> = emptyList(),val generated:GeneratedImage?=null,val timeSeparator:String?=null)
 private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,TRANSLATE,SPEAK }
 
 @Composable private fun ColumnScope.ConversationPage(state: CompanionState,vm: CompanionViewModel,onSettings:()->Unit,onErrorHelp:(String)->Unit,onMessageImagePick:(RoleAccessScope,String)->Unit,onMessageFilePick:(RoleAccessScope,String)->Unit,onReadingFilePick:(RoleAccessScope)->Unit,onStickerPick:(RoleAccessScope)->Unit,onWallpaperPick:(RoleAccessScope)->Unit,onPortraitPick:(RoleAccessScope,String)->Unit,openActivityChatId:String?,openActivityType:String?,openActivityId:String?,onActivityOpened:()->Unit,pendingForwardDraft:ForwardDraft?,onForwardConsumed:()->Unit,onForwardMessage:(String)->Unit) {
@@ -292,7 +293,7 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
         if(live?.state==MessageState.CANCELLED || live?.state==MessageState.FAILED || !animate)revealed=available.size
         else while(revealed<available.size) { if(revealed>0)delay(450);revealed++ }
     }
-    val timeline=remember(state.messages,state.attachments,state.materials,state.messageStickers,state.generatedImages,chat?.openingMessage,live?.id,revealed) {
+    val timeline=remember(state.messages,state.attachments,state.materials,state.messageStickers,state.messageVoices,state.messageReactions,state.generatedImages,chat?.openingMessage,live?.id,revealed) {
         buildList {
             val events=mutableListOf<Pair<Long,List<TimelineBubble>>>()
             if(!chat?.openingMessage.isNullOrEmpty())events+=(chat!!.createdAt to listOf(TimelineBubble("opening",chat.openingMessage,null,true)))
@@ -300,11 +301,13 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                 val attachment=state.attachments.firstOrNull {it.messageId==message.id}
                 val material=state.materials.firstOrNull {it.messageId==message.id}
                 val sticker=state.messageStickers.firstOrNull {it.messageId==message.id}
+                val voice=state.messageVoices.firstOrNull {it.messageId==message.id}
+                val reactions=state.messageReactions.filter {it.messageId==message.id}
                 val parts=ChatBubbles.visible(message.content,message.kind=="assistant"&&message.bubbleStyle=="short",message.state in activeStates)
                 val visible=if(message.id==live?.id)parts.take(revealed)else parts
                 val bubbles=buildList {
-                    if(visible.isEmpty()&&(attachment!=null||material!=null||sticker!=null))add(TimelineBubble(message.id+":content","",message,true,attachment,material,sticker))
-                    else visible.forEachIndexed { i,text->add(TimelineBubble(message.id+":"+i,text,message,i==visible.lastIndex,attachment.takeIf {i==0},material.takeIf {i==0},sticker.takeIf {i==0})) }
+                    if(visible.isEmpty()&&(attachment!=null||material!=null||sticker!=null||voice!=null))add(TimelineBubble(message.id+":content","",message,true,attachment,material,sticker,voice,reactions))
+                    else visible.forEachIndexed { i,text->add(TimelineBubble(message.id+":"+i,text,message,i==visible.lastIndex,attachment.takeIf {i==0},material.takeIf {i==0},sticker.takeIf {i==0},voice.takeIf {i==0},reactions.takeIf {i==visible.lastIndex}.orEmpty())) }
                     if(message.state==MessageState.FAILED || message.state==MessageState.CANCELLED)add(TimelineBubble(message.id+":status","",message,true))
                 }
                 events+=message.createdAt to bubbles
@@ -431,7 +434,7 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
             items(timeline,key={it.key}) { bubble->
                 if(bubble.timeSeparator!=null)TimeSeparator(bubble.timeSeparator,palette.ink)
                 else if(bubble.generated!=null)GeneratedImageBubble(bubble.generated,role,state.generatingImageId==bubble.generated.id,vm)
-                else if(bubble.text.isEmpty()&&bubble.attachment==null&&bubble.material==null&&bubble.sticker==null) {
+                else if(bubble.text.isEmpty()&&bubble.attachment==null&&bubble.material==null&&bubble.sticker==null&&bubble.voice==null) {
                     val message=bubble.message!!
                     Row(Modifier.padding(start=48.dp),verticalAlignment=Alignment.CenterVertically) {
                         Surface(shape=RoundedCornerShape(14.dp),color=MaterialTheme.colorScheme.surface) {
@@ -449,7 +452,8 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                     onDismissMenu={messageMenuKey=null},
                     onTap={bubble.message?.let {message->if(selectionMode)selectedMessageIds=if(message.id in selectedMessageIds)selectedMessageIds-message.id else selectedMessageIds+message.id}},
                     onLongPress={bubble.message?.let {message->if(selectionMode)selectedMessageIds=if(message.id in selectedMessageIds)selectedMessageIds-message.id else selectedMessageIds+message.id else messageMenuKey=bubble.key}},
-                    onOperation={operation->bubble.message?.let {onMessageOperation(it,operation)}}
+                    onOperation={operation->bubble.message?.let {onMessageOperation(it,operation)}},
+                    onReaction={emoji->bubble.message?.let {message->role?.let {vm.toggleReaction(it.scope(),message.chatId,message.id,Reactions.USER,emoji)}}}
                 )
             }
             if(typing)item("typing") { Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(10.dp)) {
@@ -649,7 +653,7 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
 @OptIn(ExperimentalFoundationApi::class)
 @Composable private fun MessageBubble(
     bubble:TimelineBubble,role:RoleEntity?,palette:ChatPalette,vm:CompanionViewModel,highlighted:Boolean,
-    selected:Boolean,selectionMode:Boolean,menuExpanded:Boolean,speechPlaying:Boolean,onDismissMenu:()->Unit,onTap:()->Unit,onLongPress:()->Unit,onOperation:(MessageOperation)->Unit
+    selected:Boolean,selectionMode:Boolean,menuExpanded:Boolean,speechPlaying:Boolean,onDismissMenu:()->Unit,onTap:()->Unit,onLongPress:()->Unit,onOperation:(MessageOperation)->Unit,onReaction:(String)->Unit
 ) {
     val user=bubble.message?.kind=="user"
     Row(Modifier.fillMaxWidth(),horizontalArrangement=if(user)Arrangement.End else Arrangement.Start,verticalAlignment=Alignment.Top) {
@@ -662,7 +666,7 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                 )else Modifier,
                     border=when {selected->BorderStroke(2.dp,MaterialTheme.colorScheme.primary);highlighted->BorderStroke(2.dp,MaterialTheme.colorScheme.primary);else->null},
                     color=if(user)palette.outgoing else palette.incoming,shape=themedMessageShape(user),shadowElevation=0.5.dp) {
-                    Column(Modifier.padding(horizontal=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)14.dp else 6.dp,vertical=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)11.dp else 6.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
+                    Column(Modifier.padding(horizontal=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null&&bubble.voice==null)14.dp else 6.dp,vertical=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null&&bubble.voice==null)11.dp else 6.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
                         bubble.message?.takeIf {it.quotedPreview.isNotBlank()}?.let {message->Surface(color=palette.ink.copy(alpha=0.08f),shape=RoundedCornerShape(8.dp)) {
                             Text("${message.quotedSpeaker}：${message.quotedPreview.replace('\n',' ')}",Modifier.padding(horizontal=9.dp,vertical=6.dp),maxLines=2,overflow=TextOverflow.Ellipsis,fontSize=12.sp,fontWeight=FontWeight.Medium,color=palette.ink.copy(alpha=0.78f))
                         } }
@@ -677,7 +681,8 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                             if(bitmap!=null)Image(bitmap.asImageBitmap(),sticker.displayName,Modifier.widthIn(max=190.dp).heightIn(max=190.dp).aspectRatio(sticker.width.toFloat()/sticker.height).clip(RoundedCornerShape(14.dp)),contentScale=ContentScale.Fit)
                             else Text("表情素材无法显示",Modifier.padding(8.dp),color=MaterialTheme.colorScheme.error)
                         }
-                        if(bubble.text.isNotEmpty())Box(Modifier.padding(horizontal=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)0.dp else 8.dp,vertical=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)0.dp else 4.dp)){BasicMarkdown(bubble.text,palette.ink)}
+                        bubble.voice?.let {voice->VoiceBubbleContent(voice,palette)}
+                        if(bubble.text.isNotEmpty()&&bubble.voice==null)Box(Modifier.padding(horizontal=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)0.dp else 8.dp,vertical=if(bubble.attachment==null&&bubble.material==null&&bubble.sticker==null)0.dp else 4.dp)){BasicMarkdown(bubble.text,palette.ink)}
                     }
                 }
                 bubble.message?.let {message->
@@ -693,6 +698,13 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                     )
                     DropdownMenu(expanded=menuExpanded,onDismissRequest=onDismissMenu,modifier=Modifier.width(320.dp),shape=RoundedCornerShape(12.dp),containerColor=Color(0xFF3F3F3F),tonalElevation=0.dp,shadowElevation=10.dp) {
                         Column(Modifier.padding(horizontal=8.dp,vertical=6.dp)) {
+                            Row(Modifier.fillMaxWidth().padding(horizontal=2.dp,vertical=2.dp),horizontalArrangement=Arrangement.SpaceEvenly) {
+                                Reactions.ROLE_EMOJI.forEach {emoji->
+                                    val active=bubble.reactions.any {it.emoji==emoji&&it.side==Reactions.USER}
+                                    Text(emoji,Modifier.clip(CircleShape).clickable{onReaction(emoji);onDismissMenu()}.padding(6.dp),fontSize=20.sp,color=if(active)Color.White else Color.White.copy(alpha=0.72f))
+                                }
+                            }
+                            HorizontalDivider(color=Color.White.copy(alpha=0.14f))
                             operations.chunked(4).forEachIndexed {index,row->
                                 Row(Modifier.fillMaxWidth()) {
                                 row.forEach {(operation,label,icon)->
@@ -716,8 +728,36 @@ private enum class MessageOperation { COPY,FORWARD,FAVORITE,DELETE,SELECT,QUOTE,
                     }
                 }
             }
+            if(bubble.reactions.isNotEmpty()) {
+                Row(Modifier.padding(top=4.dp),horizontalArrangement=Arrangement.spacedBy(4.dp)) {
+                    bubble.reactions.groupBy {it.emoji}.forEach {(emoji,list)->
+                        Surface(shape=RoundedCornerShape(10.dp),color=palette.reaction,shadowElevation=1.dp) {
+                            Text(emoji+(if(list.size>1)" ${list.size}" else ""),Modifier.padding(horizontal=6.dp,vertical=2.dp),fontSize=11.sp,color=palette.ink)
+                        }
+                    }
+                }
+            }
         }
         if(user) { Spacer(Modifier.width(10.dp));if(role!=null)PortraitAvatar(role.selfName(),role.scope(),vm,36.dp,"self") } else Spacer(Modifier.width(46.dp))
+    }
+}
+
+@Composable private fun VoiceBubbleContent(voice:MessageVoice,palette:ChatPalette) {
+    var playing by remember(voice.messageId){mutableStateOf(false)}
+    val player=remember(voice.messageId){MessageVoicePlayer()}
+    DisposableEffect(voice.messageId){onDispose {player.stop()}}
+    LaunchedEffect(playing){if(playing){delay(voice.durationMs);playing=false}}
+    Row(Modifier.widthIn(min=170.dp,max=260.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+        IconButton(onClick={if(playing){player.stop();playing=false}else{playing=true;player.play(voice.sampleRate,voice.data){}}},modifier=Modifier.size(36.dp)) {
+            Icon(if(playing)Icons.Default.Pause else Icons.AutoMirrored.Filled.VolumeUp,"播放语音",Modifier.size(20.dp),tint=palette.ink)
+        }
+        Row(Modifier.weight(1f).height(26.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(2.dp)) {
+            voice.waveform.forEach {level->
+                val barHeight=(3+(level.toInt() and 0xFF)/255f*22).dp
+                Box(Modifier.width(2.dp).height(barHeight).background(palette.waveform.copy(alpha=if(playing)0.9f else 0.45f),RoundedCornerShape(1.dp)))
+            }
+        }
+        Text(MessageVoices.secondsText(voice.durationMs),fontSize=11.sp,color=palette.ink.copy(alpha=0.72f))
     }
 }
 

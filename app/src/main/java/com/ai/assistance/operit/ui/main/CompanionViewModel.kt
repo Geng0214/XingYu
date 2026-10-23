@@ -12,6 +12,7 @@ import com.ai.assistance.operit.api.audio.*
 import com.ai.assistance.operit.api.environment.OpenMeteoService
 import com.ai.assistance.operit.data.db.*
 import com.ai.assistance.operit.data.model.*
+import com.ai.assistance.operit.reminder.ScheduledMessageScheduler
 import com.ai.assistance.operit.core.tools.*
 import com.ai.assistance.operit.reminder.ReminderScheduler
 import com.ai.assistance.operit.proactive.*
@@ -79,6 +80,7 @@ data class CompanionState(val ready: Boolean=false, val fatal: Boolean=false,
     val attachments:List<MessageAttachment> = emptyList(),val pendingImage:PreparedMessageImage?=null,
     val materials:List<MessageMaterial> = emptyList(),val pendingMaterial:PromptMaterial?=null,val materialPreview:PromptMaterial?=null,
     val stickerAssets:List<StickerAsset> = emptyList(),val messageStickers:List<MessageSticker> = emptyList(),
+    val messageVoices:List<MessageVoice> = emptyList(),val messageReactions:List<MessageReaction> = emptyList(),
     val pendingSticker:PromptSticker?=null,val stickerPreview:StickerImportPreview?=null,
     val imageGenerationConfigs:List<ImageGenerationConfig> = emptyList(),val generatedImages:List<GeneratedImage> = emptyList(),
     val generatingImageId:String?=null,val readingDocuments:List<ReadingDocument> = emptyList(),val sharedActivities:List<SharedActivity> = emptyList(),
@@ -92,7 +94,7 @@ data class CompanionState(val ready: Boolean=false, val fatal: Boolean=false,
     val musicTracks:List<MusicTrack> = emptyList(),val musicSessions:List<MusicSession> = emptyList(),
     val bilibiliWatches:List<BilibiliWatch> = emptyList(),val bilibiliPlayback:BilibiliPlaybackUi?=null,
     val musicImport:MusicImport?=null,val playingMusicId:String?=null,val play:PlayUi?=null,val home:HomeUi?=null,
-    val companionThemeImport:CompanionThemeSpec?=null)
+    val companionThemeImport:CompanionThemeSpec?=null,val characterCardPreview:CharacterCardResult?=null)
 
 
 class CompanionViewModel(app: Application) : AndroidViewModel(app) {
@@ -329,7 +331,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         stickerTarget=null
         pendingMessageExport=null
         pendingDiaryExport=null
-        _state.update { it.copy(scope=scope,chatId=null,chats=emptyList(),messages=emptyList(),attachments=emptyList(),materials=emptyList(),stickerAssets=emptyList(),messageStickers=emptyList(),generatedImages=emptyList(),readingDocuments=emptyList(),sharedActivities=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,stickerPreview=null,readingImportPreview=null,messageExportPreview=null,memoryExtraction=null,diaryGeneration=null,diaryExportPreview=null,weatherLookup=null,toolInvocations=emptyList(),appearance=null,wallpaper=null,proactiveRequestIds=emptySet()) }
+        _state.update { it.copy(scope=scope,chatId=null,chats=emptyList(),messages=emptyList(),attachments=emptyList(),materials=emptyList(),stickerAssets=emptyList(),messageStickers=emptyList(),messageVoices=emptyList(),messageReactions=emptyList(),generatedImages=emptyList(),readingDocuments=emptyList(),sharedActivities=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,stickerPreview=null,readingImportPreview=null,messageExportPreview=null,memoryExtraction=null,diaryGeneration=null,diaryExportPreview=null,weatherLookup=null,toolInvocations=emptyList(),appearance=null,wallpaper=null,proactiveRequestIds=emptySet()) }
         if(scope==null)return
         appearanceJob=viewModelScope.launch {
             try {
@@ -387,7 +389,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         messageImageTarget=null
         messageFileTarget=null
         pendingMessageExport=null
-        _state.update { it.copy(chatId=null,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,messageExportPreview=null,memoryExtraction=null,toolInvocations=emptyList(),proactiveRequestIds=emptySet()) }
+        _state.update { it.copy(chatId=null,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),messageVoices=emptyList(),messageReactions=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,messageExportPreview=null,memoryExtraction=null,toolInvocations=emptyList(),proactiveRequestIds=emptySet()) }
     }
     fun beginGroupEditor(original:GroupDefinition?) {
         if(!privacy.state.value.canAccess||state.value.working)return
@@ -530,7 +532,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         messageImageTarget=null
         messageFileTarget=null
         pendingMessageExport=null
-        _state.update { it.copy(chatId=id,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,messageExportPreview=null,memoryExtraction=null,toolInvocations=emptyList(),focusMessageId=focusMessageId,proactiveRequestIds=emptySet()) }
+        _state.update { it.copy(chatId=id,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),messageVoices=emptyList(),messageReactions=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,messageExportPreview=null,memoryExtraction=null,toolInvocations=emptyList(),focusMessageId=focusMessageId,proactiveRequestIds=emptySet()) }
         messagesJob=viewModelScope.launch {
             try {
                 withContext(Dispatchers.IO) { repository.requireChat(scope,id) }
@@ -546,6 +548,12 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
                 launch {db.dao().messageStickers(scope.roleId,scope.spaceId,id).collect {rows->
                     _state.update {if(it.scope==scope&&it.chatId==id)it.copy(messageStickers=rows)else it}
                 }}
+                launch {db.dao().messageVoices(scope.roleId,scope.spaceId,id).collect {rows->
+                    _state.update {if(it.scope==scope&&it.chatId==id)it.copy(messageVoices=rows)else it}
+                }}
+                launch {db.dao().messageReactions(scope.roleId,scope.spaceId,id).collect {rows->
+                    _state.update {if(it.scope==scope&&it.chatId==id)it.copy(messageReactions=rows)else it}
+                }}
                 launch {db.dao().generatedImages(scope.roleId,scope.spaceId,id).collect {rows->
                     _state.update {if(it.scope==scope&&it.chatId==id)it.copy(generatedImages=rows)else it}
                 }}
@@ -558,7 +566,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
             } catch(e: CancellationException) { throw e }
             catch(_: Exception) {
                 pendingMessageExport=null
-                _state.update { if(it.scope==scope && it.chatId==id) it.copy(chatId=null,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,messageExportPreview=null,toolInvocations=emptyList(),proactiveRequestIds=emptySet()) else it }
+                _state.update { if(it.scope==scope && it.chatId==id) it.copy(chatId=null,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),messageVoices=emptyList(),messageReactions=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,messageExportPreview=null,toolInvocations=emptyList(),proactiveRequestIds=emptySet()) else it }
                 notices.send(errorText("ACCESS"))
             }
         }
@@ -815,7 +823,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         playCoordinator.mutateRole(scope,id) {coordinator.mutate(scope,id) { repository.deleteChat(scope,id,memoryDisposition) }}
         withContext(Dispatchers.Main) {
             if(state.value.scope==scope && state.value.chatId==id) {
-                messagesJob?.cancel(); _state.update { it.copy(chatId=null,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,toolInvocations=emptyList(),proactiveRequestIds=emptySet()) }
+                messagesJob?.cancel(); _state.update { it.copy(chatId=null,messages=emptyList(),attachments=emptyList(),materials=emptyList(),messageStickers=emptyList(),messageVoices=emptyList(),messageReactions=emptyList(),generatedImages=emptyList(),pendingImage=null,pendingMaterial=null,materialPreview=null,pendingSticker=null,toolInvocations=emptyList(),proactiveRequestIds=emptySet()) }
             }
         }
     }
@@ -838,6 +846,53 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
                 }
             } else notices.send("请先停止当前生成，再发送新消息。")
         }
+    }
+    fun sendVoice(onAccepted: ()->Unit) {
+        if(activeVoiceConversation!=null){notices.trySend(errorText("SPEECH_BUSY"));return}
+        if(imageGenerationJob!=null){notices.trySend(errorText("IMAGE_GENERATION_BUSY"));return}
+        val scope=state.value.scope ?: return
+        val id=state.value.chatId ?: return
+        val recording=state.value.recordedVoice ?: return
+        val duration=MessageVoices.durationMs(recording.pcm)
+        if(duration<MessageVoices.MIN_DURATION_MS||duration>MessageVoices.MAX_DURATION_MS) {
+            recording.pcm.fill(0);_state.update {it.copy(recordedVoice=null)}
+            notices.trySend("语音时长需在 0.25 到 30 秒之间。");return
+        }
+        val data=recording.pcm.copyOf()
+        val voice=PromptVoice(MessageVoices.SAMPLE_RATE,duration,MessageVoices.waveform(data),MessageVoices.sha256(data),data)
+        action {
+            if(coordinator.send(scope,id,"",voice=voice)) withContext(Dispatchers.Main) {
+                if(state.value.scope==scope&&state.value.chatId==id){
+                    recording.pcm.fill(0)
+                    _state.update {it.copy(recordedVoice=null)}
+                    onAccepted()
+                }
+            } else notices.send("请先停止当前生成，再发送新语音。")
+        }
+    }
+    fun toggleReaction(scope:RoleAccessScope,chatId:String,messageId:String,side:String,emoji:String)=action {        val current=state.value.messageReactions
+        val existing=current.firstOrNull {it.messageId==messageId&&it.side==side&&it.emoji==emoji}
+        if(existing!=null){db.dao().deleteReaction(scope.roleId,scope.spaceId,chatId,messageId,side,emoji);return@action}
+        val next=Reactions.toggle(current,messageId,chatId,side,emoji,System.currentTimeMillis())
+        val added=next.firstOrNull {it.messageId==messageId&&it.side==side&&it.emoji==emoji}
+        if(added!=null)db.dao().saveReaction(added) else notices.send("每条消息每侧最多三个表情。")
+    }
+    fun scheduledMessages(scope:RoleAccessScope):Flow<List<ScheduledMessage>> = flow {
+        val lock=privacy.state.value;if(!lock.canAccess)return@flow
+        repository.requireRole(scope)
+        emitAll(db.scheduled().messages(scope.roleId,scope.spaceId))
+    }.flowOn(Dispatchers.IO)
+    fun saveScheduledMessage(scope:RoleAccessScope,chatId:String,content:String,dueAt:Long,saved:()->Unit)=action {
+        val chat=db.dao().chat(scope.roleId,scope.spaceId,chatId) ?: throw ChatFailure("ACCESS")
+        val item=ScheduledMessage(UUID.randomUUID().toString(),scope.roleId,scope.spaceId,chatId,chat.configId,1L,dueAt,ScheduledMessages.MODE_TEXT,content.trim(),ScheduledMessages.STATE_PENDING,UUID.randomUUID().toString(),createdAt=System.currentTimeMillis())
+        ScheduledMessages.validate(item)
+        db.scheduled().insert(item)
+        ScheduledMessageScheduler.schedule(getApplication<android.app.Application>(),item)
+        withContext(Dispatchers.Main){saved()}
+        notices.send("已安排定时消息。")
+    }
+    fun cancelScheduledMessage(scope:RoleAccessScope,id:String)=action {
+        if(db.scheduled().cancel(scope.roleId,scope.spaceId,id,System.currentTimeMillis())==1)ScheduledMessageScheduler.cancel(getApplication<android.app.Application>(),id)
     }
     fun retry(scope: RoleAccessScope, message: MessageEntity) = action {
         if(activeVoiceConversation!=null)throw ChatFailure("SPEECH_BUSY")
@@ -1299,11 +1354,31 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
     fun readTemplate(uri: Uri) = action {
-        val preview=try {
-            val input=getApplication<Application>().contentResolver.openInputStream(uri) ?: throw ChatFailure("FILE")
-            input.use { RoleTemplateCodec.read(it) }
-        } catch(e: ChatFailure) { throw e } catch(_: Exception) { throw ChatFailure("FILE") }
-        _state.update { it.copy(importPreview=preview) }
+        val bytes=try {
+            getApplication<Application>().contentResolver.openInputStream(uri)?.use {it.readBytes()} ?: throw ChatFailure("FILE")
+        } catch(e:ChatFailure){throw e} catch(_:Exception){throw ChatFailure("FILE")}
+        if(bytes.size>CharacterCards.MAX_BYTES)throw ChatFailure("FILE")
+        val isCard=try {
+            val root=org.json.JSONObject(String(bytes,Charsets.UTF_8))
+            root.has("spec")||root.has("data")
+        } catch(_:Exception){false}
+        if(isCard) {
+            when(val result=CharacterCards.read(bytes)) {
+                is CharacterCardResult.Success->_state.update {it.copy(characterCardPreview=result)}
+                is CharacterCardResult.Rejected->notices.send(result.reason)
+            }
+        } else {
+            val preview=RoleTemplateCodec.decode(bytes)
+            _state.update {it.copy(importPreview=preview)}
+        }
+    }
+    fun dismissCharacterCardPreview(){_state.update {it.copy(characterCardPreview=null)}}
+    fun importCharacterCard(configId:String?,saved:(RoleEntity)->Unit)=action {
+        val preview=state.value.characterCardPreview as? CharacterCardResult.Success ?: return@action
+        val role=repository.importCharacterCard(preview.card,configId)
+        _state.update {it.copy(characterCardPreview=null)}
+        withContext(Dispatchers.Main){saved(role)}
+        notices.send("已导入角色卡；世界书条目默认关闭，可在角色里逐条启用。")
     }
     fun readCompanionTheme(uri: Uri?) {
         if(uri==null)return

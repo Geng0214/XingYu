@@ -89,12 +89,12 @@ import java.util.Date
                         if(onBack!=null)IconButton(onClick=onBack){Icon(Icons.AutoMirrored.Filled.ArrowBack,"返回上一页")}
                         Text("角色管理",style=MaterialTheme.typography.titleLarge,fontWeight=FontWeight.Bold,modifier=Modifier.weight(1f))
                         if(!separateActions) {
-                            IconButton(enabled=!state.working,onClick=files.importRole){Icon(Icons.Default.FileDownload,"导入角色模板")}
+                            IconButton(enabled=!state.working,onClick=files.importRole){Icon(Icons.Default.FileDownload,"导入角色模板或角色卡")}
                             TextButton(enabled=!state.working,onClick={roleId=null;editing=true},modifier=Modifier.heightIn(min=48.dp)){Text("新增角色")}
                         }
                     }
                     if(separateActions)Row(Modifier.fillMaxWidth().padding(horizontal=20.dp),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-                        OutlinedButton(enabled=!state.working,onClick=files.importRole){Text("导入模板")}
+                        OutlinedButton(enabled=!state.working,onClick=files.importRole){Text("导入角色模板或角色卡")}
                         OutlinedButton(enabled=!state.working,onClick={roleId=null;editing=true}){Text("新增角色")}
                     }
                 }

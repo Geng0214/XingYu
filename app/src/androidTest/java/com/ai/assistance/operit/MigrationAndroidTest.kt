@@ -45,7 +45,7 @@ class MigrationAndroidTest {
     }
     @Test fun preservesEncryptedVersionOneDataAndRejectsBrokenOwnership()=runBlocking {
         System.loadLibrary("sqlcipher")
-        for((legacyVersion,orphan) in listOf(1 to false,1 to true,2 to false,3 to false,4 to false,5 to false,6 to false,7 to false,8 to false,9 to false,10 to false,11 to false,12 to false,13 to false,14 to false,15 to false,16 to false,17 to false,18 to false,19 to false,20 to false,21 to false,22 to false,23 to false,24 to false,25 to false,26 to false,27 to false,28 to false,29 to false,30 to false,31 to false,32 to false,33 to false)) {
+        for((legacyVersion,orphan) in listOf(1 to false,1 to true,2 to false,3 to false,4 to false,5 to false,6 to false,7 to false,8 to false,9 to false,10 to false,11 to false,12 to false,13 to false,14 to false,15 to false,16 to false,17 to false,18 to false,19 to false,20 to false,21 to false,22 to false,23 to false,24 to false,25 to false,26 to false,27 to false,28 to false,29 to false,30 to false,31 to false,32 to false,33 to false,34 to false)) {
             val name="migration-"+UUID.randomUUID()+".db"
             val key=ByteArray(32).also { SecureRandom().nextBytes(it) }
             val vault=CredentialVault(context)
@@ -105,6 +105,7 @@ class MigrationAndroidTest {
                             if(legacyVersion>=31)AppDatabase.MIGRATION_30_31.migrate(db)
                             if(legacyVersion>=32)AppDatabase.MIGRATION_31_32.migrate(db)
                             if(legacyVersion>=33)AppDatabase.MIGRATION_32_33.migrate(db)
+                            if(legacyVersion>=34)AppDatabase.MIGRATION_33_34.migrate(db)
                             val schema=JSONObject(instrumentation.context.assets.open("com.ai.assistance.operit.data.db.AppDatabase/$legacyVersion.json").bufferedReader().use { it.readText() })
                             db.execSQL("UPDATE room_master_table SET identity_hash=? WHERE id=42",arrayOf(schema.getJSONObject("database").getString("identityHash")))
                         }
@@ -112,7 +113,7 @@ class MigrationAndroidTest {
                 helper.writableDatabase;helper.close()
             }
             val db=Room.databaseBuilder(context,AppDatabase::class.java,name).openHelperFactory(SupportOpenHelperFactory(key.copyOf()))
-                .addMigrations(AppDatabase.MIGRATION_1_2,AppDatabase.MIGRATION_2_3,AppDatabase.MIGRATION_3_4,AppDatabase.MIGRATION_4_5,AppDatabase.MIGRATION_5_6,AppDatabase.MIGRATION_6_7,AppDatabase.MIGRATION_7_8,AppDatabase.MIGRATION_8_9,AppDatabase.MIGRATION_9_10,AppDatabase.MIGRATION_10_11,AppDatabase.MIGRATION_11_12,AppDatabase.MIGRATION_12_13,AppDatabase.MIGRATION_13_14,AppDatabase.MIGRATION_14_15,AppDatabase.MIGRATION_15_16,AppDatabase.MIGRATION_16_17,AppDatabase.MIGRATION_17_18,AppDatabase.MIGRATION_18_19,AppDatabase.MIGRATION_19_20,AppDatabase.MIGRATION_20_21,AppDatabase.MIGRATION_21_22,AppDatabase.MIGRATION_22_23,AppDatabase.MIGRATION_23_24,AppDatabase.MIGRATION_24_25,AppDatabase.MIGRATION_25_26,AppDatabase.MIGRATION_26_27,AppDatabase.MIGRATION_27_28,AppDatabase.MIGRATION_28_29,AppDatabase.MIGRATION_29_30,AppDatabase.MIGRATION_30_31,AppDatabase.MIGRATION_31_32,AppDatabase.MIGRATION_32_33,AppDatabase.MIGRATION_33_34).build()
+                .addMigrations(AppDatabase.MIGRATION_1_2,AppDatabase.MIGRATION_2_3,AppDatabase.MIGRATION_3_4,AppDatabase.MIGRATION_4_5,AppDatabase.MIGRATION_5_6,AppDatabase.MIGRATION_6_7,AppDatabase.MIGRATION_7_8,AppDatabase.MIGRATION_8_9,AppDatabase.MIGRATION_9_10,AppDatabase.MIGRATION_10_11,AppDatabase.MIGRATION_11_12,AppDatabase.MIGRATION_12_13,AppDatabase.MIGRATION_13_14,AppDatabase.MIGRATION_14_15,AppDatabase.MIGRATION_15_16,AppDatabase.MIGRATION_16_17,AppDatabase.MIGRATION_17_18,AppDatabase.MIGRATION_18_19,AppDatabase.MIGRATION_19_20,AppDatabase.MIGRATION_20_21,AppDatabase.MIGRATION_21_22,AppDatabase.MIGRATION_22_23,AppDatabase.MIGRATION_23_24,AppDatabase.MIGRATION_24_25,AppDatabase.MIGRATION_25_26,AppDatabase.MIGRATION_26_27,AppDatabase.MIGRATION_27_28,AppDatabase.MIGRATION_28_29,AppDatabase.MIGRATION_29_30,AppDatabase.MIGRATION_30_31,AppDatabase.MIGRATION_31_32,AppDatabase.MIGRATION_32_33,AppDatabase.MIGRATION_33_34,AppDatabase.MIGRATION_34_35).build()
             try {
                 if(orphan) {
                     var rejected=false
@@ -152,7 +153,10 @@ class MigrationAndroidTest {
                     assertNull(db.proactive().setting(role.id,role.spaceId));assertTrue(db.proactive().enabledSettings().isEmpty())
                     assertTrue(db.dao().speechServiceConfigs().first().isEmpty())
                     assertTrue(db.activities().observe(role.id,role.spaceId).first().isEmpty())
-                    assertEquals(34,db.openHelper.readableDatabase.version)
+                    assertTrue(db.dao().historyVoices(role.id,role.spaceId,"chat").isEmpty())
+                    assertTrue(db.dao().messageReactions(role.id,role.spaceId,"chat").first().isEmpty())
+                    assertTrue(db.scheduled().messages(role.id,role.spaceId).first().isEmpty())
+                    assertEquals(35,db.openHelper.readableDatabase.version)
                     assertNull(db.home().home())
                     assertEquals(secret,vault.read(db.dao().config("config")!!.credentialRef,endpoint))
                     assertEquals("existing-title",db.dao().chat(role.id,role.spaceId,"chat")!!.title)

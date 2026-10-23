@@ -25,9 +25,9 @@ internal data class BackupSnapshot(val createdAt:Long,val tables:List<List<Backu
     fun rows(name:String)=tables[BackupSchema.tables.indexOfFirst {it.name==name}.also {require(it>=0)}]
     fun summary()=BackupSummary(createdAt,rows("roles").size,rows("chats").size,rows("messages").size,rows("model_configs").size,
         rows("role_portraits").size+rows("role_appearance").count {it["wallpaper"]!=null}+rows("message_attachments").size+rows("sticker_assets").size+rows("message_stickers").size+rows("generated_images").count {it["data"]!=null},rows("mcp_extensions").size,credentials.size,includesCredentials,
-        rows("roles").count {it.text("userName").isNotEmpty()||it.text("userPersona").isNotEmpty()},rows("worldbook_entries").size,rows("relationship_entries").size,rows("message_materials").size,rows("sticker_assets").size,rows("message_stickers").size,rows("image_generation_configs").size,rows("generated_images").size,rows("reading_documents").size,rows("memory_entries").size,rows("diary_entries").size,rows("environment_profiles").size,rows("planner_entries").size,rows("cycle_records").size,rows("proactive_role_settings").size,rows("proactive_requests").size,rows("speech_service_configs").size,rows("shared_activities").size,rows("music_tracks").size,rows("music_sessions").size,rows("bilibili_watches").size,rows("group_rooms").size,rows("group_messages").size,rows("play_sessions").size,rows("play_requests").size,rows("home_world").size,rows("home_events").size)
+        rows("roles").count {it.text("userName").isNotEmpty()||it.text("userPersona").isNotEmpty()},rows("worldbook_entries").size,rows("relationship_entries").size,rows("message_materials").size,rows("sticker_assets").size,rows("message_stickers").size,rows("image_generation_configs").size,rows("generated_images").size,rows("reading_documents").size,rows("memory_entries").size,rows("diary_entries").size,rows("environment_profiles").size,rows("planner_entries").size,rows("cycle_records").size,rows("proactive_role_settings").size,rows("proactive_requests").size,rows("speech_service_configs").size,rows("shared_activities").size,rows("music_tracks").size,rows("music_sessions").size,rows("bilibili_watches").size,rows("group_rooms").size,rows("group_messages").size,rows("play_sessions").size,rows("play_requests").size,rows("home_world").size,rows("home_events").size,rows("message_voices").size,rows("message_reactions").size,rows("scheduled_messages").size)
 }
-data class BackupSummary(val createdAt:Long,val roles:Int,val chats:Int,val messages:Int,val models:Int,val images:Int,val extensions:Int,val credentials:Int,val includesCredentials:Boolean,val personas:Int=0,val worldbookEntries:Int=0,val relationships:Int=0,val materials:Int=0,val stickerAssets:Int=0,val stickerMessages:Int=0,val imageGenerationConfigs:Int=0,val generatedImages:Int=0,val readingDocuments:Int=0,val memories:Int=0,val diaries:Int=0,val environments:Int=0,val plannerEntries:Int=0,val cycleRecords:Int=0,val proactiveSettings:Int=0,val proactiveRequests:Int=0,val speechServiceConfigs:Int=0,val sharedActivities:Int=0,val musicTracks:Int=0,val musicSessions:Int=0,val bilibiliWatches:Int=0,val groups:Int=0,val groupMessages:Int=0,val playSessions:Int=0,val playRequests:Int=0,val homes:Int=0,val homeCommands:Int=0)
+data class BackupSummary(val createdAt:Long,val roles:Int,val chats:Int,val messages:Int,val models:Int,val images:Int,val extensions:Int,val credentials:Int,val includesCredentials:Boolean,val personas:Int=0,val worldbookEntries:Int=0,val relationships:Int=0,val materials:Int=0,val stickerAssets:Int=0,val stickerMessages:Int=0,val imageGenerationConfigs:Int=0,val generatedImages:Int=0,val readingDocuments:Int=0,val memories:Int=0,val diaries:Int=0,val environments:Int=0,val plannerEntries:Int=0,val cycleRecords:Int=0,val proactiveSettings:Int=0,val proactiveRequests:Int=0,val speechServiceConfigs:Int=0,val sharedActivities:Int=0,val musicTracks:Int=0,val musicSessions:Int=0,val bilibiliWatches:Int=0,val groups:Int=0,val groupMessages:Int=0,val playSessions:Int=0,val playRequests:Int=0,val homes:Int=0,val homeCommands:Int=0,val voices:Int=0,val reactions:Int=0,val scheduledMessages:Int=0)
 
 /** Fixed logical schema: archive content can never select SQL tables, columns or file paths. */
 internal object BackupSchema {
@@ -116,21 +116,27 @@ internal object BackupSchema {
         val removed=com.ai.assistance.operit.data.db.RequestMetadataMigration.removedColumns[table.name].orEmpty()
         table.copy(columns=table.columns.filter {it.name !in removed})
     }
-    val tables=tablesV31.filter {it.name !in setOf("homes","home_commands")}+listOf(
+    val tablesV32=tablesV31.filter {it.name !in setOf("homes","home_commands")}+listOf(
         table("home_world","id",t("id"),t("initialJson",max=131072),t("stateJson",max=131072),i("version"),i("createdAt"),i("updatedAt")),
         table("home_events","commandId",t("commandId"),t("homeId"),i("beforeVersion"),t("actionJson",max=com.ai.assistance.operit.data.model.HomeActionCodec.MAX_BYTES),t("description",max=1024),i("createdAt")))
+    val tables=tablesV32+listOf(
+        table("message_voices","messageId",t("messageId"),t("chatId"),t("requestId"),i("sampleRate"),i("durationMs"),b("waveform",max=com.ai.assistance.operit.data.model.MessageVoices.WAVEFORM_POINTS),t("sha256"),b("data",max=com.ai.assistance.operit.data.model.MessageVoices.MAX_STORED)),
+        table("message_reactions","messageId,side,emoji",t("messageId"),t("side"),t("emoji"),t("chatId"),i("createdAt")),
+        table("scheduled_messages","id",t("id"),t("roleId"),t("spaceId"),t("chatId"),t("configId"),i("configVersion"),i("dueAt"),t("mode"),t("content",max=com.ai.assistance.operit.data.model.ScheduledMessages.MAX_TEXT*4),t("state"),t("assistantId"),t("errorCode"),i("notificationSent"),i("createdAt"),i("finishedAt")))
     fun discardUnpublishedHomes(old:List<List<BackupRow>>):List<List<BackupRow>> {
         val source=tablesV31.mapIndexed {index,table->table.name to old[index]}.toMap()
-        return tables.map {table->if(table.name in setOf("home_world","home_events"))emptyList() else source.getValue(table.name)}
+        // Tables introduced after v31 have no rows in that snapshot.
+        return tables.map {table->if(table.name in setOf("home_world","home_events"))emptyList() else source[table.name].orEmpty()}
     }
     fun currentRows(old:List<List<BackupRow>>):List<List<BackupRow>> {
         require(old.size==tablesV30.size)
         val source=tablesV30.mapIndexed {index,table->table.name to old[index]}.toMap()
-        return tables.map {table->if(table.name in setOf("home_world","home_events"))emptyList() else source.getValue(table.name).map {row->
+        return tables.map {table->if(table.name in setOf("home_world","home_events"))emptyList() else source[table.name].orEmpty().map {row->
             BackupRow(table,table.columns.map {column->row[column.name]})
         }}
     }
     fun upgradeV23(old:List<List<BackupRow>>)=old+listOf(emptyList(),emptyList())
+    fun upgradeV32(old:List<List<BackupRow>>)=old+List(3){emptyList<BackupRow>()}
     fun upgradeV22(old:List<List<BackupRow>>)=old+List(4){emptyList<BackupRow>()}
     fun upgradeV21(old:List<List<BackupRow>>)=old+listOf(emptyList())
     fun upgradeV20(old:List<List<BackupRow>>)=old.mapIndexed {index,rows->rows.map {BackupRow(tablesV21[index],it.values+if(it.table.name=="music_tracks")listOf("audio",null,null)else emptyList())}}
@@ -218,7 +224,7 @@ internal object BackupFormat {
         val out=DataOutputStream(bytes)
         fun blob(value:ByteArray,limit:Int){require(value.size<=limit);out.writeInt(value.size);out.write(value)}
         fun text(value:String,limit:Int)=blob(value.toByteArray(Charsets.UTF_8),limit)
-        out.writeInt(32);out.writeInt(34);out.writeLong(snapshot.createdAt);out.writeBoolean(snapshot.includesCredentials)
+        out.writeInt(33);out.writeInt(35);out.writeLong(snapshot.createdAt);out.writeBoolean(snapshot.includesCredentials)
         require(snapshot.tables.size==BackupSchema.tables.size&&snapshot.tables.sumOf {it.size}<=MAX_ROWS)
         snapshot.tables.forEachIndexed {index,rows->
             val table=BackupSchema.tables[index];out.writeInt(rows.size)
@@ -246,7 +252,7 @@ internal object BackupFormat {
         val payloadVersion=input.readInt();val schema=input.readInt()
         // v25..v28 add activity kinds to v24's table layout; each kind has an explicit version gate.
         val version=if(payloadVersion in 25..28)24 else payloadVersion
-        val specs=when(version to schema){1 to 6->BackupSchema.tablesV1;2 to 7->BackupSchema.tablesV2;3 to 8->BackupSchema.tablesV3;4 to 9->BackupSchema.tablesV4;5 to 10->BackupSchema.tablesV5;6 to 11->BackupSchema.tablesV6;7 to 12->BackupSchema.tablesV7;8 to 13->BackupSchema.tablesV8;9 to 14->BackupSchema.tablesV9;10 to 15->BackupSchema.tablesV10;11 to 16->BackupSchema.tablesV11;12 to 17->BackupSchema.tablesV12;13 to 18->BackupSchema.tablesV13;14 to 19->BackupSchema.tablesV14;15 to 20->BackupSchema.tablesV15;16 to 21->BackupSchema.tablesV16;17 to 22->BackupSchema.tablesV17;18 to 23->BackupSchema.tablesV18;19 to 24->BackupSchema.tablesV19;20 to 25->BackupSchema.tablesV20;21 to 26->BackupSchema.tablesV21;22 to 27->BackupSchema.tablesV22;23 to 28->BackupSchema.tablesV23;24 to 29->BackupSchema.tablesV24;29 to 30->BackupSchema.tablesV29;30 to 30->BackupSchema.tablesV30;31 to 33->BackupSchema.tablesV31;32 to 34->BackupSchema.tables;else->error("Unsupported backup version")}
+        val specs=when(version to schema){1 to 6->BackupSchema.tablesV1;2 to 7->BackupSchema.tablesV2;3 to 8->BackupSchema.tablesV3;4 to 9->BackupSchema.tablesV4;5 to 10->BackupSchema.tablesV5;6 to 11->BackupSchema.tablesV6;7 to 12->BackupSchema.tablesV7;8 to 13->BackupSchema.tablesV8;9 to 14->BackupSchema.tablesV9;10 to 15->BackupSchema.tablesV10;11 to 16->BackupSchema.tablesV11;12 to 17->BackupSchema.tablesV12;13 to 18->BackupSchema.tablesV13;14 to 19->BackupSchema.tablesV14;15 to 20->BackupSchema.tablesV15;16 to 21->BackupSchema.tablesV16;17 to 22->BackupSchema.tablesV17;18 to 23->BackupSchema.tablesV18;19 to 24->BackupSchema.tablesV19;20 to 25->BackupSchema.tablesV20;21 to 26->BackupSchema.tablesV21;22 to 27->BackupSchema.tablesV22;23 to 28->BackupSchema.tablesV23;24 to 29->BackupSchema.tablesV24;29 to 30->BackupSchema.tablesV29;30 to 30->BackupSchema.tablesV30;31 to 33->BackupSchema.tablesV31;32 to 34->BackupSchema.tablesV32;33 to 35->BackupSchema.tables;else->error("Unsupported backup version")}
         val created=input.readLong();require(created>=0);val included=flag()
         val tables=specs.map {table->
             val n=input.readInt();require(n>=0&&n<=MAX_ROWS-count);count+=n
@@ -263,7 +269,7 @@ internal object BackupFormat {
         val credentials=List(n){BackupCredential(text(128),text(65536),text(32768))}
         require(input.available()==0&&(included||credentials.isEmpty()))
         if(version>=29) {
-            val current=when(version){32->tables;31->BackupSchema.discardUnpublishedHomes(tables);else->BackupSchema.currentRows(tables.mapIndexed {i,rows->rows.map {BackupRow(BackupSchema.tablesV30[i],it.values)}})}
+            val current=when(version){33->tables;32->BackupSchema.upgradeV32(tables);31->BackupSchema.discardUnpublishedHomes(tables);else->BackupSchema.currentRows(tables.mapIndexed {i,rows->rows.map {BackupRow(BackupSchema.tablesV30[i],it.values)}})}
             BackupSnapshot(created,current,included,credentials).also {PlayBackup.requireLegacyStates(it,payloadVersion)}
         } else {
         val versionTen=when(version){

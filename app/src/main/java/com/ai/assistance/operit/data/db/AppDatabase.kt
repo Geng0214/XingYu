@@ -36,11 +36,13 @@ interface CompanionDao {
     // Include that event here so a newly opened conversation has the same preview as its timeline.
     @Query("""SELECT c.id AS chatId,c.roleId,r.spaceId,r.name AS roleName,c.title,c.pinned,
         (SELECT preview FROM (
-            SELECT m.createdAt AS at,m.id AS tie,CASE WHEN m.content!='' THEN substr(m.content,1,100)
+            SELECT m.createdAt AS at,m.id AS tie,CASE WHEN EXISTS (SELECT 1 FROM message_voices v WHERE v.messageId=m.id) THEN '[语音]'
+                WHEN m.content!='' THEN substr(m.content,1,100)
                 WHEN EXISTS (SELECT 1 FROM message_stickers s WHERE s.messageId=m.id) THEN '[表情]'
                 WHEN EXISTS (SELECT 1 FROM message_attachments a WHERE a.messageId=m.id) THEN '[图片]' ELSE '[资料]' END AS preview
             FROM messages m WHERE m.chatId=c.id AND (m.content!=''
                 OR EXISTS (SELECT 1 FROM message_stickers s WHERE s.messageId=m.id)
+                OR EXISTS (SELECT 1 FROM message_voices v WHERE v.messageId=m.id)
                 OR EXISTS (SELECT 1 FROM message_attachments a WHERE a.messageId=m.id)
                 OR EXISTS (SELECT 1 FROM message_materials t WHERE t.messageId=m.id))
             UNION ALL SELECT g.createdAt AS at,g.id AS tie,'[生图] '||substr(g.prompt,1,90) AS preview FROM generated_images g WHERE g.chatId=c.id
@@ -121,6 +123,18 @@ interface CompanionDao {
     suspend fun historyStickers(roleId:String,spaceId:String,chatId:String):List<MessageSticker>
     @Query("SELECT s.* FROM message_stickers s JOIN messages m ON m.id=s.messageId AND m.chatId=s.chatId AND m.requestId=s.requestId JOIN chats c ON c.id=m.chatId JOIN roles r ON r.id=c.roleId WHERE c.id=:chatId AND r.id=:roleId AND r.spaceId=:spaceId AND m.kind='user' AND m.requestId=:requestId LIMIT 1")
     suspend fun requestSticker(roleId:String,spaceId:String,chatId:String,requestId:String):MessageSticker?
+    @Query("SELECT v.* FROM message_voices v JOIN messages m ON m.id=v.messageId AND m.chatId=v.chatId AND m.requestId=v.requestId JOIN chats c ON c.id=m.chatId JOIN roles r ON r.id=c.roleId WHERE c.id=:chatId AND r.id=:roleId AND r.spaceId=:spaceId AND m.kind='user' ORDER BY m.createdAt,m.id")
+    fun messageVoices(roleId:String,spaceId:String,chatId:String):Flow<List<MessageVoice>>
+    @Query("SELECT v.* FROM message_voices v JOIN messages m ON m.id=v.messageId AND m.chatId=v.chatId AND m.requestId=v.requestId JOIN chats c ON c.id=m.chatId JOIN roles r ON r.id=c.roleId WHERE c.id=:chatId AND r.id=:roleId AND r.spaceId=:spaceId AND m.kind='user' ORDER BY m.createdAt,m.id")
+    suspend fun historyVoices(roleId:String,spaceId:String,chatId:String):List<MessageVoice>
+    @Query("SELECT v.* FROM message_voices v JOIN messages m ON m.id=v.messageId AND m.chatId=v.chatId AND m.requestId=v.requestId JOIN chats c ON c.id=m.chatId JOIN roles r ON r.id=c.roleId WHERE c.id=:chatId AND r.id=:roleId AND r.spaceId=:spaceId AND m.kind='user' AND m.requestId=:requestId LIMIT 1")
+    suspend fun requestVoice(roleId:String,spaceId:String,chatId:String,requestId:String):MessageVoice?
+    @Insert suspend fun insertMessageVoice(voice:MessageVoice)
+    @Query("SELECT x.* FROM message_reactions x JOIN messages m ON m.id=x.messageId JOIN chats c ON c.id=m.chatId JOIN roles r ON r.id=c.roleId WHERE c.id=:chatId AND r.id=:roleId AND r.spaceId=:spaceId ORDER BY x.createdAt")
+    fun messageReactions(roleId:String,spaceId:String,chatId:String):Flow<List<MessageReaction>>
+    @Upsert suspend fun saveReaction(reaction:MessageReaction)
+    @Query("DELETE FROM message_reactions WHERE messageId=:messageId AND side=:side AND emoji=:emoji AND chatId=:chatId AND EXISTS (SELECT 1 FROM messages m JOIN chats c ON c.id=m.chatId JOIN roles r ON r.id=c.roleId WHERE m.id=:messageId AND c.id=:chatId AND r.id=:roleId AND r.spaceId=:spaceId)")
+    suspend fun deleteReaction(roleId:String,spaceId:String,chatId:String,messageId:String,side:String,emoji:String):Int
     @Query("SELECT g.* FROM generated_images g JOIN chats c ON c.id=g.chatId JOIN roles r ON r.id=c.roleId WHERE g.chatId=:chatId AND g.roleId=:roleId AND g.spaceId=:spaceId AND c.roleId=:roleId AND r.spaceId=:spaceId ORDER BY g.createdAt,g.id")
     fun generatedImages(roleId:String,spaceId:String,chatId:String):Flow<List<GeneratedImage>>
     @Insert suspend fun insertGeneratedImage(image:GeneratedImage)
@@ -142,7 +156,8 @@ interface CompanionDao {
         +(SELECT COUNT(*) FROM group_requests WHERE configId=:id)
         +(SELECT COUNT(*) FROM play_requests WHERE configId=:id)
         +(SELECT COUNT(*) FROM proactive_role_settings WHERE configId=:id)
-        +(SELECT COUNT(*) FROM proactive_requests WHERE configId=:id)""")
+        +(SELECT COUNT(*) FROM proactive_requests WHERE configId=:id)
+        +(SELECT COUNT(*) FROM scheduled_messages WHERE configId=:id)""")
     suspend fun configReferenceCount(id:String):Int
     @Query("DELETE FROM model_configs WHERE id=:id AND version=:version")
     suspend fun deleteConfig(id:String,version:Long):Int
@@ -177,7 +192,7 @@ interface CompanionDao {
 }
 
 @Database(entities = [HomeRow::class,HomeCommandRow::class,PlaySessionRow::class,PlayRequestRow::class,GroupRoomRow::class,GroupMemberRow::class,GroupRequestRow::class,GroupMessageRow::class,RoleEntity::class, ModelConfigData::class,ImageGenerationConfig::class,GeneratedImage::class,SpeechServiceConfig::class,ChatEntity::class, MessageEntity::class, ChatAppearance::class, RolePortrait::class,
-    BilibiliWatch::class,MusicTrack::class,MusicSession::class,SharedActivity::class,MessageAttachment::class,MessageMaterial::class,ReadingDocument::class,StickerAsset::class,MessageSticker::class,McpExtension::class,ExtensionTool::class,RoleToolGrant::class,RequestToolPermission::class,ToolInvocationRecord::class,ToolPkgRecord::class,WorldbookEntry::class,RelationshipEntry::class,MemoryEntry::class,DiaryEntry::class,EnvironmentProfile::class,PlannerEntry::class,CycleRecord::class,ProactiveRoleSetting::class,ProactiveRequestEntity::class], version = 34, exportSchema = true)
+    BilibiliWatch::class,MusicTrack::class,MusicSession::class,SharedActivity::class,MessageAttachment::class,MessageMaterial::class,ReadingDocument::class,StickerAsset::class,MessageSticker::class,McpExtension::class,ExtensionTool::class,RoleToolGrant::class,RequestToolPermission::class,ToolInvocationRecord::class,ToolPkgRecord::class,WorldbookEntry::class,RelationshipEntry::class,MemoryEntry::class,DiaryEntry::class,EnvironmentProfile::class,PlannerEntry::class,CycleRecord::class,ProactiveRoleSetting::class,ProactiveRequestEntity::class,MessageVoice::class,MessageReaction::class,ScheduledMessage::class], version = 35, exportSchema = true)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun dao(): CompanionDao
@@ -196,6 +211,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun groups():GroupDao
     abstract fun play():PlayDao
     abstract fun home():HomeDao
+    abstract fun scheduled():ScheduledMessageDao
     suspend fun recoverInterruptedRequests()=withTransaction {
         music().recover()
         bilibili().recover()
@@ -238,6 +254,7 @@ abstract class AppDatabase : RoomDatabase() {
         val MIGRATION_31_32=SingleConversationMigration
         val MIGRATION_32_33=RequestMetadataMigration
         val MIGRATION_33_34=SharedHomeMigration
+        val MIGRATION_34_35=VoiceReactionScheduleMigration
         val MIGRATION_3_4 = object : Migration(3, 4) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.query("SELECT (SELECT COUNT(*) FROM chats c LEFT JOIN roles r ON c.roleId=r.id LEFT JOIN model_configs m ON c.configId=m.id WHERE r.id IS NULL OR m.id IS NULL) + (SELECT COUNT(*) FROM messages m LEFT JOIN chats c ON m.chatId=c.id WHERE c.id IS NULL) + (SELECT COUNT(*) FROM role_appearance a LEFT JOIN roles r ON a.roleId=r.id AND a.spaceId=r.spaceId WHERE r.id IS NULL)").use {
@@ -279,7 +296,7 @@ abstract class AppDatabase : RoomDatabase() {
             val key = vault.databaseKey(context.getDatabasePath("companion.db").exists())
             return Room.databaseBuilder(context, AppDatabase::class.java, "companion.db")
                 .openHelperFactory(SupportOpenHelperFactory(key))
-                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12, MIGRATION_12_13, MIGRATION_13_14, MIGRATION_14_15, MIGRATION_15_16, MIGRATION_16_17, MIGRATION_17_18, MIGRATION_18_19, MIGRATION_19_20, MIGRATION_20_21, MIGRATION_21_22, MIGRATION_22_23, MIGRATION_23_24, MIGRATION_24_25, MIGRATION_25_26, MIGRATION_26_27, MIGRATION_27_28, MIGRATION_28_29, MIGRATION_29_30, MIGRATION_30_31, MIGRATION_31_32, MIGRATION_32_33, MIGRATION_33_34)
+                .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9, MIGRATION_9_10, MIGRATION_10_11, MIGRATION_11_12, MIGRATION_12_13, MIGRATION_13_14, MIGRATION_14_15, MIGRATION_15_16, MIGRATION_16_17, MIGRATION_17_18, MIGRATION_18_19, MIGRATION_19_20, MIGRATION_20_21, MIGRATION_21_22, MIGRATION_22_23, MIGRATION_23_24, MIGRATION_24_25, MIGRATION_25_26, MIGRATION_26_27, MIGRATION_27_28, MIGRATION_28_29, MIGRATION_29_30, MIGRATION_30_31, MIGRATION_31_32, MIGRATION_32_33, MIGRATION_33_34, MIGRATION_34_35)
                 .addCallback(object : Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         // Seed only on creation; a deliberately deleted role must stay deleted.

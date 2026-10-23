@@ -530,6 +530,7 @@ fun CompanionApp(vm: CompanionViewModel = viewModel()) {
     var environment by remember {mutableStateOf(false)}
     var planner by remember {mutableStateOf(false)}
     var proactive by remember {mutableStateOf(false)}
+    var scheduled by remember {mutableStateOf(false)}
     Column(Modifier.verticalScroll(rememberScrollState()).padding(horizontal=24.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
         if(role!=null) Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(14.dp)) {
             PortraitAvatar(role.name,role.scope(),vm,size=56.dp)
@@ -561,6 +562,7 @@ fun CompanionApp(vm: CompanionViewModel = viewModel()) {
             OutlinedButton(onClick={environment=true}){Text("时间与天气")}
             OutlinedButton(onClick={planner=true}){Text("日程与记录")}
             OutlinedButton(onClick={proactive=true}){Text("主动消息")}
+            OutlinedButton(onClick={scheduled=true}){Text("定时消息")}
             OutlinedButton(onClick={tools=true}){Text("工具权限")}
             OutlinedButton(enabled=!state.working,onClick={vm.copyRole(role.scope()){selected=it.id}}){Text("复制角色")}
             OutlinedButton(enabled=!state.working,onClick={vm.previewExport(role.scope())}){Text("导出已保存模板")}
@@ -580,6 +582,7 @@ fun CompanionApp(vm: CompanionViewModel = viewModel()) {
     if(environment&&role!=null)EnvironmentDialog(role,state,vm){environment=false}
     if(planner&&role!=null)PlannerDialog(role,state,vm){planner=false}
     if(proactive&&role!=null)ProactiveDialog(role,state,vm){proactive=false}
+    if(scheduled&&role!=null)ScheduledMessageDialog(role,state.chats.firstOrNull {it.roleId==role.id}?.id,vm){scheduled=false}
     deleting?.let { request ->
         RoleDeleteDialog(request,state.working,onDismiss={deleting=null},onConfirm={
             vm.deleteRole(request.role.scope()) {
@@ -601,6 +604,25 @@ fun CompanionApp(vm: CompanionViewModel = viewModel()) {
             }},
             confirmButton={TextButton(enabled=!state.working,onClick={vm.importTemplate{vm.selectRole(it.scope())}}){Text("创建新角色")}},
             dismissButton={TextButton(onClick={vm.dismissImport()}){Text("取消")}})
+    }
+    (state.characterCardPreview as? CharacterCardResult.Success)?.let { result->
+        val card=result.card
+        var configId by remember(card){mutableStateOf(state.configs.firstOrNull()?.id)}
+        AlertDialog(onDismissRequest={vm.dismissCharacterCardPreview()},title={Text("导入角色卡")},
+            text={Column(Modifier.heightIn(max=440.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(10.dp)) {
+                Text(card.name,style=MaterialTheme.typography.titleMedium)
+                Text("人设 ${card.prompt.length} 字 · 开场白 ${card.openingMessage.length} 字",style=MaterialTheme.typography.bodySmall)
+                if(card.lore.isNotEmpty())Text("世界书 ${card.lore.size} 条，导入后默认关闭。",style=MaterialTheme.typography.bodySmall)
+                if(card.alternateGreetings>0)Text("已忽略 ${card.alternateGreetings} 条备选开场白。",style=MaterialTheme.typography.bodySmall)
+                if(card.ignoredFields>0)Text("已忽略 ${card.ignoredFields} 个未知字段。",style=MaterialTheme.typography.bodySmall)
+                Text("默认聊天模型",style=MaterialTheme.typography.labelLarge)
+                FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                    FilterChip(selected=configId==null,onClick={configId=null},label={Text("新建对话时选择")})
+                    state.configs.forEach {config->FilterChip(selected=configId==config.id,onClick={configId=config.id},label={Text(config.name)})}
+                }
+            }},
+            confirmButton={TextButton(enabled=!state.working,onClick={vm.importCharacterCard(configId){vm.selectRole(it.scope())}}){Text("创建角色")}},
+            dismissButton={TextButton(onClick={vm.dismissCharacterCardPreview()}){Text("取消")}})
     }
     state.exportPreview?.let { template ->
         AlertDialog(onDismissRequest={vm.dismissExport()},title={Text("确认要分享的内容")},

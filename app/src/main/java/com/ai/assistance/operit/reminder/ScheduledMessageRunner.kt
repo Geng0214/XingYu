@@ -9,25 +9,28 @@ import com.ai.assistance.operit.data.model.ScheduledMessages
 import com.ai.assistance.operit.data.security.CredentialVault
 import java.util.UUID
 
-/** 到点把一条定时消息写进聊天；固定文本模式不联网。 */
+/** 到点执行一条定时消息：固定文本直接落库，生成模式交给模型。 */
 object ScheduledMessageRunner {
     suspend fun run(context:Context,id:String) {
+        val reader=AppDatabase.open(context,CredentialVault(context))
+        val item=try {reader.scheduled().byId(id)} finally {reader.close()}
+        if(item==null||item.state!=ScheduledMessages.STATE_PENDING)return
+        if(item.mode==ScheduledMessages.MODE_GENERATE) {
+            ScheduledMessageGenerator.run(context,item)
+            return
+        }
         val db=AppDatabase.open(context,CredentialVault(context))
         try {
             db.withTransaction {
-                val item=db.scheduled().byId(id) ?: return@withTransaction
-                if(item.state!=ScheduledMessages.STATE_PENDING)return@withTransaction
-                if(item.mode!=ScheduledMessages.MODE_TEXT) {
-                    db.scheduled().finish(id,ScheduledMessages.STATE_FAILED,"SCHEDULE_MODE",System.currentTimeMillis())
-                    return@withTransaction
-                }
-                val chat=db.dao().chat(item.roleId,item.spaceId,item.chatId)
+                val current=db.scheduled().byId(id) ?: return@withTransaction
+                if(current.state!=ScheduledMessages.STATE_PENDING)return@withTransaction
+                val chat=db.dao().chat(current.roleId,current.spaceId,current.chatId)
                 if(chat==null) {
                     db.scheduled().finish(id,ScheduledMessages.STATE_FAILED,"ACCESS",System.currentTimeMillis())
                     return@withTransaction
                 }
                 val now=maxOf(System.currentTimeMillis(),chat.createdAt)
-                db.dao().insertMessages(listOf(MessageEntity(UUID.randomUUID().toString(),item.chatId,item.id,"assistant",item.content,MessageState.COMPLETE,now)))
+                db.dao().insertMessages(listOf(MessageEntity(UUID.randomUUID().toString(),current.chatId,current.id,"assistant",current.content,MessageState.COMPLETE,now)))
                 db.scheduled().finish(id,ScheduledMessages.STATE_COMPLETE,"",now)
             }
         } finally {db.close()}

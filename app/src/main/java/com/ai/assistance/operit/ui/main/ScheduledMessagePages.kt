@@ -2,6 +2,8 @@ package com.ai.assistance.operit.ui.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,6 +15,7 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -48,12 +51,14 @@ private fun scheduledStateText(item:ScheduledMessage)=when(item.state){
     else->"发送失败"
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable internal fun ScheduledMessageDialog(role:RoleEntity,chatId:String?,vm:CompanionViewModel,onDismiss:()->Unit) {
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+@Composable internal fun ScheduledMessageDialog(role:RoleEntity,chatId:String?,state:CompanionState,vm:CompanionViewModel,onDismiss:()->Unit) {
     val items by produceState(initialValue=emptyList<ScheduledMessage>(),role.id,role.spaceId) {
         vm.scheduledMessages(role.scope()).collect {value=it}
     }
     var content by remember{mutableStateOf("")}
+    var mode by remember{mutableStateOf(ScheduledMessages.MODE_TEXT)}
+    var configId by remember{mutableStateOf<String?>(null)}
     var date by remember{mutableStateOf(LocalDate.now())}
     var hour by remember{mutableStateOf("20")}
     var minute by remember{mutableStateOf("00")}
@@ -70,8 +75,18 @@ private fun scheduledStateText(item:ScheduledMessage)=when(item.state){
         title={Text("定时消息")},
         text={
             Column(Modifier.verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(10.dp)) {
-                Text("到点后由角色发出这条消息，不调用模型、不产生费用。",style=MaterialTheme.typography.bodySmall)
-                OutlinedTextField(content,{if(it.length<=ScheduledMessages.MAX_TEXT)content=it},Modifier.fillMaxWidth(),label={Text("内容")},minLines=2,enabled=chatId!=null)
+                Text("固定文本到点直接发出，不联网；生成模式会让角色按指令写一条。",style=MaterialTheme.typography.bodySmall)
+                Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                    FilterChip(mode==ScheduledMessages.MODE_TEXT,{mode=ScheduledMessages.MODE_TEXT},label={Text("固定文本")})
+                    FilterChip(mode==ScheduledMessages.MODE_GENERATE,{mode=ScheduledMessages.MODE_GENERATE},label={Text("让角色生成")})
+                }
+                if(mode==ScheduledMessages.MODE_GENERATE) {
+                    if(state.configs.isEmpty())Text("还没有模型连接，无法使用生成模式。",color=MaterialTheme.colorScheme.error,style=MaterialTheme.typography.bodySmall)
+                    else FlowRow(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+                        state.configs.forEach {config->FilterChip(configId==config.id,{configId=config.id},label={Text(config.name)})}
+                    }
+                }
+                OutlinedTextField(content,{if(it.length<=(if(mode==ScheduledMessages.MODE_TEXT)ScheduledMessages.MAX_TEXT else ScheduledMessages.MAX_INSTRUCTION))content=it},Modifier.fillMaxWidth(),label={Text(if(mode==ScheduledMessages.MODE_GENERATE)"给角色的指令" else "内容")},minLines=2,enabled=chatId!=null)
                 Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick={pickDate=true},enabled=chatId!=null){Text("${date.monthValue} 月 ${date.dayOfMonth} 日")}
                     OutlinedTextField(hour,{if(it.length<=2)hour=it},Modifier.width(72.dp),label={Text("时")},singleLine=true,keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Number),enabled=chatId!=null)
@@ -85,7 +100,7 @@ private fun scheduledStateText(item:ScheduledMessage)=when(item.state){
                     Row(Modifier.fillMaxWidth(),verticalAlignment=Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) {
                             Text(item.content.replace('\n',' ').take(40),maxLines=1,style=MaterialTheme.typography.bodyMedium)
-                            Text("${scheduledFormat.format(Instant.ofEpochMilli(item.dueAt).atZone(zone))} · ${scheduledStateText(item)}",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
+                            Text("${scheduledFormat.format(Instant.ofEpochMilli(item.dueAt).atZone(zone))} · ${if(item.mode==ScheduledMessages.MODE_GENERATE)"生成" else "固定文本"} · ${scheduledStateText(item)}",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.onSurfaceVariant)
                         }
                         if(item.state==ScheduledMessages.STATE_PENDING)TextButton(onClick={vm.cancelScheduledMessage(role.scope(),item.id)}){Text("取消")}
                     }
@@ -93,9 +108,9 @@ private fun scheduledStateText(item:ScheduledMessage)=when(item.state){
             }
         },
         confirmButton={
-            TextButton(enabled=chatId!=null&&content.isNotBlank()&&dueAt()!=null&&dueAt()!!>System.currentTimeMillis(),onClick={
+            TextButton(enabled=chatId!=null&&content.isNotBlank()&&dueAt()!=null&&dueAt()!!>System.currentTimeMillis()&&(mode==ScheduledMessages.MODE_TEXT||configId!=null),onClick={
                 val due=dueAt()?:return@TextButton
-                vm.saveScheduledMessage(role.scope(),chatId!!,content,due){content=""}
+                vm.saveScheduledMessage(role.scope(),chatId!!,content,due,mode,configId){content=""}
             }){Text("安排")}
         },
         dismissButton={TextButton(onClick=onDismiss){Text("关闭")}}

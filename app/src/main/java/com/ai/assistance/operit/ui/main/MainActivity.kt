@@ -582,7 +582,7 @@ fun CompanionApp(vm: CompanionViewModel = viewModel()) {
     if(environment&&role!=null)EnvironmentDialog(role,state,vm){environment=false}
     if(planner&&role!=null)PlannerDialog(role,state,vm){planner=false}
     if(proactive&&role!=null)ProactiveDialog(role,state,vm){proactive=false}
-    if(scheduled&&role!=null)ScheduledMessageDialog(role,state.chats.firstOrNull {it.roleId==role.id}?.id,vm){scheduled=false}
+    if(scheduled&&role!=null)ScheduledMessageDialog(role,state.chats.firstOrNull {it.roleId==role.id}?.id,state,vm){scheduled=false}
     deleting?.let { request ->
         RoleDeleteDialog(request,state.working,onDismiss={deleting=null},onConfirm={
             vm.deleteRole(request.role.scope()) {

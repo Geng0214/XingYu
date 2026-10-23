@@ -882,14 +882,16 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         repository.requireRole(scope)
         emitAll(db.scheduled().messages(scope.roleId,scope.spaceId))
     }.flowOn(Dispatchers.IO)
-    fun saveScheduledMessage(scope:RoleAccessScope,chatId:String,content:String,dueAt:Long,saved:()->Unit)=action {
+    fun saveScheduledMessage(scope:RoleAccessScope,chatId:String,content:String,dueAt:Long,mode:String,configId:String?,saved:()->Unit)=action {
         val chat=db.dao().chat(scope.roleId,scope.spaceId,chatId) ?: throw ChatFailure("ACCESS")
-        val item=ScheduledMessage(UUID.randomUUID().toString(),scope.roleId,scope.spaceId,chatId,chat.configId,1L,dueAt,ScheduledMessages.MODE_TEXT,content.trim(),ScheduledMessages.STATE_PENDING,UUID.randomUUID().toString(),createdAt=System.currentTimeMillis())
+        val resolvedConfig=configId?:chat.configId
+        val config=db.dao().config(resolvedConfig) ?: throw ChatFailure("CONFIG")
+        val item=ScheduledMessage(UUID.randomUUID().toString(),scope.roleId,scope.spaceId,chatId,resolvedConfig,config.version,dueAt,mode,content.trim(),ScheduledMessages.STATE_PENDING,UUID.randomUUID().toString(),createdAt=System.currentTimeMillis())
         ScheduledMessages.validate(item)
         db.scheduled().insert(item)
         ScheduledMessageScheduler.schedule(getApplication<android.app.Application>(),item)
         withContext(Dispatchers.Main){saved()}
-        notices.send("已安排定时消息。")
+        notices.send(if(mode==ScheduledMessages.MODE_GENERATE)"已安排定时消息，到点会让角色生成。" else "已安排定时消息。")
     }
     fun cancelScheduledMessage(scope:RoleAccessScope,id:String)=action {
         if(db.scheduled().cancel(scope.roleId,scope.spaceId,id,System.currentTimeMillis())==1)ScheduledMessageScheduler.cancel(getApplication<android.app.Application>(),id)

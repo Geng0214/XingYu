@@ -46,4 +46,12 @@ class ChatBubblesTest {
         assertEquals("original",RequestContext.build(normal.scope(),normal,chat,emptyList(),"hello").first().content)
         assertFalse(shortPrompt.contains("wallpaper"))
     }
+    @Test fun homeSummaryIsAppendedOnlyWhenProvided() {
+        val role=RoleEntity("role","R","original",replyStyle="short")
+        val chat=ChatEntity("chat",role.id,"config","title")
+        val plain=RequestContext.build(role.scope(),role,chat,emptyList(),"hello").first().content
+        assertFalse(plain.contains("家园信息"))
+        val withHome=RequestContext.build(role.scope(),role,chat,emptyList(),"hello",homeSummary="家园里有一只幼猫「团子」。").first().content
+        assertTrue(withHome.contains("家园信息"));assertTrue(withHome.contains("团子"))
+    }
 }

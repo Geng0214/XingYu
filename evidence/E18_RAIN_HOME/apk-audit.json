@@ -1,0 +1,83 @@
+{
+  "apk": "app-release.apk",
+  "bytes": 90258961,
+  "sha256": "386cec0602c630b8677e33f4a79cb80a2b6f284ae46e2fca422a59589fe86032",
+  "versionCode": 41,
+  "versionName": "0.40.0",
+  "appName": "\u661f\u8bed",
+  "appIconArtworkVerified": true,
+  "entryCount": 206,
+  "permissions": [
+    "android.permission.INTERNET",
+    "android.permission.USE_BIOMETRIC",
+    "android.permission.POST_NOTIFICATIONS",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.RECORD_AUDIO",
+    "android.permission.MODIFY_AUDIO_SETTINGS",
+    "cn.localfirst.companion.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+  ],
+  "exportedActivityCount": 1,
+  "services": 1,
+  "receivers": 2,
+  "providers": 0,
+  "homeEngine": "Godot 4.7.2",
+  "homePackSha256": "b40b28ea40f32266d9338d9ef2073efdd7b04679f80599e9de0ceccb352ac265",
+  "binaryManifestSha256": "8d7946be55ccbb2c3d783bbe287bf9bf2609628ad5ef4938b1efd564f1750aa6",
+  "binaryManifestVerifiedWithAapt2": true,
+  "forbiddenAssets": [],
+  "nativeLibraries": [
+    {
+      "name": "lib/arm64-v8a/libandroidx.graphics.path.so",
+      "sha256": "41e9a793c43a0f4fddb19e33f346bace464f30f888ba7b9eaf96294ea115bfb6",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libc++_shared.so",
+      "sha256": "c4c2fe5cbcb1fba0003a31fc7ab29a9bb12df6cc187ec45a806462540e83d93b",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libgodot_android.so",
+      "sha256": "6b1cbfa830c7f6addec89bb5a4a444be53b3527472668fede03ca8637e040198",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libquickjsjni.so",
+      "sha256": "ad02a0d280928a6b14e86db7d9e6007ace2d14bfce94c49fdb9bd20735e1899e",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    },
+    {
+      "name": "lib/arm64-v8a/libsqlcipher.so",
+      "sha256": "bc85746647ce4ea5f390eccd61e5236fbd11786a91802877b9fdbbb66a55192d",
+      "windowsPathHits": 0,
+      "loadSegmentAlignments": [
+        16384,
+        16384,
+        16384
+      ]
+    }
+  ],
+  "status": "PASS",
+  "limitations": "Static package validation only. Installation, Keystore behavior and plaintext storage scans require a real Android device."
+}

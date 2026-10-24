@@ -115,6 +115,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
     private lateinit var playRepository:PlayRepository
     private lateinit var homeRepository:HomeRepository
     private var homeJob:Job?=null
+    private var homeSettleJob:Job?=null
     private var homePositionJob:Job?=null
     private var homePositionDraft:HomeAction.Move?=null
     private var homePositionSerial=0L
@@ -2302,7 +2303,7 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
     }
     fun closeHome(token:String?=state.value.home?.token) {
         if(token==null||state.value.home?.token!=token)return
-        homeJob?.cancel();_state.update {if(it.home?.token==token)it.copy(home=null)else it}
+        homeJob?.cancel();homeSettleJob?.cancel();_state.update {if(it.home?.token==token)it.copy(home=null)else it}
     }
     /** A scene hands its latest tile snapshot to the VM immediately, including on disposal.
      * Leaving/rotating cancels rendering, but must not cancel the shared world's queued save. */
@@ -2364,6 +2365,27 @@ class CompanionViewModel(app: Application) : AndroidViewModel(app) {
         catch(e:Exception) {
             updateHome(token){it.copy(pending=it.pending?.takeIf {p->p.id==id}?.copy(error=errorText(if(e is ChatFailure)e.code else "STORAGE")))}
             throw e
+        }
+    }
+    /** Resolves a delegated pet handoff once it is due. This is an automatic world command, not a user-visible retry. */
+    fun settlePetIfDue(token:String) {
+        val h=state.value.home?.takeIf {it.token==token}?:return
+        if(h.pending!=null||homeSettleJob?.isActive==true)return
+        val pet=h.view?.home?.value()?.pet?:return
+        val roleId=pet.handoffRoleId?:return
+        val now=System.currentTimeMillis()
+        if(!HomePetRules.handoffDue(pet,now))return
+        val permit=try{privacy.permit()}catch(_:ChatFailure){return}
+        homeSettleJob=viewModelScope.launch(Dispatchers.IO) {
+            try {
+                privacy.requirePermit(permit)
+                homeRepository.submit(UUID.randomUUID().toString(),HomeAction.ResolvePetHandoff(roleId)){_,_->}
+                val view=homeRepository.current()
+                if(view!=null)updateHome(token){it.received(view)}
+            }catch(e:CancellationException){throw e}
+            catch(_:Exception) {
+                // A user command may have advanced the world or cleared the handoff; the next open retries.
+            }
         }
     }
     private suspend fun applyHomePending(token:String,pending:HomePending) {

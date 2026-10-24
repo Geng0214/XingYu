@@ -3,10 +3,10 @@ import argparse,hashlib,json,pathlib,re,struct,subprocess,zipfile,xml.etree.Elem
 repo=pathlib.Path(__file__).resolve().parents[2]
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('apk',nargs='?',type=pathlib.Path,default=repo/'build/app/outputs/apk/release/app-release.apk')
-parser.add_argument('--version-code',default='40')
-parser.add_argument('--version-name',default='0.39.0')
+parser.add_argument('--version-code',default='41')
+parser.add_argument('--version-name',default='0.40.0')
 parser.add_argument('--app-name',default='星语')
-parser.add_argument('--stage',default='E7_HOME')
+parser.add_argument('--stage',default='E17_FEATURE_PHASE1')
 parser.add_argument('--report',default='apk-audit.json')
 parser.add_argument('--aapt2',type=pathlib.Path,help='Android Build Tools 36 aapt2; otherwise read configured sdk.dir')
 args=parser.parse_args()
@@ -27,8 +27,11 @@ assert not application.findall('provider')
 services=application.findall('service');assert len(services)==1
 assert services[0].get(a+'name')=='com.ai.assistance.operit.proactive.ProactiveJobService'
 assert services[0].get(a+'exported')=='false' and services[0].get(a+'permission')=='android.permission.BIND_JOB_SERVICE'
-receivers=application.findall('receiver');assert len(receivers)==1
-assert receivers[0].get(a+'name')=='com.ai.assistance.operit.reminder.PlannerReminderReceiver' and receivers[0].get(a+'exported')=='false'
+receivers=application.findall('receiver');assert len(receivers)==2
+assert {r.get(a+'name') for r in receivers}=={'com.ai.assistance.operit.reminder.PlannerReminderReceiver','com.ai.assistance.operit.reminder.ScheduledMessageReceiver'}
+for receiver in receivers:
+    assert receiver.get(a+'exported')=='false'
+    assert 'android.intent.action.BOOT_COMPLETED' in {i.get(a+'name') for i in receiver.findall('intent-filter/action')}
 activities=application.findall('activity');assert len(activities)==1
 permissions=[x.get(a+'name') for x in root.findall('uses-permission')]
 expected_permissions={'android.permission.INTERNET','cn.localfirst.companion.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'}
@@ -53,8 +56,8 @@ badging=subprocess.check_output([str(aapt2),'dump','badging',str(apk)],text=True
 assert "application-label:'"+args.app_name+"'" in badging,'Incorrect app display name'
 tags=re.findall(r'^\s*E: (\S+)',tree,re.M)
 assert tags.count('application')==tags.count('activity')==1
-assert tags.count('receiver')==1 and tags.count('service')==1 and 'provider' not in tags
-assert 'PlannerReminderReceiver' in tree
+assert tags.count('receiver')==2 and tags.count('service')==1 and 'provider' not in tags
+assert 'PlannerReminderReceiver' in tree and 'ScheduledMessageReceiver' in tree
 assert 'ProactiveJobService' in tree and 'android.permission.BIND_JOB_SERVICE' in tree
 assert 'A: package="cn.localfirst.companion"' in tree
 for attr,value in [('versionCode',args.version_code),('versionName','"'+args.version_name+'"'),('allowBackup','false'),('fullBackupContent','false'),('usesCleartextTraffic','false')]:
@@ -107,7 +110,7 @@ with zipfile.ZipFile(apk) as archive:
         native_reports.append({'name':n,'sha256':hashlib.sha256(data).hexdigest(),'windowsPathHits':hits,'loadSegmentAlignments':alignments})
 report={'apk':apk.name,'bytes':apk.stat().st_size,'sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),
     'versionCode':int(args.version_code),'versionName':args.version_name,'appName':args.app_name,'appIconArtworkVerified':True,
-    'entryCount':len(names),'permissions':permissions,'exportedActivityCount':1,'services':1,'receivers':1,'providers':0,
+    'entryCount':len(names),'permissions':permissions,'exportedActivityCount':1,'services':1,'receivers':2,'providers':0,
     'homeEngine':'Godot 4.7.2','homePackSha256':hashlib.sha256((repo/'build/generated/home-assets/home.pck').read_bytes()).hexdigest(),
     'binaryManifestSha256':manifest_hash,'binaryManifestVerifiedWithAapt2':True,
     'forbiddenAssets':forbidden,'nativeLibraries':native_reports,'status':'PASS',

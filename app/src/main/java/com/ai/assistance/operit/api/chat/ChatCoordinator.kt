@@ -89,8 +89,12 @@ class RoomRequestStore(private val db: AppDatabase) : RequestStore {
         // A voice-only turn still needs text for history and the model; the UI renders the bubble instead.
         val storedText=if(text.isBlank()&&frozenVoice!=null)frozenVoice.label() else text
         val modelText=frozenQuote?.let {"引用消息（${it.speaker}）：\n${it.preview}\n\n用户回复：\n$storedText"}?:storedText
+        val homeState=db.home().home()?.value()
+        val petSummary=if(role.isRaw())null else homeState?.let {home->
+            home.pet?.takeIf {home.residents[role.id]?.role==scope}?.let {HomePetRules.promptSummary(it,now,role.id)}
+        }
         val resolved = RequestContext.resolve(scope,role,chat,history,modelText,db.worldbook().read(scope.roleId,scope.spaceId),db.relationships().read(scope.roleId,scope.spaceId),historyAttachments,frozenImage,historyMaterials,frozenMaterial,historyStickers,frozenSticker,config.visionEnabled,
-            db.memories().read(scope.roleId,scope.spaceId),db.environment().profile(scope.roleId,scope.spaceId),now,plannerEntries=db.planner().readPlanner(scope.roleId,scope.spaceId),cycleRecords=db.planner().readCycles(scope.roleId,scope.spaceId))
+            db.memories().read(scope.roleId,scope.spaceId),db.environment().profile(scope.roleId,scope.spaceId),now,plannerEntries=db.planner().readPlanner(scope.roleId,scope.spaceId),cycleRecords=db.planner().readCycles(scope.roleId,scope.spaceId),homeSummary=petSummary)
         val reply = UUID.randomUUID().toString()
         val userId=UUID.randomUUID().toString()
         dao.insertMessages(listOf(

@@ -8,10 +8,10 @@
 
 ## 使用
 
-1. 安装 `output/local-companion-0.39.0.apk`。这是个人试用包；APK 与源码包不随本仓库分发，clone 后需按下方“构建”自行生成。
+1. 安装 `output/local-companion-0.40.0.apk`。这是个人试用包；APK 与源码包不随本仓库分发，clone 后需按下方“构建”自行生成。
 2. 打开“设置”，添加模型服务，填写 HTTPS 地址、模型和自己的 API Key。确认地址后再测试；测试可能产生少量费用。
-3. 选择或新建一个角色，进入“聊天”开始对话。角色、会话和个人资料都在本机管理。
-4. 聊天输入栏的“+”可打开图片、资料、表情、伴读和生图等功能；使用细节见[使用与升级](docs/使用与升级.md)。
+3. 选择或新建一个角色，进入“聊天”开始对话。角色、会话和个人资料都在本机管理；角色管理页可导入 SillyTavern JSON 角色卡，导入前先预览。
+4. 聊天输入栏的“+”可打开图片、资料、表情、伴读和生图等功能；录音预览可直接发送语音条，长按消息可加反应，角色资料页可安排固定或由角色生成的定时消息。使用细节见[使用与升级](docs/使用与升级.md)。
 5. 打开“家园”进入共享像素农场，点击地面走动、菜地种植、人物互动；所有聊天角色入住同一世界。角色资料页可管理记忆、日记、关系、日程与主题。
 6. “日程”可按周／月选择日期，查看当天时间线；待办分为逾期、今天、之后和已完成。点击“+”添加，顶部信息按钮查看分享与提醒说明。
 7. “设置”里可管理扩展、隐私锁和加密备份。调用工具前需要授权，备份前可预览内容。
@@ -47,7 +47,7 @@ Windows 宿主测试增加官方同版本 QuickJS 命令行程序。先用 Pytho
 本机快捷入口：
 
 ```powershell
-./ci/build.ps1 -GodotExecutable '<Godot 4.7.2 控制台程序路径>' -EvidenceStage E15_GODOT_HOME
+./ci/build.ps1 -GodotExecutable '<Godot 4.7.2 控制台程序路径>' -EvidenceStage E17_FEATURE_PHASE1
 ```
 
 其他 Windows 环境设置自己的 `JAVA_HOME`、`ANDROID_HOME` 和 `GODOT_EXECUTABLE` 后使用 Gradle：
@@ -62,8 +62,8 @@ Windows 宿主测试增加官方同版本 QuickJS 命令行程序。先用 Pytho
 更新依赖声明时，重新生成随包许可，并将检查结果记录在对应阶段的 `evidence/` 中：
 
 ```powershell
-./ci/build.ps1 -Tasks ':app:writeRuntimeInventory' -GodotExecutable '<Godot 4.7.2 控制台程序路径>' -EvidenceStage E15_GODOT_HOME
-node ci/script/generate_notices.mjs E15_GODOT_HOME
+./ci/build.ps1 -Tasks ':app:writeRuntimeInventory' -GodotExecutable '<Godot 4.7.2 控制台程序路径>' -EvidenceStage E17_FEATURE_PHASE1
+node ci/script/generate_notices.mjs E17_FEATURE_PHASE1
 ```
 
 包检查在自己的 venv 中运行 `python ci/script/verify_apk.py`，读取 local.properties 的 sdk.dir 使用 Build Tools 36 aapt2；也可通过 --aapt2 指定工具路径。检查 APK 内实际 Manifest、合并 Manifest、签名材料、原生库路径和 16 KB ELF 对齐；签名还需使用 SDK 的 `apksigner verify`。

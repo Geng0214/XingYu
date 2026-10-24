@@ -18,7 +18,7 @@ object HomeEconomy {
 /** One immutable shared world. Every mutation consumes the same version and is recorded once. */
 class HomeState private constructor(val scope:HomeScope,val name:String,val version:Long,val createdAt:Long,val updatedAt:Long,
     inventory:Map<HomeItem,Int>,plots:List<HomePlot?>,val userOutfit:HomeItem?,val player:HomeTile,
-    residents:Map<String,HomeResident>,val followingRoleId:String?,resourceClaims:List<Long>,val fishedAt:Long,val life:HomeLife) {
+    residents:Map<String,HomeResident>,val followingRoleId:String?,resourceClaims:List<Long>,val fishedAt:Long,val life:HomeLife,val pet:HomePet?) {
     val inventory:Map<HomeItem,Int> = Collections.unmodifiableMap(LinkedHashMap(inventory))
     val plots=PlayJson.frozen(plots)
     val residents:Map<String,HomeResident> = Collections.unmodifiableMap(residents.mapValues {(_,r)->
@@ -42,6 +42,11 @@ class HomeState private constructor(val scope:HomeScope,val name:String,val vers
         require(resourceClaims.size==HomeWorld.resources.size&&resourceClaims.all {it==-1L||it in createdAt..updatedAt})
         require(fishedAt==-1L||fishedAt in createdAt..updatedAt)
         life.together?.let {require(it.roleId in residents&&it.startedAt in createdAt..updatedAt)}
+        pet?.let {
+            require(it.adoptedAt in createdAt..updatedAt)
+            it.lastCareBy?.let {id->require(id in residents)}
+            it.handoffRoleId?.let {id->require(id in residents)}
+        }
         require(life.day<=HomeLife.dayAt(updatedAt))
     }
     fun ready(plot:Int,now:Long):Boolean {require(plot in plots.indices);return plots[plot]?.let {now>=it.readyAt}==true}
@@ -53,7 +58,7 @@ class HomeState private constructor(val scope:HomeScope,val name:String,val vers
         if(now !in updatedAt..MAX_TIME)throw ChatFailure("HOME_CLOCK")
         if(version==Long.MAX_VALUE)throw ChatFailure("HOME_LIMIT")
         val bag=inventory.toMutableMap();val soil=plots.toMutableList();val people=residents.toMutableMap();val claims=resourceClaims.toMutableList()
-        var user=userOutfit;var title=name;var position=player;var following=followingRoleId;var fishing=fishedAt
+        var user=userOutfit;var title=name;var position=player;var following=followingRoleId;var fishing=fishedAt;var petState=pet
         fun fail(code:String):Nothing=throw ChatFailure(code)
         fun add(to:MutableMap<HomeItem,Int>,item:HomeItem,n:Int) {
             if(n !in 1..MAX_COUNT)fail("HOME_QUANTITY")
@@ -116,7 +121,13 @@ class HomeState private constructor(val scope:HomeScope,val name:String,val vers
                 val tile=HomeWorld.residentSpawns.firstOrNull {it !in occupied}?:fail("HOME_RESIDENT_LIMIT")
                 people[action.role.roleId]=HomeResident(action.role,tile);"新居民入住。"
             }
-            is HomeAction.Leave->{person(action.roleId);people.remove(action.roleId);if(following==action.roleId)following=null;"居民离开，家园保留。"}
+            is HomeAction.Leave->{person(action.roleId);people.remove(action.roleId);if(following==action.roleId)following=null
+                val current=petState
+                if(current!=null&&(current.handoffRoleId==action.roleId||current.lastCareBy==action.roleId))petState=current.copy(
+                    handoffRoleId=if(current.handoffRoleId==action.roleId)null else current.handoffRoleId,
+                    handoffAt=if(current.handoffRoleId==action.roleId)-1 else current.handoffAt,
+                    lastCareBy=if(current.lastCareBy==action.roleId)null else current.lastCareBy)
+                "居民离开，家园保留。"}
             is HomeAction.Move->{
                 if(action.residents.keys!=people.keys||!HomeWorld.walkable(action.player))fail("HOME_MOVE")
                 if(position!=action.player&&HomeWorld.route(position,action.player,false).isEmpty())fail("HOME_MOVE")
@@ -147,8 +158,29 @@ class HomeState private constructor(val scope:HomeScope,val name:String,val vers
                 if(person(action.sourceRole.roleId).role!=action.sourceRole)fail("ACCESS")
                 if(!action.proof.earned(action.reward))fail("HOME_REWARD_UNEARNED")
                 add(bag,action.reward.item,1);"领取${action.reward.item.title}。"}
+            is HomeAction.AdoptPet->{
+                if(petState!=null)fail("HOME_PET_EXISTS")
+                val petName=HomePetRules.petName(action.name);petState=HomePetRules.adopt(petName,now)
+                "你们一起领养了$petName。"
+            }
+            is HomeAction.CarePet->{
+                val current=petState?:fail("HOME_PET_REQUIRED");val next=HomePetRules.care(current,action.kind,now)
+                petState=next;"你照顾了${next.name}：${action.kind.title}。"
+            }
+            is HomeAction.HandoffPet->{
+                val current=petState?:fail("HOME_PET_REQUIRED");person(action.roleId)
+                val next=HomePetRules.handoff(current,action.roleId,now);petState=next
+                "把${next.name}交给 TA 照看。"
+            }
+            is HomeAction.ResolvePetHandoff->{
+                val current=petState?:fail("HOME_PET_REQUIRED");val roleId=current.handoffRoleId?:fail("HOME_PET_HANDOFF_EMPTY")
+                if(roleId!=action.roleId)fail("HOME_PET_HANDOFF_EMPTY")
+                person(roleId);if(!HomePetRules.handoffDue(current,now))fail("HOME_PET_HANDOFF_EARLY")
+                val kind=HomePetRules.careChoice(current,now);val next=HomePetRules.resolveHandoff(current,now);petState=next
+                "TA 照顾了${next.name}：${kind.title}。"
+            }
         }
-        return HomeChange(HomeState(scope,title,version+1,createdAt,now,bag,soil,user,position,people,following,claims,fishing,life.apply(action,now)),description)
+        return HomeChange(HomeState(scope,title,version+1,createdAt,now,bag,soil,user,position,people,following,claims,fishing,life.apply(action,now),petState),description)
     }
     fun encode()=HomeCodec.encode(this)
     companion object {
@@ -158,11 +190,11 @@ class HomeState private constructor(val scope:HomeScope,val name:String,val vers
             require(roles.map {it.roleId}.distinct().size==roles.size&&roles.size<=HomeWorld.residentSpawns.size)
             return HomeState(HomeScope(),name,1,now,now,HomeCrop.entries.associate {it.seed to INITIAL_SEEDS},List(PLOTS){null},null,
                 HomeWorld.spawn,roles.mapIndexed {i,r->r.roleId to HomeResident(r,HomeWorld.residentSpawns[i])}.toMap(),null,
-                List(HomeWorld.resources.size){-1L},-1,HomeLife.create())
+                List(HomeWorld.resources.size){-1L},-1,HomeLife.create(),null)
         }
         internal fun restore(name:String,version:Long,createdAt:Long,updatedAt:Long,inventory:Map<HomeItem,Int>,plots:List<HomePlot?>,
-            user:HomeItem?,player:HomeTile,residents:Map<String,HomeResident>,following:String?,claims:List<Long>,fishedAt:Long,life:HomeLife)=
-            HomeState(HomeScope(),name,version,createdAt,updatedAt,inventory,plots,user,player,residents,following,claims,fishedAt,life)
+            user:HomeItem?,player:HomeTile,residents:Map<String,HomeResident>,following:String?,claims:List<Long>,fishedAt:Long,life:HomeLife,pet:HomePet?)=
+            HomeState(HomeScope(),name,version,createdAt,updatedAt,inventory,plots,user,player,residents,following,claims,fishedAt,life,pet)
         fun decode(text:String)=HomeCodec.decode(text)
     }
 }

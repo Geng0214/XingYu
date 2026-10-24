@@ -1,6 +1,6 @@
 ---
 name: 星语
-description: Android Material 3 主题与 Godot 共享像素农场的设计记录
+description: Android Material 3 主题、雨窗家园与 Godot 院子的设计记录
 colors:
   home-ground-clear: "#658754"
   home-water: "#7BAEB2"
@@ -18,6 +18,11 @@ colors:
   home-picture-red: "#D97760"
   home-picture-blue: "#79A7AB"
   home-name-text: "#FDF3D7"
+  home-rain-wall: "#202628"
+  home-rain-window: "#93ADB4"
+  home-rain-gold: "#E9B36A"
+  home-rain-rose: "#C98E86"
+  home-rain-cream: "#F3E7D6"
 rounded:
   home-name-label: "4dp"
   home-picture-direction-stat: "12dp"
@@ -91,9 +96,9 @@ components:
 
 ## Overview
 
-**Creative North Star: "共享像素农场"**
+**Creative North Star: "雨窗与院子"**
 
-本记录固定 E15 的原生 Android 共享家园：Godot 绘制一张可以走动、耕作和与居民相处的像素农场，Kotlin / Room 持有同一共享世界的经营、碰撞、人物行为与保存状态。Kenney CC0 原像素图集与项目原创物件承担场景内容，原生图片菜单、输入和文字继续继承应用 Material 3 主题、字体与字号。家园的像素色和图格规则限定在家园。
+E15 的 Godot 院子仍保留：一张可以走动、耕作和与居民相处的像素农场，Kotlin / Room 持有同一共享世界的经营、碰撞、人物行为与保存状态。E18 把默认家园主界面改为 Compose 绘制的《雨窗》房间，宠物与共同照顾在场景内完成；像素地图从主界面退到“院子”入口。Kenney CC0 原像素图集与项目原创物件只承担院子场景；雨窗场景由 Compose 图形绘制，原生菜单、输入和文字继续继承应用 Material 3 主题、字体与字号。家园的像素色与雨窗色都限定在家园。
 
 应用继续保留 E14 星语品牌：桌面自适应图标与设置页使用猫咪抱星星画作，通知使用单色星形。原图、最终资产与生成提示词见 [品牌记录](docs/品牌/README.md)。该品牌画作与本轮来源图集分别记录，不把来源素材标为 AI 生成。
 
@@ -103,10 +108,12 @@ components:
 
 E16 日程是现有原生系统的局部扩展，继承应用主题、字体与形状。提取依据为 [PlannerPages](app/src/main/java/com/ai/assistance/operit/ui/main/PlannerPages.kt)、[PlannerCalendarUi](app/src/main/java/com/ai/assistance/operit/ui/main/PlannerCalendarUi.kt)和 [PlannerCalendar](app/src/main/java/com/ai/assistance/operit/data/model/PlannerCalendar.kt)；页面策略留在 [日程方向契约](.impeccable/surfaces/assistance-operit-ui-main-plannerpages-kt-ebc64f29.md)。[官方参考](evidence/E16_PLANNER_UI/references.md)只提供交互结构，没有复制素材或 approved comp。本轮原生截图完整复核的 disposition 为 `ship`，范围见 [E16 收尾评审](evidence/E16_PLANNER_UI/finish-review.md)；E15 历史结论没有重跑或扩大。
 
+E18 将家园主界面切换为 Compose 绘制的《雨窗》房间：黄昏、窗、雨、猫和角色同处一屏，领养卡、照顾面板与共同手账浮在场景上；旧 Godot 像素地图保留为“院子”，不再是默认家园。宠物并入共享家园 JSON，家园格式 3→4，旧格式 3 继续可读。依据为 [CompanionHomeScene](app/src/main/java/com/ai/assistance/operit/ui/main/CompanionHomeScene.kt)、[CompanionHomeUi](app/src/main/java/com/ai/assistance/operit/ui/main/CompanionHomeUi.kt)、[HomePet](app/src/main/java/com/ai/assistance/operit/data/model/HomePet.kt)、[HomeCodec](app/src/main/java/com/ai/assistance/operit/data/model/HomeCodec.kt)、[HomePages](app/src/main/java/com/ai/assistance/operit/ui/main/HomePages.kt)和 [HomeGameUi](app/src/main/java/com/ai/assistance/operit/ui/main/HomeGameUi.kt)。这一节描述已实现并通过 JVM、构建与模拟器设备复验的现状，原生截图见 [E18 验收记录](evidence/E18_RAIN_HOME/validation.md)。
+
 **Key Characteristics:**
 
 - 同一共享世界决定经营、人物占位与成长，Godot 接收只读画面投影。
-- 家园操作以地图内物件、物品图像、动作图格、短气泡与数字发起。
+- 雨窗主界面以宠物、照顾面板和共同手账操作；院子保留地图内物件、物品图像与动作图格。
 - 原生容器、输入和文字继承应用 Material 3 主题、字体与系统字号。
 - 人物图像、脚底、名牌与命中共享镜头；居民使用本机人设关键词规则。
 - 未回应邀约在普通背包和菜单期间隐藏，收起后恢复；系统移除动画停止场景装饰运动。
@@ -253,6 +260,24 @@ E16 日程是现有原生系统的局部扩展，继承应用主题、字体与�
 
 本轮角色空间、schema34、backup32、home format3 不变；没有复测 E15 家园。真机、TalkBack、预测返回、通知实际发送、隐私锁认证、在线模型、性能／电量及日程移除动画没有本轮验收；年度纪念日与经期编辑操作只由构建线程记录支持，没有逐态截图。E15 已记录的五份未改品牌／其他功能资产溯源元数据缺失仍是预存漂移，本轮不修复；E16 未新增 shipping raster，不把官方网页读取写成第三方截图验证。
 
+## E18 雨窗家园
+
+**Creative direction.** 家园从“可走动的像素农场”改为“一间会下雨的房间”。首屏只有一个动作：看它一眼；照顾从猫、碗、灯和角色留言进入。旧地图作为“院子”保留，入口在场景右上。
+
+**Colors.** 场景固定使用 `home-rain-wall`、`home-rain-window`、`home-rain-gold`、`home-rain-rose` 与 `home-rain-cream`；家园外的原生控件继续绑定应用主题，雨窗面板内部使用固定的黄昏对比色。深色照顾面板与纸色领养卡只出现在家园，不推广为应用色板。
+
+**The Rain Room Rule.** 雨窗场景、照顾面板、领养卡和手账属于家园内容，使用固定的黄昏色；它们不进入聊天、日程或设置，也不替换应用的可选主题。
+
+**Layout.** 手机：全幅场景（裁剪在场景容器内，不覆盖应用栏与引导条）、顶部时间/天气/共处天数、右上“院子”和手账、底部“照顾”胶囊；领养时中央纸卡。宽屏（至少 600dp 且宽大于高）：照顾/手账面板宽 360dp 停靠右下，高度上限为可视高度减 96dp 以留出顶部 HUD，场景保持全幅铺满无黑边。200% 字号：面板内容滚动，四个照顾动作改为 2×2，需求标签列与手账时间列加宽，顶部“院子”改为图标按钮；横屏 200% 字号面板占满可视高度，向上滚动一次可见完整动作区。
+
+**Components.** [RainWindowScene](app/src/main/java/com/ai/assistance/operit/ui/main/CompanionHomeScene.kt) 绘制房间、窗、雨、猫的呼吸、角色剪影和灯光；[CompanionHomeUi](app/src/main/java/com/ai/assistance/operit/ui/main/CompanionHomeUi.kt) 提供领养、照顾、手账和院子切换；照顾面板含四需求、默契、四项动作、交接和共同手账；手账按时间列出照顾与交接，领养日独立成卡。
+
+**Boundary.** 需求衰减、成长阶段、交接和角色照顾全部在本地规则中完成，不调模型；聊天只注入一句只读摘要，且仅对已入住、非 raw 的角色。宠物状态只写共享家园 JSON（格式 4），不新增第二份存档。
+
+**Verified on device.** 2026-10-24 在 MuMu Android 15（900×1600 / 240dpi）的一次性临时用户中复验：领养、喂食、交接与约 2 分钟后自动结算、手账、强停重启保留；E17 旧家园（格式 3）覆盖升级到格式 4 后雨窗可读且院子仍可玩；竖屏 100%/200% 字号与横屏 100%/200% 字号布局（布局截图取自上一版构建 `8a9be846…`，最终版 `386cec06…` 只多改了一行文案的角色名还原、未动布局，并在同一台模拟器复验了竖屏 100% 的完整流程）。设备上发现并已修掉四类缺陷：200% 需求标签与手账时间列截断、横屏场景溢出到应用栏且两侧留黑边、宽屏面板遮挡顶部 HUD 且动作区折叠在视野外、照顾面板"刚刚："一行透出账本原文的 `TA` 占位。原生截图与逐项记录见 [E18 验收记录](evidence/E18_RAIN_HOME/validation.md)。
+
+**Not verified.** 横屏 200% 字号需要向上滚动一次才看到四个动作（面板已占满可视高度），本轮未再压缩；TalkBack、真机、性能／电量、暗色与日间主题切换、在线模型如何引用摘要、备份导出恢复格式 4 宠物、超过 7 天的长时离线衰减设备复验均未执行。610 项 JVM（失败、错误、跳过均为 0）与 Release 构建通过，静态核验 PASS。旧 Godot 地图和种植/布置未改，仍以 E15 证据为准。机器侧车 `.impeccable/design.json` 本轮未重新生成；雨窗令牌以本页和源码为准。
+
 ## Do's and Don'ts
 
 ### Do:
@@ -266,6 +291,9 @@ E16 日程是现有原生系统的局部扩展，继承应用主题、字体与�
 - **Do** 让日程日期标记、时间线与全部记录入口使用同一真实记录投影。
 - **Do** 让日程大字号布局、编辑正文与选择器正文滚动，保留独立确认操作。
 - **Do** 让日程颜色、类型角色、形状与图标继续跟随当前应用主题。
+- **Do** 让《雨窗》的黄昏场景色、照顾面板与领养卡只在家园内使用，家园外的原生控件继续跟随主题。
+- **Do** 让宠物状态只写共享家园 JSON，聊天摘要只读、只对已入住且非 raw 的角色发送。
+- **Do** 保留“院子”入口，让旧 Godot 地图的种植、布置和居民功能在 E18 仍可到达。
 
 ### Don't:
 
@@ -276,3 +304,5 @@ E16 日程是现有原生系统的局部扩展，继承应用主题、字体与�
 - **Don't** 将来源图集标为 AI 生成，或将 5 份 home 图集扫描扩大为全 APK 溯源完成。
 - **Don't** 将日程局部尺寸推广到家园，或把可选主题截图固化为全应用色板。
 - **Don't** 将 E16 的 MuMu 矩阵、空崩溃缓冲或修改前的 JVM 结果扩大为全应用／真机认证。
+- **Don't** 把“院子”像素地图说成默认家园，或把 E18 的代码接通写成已通过构建／设备验收。
+- **Don't** 让聊天摘要携带需求数值、人设正文、凭据或未发生的宠物事件。

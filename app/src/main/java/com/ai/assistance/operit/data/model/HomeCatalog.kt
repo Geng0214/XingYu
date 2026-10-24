@@ -56,5 +56,9 @@ sealed interface HomeAction {
     data object Fish:HomeAction
     data class Sell(val item:HomeItem,val count:Int):HomeAction
     data class AdventureReward(val sourceId:String,val reward:HomeAdventureReward,val proof:HomeAdventureProof,val sourceRole:RoleAccessScope):HomeAction
+    data class AdoptPet(val name:String):HomeAction
+    data class CarePet(val kind:HomePetCare):HomeAction
+    data class HandoffPet(val roleId:String):HomeAction
+    data class ResolvePetHandoff(val roleId:String):HomeAction
 }
 data class HomeChange(val state:HomeState,val description:String)

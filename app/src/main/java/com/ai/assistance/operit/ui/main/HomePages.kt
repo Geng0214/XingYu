@@ -41,13 +41,17 @@ internal fun homeTime(time:Long)=DateFormat.getDateTimeInstance(DateFormat.SHORT
         if(residents.none {it.id==selectedId})selectedId=residents.firstOrNull()?.id
     }
     val selectedRole=residents.firstOrNull {it.id==selectedId}
+    var yard by rememberSaveable(home?.scope?.homeId){mutableStateOf(false)}
     var sceneMounted by remember(token){mutableStateOf(false)}
     val clockTick by produceState(System.currentTimeMillis()){while(true){value=System.currentTimeMillis();delay(1000)}}
     val now=remember(clockTick,home?.updatedAt){System.currentTimeMillis()}
     BackHandler(enabled=!isHomeTab,onBack=onClose)
+    BackHandler(enabled=yard,onBack={yard=false})
     val enabled=ui!=null&&home!=null&&!state.working&&!ui.positionSaving&&ui.pending==null&&homeClockValid(home,now)
     Column(Modifier.weight(1f).fillMaxWidth()) {
         TopAppBar(title={Text(home?.name?:"家园",maxLines=1,overflow=TextOverflow.Ellipsis)},
+            colors=TopAppBarDefaults.topAppBarColors(containerColor=CompanionSceneColors.wallBottom,
+                titleContentColor=CompanionSceneColors.moonlight,navigationIconContentColor=CompanionSceneColors.moonlight),
             navigationIcon={if(!isHomeTab)IconButton(onClick=onClose){Icon(Icons.AutoMirrored.Filled.ArrowBack,"返回")}})
         when {
             ui==null||ui.loading->LinearProgressIndicator(Modifier.fillMaxWidth())
@@ -56,11 +60,16 @@ internal fun homeTime(time:Long)=DateFormat.getDateTimeInstance(DateFormat.SHORT
                 Button(onClick={vm.refreshHome(ui.token)}){Text("重新读取")}
             }
             home==null->LinearProgressIndicator(Modifier.fillMaxWidth())
-            !sceneMounted&&ui.positionSaving->LinearProgressIndicator(Modifier.fillMaxWidth())
+            yard&&!sceneMounted&&ui.positionSaving->LinearProgressIndicator(Modifier.fillMaxWidth())
             else->{
-                DisposableEffect(ui.token){sceneMounted=true;onDispose {sceneMounted=false}}
-                HomeGameUi(home,selectedRole,residents,vm,ui,now,enabled,state.working,initialCommandId,
-                    onResident={selectedId=it},onAction={vm.homeAction(ui.token,it)})
+                if(yard) {
+                    DisposableEffect(ui.token){sceneMounted=true;onDispose {sceneMounted=false}}
+                    HomeGameUi(home,selectedRole,residents,vm,ui,now,enabled,state.working,initialCommandId,
+                        onResident={selectedId=it},onAction={vm.homeAction(ui.token,it)},onCompanion={yard=false})
+                }else {
+                    CompanionHomeUi(home,selectedRole,residents,vm,ui,now,enabled,initialCommandId,
+                        onRole={selectedId=it},onOpenYard={yard=true})
+                }
             }
         }
     }

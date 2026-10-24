@@ -14,12 +14,13 @@ object RequestContext {
         return if(role.replyStyle=="short")identity+"\n\n回复格式：像即时聊天一样自然交流。通常回复 1–5 条简短消息，每条独立成段，条与条之间用一个空行分隔。不要加编号或角色名前缀，不要为了分段拆散一句话。需要详细解释或代码时可保持完整。保持 AI 身份，不虚构真实转账、通话或现实行动。"else identity
     }
     fun build(scope: RoleAccessScope, role: RoleEntity, chat: ChatEntity, history: List<MessageEntity>, text: String,
-        entries:List<WorldbookEntry> = emptyList(),relationships:List<RelationshipEntry> = emptyList(),memories:List<MemoryEntry> = emptyList()):List<PromptTurn> = resolve(scope,role,chat,history,text,entries,relationships,memories=memories).turns
+        entries:List<WorldbookEntry> = emptyList(),relationships:List<RelationshipEntry> = emptyList(),memories:List<MemoryEntry> = emptyList(),
+        homeSummary:String?=null):List<PromptTurn> = resolve(scope,role,chat,history,text,entries,relationships,memories=memories,homeSummary=homeSummary).turns
     fun resolve(scope:RoleAccessScope,role:RoleEntity,chat:ChatEntity,history:List<MessageEntity>,text:String,entries:List<WorldbookEntry>,relationships:List<RelationshipEntry> = emptyList(),
         attachments:List<MessageAttachment> = emptyList(),currentImage:PromptImage? = null,materials:List<MessageMaterial> = emptyList(),currentMaterial:PromptMaterial? = null,
         stickers:List<MessageSticker> = emptyList(),currentSticker:PromptSticker? = null,includeVisuals:Boolean = true,
         memories:List<MemoryEntry> = emptyList(),environmentProfile:EnvironmentProfile?=null,now:Long=System.currentTimeMillis(),deviceZone:java.time.ZoneId=java.time.ZoneId.systemDefault(),
-        plannerEntries:List<PlannerEntry> = emptyList(),cycleRecords:List<CycleRecord> = emptyList()):Resolved {
+        plannerEntries:List<PlannerEntry> = emptyList(),cycleRecords:List<CycleRecord> = emptyList(),homeSummary:String?=null):Resolved {
         if(role.scope()!=scope || chat.roleId!=role.id || history.any { it.chatId!=chat.id }) throw ChatFailure("ACCESS")
         require((text.isNotBlank()||currentImage!=null||currentMaterial!=null||currentSticker!=null) && text.length<=12000)
         require(listOfNotNull(currentImage,currentMaterial,currentSticker).size<=1)
@@ -55,7 +56,8 @@ object RequestContext {
         val environment=Environments.select(environmentProfile,raw,now,deviceZone)
         val environmentInstruction=environment.instruction.takeIf {it.isNotEmpty()}?.let {"\n\n环境信息（由用户明确开启，只描述请求冻结时的本机时间或已保存天气）：\n$it"}.orEmpty()
         val planner=PlannerRecords.select(scope,plannerEntries,cycleRecords,raw,now)
-        val instructions=systemPrompt(role)+relations.instruction+selectedMemories.instruction+worldbook.instruction+environmentInstruction+planner.instruction
+        val homeInstruction=homeSummary?.takeIf {it.isNotBlank()}?.let {"\n\n家园信息（只读，不要编造未提供的数值或事件）：\n$it"}.orEmpty()
+        val instructions=systemPrompt(role)+relations.instruction+selectedMemories.instruction+worldbook.instruction+environmentInstruction+planner.instruction+homeInstruction
         val completeHistory=history.filter {it.requestId in complete}
         val stickerByMessage=stickers.associateBy {it.messageId}
         val attachmentByMessage=attachments.associateBy {it.messageId}

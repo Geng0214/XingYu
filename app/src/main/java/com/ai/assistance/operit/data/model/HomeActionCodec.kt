@@ -14,6 +14,8 @@ object HomeActionCodec {
         is HomeAction.Talk->a.copy(roleId=role(a.roleId))
         is HomeAction.Move->a.copy(residents=a.residents.mapKeys {role(it.key)})
         is HomeAction.AdventureReward->a.copy(sourceId=activity(a.sourceId),sourceRole=RoleAccessScope(role(a.sourceRole.roleId),space(a.sourceRole.spaceId)))
+        is HomeAction.HandoffPet->a.copy(roleId=role(a.roleId))
+        is HomeAction.ResolvePetHandoff->a.copy(roleId=role(a.roleId))
         else->a
     }
     fun encode(a:HomeAction):String {
@@ -42,6 +44,10 @@ object HomeActionCodec {
             HomeAction.Fish->j.put("type","fish")
             is HomeAction.Sell->j.put("type","sell").put("item",a.item.name).put("count",a.count)
             is HomeAction.AdventureReward->j.put("type","adventure_reward").put("sourceId",a.sourceId).put("reward",a.reward.name).put("proof",JSONObject(a.proof.json)).put("roleId",a.sourceRole.roleId).put("spaceId",a.sourceRole.spaceId)
+            is HomeAction.AdoptPet->j.put("type","adopt_pet").put("name",a.name)
+            is HomeAction.CarePet->j.put("type","care_pet").put("kind",a.kind.name)
+            is HomeAction.HandoffPet->j.put("type","handoff_pet").put("roleId",a.roleId)
+            is HomeAction.ResolvePetHandoff->j.put("type","resolve_pet_handoff").put("roleId",a.roleId)
         }
         return j.toString().also {require(it.toByteArray(Charsets.UTF_8).size<=MAX_BYTES)}
     }
@@ -78,6 +84,10 @@ object HomeActionCodec {
             "fish"->{keys();HomeAction.Fish}
             "sell"->{keys("item","count");HomeAction.Sell(item(),count())}
             "adventure_reward"->{keys("sourceId","reward","proof","roleId","spaceId");HomeAction.AdventureReward(PlayJson.string(j,"sourceId").also(PlaySessions::id),HomeAdventureReward.valueOf(PlayJson.string(j,"reward")),HomeAdventureProof.decode(j.getJSONObject("proof").toString()),RoleAccessScope(role(),PlayJson.string(j,"spaceId").also(PlaySessions::id)))}
+            "adopt_pet"->{keys("name");HomeAction.AdoptPet(PlayJson.string(j,"name").also {PlayJson.text(it,HomePetRules.NAME_LIMIT)})}
+            "care_pet"->{keys("kind");HomeAction.CarePet(HomePetCare.valueOf(PlayJson.string(j,"kind")))}
+            "handoff_pet"->{keys("roleId");HomeAction.HandoffPet(role())}
+            "resolve_pet_handoff"->{keys("roleId");HomeAction.ResolvePetHandoff(role())}
             else->error("Unknown home command")
         }
     }catch(_:Exception){throw ChatFailure("HOME_FORMAT")}

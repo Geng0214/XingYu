@@ -35,7 +35,7 @@ private enum class HomePanel(val title:String) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable internal fun ColumnScope.HomeGameUi(home:HomeState,role:RoleEntity?,residents:List<RoleEntity>,vm:CompanionViewModel,ui:HomeUi,now:Long,enabled:Boolean,
-    working:Boolean,initialCommandId:String?,onResident:(String)->Unit,onAction:(HomeAction)->Unit) {
+    working:Boolean,initialCommandId:String?,onResident:(String)->Unit,onAction:(HomeAction)->Unit,onCompanion:(()->Unit)?=null) {
     val scene=rememberHomeScene(home)
     var target by remember(home.scope.homeId){mutableStateOf<HomeTarget?>(null)}
     var panelName by rememberSaveable(home.scope.homeId){mutableStateOf(if(initialCommandId!=null)HomePanel.JOURNAL.name else null)}
@@ -178,17 +178,20 @@ private enum class HomePanel(val title:String) {
                                 HomeImageButton("保存名称",HomeSymbol.CHECK,enabled=enabled&&ui.nameDraft.text.isNotBlank(),onClick={act(HomeAction.Rename(ui.nameDraft.text))})
                             }
                             panel!=null->when(panel) {
-                                HomePanel.MENU->HomeImageGrid {
-                                    HomeImageButton("背包",HomeSymbol.BAG,onClick={giftMode=false;open(HomePanel.BAG)})
-                                    HomeImageButton("制作",HomeSymbol.CRAFT,onClick={open(HomePanel.CRAFT)})
-                                    HomeImageButton("布置",HomeSymbol.DECORATE,onClick={open(HomePanel.DECORATE)})
-                                    HomeImageButton("换装",HomeSymbol.WARDROBE,onClick={open(HomePanel.WARDROBE)})
-                                    HomeImageButton("心愿",HomeSymbol.MAIL,onClick={open(HomePanel.WISH)})
-                                    HomeImageButton("回忆",HomeSymbol.READ,onClick={open(HomePanel.JOURNAL)})
-                                    HomeImageButton("更名",HomeSymbol.DOOR,onClick={panelName=null;vm.editHomeName(ui.token)})
-                                    HomeImageButton("玩法",HomeSymbol.TALK,onClick={open(HomePanel.HELP)})
-                                    HomeMapButton(Icons.Default.Add,"放大地图"){scene.overview=false;scene.zoom=(scene.zoom+.2f).coerceAtMost(1.6f)}
-                                    HomeMapButton(Icons.Default.Remove,"缩小地图"){scene.overview=false;scene.zoom=(scene.zoom-.2f).coerceAtLeast(.6f)}
+                                HomePanel.MENU->{
+                                    onCompanion?.let {leave->TextButton(onClick={close();leave()},modifier=Modifier.fillMaxWidth()){Text("返回雨窗")}}
+                                    HomeImageGrid {
+                                        HomeImageButton("背包",HomeSymbol.BAG,onClick={giftMode=false;open(HomePanel.BAG)})
+                                        HomeImageButton("制作",HomeSymbol.CRAFT,onClick={open(HomePanel.CRAFT)})
+                                        HomeImageButton("布置",HomeSymbol.DECORATE,onClick={open(HomePanel.DECORATE)})
+                                        HomeImageButton("换装",HomeSymbol.WARDROBE,onClick={open(HomePanel.WARDROBE)})
+                                        HomeImageButton("心愿",HomeSymbol.MAIL,onClick={open(HomePanel.WISH)})
+                                        HomeImageButton("回忆",HomeSymbol.READ,onClick={open(HomePanel.JOURNAL)})
+                                        HomeImageButton("更名",HomeSymbol.DOOR,onClick={panelName=null;vm.editHomeName(ui.token)})
+                                        HomeImageButton("玩法",HomeSymbol.TALK,onClick={open(HomePanel.HELP)})
+                                        HomeMapButton(Icons.Default.Add,"放大地图"){scene.overview=false;scene.zoom=(scene.zoom+.2f).coerceAtMost(1.6f)}
+                                        HomeMapButton(Icons.Default.Remove,"缩小地图"){scene.overview=false;scene.zoom=(scene.zoom-.2f).coerceAtLeast(.6f)}
+                                    }
                                 }
                                 HomePanel.BAG->HomeImageGrid {
                                     home.inventory.entries.sortedBy {it.key.ordinal}.filter {!giftMode||it.key.giftable}.forEach {(item,n)->

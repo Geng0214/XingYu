@@ -1,0 +1,27 @@
+E17 build and verification commands (2026-10-24)
+
+1. JVM tests
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ci/build.ps1 -Tasks ':app:testDebugUnitTest' -EvidenceStage E17_FEATURE_PHASE1
+Result: BUILD SUCCESSFUL in 4m 52s; 84 test classes, 599 tests, 0 failures, 0 errors, 0 skipped.
+
+2. Release build
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ci/build.ps1 -Tasks ':app:assembleRelease' -EvidenceStage E17_FEATURE_PHASE1
+Result: BUILD SUCCESSFUL in 5m 10s; build/app/outputs/apk/release/app-release.apk.
+
+3. Package audit
+.venv/Scripts/python.exe ci/script/verify_apk.py build/app/outputs/apk/release/app-release.apk --version-code 41 --version-name 0.40.0 --stage E17_FEATURE_PHASE1 --report apk-audit.json
+Result: status PASS; 90,226,193 bytes; SHA-256 fc0099fb6ac87b9ccf9d6dc1629662f3d86a12159203aed4ccd92ba53a9fa74d.
+
+4. Signature
+C:/Users/15942/dev/sdk/android-sdk/build-tools/36.0.0/apksigner.bat verify --verbose --print-certs build/app/outputs/apk/release/app-release.apk
+Result: v2 signature true; certificate SHA-256 ac7283d4cc843d710a77f3c5b3f96ee3663793b78e8fb30c6a145b8e37f497fa.
+
+5. 16 KB zip alignment
+C:/Users/15942/dev/sdk/android-sdk/build-tools/36.0.0/zipalign.exe -c -P 16 -v 4 build/app/outputs/apk/release/app-release.apk
+Result: Verification successful.
+
+6. Installation
+C:/Users/15942/dev/sdk/android-sdk/platform-tools/adb.exe -s 127.0.0.1:16384 install -r build/app/outputs/apk/release/app-release.apk
+Result: Success; package versionCode 41, versionName 0.40.0.
+
+Note: The feature code is commit 0870859cd. The working tree additionally contains the version bump, documentation updates and the verify_apk.py receiver assertion update; these were not committed for this validation run.

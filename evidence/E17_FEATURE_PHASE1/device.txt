@@ -1,0 +1,9 @@
+date=2026-10-24
+serial=127.0.0.1:16384
+model=22041211A
+android=15
+sdk=35
+size=Physical size: 900x1600
+density=Physical density: 240
+font_scale=1.0
+versionName=0.40.0

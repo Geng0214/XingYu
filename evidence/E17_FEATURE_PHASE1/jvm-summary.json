@@ -1,0 +1,9 @@
+{
+  "task": ":app:testDebugUnitTest",
+  "classes": 84,
+  "tests": 599,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "result": "PASS"
+}
